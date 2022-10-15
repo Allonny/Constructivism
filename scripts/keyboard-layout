@@ -2,7 +2,7 @@
 
 set -e
 
-layouts_file="$HOME/.config/i3/scripts/.layouts"
+layouts_file="$HOME/.i3/scripts/.layouts"
 
 set() {
     layouts="${@:2}"

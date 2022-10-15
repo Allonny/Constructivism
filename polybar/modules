@@ -20,7 +20,7 @@ content-foreground = ${color.foreground-alt}
 content-overline = ${color.background}
 content-underline = ${color.background}
 
-click-left = ~/.config/i3/scripts/launcher &
+click-left = ~/.i3/scripts/launcher &
 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -97,7 +97,7 @@ label-padding = 1
 type = custom/script
 
 click-left = playerctl previous
-exec = ~/.config/i3/scripts/player prev
+exec = ~/.i3/scripts/player prev
 tail = true
 interval = 1
 
@@ -119,7 +119,7 @@ label-foreground = ${color.foreground}
 type = custom/script
 
 click-left = playerctl play-pause
-exec = ~/.config/i3/scripts/player playpause
+exec = ~/.i3/scripts/player playpause
 tail = true
 interval = 1
 
@@ -137,7 +137,7 @@ label-foreground = ${color.foreground}
 type = custom/script
 
 click-left = playerctl next
-exec = ~/.config/i3/scripts/player next
+exec = ~/.i3/scripts/player next
 tail = true
 interval = 1
 
@@ -155,7 +155,7 @@ label-foreground = ${color.foreground}
 type = custom/script
 
 click-left = playerctl play-pause
-exec = ~/.config/i3/scripts/player metadata
+exec = ~/.i3/scripts/player metadata
 tail = true
 interval = 1
 
@@ -194,7 +194,7 @@ label-padding = 1
 [module/keyboard-layout]
 type = custom/script
 
-exec = ~/.config/i3/scripts/keyboard-layout polybar
+exec = ~/.i3/scripts/keyboard-layout polybar
 tail = true
 interval = 1
 
@@ -203,8 +203,8 @@ label = %output%
 format-overline = ${color.background}
 format-underline = ${color.background}
 
-click-left = ~/.config/i3/scripts/keyboard-layout toggle
-click-right = ~/.config/i3/scripts/keyboard-layout set us ru
+click-left = ~/./i3/scripts/keyboard-layout toggle
+click-right = ~/./i3/scripts/keyboard-layout set us ru
 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -376,6 +376,7 @@ label-alignment = right
 label-background = ${color.background-alt}
 label-padding = 1
 
+
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/memory]
@@ -400,59 +401,6 @@ label-padding = 1
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/bluetooth]
-type = custom/text
-
-content = ""
-content-padding = 1
-content-background = ${color.color4}
-content-foreground = ${color.foreground-alt}
-content-overline = ${color.background}
-content-underline = ${color.background}
-
-click-left = blueman-manager &
-
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-
-[module/network]
-type = internal/network
-interface = wlan0
-
-interval = 1.0
-
-accumulate-stats = true
-
-unknown-as-up = true
-
-format-connected = <label-connected>
-format-connected-prefix = 
-format-connected-prefix-background = ${color.color4}
-format-connected-prefix-foreground = ${color.foreground-alt}
-format-connected-prefix-padding = 1
-format-connected-overline = ${color.background}
-format-connected-underline = ${color.background}
-
-format-disconnected = <label-disconnected>
-format-disconnected-prefix = 
-format-disconnected-prefix-background = ${color.color3}
-format-disconnected-prefix-foreground = ${color.foreground-alt}
-format-disconnected-prefix-padding = 1
-format-disconnected-overline = ${color.background}
-format-disconnected-underline = ${color.background}
-
-label-connected = "%{A1:nm-connection-editor &:}%essid%%{A}"
-label-connected-background = ${color.background-alt}
-label-connected-padding = 1
-
-label-disconnected = "%{A1:networkmanager_dmenu &:}Offline%{A}"
-label-disconnected-background = ${color.background-alt}
-label-disconnected-padding = 1
-
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
 [module/sysmenu]
 type = custom/text
 
@@ -463,7 +411,7 @@ content-foreground = ${color.foreground-alt}
 content-overline = ${color.background}
 content-underline = ${color.background}
 
-click-left = ~/.config/i3/scripts/powermenu &
+click-left = ~/.i3/scripts/powermenu &
 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
