@@ -203,8 +203,8 @@ label = %output%
 format-overline = ${color.background}
 format-underline = ${color.background}
 
-click-left = ~/./i3/scripts/keyboard-layout toggle
-click-right = ~/./i3/scripts/keyboard-layout set us ru
+click-left = ~/.i3/scripts/keyboard-layout toggle
+click-right = ~/.i3/scripts/keyboard-layout set us ru
 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
