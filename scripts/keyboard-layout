@@ -1,0 +1,101 @@
+#!/bin/bash
+
+set -e
+
+layouts_file="$HOME/.config/i3/scripts/.layouts"
+
+set() {
+    layouts="${@:2}"
+    layouts=${layouts// /,}
+    setxkbmap -layout $layouts
+    echo $layouts > $layouts_file
+}
+
+get_layout() {
+    layout=$(setxkbmap -query | grep -oP 'layout:\s*\K([\w,]+)')
+    echo $layout
+}
+
+get_CapsLock() {
+    CapsLock=$(xset q | grep -oP 'Caps Lock:\s{0,}\K([\w]+)')
+    echo $CapsLock
+}
+
+get_color() {
+    current_CapsLock=$(get_CapsLock)
+    if [[ $current_CapsLock = "on" ]]; then
+        color=$(grep -oP 'color_bad\s=\s"\K(.{7})' "/etc/i3status.conf")
+    else
+        color=$(grep -oP 'color_good\s=\s"\K(.{7})' "/etc/i3status.conf")
+    fi
+    color="\"color\":\"$color\","
+    echo $color
+}
+
+get() {
+    current_layout=$(get_layout)
+    current_layout=${current_layout:0:2}
+    current_layout=${current_layout^^}
+    current_CapsLock=$(get_CapsLock)
+    current_CapsLock=${current_CapsLock//on/}
+    current_CapsLock=${current_CapsLock//off/}
+    block="$current_CapsLock $current_layout"
+    echo $block
+}
+
+i3status() {
+	while :
+    do
+    	read line
+    	layout=$(get)
+    	current_color=$(get_color)
+    	block="{\"name\":\"Keyboard Layout\",$current_color\"markup\":\"none\",\"full_text\":\" $layout \",\"align\":\"center\",\"min_width\":70}"
+    	echo "${line/\[\{/\[$block,\{}" || exit 1
+    done
+}
+
+polybar() {
+    current_CapsLock=$(get_CapsLock)
+    if [[ $current_CapsLock = "on" ]]; then
+        block="%{B#F0A080 F#404040}  %{B#444240 F#D0D0D0}"
+    else
+        block="%{B#A0A0C0 F#404040}  %{B#444240 F#D0D0D0}"
+    fi
+
+    current_layout=$(get_layout)
+    current_layout=${current_layout:0:2}
+    current_layout=${current_layout^^}
+    block="$block $current_layout %{B- F-}"
+
+    echo $block
+}
+
+toggle() {
+    setted_layout=$(cat $layouts_file)
+    current_layout=$(get_layout)
+
+    if [[ ${#setted_layout} -ne ${#current_layout} ]]; then
+        current_layout=$setted_layout
+    fi
+
+    new_layout="${current_layout:3},${current_layout:0:2}"
+    setxkbmap -layout $new_layout
+}
+
+case $1 in
+    "set")
+        set $@
+        ;;
+    "get")
+        get
+        ;;
+    "i3status")
+        i3status
+        ;;
+    "polybar")
+        polybar
+        ;;
+    "toggle")
+        toggle
+        ;;
+esac

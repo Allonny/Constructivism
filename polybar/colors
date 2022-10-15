@@ -1,0 +1,59 @@
+;; ┌────────────────────────────────────────────────────────────┐
+;; │░█▀█░█▀█░█░░░█░█░█▀▄░█▀█░█▀▄░░░░░░░░░█▀▀░█▀█░█░░░█▀█░█▀▄░█▀▀│
+;; │░█▀▀░█░█░█░░░░█░░█▀▄░█▀█░█▀▄░░░░▀░░░░█░░░█░█░█░░░█░█░█▀▄░▀▀█│
+;; │░▀░░░▀▀▀░▀▀▀░░▀░░▀▀░░▀░▀░▀░▀░░░░▀░░░░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀│
+;; │░Created░By░Aditya░Shakya░@adi1090x░░░░░░░░░░░░░░░░░░░░░░░░░│
+;; └────────────────────────────────────────────────────────────┘
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[color]
+
+;; Use pywal.sh in scripts directory to use colors from an image/wallpaper.
+
+;; main colors
+background = #343230
+background-alt = #444240
+foreground = #D0D0D0
+foreground-alt = #404040
+transparent = #00000000
+
+color1 = #90D0D0
+color2 = #F8E8A0
+color3 = #F0A080
+color4 = #A0A0C0
+;; 97927f
+white = #FFFFFF
+black = #000000
+
+gray = #80A080
+blue-gray = #6D8895
+
+brown = #705050
+red = #DCA3A3
+
+orange = #DFAF8F
+yellow = #F0DFAF
+amber = #E0C0A0
+
+green = #60B48A
+lime = #72D5A3
+
+cyan = #8CD0D3
+teal = #93E0E3
+
+blue = #9AB8D7
+indigo = #94BFF3
+
+purple = #DC8CC3
+pink = #EC6798
+
+;; color1 = #F5C199
+;; color2 = #D8CCB2
+;; color3 = #F8D880
+;; color4 = #B8CFC7
+;; color5 = #86BBBF
+;; color6 = #6D8895
+;; color7 = #C0B0A0
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
