@@ -119,24 +119,23 @@ bindsym $mod+Shift+Print --release exec --no-startup-id xfce4-screenshooter -r -
 
 # Запуск VPN
 # $mod+` ($mod+ё)
-# bindcode $mod+49 --release exec $confpath/scripts/warp
-# bindcode $mod+Shift+49 --release exec warp-cli disconnect
+bindcode $mod+49 --release exec $confpath/scripts/vpn-toggle "Surfshark Japan UDP"
 
 
 # Автозапуск приложений
 # exec --no-startup-id dex --autostart --environment i3
-exec_always killall polybar | $confpath/scripts/polybar-launch
-# exec compton
-# exec_always compton -cCGb --backend glx --vsync opengl
+
+exec_always killall -q polybar | $confpath/scripts/polybar-launch
+exec_always killall -q low_battery_alert || $confpath/scripts/low_battery_alert 30 15
+exec_always picom -cCGb
 exec nitrogen --restore; sleep 1; picom -b
-exec dunst
+exec dunst -conf $confpath/dunst.conf
 exec xfce4-power-manager
 exec xfce4-clipman
 exec nm-applet
 exec blueberry-tray
-# exec_always --no-startup-id blueman-applet
-# exec_always --no-startup-id pamac-tray
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
 
 # Специфичные настройки запуска приложений
 for_window [class="AlsaMixer"] floating enable

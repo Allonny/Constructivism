@@ -1,0 +1,31 @@
+#!/bin/bash
+
+bat_file="/sys/class/power_supply/BAT1/uevent"
+
+notify_title="Низкий заряд батареи!"
+notify_body="Устройство следует поставить на зарядку"
+notify_id=1000
+
+normal_level=$1
+low_level=$2
+
+normal_time=5m
+low_time=1m
+extra_low_time=15s
+sleep_time=0
+
+get() {
+    echo $(grep -oP "POWER_SUPPLY_$1=\K(.+)" $bat_file)
+}
+
+while :
+do
+    bat_capacity=$(get CAPACITY)
+    bat_status=$(get STATUS)
+
+    [[ $bat_capacity -gt $normal_level ]] && sleep_time=$normal_time || [[ $bat_capacity -gt $low_level ]] && sleep_time=$low_time || sleep_time=$extra_low_time
+
+    [[ $bat_status == "Discharging" ]] && [[ $bat_capacity -le $normal_level ]] && echo "$notify_title" && notify-send -u critical -r $notify_id "$notify_title" "$notify_body"
+
+    sleep $sleep_time
+done

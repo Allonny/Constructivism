@@ -2,13 +2,36 @@
 
 set -e
 
-layouts_file="$HOME/.i3/scripts/.layouts"
+conf_path="$HOME/.i3/scripts/.xkb"
+layouts_list_file="$conf_path/layouts_list"
+
+notify_title="Раскладка клавиатуры"
+notify_body="Текущая раскладка: "
+notify_id=1020
 
 set() {
-    layouts="${@:2}"
-    layouts=${layouts// /,}
-    setxkbmap -layout $layouts
-    echo $layouts > $layouts_file
+    layouts=($@)
+
+    printf "%s\n" "${layouts[@]}" > $layouts_list_file
+
+    layout=""
+    variant=""
+
+    for i in ${layouts[@]}; do
+        i=(${i//:/ })
+        layout="$layout,${i[0]}"
+        variant="$variant,${i[1]}"
+    done
+
+    layout=${layout:1}
+    variant=${variant:1}
+
+    setxkbmap -layout "$layout" -variant "$variant"
+}
+
+get_layout_list() {
+    layout=$(tr '\n'  ' ' < $layouts_list_file)
+    echo $layout
 }
 
 get_layout() {
@@ -71,20 +94,35 @@ polybar() {
 }
 
 toggle() {
-    setted_layout=$(cat $layouts_file)
-    current_layout=$(get_layout)
+    layouts=($(get_layout_list))
 
-    if [[ ${#setted_layout} -ne ${#current_layout} ]]; then
-        current_layout=$setted_layout
-    fi
+    layouts=(${layouts[@]:1} ${layouts[0]})
 
-    new_layout="${current_layout:3},${current_layout:0:2}"
-    setxkbmap -layout $new_layout
+    printf "%s\n" "${layouts[@]}" > $layouts_list_file
+
+    layout=""
+    variant=""
+
+    for i in ${layouts[@]}; do
+        i=(${i//:/ })
+        layout="$layout,${i[0]}"
+        variant="$variant,${i[1]}"
+    done
+
+    layout=${layout:1}
+    variant=${variant:1}
+
+    setxkbmap -layout "$layout" -variant "$variant"
+
+    current_layout=${layouts[0]}
+    current_layout=${current_layout^^}
+    current_layout=${current_layout//:/ в варианте }
+    notify-send -a thunar -u low -r $notify_id "$notify_title" "$notify_body$current_layout"
 }
 
 case $1 in
     "set")
-        set $@
+        set "${@:2}"
         ;;
     "get")
         get

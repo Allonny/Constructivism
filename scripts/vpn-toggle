@@ -1,0 +1,10 @@
+#!/bin/bash
+
+notify_title="Ошибка VPN подключения"
+notify_id=1010
+
+vpn_state=$([[ -z $(nmcli -g ACTIVE connection show "$1") ]] && echo "up" || echo "down")
+
+vpn_error=$(nmcli -w 10 connection $vpn_state "$1" 2>&1 | grep Error)
+
+[[ -n $vpn_error ]] && echo $vpn_error && notify-send -r $notify_id "$notify_title" "$vpn_error"
