@@ -2,30 +2,34 @@
 
 bat_file="/sys/class/power_supply/BAT1/uevent"
 
+plug="---"
+
 notify_title="Низкий заряд батареи!"
-notify_body="Устройство следует поставить на зарядку"
+notify_body="Осталось $plug% заряда, устройство следует подключить к источнику питания"
 notify_id=1000
 
-normal_level=$1
-low_level=$2
-
-normal_time=5m
-low_time=1m
-extra_low_time=15s
+alert_time=5s
 sleep_time=0
 
-get() {
+get_state() {
     echo $(grep -oP "POWER_SUPPLY_$1=\K(.+)" $bat_file)
 }
 
+level_setups=(${@:1})
+notify_level=${1//:*/}
+
 while :
 do
-    bat_capacity=$(get CAPACITY)
-    bat_status=$(get STATUS)
+    bat_capacity=$(get_state CAPACITY)
+    bat_status=$(get_state STATUS)
 
-    [[ $bat_capacity -gt $normal_level ]] && sleep_time=$normal_time || [[ $bat_capacity -gt $low_level ]] && sleep_time=$low_time || sleep_time=$extra_low_time
+    sleep_time=$alert_time
+    for setup in ${level_setups[@]}; do
+        setup=(${setup//:/ })
+        [[ $bat_capacity -ge ${setup[0]} ]] && sleep_time=${setup[1]} && break
+    done
 
-    [[ $bat_status == "Discharging" ]] && [[ $bat_capacity -le $normal_level ]] && echo "$notify_title" && notify-send -u critical -r $notify_id "$notify_title" "$notify_body"
+    [[ $bat_status == "Discharging" ]] && [[ $bat_capacity -lt $notify_level ]] &&  echo "$notify_title" && notify-send -u critical -r $notify_id "$notify_title" "${notify_body//$plug/$bat_capacity}"
 
     sleep $sleep_time
 done

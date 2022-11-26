@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Ссылка закинута в /usr/local/bin/brightness
+
+set -e
+
+brightness_file="/sys/class/backlight/amdgpu_bl0/brightness"
+max_brightness=255
+min_brightness=0
+
+notify_title="Раскладка клавиатуры"
+notify_body="Текущая раскладка: "
+notify_id=1020
+
+get() {
+    cat $brightness_file
+}
+
+set() {
+    echo $1 > $brightness_file
+}
+
+inc() {
+    brightness=$(( ($(get) + 1) * 2 - 1))
+    $(set $(( brightness < max_brightness ? brightness : max_brightness )))
+}
+
+dec() {
+    brightness=$(( ($(get) + 1) / 2 - 1))
+    $(set $(( brightness > min_brightness ? brightness : min_brightness )))
+}
+
+case $1 in
+    "get")
+        get
+        ;;
+    "set")
+        set "${@:2}"
+        ;;
+    "inc")
+        inc
+        ;;
+    "dec")
+        dec
+        ;;
+esac

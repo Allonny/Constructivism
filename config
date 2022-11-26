@@ -5,7 +5,7 @@
 # Документация://i3wm.org/docs/userguide.html
 
 # Путь до директории конфигурации
-set $confpath ~/.i3
+set $confpath $HOME/.i3
 
 # Клавиша модификатор (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
@@ -20,7 +20,8 @@ workspace_layout default
 
 
 
-################ Настройки звуковой подсистемы ################
+
+################ Настройки звука и экрана ################
 
 # exec --no-startup-id pa-applet
 # exec --no-startup-id pulseaudio
@@ -29,18 +30,18 @@ workspace_layout default
 # $mod+M
 bindcode $mod+58 --release exec pavucontrol
 
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
-bindsym XF86AudioMute exec amixer -D pulse sset Master toggle
+bindsym XF86AudioRaiseVolume --release exec amixer -D pulse sset Master 5%+
+bindsym XF86AudioLowerVolume --release exec amixer -D pulse sset Master 5%-
+bindsym XF86AudioMute --release exec amixer -D pulse sset Master toggle
+
 bindsym XF86AudioPlay --release exec playerctl play-pause
-# bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioStop --release exec playerctl stop
 bindsym XF86AudioNext --release exec playerctl next
 bindsym XF86AudioPrev --release exec playerctl previous
-# bindsym XF86MonBrightnessUp exec xbacklight +10
-# bindsym XF86MonBrightnessDown exec xbacklight -10
-# set powersavings for display:
-# exec --no-startup-id xset s 480 dpms 600 600 600
-# bindsym XF86UWB exec arandr
+
+bindsym XF86MonBrightnessUp --release exec sudo brightness inc
+bindsym XF86MonBrightnessDown --release exec sudo brightness dec
+
 
 
 
@@ -121,12 +122,11 @@ bindsym $mod+Shift+Print --release exec --no-startup-id xfce4-screenshooter -r -
 # $mod+` ($mod+ё)
 bindcode $mod+49 --release exec $confpath/scripts/vpn-toggle "Surfshark Japan UDP"
 
-
 # Автозапуск приложений
 # exec --no-startup-id dex --autostart --environment i3
-
+exec_always xbacklight -set 100
 exec_always killall -q polybar | $confpath/scripts/polybar-launch
-exec_always killall -q low_battery_alert || $confpath/scripts/low_battery_alert 30 15
+exec_always killall -q low_battery_alert || $confpath/scripts/low_battery_alert 25:10m 20:5m 15:1m 12:30s
 exec_always picom -cCGb
 exec nitrogen --restore; sleep 1; picom -b
 exec dunst -conf $confpath/dunst.conf
@@ -135,7 +135,6 @@ exec xfce4-clipman
 exec nm-applet
 exec blueberry-tray
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
 
 # Специфичные настройки запуска приложений
 for_window [class="AlsaMixer"] floating enable
@@ -159,6 +158,7 @@ for_window [class="settings-manager"] floating enable resize set 1240 720
 for_window [class="Simple-scan"] floating enable
 for_window [class="Yad" instance="yad"] floating enable
 for_window [class="Xsane" instance="xsane"] floating enable
+
 
 
 
@@ -205,6 +205,7 @@ bindsym $mod+minus --release move scratchpad
 
 # Отображение следующего окна из скретчпада или закрытие скретчпада
 bindsym $mod+Shift+minus --release scratchpad show
+
 
 
 
@@ -267,6 +268,7 @@ for_window [urgent=latest] focus
 
 
 
+
 ################ Режимы работы ################
 
 # Изменение размеров окон
@@ -282,6 +284,7 @@ mode "$mode_resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
 
 
 
@@ -315,6 +318,7 @@ bindcode $mod+33 --release border none
 bindcode $mod+34 --release border pixel 4
 # $mod+]
 bindcode $mod+35 --release border normal 4
+
 
 
 
