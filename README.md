@@ -8,3 +8,13 @@
 
 Я, разумеется, думаю о том, чтобы и дальше дополнять этот репозиторий, как минимум в планах написать небольшой GUI-сборщик, который мог бы собрать конфиги на базе данных, но с иными отдельными настройками, вроде названий программ, путей к файлам, цветов и комбинаций клавиш.
 В общем, вот, спасибо большое, что заинтересовались, хорошего дня вам! -^_^-
+
+Немного скриншотов сетапа:
+
+![alt text](https://github.com/Allonny/i3-polybar-rofi-configs/blob/main/preview%20screenshots/screenshot_1.png)
+
+![alt text](https://github.com/Allonny/i3-polybar-rofi-configs/blob/main/preview%20screenshots/screenshot_2.png)
+
+![alt text](https://github.com/Allonny/i3-polybar-rofi-configs/blob/main/preview%20screenshots/screenshot_3.png)
+
+![alt text](https://github.com/Allonny/i3-polybar-rofi-configs/blob/main/preview%20screenshots/screenshot_4.png)
