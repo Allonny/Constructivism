@@ -58,8 +58,6 @@ bindcode $mod+Shift+24 --release exec --no-startup-id xkill
 bindsym $mod+Tab --release exec $confpath/scripts/activeapps
 
 # Изменение раскладки клавиатуры
-exec_always --no-startup-id $confpath/scripts/keyboard-layout set us ru
-
 bindsym $mod+space --release exec --no-startup-id $confpath/scripts/keyboard-layout toggle
 # bindsym Menu exec --no-startup-id $confpath/scripts/keyboard-layout toggle
 
@@ -80,7 +78,7 @@ bindsym $mod+Escape --release exec $confpath/scripts/powermenu
 # $mod+,
 bindcode $mod+59 --release reload
 # $mod+.
-bindcode $mod+60 --release restart, exec $confpath/scripts/polybar-launch
+bindcode $mod+60 --release restart
 
 # Меню приложений
 bindsym $mod+F1 --release exec $confpath/scripts/launcher
@@ -125,11 +123,11 @@ bindcode $mod+49 --release exec $confpath/scripts/vpn-toggle "Surfshark Japan UD
 # Автозапуск приложений
 # exec --no-startup-id dex --autostart --environment i3
 exec_always xbacklight -set 100
-exec_always killall -q polybar | $confpath/scripts/polybar-launch
-exec_always killall -q low_battery_alert || $confpath/scripts/low_battery_alert 25:10m 20:5m 15:1m 12:30s
-exec_always picom -cCGb
-exec nitrogen --restore; sleep 1; picom -b
-exec dunst -conf $confpath/dunst.conf
+exec_always killall -q picom             ; picom -Cb ; nitrogen --restore
+exec_always killall -q polybar           ; $confpath/scripts/polybar-launch
+exec_always killall -q dunst             ; dunst -conf $confpath/dunst.conf
+exec_always killall -q low-battery-alert ; $confpath/scripts/low-battery-alert 25:10m 20:5m 15:1m 12:30s
+exec_always $confpath/scripts/keyboard-layout set us ru
 exec xfce4-power-manager
 exec xfce4-clipman
 exec nm-applet
