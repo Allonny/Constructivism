@@ -128,6 +128,7 @@ exec_always killall -q polybar           ; $confpath/scripts/polybar-launch
 exec_always killall -q dunst             ; dunst -conf $confpath/dunst.conf
 exec_always killall -q low-battery-alert ; $confpath/scripts/low-battery-alert 25:10m 20:5m 15:1m 12:30s
 exec_always $confpath/scripts/keyboard-layout set us ru
+exec_always sudo $confpath/scripts/brightness levels 20
 exec xfce4-power-manager
 exec xfce4-clipman
 exec nm-applet

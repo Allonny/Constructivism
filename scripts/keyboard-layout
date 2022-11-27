@@ -1,18 +1,17 @@
 #!/bin/bash
 
-set -e
+# Скрипт изменения раскладки клавиатуры
 
-conf_path="$HOME/.i3/scripts/.xkb"
-layouts_list_file="$conf_path/layouts_list"
+layouts_file="/tmp/keyboard-layouts"
 
 notify_title="Раскладка клавиатуры"
 notify_body="Текущая раскладка: "
 notify_id=1020
 
+# Установка списка раскладок и их вариантов, аругменты: раскладка1[:вариант1] [раскладка2[:вариант2]] ...
 set() {
     layouts=($@)
-
-    printf "%s\n" "${layouts[@]}" > $layouts_list_file
+    echo ${layouts[@]} > $layouts_file
 
     layout=""
     variant=""
@@ -29,21 +28,24 @@ set() {
     setxkbmap -layout "$layout" -variant "$variant"
 }
 
+# Возвращает список всех установленных раскладок в текущем смещении
 get_layout_list() {
-    layout=$(tr '\n'  ' ' < $layouts_list_file)
-    echo $layout
+    cat $layouts_file
 }
 
+# Получение текущей установленной расскладки в сиситеме, возвращает буквенный индекс раскладки
 get_layout() {
     layout=$(setxkbmap -query | grep -oP 'layout:\s*\K([\w,]+)')
     echo $layout
 }
 
+# Получение состояния капслока, возвращает on или off
 get_CapsLock() {
     CapsLock=$(xset q | grep -oP 'Caps Lock:\s{0,}\K([\w]+)')
     echo $CapsLock
 }
 
+# Получение "цветов оповещения", установленных для i3status
 get_color() {
     current_CapsLock=$(get_CapsLock)
     if [[ $current_CapsLock = "on" ]]; then
@@ -55,6 +57,7 @@ get_color() {
     echo $color
 }
 
+# возвращает текущие данные о раскладке и состоянии капслока
 get() {
     current_layout=$(get_layout)
     current_layout=${current_layout:0:2}
@@ -66,6 +69,7 @@ get() {
     echo $block
 }
 
+# Возвращает блок для встраивания в i3status
 i3status() {
 	while :
     do
@@ -77,6 +81,7 @@ i3status() {
     done
 }
 
+# Возвращает блок для встраивания в polybar (завязано на моём текущем конфиге, не обессудьте, как-нибудь, но мои руки и до сюда доберутся)
 polybar() {
     current_CapsLock=$(get_CapsLock)
     if [[ $current_CapsLock = "on" ]]; then
@@ -93,12 +98,13 @@ polybar() {
     echo $block
 }
 
+# Переключение раскладки (смещение влево списка раскладок)
 toggle() {
     layouts=($(get_layout_list))
 
     layouts=(${layouts[@]:1} ${layouts[0]})
 
-    printf "%s\n" "${layouts[@]}" > $layouts_list_file
+    echo "${layouts[@]}" > $layouts_file
 
     layout=""
     variant=""

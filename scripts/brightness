@@ -1,34 +1,68 @@
 #!/bin/bash
 
+# Скрипт для экспоненциального изменения яркости
+
 # Ссылка закинута в /usr/local/bin/brightness
+# Запускать через sudo
 
-set -e
-
+current_level_file="/tmp/brightness_levels"
 brightness_file="/sys/class/backlight/amdgpu_bl0/brightness"
 max_brightness=255
 min_brightness=0
 
-notify_title="Раскладка клавиатуры"
-notify_body="Текущая раскладка: "
-notify_id=1020
+notify_title=""
+notify_body=""
+notify_id=1030
 
+# Получить текущую яркость, возвращает число от 0 до 255
 get() {
     cat $brightness_file
 }
 
+# Установить текущую яркость, аргументы: число от 0 до 255
 set() {
-    echo $1 > $brightness_file
+    sh -c "echo $1 > $brightness_file"
 }
 
+# Увеличить яркость на один шаг
 inc() {
-    brightness=$(( ($(get) + 1) * 2 - 1))
-    $(set $(( brightness < max_brightness ? brightness : max_brightness )))
+    steps=($(cat $current_level_file))
+    [[ ${steps[0]} -lt $(( ${#steps[@]} - 1 )) ]] && steps[0]=$(( ${steps[0]} + 1 ))
+    echo ${steps[@]} > $current_level_file
+    set ${steps[${steps[0]}]}
 }
 
+# Уменьшить яркость на один шаг
 dec() {
-    brightness=$(( ($(get) + 1) / 2 - 1))
-    $(set $(( brightness > min_brightness ? brightness : min_brightness )))
+    steps=($(cat $current_level_file))
+    [[ ${steps[0]} -gt 1 ]] && steps[0]=$(( ${steps[0]} - 1 ))
+    echo ${steps[@]} > $current_level_file
+    set ${steps[${steps[0]}]}
 }
+
+# Установить количество шагов, аргументы: целое положительное число (в разумных пределах, т.е. до 255)
+levels() {
+
+    steps=($(python - << EOF
+import sys
+steps = $1 - 1
+step = 256 ** (1 / steps)
+levels = [0]
+for n in range(steps):
+    level = round(step ** (n + 1)) - 1
+    level += max(0, levels[-1] - level + 1)
+    levels.append(min(level, 255))
+print(' '.join(map(str, levels[:256])))
+EOF
+    ))
+
+    steps=(${#steps[@]} ${steps[@]})
+    echo ${steps[@]} > $current_level_file
+    set ${steps[${steps[0]}]}
+}
+
+# Создание дефолтного файла-конфигурации с 8 шагами
+[[ ! -f $current_level_file ]] && levels 8
 
 case $1 in
     "get")
@@ -42,5 +76,8 @@ case $1 in
         ;;
     "dec")
         dec
+        ;;
+    "levels")
+        levels "${@:2}"
         ;;
 esac
