@@ -129,6 +129,7 @@ exec_always killall -q dunst             ; dunst -conf $confpath/dunst.conf
 exec_always killall -q low-battery-alert ; $confpath/scripts/low-battery-alert 25:10m 20:5m 15:1m 12:30s
 exec_always $confpath/scripts/keyboard-layout set us ru
 exec_always sudo $confpath/scripts/brightness levels 20
+exec_always libinput-gestures-setup restart
 exec xfce4-power-manager
 exec xfce4-clipman
 exec nm-applet
@@ -200,10 +201,44 @@ bindcode $mod+Shift+41 --release floating toggle
 floating_modifier $mod
 
 # Перемещение активного окна в скретчпад
-bindsym $mod+minus --release move scratchpad
+bindsym $mod+0 --release move scratchpad
 
 # Отображение следующего окна из скретчпада или закрытие скретчпада
-bindsym $mod+Shift+minus --release scratchpad show
+bindsym $mod+Shift+0 --release scratchpad show
+
+
+
+
+################ Быстрое изменение размеров окон ################
+
+# Констатнты
+set $step 20 px or 2 ppt
+
+# Изменение по ширине
+
+# Уменьшить $mod+A+minus числовой бар и нумпад
+bindcode $mod+Shift+20 resize shrink width $step
+bindcode $mod+Shift+82 resize shrink width $step
+
+# Увеличить $mod+A+plus числовой бар и нумпад
+bindcode $mod+Shift+21 resize grow width $step
+bindcode $mod+Shift+86 resize grow width $step
+
+# Изменение по высоте
+
+# Уменьшить $mod+S+minus числовой бар и нумпад
+bindcode $mod+Ctrl+20 resize shrink height $step
+bindcode $mod+Ctrl+82 resize shrink height $step
+
+# Увеличить $mod+S+minus числовой бар и нумпад
+bindcode $mod+Ctrl+21 resize grow height $step
+bindcode $mod+Ctrl+86 resize grow height $step
+
+# Управление через $mod+R+<стрелки>
+# bindcode $mod+27+Left resize shrink width $step
+# bindcode $mod+27+Right resize grow width $step
+# bindcode $mod+27+Down resize shrink height $step
+# bindcode $mod+27+Up resize grow height $step
 
 
 
@@ -272,7 +307,7 @@ for_window [urgent=latest] focus
 
 # Изменение размеров окон
 # $mod+r
-bindcode $mod+27 mode "$mode_resize"
+# bindcode $mod+27 mode "$mode_resize"
 set $mode_resize Уменьшить|Увеличить: | - Вертикальные размеры, | - Горизонтальные размеры
 mode "$mode_resize" {
         bindsym Left resize shrink width 20 px or 2 ppt

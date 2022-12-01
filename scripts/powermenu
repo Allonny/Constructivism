@@ -11,14 +11,15 @@ uptime=$(uptime -p | sed -e 's/up //g')
 
 rofi_command="rofi -theme $dir/rofi/powermenu.rasi"
 
+confirm_hibernate=("Перевести систему в гибернацию?" "Перевести в сон" "Отмена")
+confirm_logout=("Выйти из системы?" "Выйти" "Отмена")
+confirm_reboot=("Перезагрузить компьютер?" "Перезагрузить" "Отмена")
+confirm_shutdown=("Выключить компьютер?" "Выключить" "Отмена")
+
+
 # Confirmation
-confirm_exit() {
-    ans=$("$dir/confirm" $1)
-    if [[ $ans == "yes" ]]; then
-        eval $2
-    else
-        exit 0
-    fi
+confirm() {
+    $("$dir/confirm" "$1" "$2" "$3") && eval $4 || exit 0
 }
 
 # Options
@@ -37,20 +38,16 @@ case $chosen in
     $lock)
         dm-tool lock
         ;;
-
     $hibernate)
-        confirm_exit "hibernate" "systemctl hibernate"
+        confirm "${confirm_hibernate[@]}" "systemctl hibernate"
         ;;
-
     $logout)
-        confirm_exit "logout" "i3-msg exit"
+        confirm "${confirm_logout[@]}" "i3-msg exit"
         ;;
-
     $reboot)
-        confirm_exit "reboot" "systemctl reboot"
+        confirm "${confirm_reboot[@]}" "systemctl reboot"
         ;;
-
     $shutdown)
-        confirm_exit "shutdown" "systemctl poweroff"
+        confirm "${confirm_shutdown[@]}" "systemctl poweroff"
         ;;
 esac

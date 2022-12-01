@@ -1,51 +1,8 @@
 #!/usr/bin/env bash
 
 dir="~/.i3/scripts/rofi"
-# uptime=$(uptime -p | sed -e 's/up //g')
 
 rofi_command="rofi -theme $dir/confirm.rasi"
 
-# Options
-action=$1
-case $action in
-    "hibernate")
-        question="Перевести систему в гибернацию?"
-        confirm_option="Перевести в сон"
-        cancel_option="Отмена"
-        ;;
-    "logout")
-        question="Выйти из системы?"
-        confirm_option="Выйти"
-        cancel_option="Отмена"
-        ;;
-    "reboot")
-        question="Перезагрузить компьютер?"
-        confirm_option="Перезагрузить"
-        cancel_option="Отмена"
-        ;;
-    "shutdown")
-        question="Выключить компьютер?"
-        confirm_option="Выключить"
-        cancel_option="Отмена"
-        ;;
-    *)
-        question="Вы уверены?"
-        confirm_option="Да"
-        cancel_option="Отмена"
-        ;;
-esac
+[[ $2 == $(echo -e "$2\n$3" | $rofi_command -p "$1" -dmenu -selected-row 0) ]]
 
-# Variable passed to rofi
-options="$confirm_option\n$cancel_option"
-
-chosen="$(echo -e "$options" | $rofi_command -p "$question" -dmenu -selected-row 0)"
-
-case $chosen in
-    $confirm_option)
-        echo yes
-        ;;
-
-    *)
-        echo no
-        ;;
-esac
