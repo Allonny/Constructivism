@@ -13,14 +13,14 @@ content-foreground = ${color.background}
 [module/launcher]
 type = custom/text
 
-content = ""
+content = ""
 content-padding = 1
 content-background = ${color.color1}
 content-foreground = ${color.foreground-alt}
 content-overline = ${color.background}
 content-underline = ${color.background}
 
-click-left = ~/.i3/scripts/launcher &
+click-left = ~/.config/i3/scripts/apps-launcher &
 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -74,7 +74,7 @@ label-empty-padding = 1
 type = internal/xwindow
 
 format = <label>
-format-prefix = 
+format-prefix = 
 format-prefix-background = ${color.color4}
 format-prefix-foreground = ${color.foreground-alt}
 format-prefix-padding = 1
@@ -97,12 +97,12 @@ label-padding = 1
 type = custom/script
 
 click-left = playerctl previous
-exec = ~/.i3/scripts/player prev
+exec = ~/.config/i3/scripts/player prev
 tail = true
 interval = 1
 
 format = <label>
-format-prefix = 
+format-prefix = 
 format-prefix-background = ${color.color4}
 format-prefix-foreground = ${color.foreground-alt}
 format-prefix-padding = 1
@@ -119,7 +119,7 @@ label-foreground = ${color.foreground}
 type = custom/script
 
 click-left = playerctl play-pause
-exec = ~/.i3/scripts/player playpause
+exec = ~/.config/i3/scripts/player playpause
 tail = true
 interval = 1
 
@@ -137,7 +137,7 @@ label-foreground = ${color.foreground}
 type = custom/script
 
 click-left = playerctl next
-exec = ~/.i3/scripts/player next
+exec = ~/.config/i3/scripts/player next
 tail = true
 interval = 1
 
@@ -155,7 +155,7 @@ label-foreground = ${color.foreground}
 type = custom/script
 
 click-left = playerctl play-pause
-exec = ~/.i3/scripts/player metadata
+exec = ~/.config/i3/scripts/player metadata
 tail = true
 interval = 1
 
@@ -194,7 +194,7 @@ label-padding = 1
 [module/keyboard-layout]
 type = custom/script
 
-exec = ~/.i3/scripts/keyboard-layout polybar
+exec = ~/.config/i3/scripts/keyboard-layout polybar " " "#404040 #444240 #D0D0D0 #F0A080 #A0A0C0"
 tail = true
 interval = 1
 
@@ -203,8 +203,8 @@ label = %output%
 format-overline = ${color.background}
 format-underline = ${color.background}
 
-click-left = ~/.i3/scripts/keyboard-layout toggle
-click-right = ~/.i3/scripts/keyboard-layout set us ru
+click-left = ~/.config/i3/scripts/keyboard-layout toggle
+click-right = ~/.config/i3/scripts/keyboard-layout set us ru
 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -218,7 +218,7 @@ empty = ▪
 indicator = ▪
 
 [module/volume]
-type = internal/alsa
+type = internal/pulseaudio
 
 master-soundcard = default
 speaker-soundcard = default
@@ -229,7 +229,7 @@ master-mixer = Master
 interval = 5
 
 format-volume = <bar-volume>
-format-volume-prefix = 
+format-volume-prefix = ""
 format-volume-prefix-padding = 1
 format-volume-prefix-background = ${color.color4}
 format-volume-prefix-foreground = ${color.foreground-alt}
@@ -239,7 +239,7 @@ format-volume-overline = ${color.background}
 format-volume-underline = ${color.background}
 
 format-muted = <label-muted>
-format-muted-prefix = 
+format-muted-prefix = ""
 format-muted-prefix-padding = 1
 format-muted-prefix-background = ${color.color3}
 format-muted-prefix-foreground = ${color.foreground-alt}
@@ -255,9 +255,9 @@ label-muted-foreground = ${color.foreground}
 label-muted-background = ${color.background-alt}
 label-muted-padding = 1
 
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+ramp-volume-0 = ""
+ramp-volume-1 = ""
+ramp-volume-2 = ""
 ramp-volume-background = ${color.blue}
 ramp-volume-padding = 1
 
@@ -276,7 +276,7 @@ bar-volume-foreground-2 = ${color.foreground}
 bar-volume-empty = ${bar.empty}
 bar-volume-empty-foreground = ${color.background}
 
-ramp-headphones-0 = 
+ramp-headphones-0 = 
 ramp-headphones-background = ${color.blue}
 ramp-headphones-padding = 1
 
@@ -362,7 +362,7 @@ type = internal/cpu
 interval = 1
 
 format = <label>
-format-prefix = 
+format-prefix = 
 format-prefix-background = ${color.color4}
 format-prefix-foreground = ${color.foreground-alt}
 format-prefix-padding = 1
@@ -385,7 +385,7 @@ type = internal/memory
 interval = 1
 
 format = <label>
-format-prefix = 
+format-prefix = 
 format-prefix-background = ${color.color4}
 format-prefix-foreground = ${color.foreground-alt}
 format-prefix-padding = 1
@@ -404,14 +404,14 @@ label-padding = 1
 [module/sysmenu]
 type = custom/text
 
-content = ""
+content = ""
 content-padding = 1
 content-background = ${color.color1}
 content-foreground = ${color.foreground-alt}
 content-overline = ${color.background}
 content-underline = ${color.background}
 
-click-left = ~/.i3/scripts/powermenu &
+click-left = ~/.config/i3/scripts/powermenu &
 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_

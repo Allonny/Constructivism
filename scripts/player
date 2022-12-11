@@ -10,60 +10,34 @@ fi
 
 metadata() {
     case $player_status in
-        "Playing")
-            echo "%{F#D0D0D0}$metadata%{F-}"
-            ;;
-        "Paused")
-            echo "%{F#808080}$metadata%{F-}"
-            ;;
-        *)
-            echo ""
-            ;;
+        "Playing") echo "%{F#D0D0D0}$metadata%{F-}" ;;
+        "Paused") echo "%{F#808080}$metadata%{F-}" ;;
+        *) echo "" ;;
     esac
 }
 
 playpause() {
     case $player_status in
-        "Playing")
-            echo "%{F#D0D0D0}%{F-}"
-            ;;
-        "Paused")
-            echo "%{F#D0D0D0}%{F-}"
-            ;;
-        "Stopped")
-            echo "%{F#808080}%{F-}"
-            ;;
-        *)
-            echo ""
-            ;;
+        "Playing") echo "%{F#D0D0D0}%{F-}" ;;
+        "Paused") echo "%{F#D0D0D0}%{F-}" ;;
+        "Stopped") echo "%{F#808080}%{F-}" ;;
+        *) echo "" ;;
     esac
 }
 
 prev() {
     case $player_status in
-        "Playing" | "Paused")
-            echo "%{F#D0D0D0}%{F-}"
-            ;;
-        "Stopped")
-            echo "%{F#808080}%{F-}"
-            ;;
-        *)
-            echo ""
-            ;;
+        "Playing" | "Paused") echo "%{F#D0D0D0}%{F-}" ;;
+        "Stopped") echo "%{F#808080}%{F-}" ;;
+        *) echo "" ;;
     esac
 }
 
 next() {
     case $player_status in
-        "Playing" | "Paused")
-            echo "%{F#D0D0D0}%{F-}"
-            ;;
-        "Stopped")
-            echo "%{F#808080}%{F-}"
-            ;;
-        *)
-            echo ""
-            ;;
+        "Playing" | "Paused") echo "%{F#D0D0D0}%{F-}" ;;
+        "Stopped") echo "%{F#808080}%{F-}" ;;
+        *) echo "" ;;
     esac
 }
 

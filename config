@@ -4,8 +4,9 @@
 # Конфигурационный файл i3
 # Документация://i3wm.org/docs/userguide.html
 
-# Путь до директории конфигурации
-set $confpath $HOME/.i3
+# Путь до директориям конфигурации и скриптов
+set $confpath $HOME/.config/i3
+set $scriptpath $HOME/.config/i3/scripts
 
 # Клавиша модификатор (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
@@ -30,14 +31,21 @@ workspace_layout default
 # $mod+M
 bindcode $mod+58 --release exec pavucontrol
 
-bindsym XF86AudioRaiseVolume --release exec amixer -D pulse sset Master 5%+
-bindsym XF86AudioLowerVolume --release exec amixer -D pulse sset Master 5%-
-bindsym XF86AudioMute --release exec amixer -D pulse sset Master toggle
+# Для Fedora
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-bindsym XF86AudioPlay --release exec playerctl play-pause
-bindsym XF86AudioStop --release exec playerctl stop
-bindsym XF86AudioNext --release exec playerctl next
-bindsym XF86AudioPrev --release exec playerctl previous
+# Для Manjaro
+# bindsym XF86AudioRaiseVolume --release exec amixer -D pulse sset Master 5%+
+# bindsym XF86AudioLowerVolume --release exec amixer -D pulse sset Master 5%-
+# bindsym XF86AudioMute --release exec amixer -D pulse sset Master toggle
+
+bindsym XF86AudioPlay --release exec --no-startup-id playerctl play-pause
+bindsym XF86AudioStop --release exec --no-startup-id playerctl stop
+bindsym XF86AudioNext --release exec --no-startup-id playerctl next
+bindsym XF86AudioPrev --release exec --no-startup-id playerctl previous
 
 bindsym XF86MonBrightnessUp --release exec sudo brightness inc
 bindsym XF86MonBrightnessDown --release exec sudo brightness dec
@@ -53,24 +61,20 @@ bindcode $mod+24 --release kill
 # $mod+Shift+q
 bindcode $mod+Shift+24 --release exec --no-startup-id xkill
 
-# Просмотр открытых приложений
-# bindsym $mod+Tab --release exec rofi -show window \-config ~/.config/rofi/rofidmenu.rasi
-bindsym $mod+Tab --release exec $confpath/scripts/activeapps
-
 # Изменение раскладки клавиатуры
-bindsym $mod+space --release exec --no-startup-id $confpath/scripts/keyboard-layout toggle
-# bindsym Menu exec --no-startup-id $confpath/scripts/keyboard-layout toggle
+bindsym $mod+space --release exec --no-startup-id $scriptpath/keyboard-layout toggle
+# bindsym Menu exec --no-startup-id $scriptpath/keyboard-layout toggle
 
 # Меню питания
 # Заблокировать экран
 # $mod+l
-# bindcode $mod+46 --release exec --no-startup-id $confpath/scripts/blur-lock
+# bindcode $mod+46 --release exec --no-startup-id $scriptpath/blur-lock
 bindcode $mod+46 --release exec dm-tool lock
-bindsym $mod+Escape --release exec $confpath/scripts/powermenu
+bindsym $mod+Escape --release exec $scriptpath/powermenu
 
 # Обновление системы
 # $mod+u
-# bindcode $mod+30 --release exec $term -e 'pkexec pacman -Suy'
+bindcode $mod+30 --release exec $term -e 'yay -Suy'; exec $term -e 'flatpak update'
 # bindcode $mod+Shift+30 --release exec $term -e 'flatpak update'
 # bindcode $mod+Ctrl+30 --release exec $term -e 'pkexec pacman -Suy && flatpak update'
 
@@ -80,8 +84,11 @@ bindcode $mod+59 --release reload
 # $mod+.
 bindcode $mod+60 --release restart
 
+# Просмотр открытых приложений
+bindsym $mod+Tab --release exec $scriptpath/apps-active
+
 # Меню приложений
-bindsym $mod+F1 --release exec $confpath/scripts/launcher
+bindsym $mod+F1 --release exec $scriptpath/apps-launcher
 
 # Запуск файлового менеджера
 bindsym $mod+F2 --release exec $files
@@ -96,17 +103,18 @@ bindsym $mod+Return --release exec $term
 bindsym $mod+Shift+Return --release exec $term -e 'pkexec su'
 
 # Запуск редактора кода
-bindsym $mod+F4 --release exec io.howl.Editor
+bindsym $mod+F4 --release exec flatpak run io.howl.Editor
 
 # Запуск повседневных приложений
-bindsym $mod+F5 --release exec firefox
-bindsym $mod+F6 --release exec org.telegram.desktop
-bindsym $mod+F7 --release exec org.signal.Signal
-bindsym $mod+F8 --release exec org.gnome.Rhythmbox3
-bindsym $mod+Shift+F8 --release exec $term -e 'musikcube'
+bindsym $mod+F5 --release exec flatpak run org.mozilla.Firefox
+bindsym $mod+F6 --release exec flatpak run org.telegram.desktop
+bindsym $mod+F7 --release exec flatpak run org.signal.Signal
+bindsym $mod+F8 --release exec flatpak run org.gnome.Rhythmbox3
+# bindsym $mod+Shift+F8 --release exec $term -e 'musikcube'
 
 # Запуск системных утилит
-bindsym $mod+F12 --release exec $term -e 'pkexec htop'
+bindsym $mod+F12 --release exec $term -e 'htop'
+bindsym $mod+Shift+F12 --release exec $term -e 'pkexec htop'
 
 # Создание скриншотов
 bindsym Print --release exec --no-startup-id xfce4-screenshooter -f $HOME/Изображения/Скриншоты
@@ -118,23 +126,25 @@ bindsym $mod+Shift+Print --release exec --no-startup-id xfce4-screenshooter -r -
 
 # Запуск VPN
 # $mod+` ($mod+ё)
-bindcode $mod+49 --release exec $confpath/scripts/vpn-toggle "Surfshark Japan UDP"
+bindcode $mod+49 --release exec $scriptpath/vpn-toggle "Surfshark Japan UDP"
 
 # Автозапуск приложений
-# exec --no-startup-id dex --autostart --environment i3
+exec_always dex-autostart --autostart --environment i3
 exec_always xbacklight -set 100
 exec_always killall -q picom             ; picom -Cb ; nitrogen --restore
-exec_always killall -q polybar           ; $confpath/scripts/polybar-launch
+exec_always killall -q polybar           ; $scriptpath/polybar-launch
 exec_always killall -q dunst             ; dunst -conf $confpath/dunst.conf
-exec_always killall -q low-battery-alert ; $confpath/scripts/low-battery-alert 25:10m 20:5m 15:1m 12:30s
-exec_always $confpath/scripts/keyboard-layout set us ru
-exec_always sudo $confpath/scripts/brightness levels 20
+exec_always killall -q low-battery-alert ; $scriptpath/low-battery-alert 25:10m 20:5m 15:1m 12:30s
+exec_always $scriptpath/keyboard-layout set us ru
+exec_always sudo $scriptpath/brightness levels 20
 exec_always libinput-gestures-setup restart
+exec $scriptpath/antiLGBTlaw
+exec $scriptpath/war-begun
 exec xfce4-power-manager
 exec xfce4-clipman
 exec nm-applet
 exec blueberry-tray
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec /usr/libexec/xfce-polkit
 
 # Специфичные настройки запуска приложений
 for_window [class="AlsaMixer"] floating enable

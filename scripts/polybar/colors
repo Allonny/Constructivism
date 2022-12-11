@@ -18,11 +18,15 @@ foreground = #D0D0D0
 foreground-alt = #404040
 transparent = #00000000
 
+;; Green
 color1 = #90D0D0
+;; Yellow
 color2 = #F8E8A0
+;; Red
 color3 = #F0A080
+;; Blue
 color4 = #A0A0C0
-;; 97927f
+
 white = #FFFFFF
 black = #000000
 

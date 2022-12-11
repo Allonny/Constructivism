@@ -1,0 +1,16 @@
+#!/bin/bash
+
+notify_title="Война ⚔️"
+notify_body="Дней с начала войны: "
+notify_id=$(cat "$(dirname -- "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
+
+days_from()
+{
+    echo $(( ($(date +%s) - $(date -d $1 +%s)) / (60 * 60 * 24) ))
+}
+
+war_date=20220224
+
+days=$(days_from $war_date)
+
+notify-send -a thunar -u critical -r $notify_id "$notify_title" "$notify_body$days"

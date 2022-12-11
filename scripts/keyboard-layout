@@ -6,7 +6,7 @@ layouts_file="/tmp/keyboard-layouts"
 
 notify_title="Раскладка клавиатуры"
 notify_body="Текущая раскладка: "
-notify_id=1020
+notify_id=$(cat "$(dirname -- "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
 
 # Установка списка раскладок и их вариантов, аругменты: раскладка1[:вариант1] [раскладка2[:вариант2]] ...
 set() {
@@ -25,7 +25,7 @@ set() {
     layout=${layout:1}
     variant=${variant:1}
 
-    setxkbmap -layout "$layout" -variant "$variant"
+    setxkbmap -layout "$layout" -variant "$variant" -option
 }
 
 # Возвращает список всех установленных раскладок в текущем смещении
@@ -83,11 +83,14 @@ i3status() {
 
 # Возвращает блок для встраивания в polybar (завязано на моём текущем конфиге, не обессудьте, как-нибудь, но мои руки и до сюда доберутся)
 polybar() {
+    icon=($1)
+    color=($2)
+
     current_CapsLock=$(get_CapsLock)
     if [[ $current_CapsLock = "on" ]]; then
-        block="%{B#F0A080 F#404040}  %{B#444240 F#D0D0D0}"
+        block="%{B${color[3]} F${color[0]}} ${icon[0]} %{B${color[1]} F${color[2]}}"
     else
-        block="%{B#A0A0C0 F#404040}  %{B#444240 F#D0D0D0}"
+        block="%{B${color[4]} F${color[0]}} ${icon[1]} %{B${color[1]} F${color[2]}}"
     fi
 
     current_layout=$(get_layout)
@@ -101,13 +104,8 @@ polybar() {
 # Переключение раскладки (смещение влево списка раскладок)
 toggle() {
     layouts=($(get_layout_list))
-
     layouts=(${layouts[@]:1} ${layouts[0]})
-
     echo "${layouts[@]}" > $layouts_file
-
-    layout=""
-    variant=""
 
     for i in ${layouts[@]}; do
         i=(${i//:/ })
@@ -118,7 +116,7 @@ toggle() {
     layout=${layout:1}
     variant=${variant:1}
 
-    setxkbmap -layout "$layout" -variant "$variant"
+    setxkbmap -layout "$layout" -variant "$variant" -option
 
     current_layout=${layouts[0]}
     current_layout=${current_layout^^}
@@ -137,7 +135,7 @@ case $1 in
         i3status
         ;;
     "polybar")
-        polybar
+        polybar "${@:2}"
         ;;
     "toggle")
         toggle

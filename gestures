@@ -3,8 +3,8 @@ gesture: swipe left 3 xdotool key super+ctrl+Left
 gesture: swipe right 3 xdotool key super+ctrl+Right
 
 # Работа со скретчпадом
-gesture: pinch in 2 xdotool key super+0
-gesture: pinch out 2 xdotool key super+shift+0
+gesture: pinch in 3 xdotool key super+0
+gesture: pinch out 3 xdotool key super+shift+0
 
 # Переключение плавающего и полноэкранного режимов
 gesture: hold on 3 xdotool key super+shift+f

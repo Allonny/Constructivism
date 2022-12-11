@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Add this script to your wm startup file.
-DIR="$HOME/.i3/polybar"
+DIR="$HOME/.config/i3/scripts/polybar"
 
 
 # Wait until the processes have been shut down
