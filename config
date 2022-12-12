@@ -47,8 +47,8 @@ bindsym XF86AudioStop --release exec --no-startup-id playerctl stop
 bindsym XF86AudioNext --release exec --no-startup-id playerctl next
 bindsym XF86AudioPrev --release exec --no-startup-id playerctl previous
 
-bindsym XF86MonBrightnessUp --release exec sudo brightness inc
-bindsym XF86MonBrightnessDown --release exec sudo brightness dec
+bindsym XF86MonBrightnessUp --release exec $scriptpath/brightness inc
+bindsym XF86MonBrightnessDown --release exec $scriptpath/brightness dec
 
 
 
@@ -136,7 +136,7 @@ exec_always killall -q polybar           ; $scriptpath/polybar-launch
 exec_always killall -q dunst             ; dunst -conf $confpath/dunst.conf
 exec_always killall -q low-battery-alert ; $scriptpath/low-battery-alert 25:10m 20:5m 15:1m 12:30s
 exec_always $scriptpath/keyboard-layout set us ru
-exec_always sudo $scriptpath/brightness levels 20
+exec_always $scriptpath/brightness levels 20
 exec_always libinput-gestures-setup restart
 exec $scriptpath/antiLGBTlaw
 exec $scriptpath/war-begun

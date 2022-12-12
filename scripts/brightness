@@ -2,11 +2,13 @@
 
 # Скрипт для экспоненциального изменения яркости
 
-# Предварительные танцы с бубном
-# Тут: https://forums.linuxmint.com/viewtopic.php?t=138760
+# Предварительные танцы с бубном для решения проблемы с падающей яркостью тут:
+# https://forums.linuxmint.com/viewtopic.php?t=138760
 
-# Ссылка закинута в /usr/local/bin/brightness
-# Запускать через sudo
+# Для работы выполнить от root'а следующую комманду (и добавить соответствующему файлу возможность исполнения)
+# echo -e '#!/bin/bash\necho $1 > $2' > /usr/local/bin/brightness
+# После чего прописать в /etc/sudoers строку:
+# <Ваш логин> ALL = NOPASSWD: /usr/local/bin/brightness
 
 current_level_file="/tmp/brightness_levels"
 brightness_file="/sys/class/backlight/amdgpu_bl0/brightness"
@@ -24,7 +26,7 @@ get() {
 
 # Установить текущую яркость, аргументы: число от 0 до 255
 set() {
-    echo $1 > $brightness_file
+    sudo brightness $1 $brightness_file
 }
 
 # Увеличить яркость на один шаг
