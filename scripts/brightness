@@ -6,9 +6,9 @@
 # https://forums.linuxmint.com/viewtopic.php?t=138760
 
 # Для работы выполнить от root'а следующую комманду (и добавить соответствующему файлу возможность исполнения)
-# echo -e '#!/bin/bash\necho $1 > $2' > /usr/local/bin/brightness
+# echo -e '#!/bin/bash\necho $1 >  [путь к файлу "brightness_file"]' > /usr/local/bin/brightness
 # После чего прописать в /etc/sudoers строку:
-# <Ваш логин> ALL = NOPASSWD: /usr/local/bin/brightness
+# [Ваш логин] ALL = NOPASSWD: /usr/local/bin/brightness
 
 current_level_file="/tmp/brightness_levels"
 brightness_file="/sys/class/backlight/amdgpu_bl0/brightness"
@@ -26,7 +26,7 @@ get() {
 
 # Установить текущую яркость, аргументы: число от 0 до 255
 set() {
-    sudo brightness $1 $brightness_file
+    sudo brightness $1
 }
 
 # Увеличить яркость на один шаг
@@ -47,7 +47,6 @@ dec() {
 
 # Установить количество шагов, аргументы: целое положительное число (в разумных пределах, т.е. до 255)
 levels() {
-
     steps=($(python - << EOF
 import sys
 steps = $1 - 1

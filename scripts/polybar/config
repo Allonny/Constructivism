@@ -1,33 +1,42 @@
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Основной файл конфигурации polybar
+
 [global/wm]
 margin-bottom = 0
 margin-top = 0
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Файлы цветов и модулей
 
 include-file = ~/.config/i3/scripts/polybar/colors
 include-file = ~/.config/i3/scripts/polybar/modules
 
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-;; Bar Settings
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Основные настройки
 
 [bar/main]
 monitor =
-
 monitor-fallback =
-
 monitor-strict = false
-
 override-redirect = false
-
 bottom = false
+
+separator =
+dim-value = 1.0
+wm-name = i3wm
+wm-restack = i3wm
+locale = ru_RU.UTF-8
 
 fixed-center = true
 
 width = 100%
 height = 41
 
-offset-x = 0
+offset-x = 16
 offset-y = 0
 
 background = ${color.background}
@@ -49,7 +58,7 @@ border-right-size = 16
 border-right-color = ${color.transparent}
 
 border-bottom-size = 4
-border-bottom-color = ${color.color2}
+border-bottom-color = ${color.yellow}
 
 padding = 0
 
@@ -57,8 +66,10 @@ module-margin-left = 0
 module-margin-right = 0
 
 
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Шрифты и модули
 
 font-0 = "Iosevka Light:pixelsize=12;3"
 font-1 = "Jet Brains Mono Thin:pixelsize=12;3"
@@ -69,17 +80,12 @@ modules-left = sep launcher sep workspaces sep player-previous player-playpause 
 modules-center = date
 modules-right = keyboard-layout sep volume sep battery_bar sep cpu sep memory sep sysmenu sep
 
+
+
+
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Трей
 
-separator =
-
-dim-value = 1.0
-
-wm-name = i3wm
-
-wm-restack = i3wm
-
-locale = ru_RU.UTF-8
 
 tray-position = center
 tray-detached = false
@@ -104,9 +110,11 @@ double-click-right =
 cursor-click =
 cursor-scroll =
 
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-;; Application Settings
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Прочие настройки
 
 [settings]
 throttle-output = 5
@@ -122,3 +130,7 @@ compositing-border = over
 
 pseudo-transparency = false
 
+
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_

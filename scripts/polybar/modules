@@ -1,4 +1,12 @@
+
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Модули polybar
+
+
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Разделитель
 
 [module/sep]
 type = custom/text
@@ -8,14 +16,17 @@ content-background = ${color.background}
 content-foreground = ${color.background}
 
 
+
+
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Вызов меню приложений
 
 [module/launcher]
 type = custom/text
 
 content = ""
 content-padding = 1
-content-background = ${color.color1}
+content-background = ${color.green}
 content-foreground = ${color.foreground-alt}
 content-overline = ${color.background}
 content-underline = ${color.background}
@@ -23,7 +34,10 @@ content-underline = ${color.background}
 click-left = ~/.config/i3/scripts/apps-launcher &
 
 
+
+
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Индикатор рабочих пространств
 
 [module/workspaces]
 type = internal/xworkspaces
@@ -40,7 +54,7 @@ label-monitor = %name%
 
 label-active = %name%
 label-active-foreground = ${color.foreground-alt}
-label-active-background = ${color.color2}
+label-active-background = ${color.yellow}
 label-active-minlen = 3
 label-active-alignment = center
 
@@ -52,7 +66,7 @@ label-occupied-alignment = center
 
 label-urgent = %name%*
 label-urgent-foreground = ${color.foreground-alt}
-label-urgent-background = ${color.color3}
+label-urgent-background = ${color.red}
 label-urgent-minlen = 3
 label-urgent-alignment = right
 
@@ -68,14 +82,17 @@ label-occupied-padding = 1
 label-empty-padding = 1
 
 
+
+
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Название текущего активного приложения
 
 [module/title]
 type = internal/xwindow
 
 format = <label>
 format-prefix = 
-format-prefix-background = ${color.color4}
+format-prefix-background = ${color.blue}
 format-prefix-foreground = ${color.foreground-alt}
 format-prefix-padding = 1
 format-overline = ${color.background}
@@ -91,8 +108,12 @@ label-background = ${color.background-alt}
 label-padding = 1
 
 
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Медиа-плеер
+
+;; Прошлый трек
 [module/player-previous]
 type = custom/script
 
@@ -103,7 +124,7 @@ interval = 1
 
 format = <label>
 format-prefix = 
-format-prefix-background = ${color.color4}
+format-prefix-background = ${color.blue}
 format-prefix-foreground = ${color.foreground-alt}
 format-prefix-padding = 1
 format-overline = ${color.background}
@@ -114,7 +135,7 @@ label-padding = 1
 label-background = ${color.background-alt}
 label-foreground = ${color.foreground}
 
-
+;; Старт-пауза
 [module/player-playpause]
 type = custom/script
 
@@ -132,7 +153,7 @@ label-padding = 1
 label-background = ${color.background-alt}
 label-foreground = ${color.foreground}
 
-
+;; Следующий трек
 [module/player-next]
 type = custom/script
 
@@ -150,7 +171,7 @@ label-padding = 1
 label-background = ${color.background-alt}
 label-foreground = ${color.foreground}
 
-
+;; Информация о треке
 [module/player-metadata]
 type = custom/script
 
@@ -170,7 +191,10 @@ label-background = ${color.background-alt}
 label-foreground = ${color.foreground}
 
 
+
+
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Время-дата
 
 [module/date]
 type = internal/date
@@ -181,15 +205,17 @@ time = "%H:%M"
 time-alt = "%a, %d %b %Y"
 
 format = <label>
-;; format-underline = ${color.color2}
+;; format-underline = ${color.yellow}
 
 label = %time%
 label-foreground = ${color.foreground}
 label-padding = 1
 
 
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Индикатор раскладки клавиатуры
 
 [module/keyboard-layout]
 type = custom/script
@@ -204,18 +230,25 @@ format-overline = ${color.background}
 format-underline = ${color.background}
 
 click-left = ~/.config/i3/scripts/keyboard-layout toggle
-click-right = ~/.config/i3/scripts/keyboard-layout set us ru
+
+
 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Элемент шкалы
 
 [bar]
-;; fill = ⏽
-;; empty = ⏽
-;; indicator = ⏽
 fill = ▪
-empty = ▪
 indicator = ▪
+empty = ▪
+;;fill = |
+;;indicator = |
+;;empty = |
+
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Индикатор уровня звука
 
 [module/volume]
 type = internal/pulseaudio
@@ -228,60 +261,64 @@ master-mixer = Master
 
 interval = 5
 
-format-volume = <bar-volume>
+format-volume = "%{A1:pavucontrol:}<bar-volume>%{A}"
 format-volume-prefix = ""
 format-volume-prefix-padding = 1
-format-volume-prefix-background = ${color.color4}
+format-volume-prefix-background = ${color.blue}
 format-volume-prefix-foreground = ${color.foreground-alt}
 format-volume-background = ${color.background-alt}
 format-volume-foreground = ${color.foreground}
 format-volume-overline = ${color.background}
 format-volume-underline = ${color.background}
 
-format-muted = <label-muted>
-format-muted-prefix = ""
-format-muted-prefix-padding = 1
-format-muted-prefix-background = ${color.color3}
-format-muted-prefix-foreground = ${color.foreground-alt}
-format-muted-overline = ${color.background}
-format-muted-underline = ${color.background}
-
-label-volume = %percentage%%
-label-volume-background = ${color.background-alt}
-label-volume-padding = 1
-
-label-muted = "Muted "
-label-muted-foreground = ${color.foreground}
-label-muted-background = ${color.background-alt}
-label-muted-padding = 1
-
-ramp-volume-0 = ""
-ramp-volume-1 = ""
-ramp-volume-2 = ""
-ramp-volume-background = ${color.blue}
-ramp-volume-padding = 1
-
-bar-volume-format = " %{T2}%fill%%indicator%%empty%%{T-} "
+bar-volume-format = "%{T2} %fill%%indicator%%empty% %{T-}"
+bar-volume-background = ${color.background-alt}
+bar-volume-foreground = ${color.foreground}
 bar-volume-width = 10
-bar-volume-gradient = false
+
+bar-volume-fill = ${bar.fill}
+bar-volume-fill-foreground = ${color.foreground}
 
 bar-volume-indicator = ${bar.indicator}
 bar-volume-indicator-foreground = ${color.foreground}
 
-bar-volume-fill = ${bar.fill}
-bar-volume-foreground-0 = ${color.foreground}
-bar-volume-foreground-1 = ${color.foreground}
-bar-volume-foreground-2 = ${color.foreground}
-
 bar-volume-empty = ${bar.empty}
 bar-volume-empty-foreground = ${color.background}
 
-ramp-headphones-0 = 
-ramp-headphones-background = ${color.blue}
-ramp-headphones-padding = 1
+ramp-volume-0 = ""
+ramp-volume-0-background = ${color.red}
+ramp-volume-0-weight = 1
+ramp-volume-1 = ""
+ramp-volume-1-weight = 7
+ramp-volume-2 = ""
+ramp-volume-2-weight = 7
+ramp-volume-3 = ""
+ramp-volume-3-weight = 7
+
+ramp-volume-background = ${color.blue}
+ramp-volume-foreground = ${color.foreground-alt}
+ramp-volume-padding = 1
+
+format-muted = %{A1:pavucontrol:}<label-muted>%{A}
+format-muted-prefix = ""
+format-muted-prefix-padding = 1
+format-muted-prefix-background = ${color.red}
+format-muted-prefix-foreground = ${color.foreground-alt}
+format-muted-overline = ${color.background}
+format-muted-underline = ${color.background}
+
+label-muted = "Без звука"
+label-muted-foreground = ${color.foreground}
+label-muted-background = ${color.background-alt}
+label-muted-padding = 1
+label-muted-minlen = 11
+label-muted-alignment = center
+
+
 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Индикатор уровня заряда батареи
 
 [module/battery_bar]
 type = internal/battery
@@ -298,7 +335,7 @@ time-format = %H:%M
 format-charging = <bar-capacity>
 format-charging-prefix = ""
 format-charging-prefix-padding = 1
-format-charging-prefix-background = ${color.color4}
+format-charging-prefix-background = ${color.blue}
 format-charging-prefix-foreground = ${color.foreground-alt}
 format-charging-background = ${color.background-alt}
 format-charging-foreground = ${color.foreground}
@@ -308,7 +345,7 @@ format-charging-underline = ${color.background}
 format-discharging = <bar-capacity>
 format-discharging-prefix = ""
 format-discharging-prefix-padding = 1
-format-discharging-prefix-background = ${color.color2}
+format-discharging-prefix-background = ${color.yellow}
 format-discharging-prefix-foreground = ${color.foreground-alt}
 format-discharging-background = ${color.background-alt}
 format-discharging-foreground = ${color.foreground}
@@ -319,7 +356,7 @@ format-discharging-underline = ${color.background}
 format-full = <bar-capacity>
 format-full-prefix = ""
 format-full-prefix-padding = 1
-format-full-prefix-background = ${color.color4}
+format-full-prefix-background = ${color.blue}
 format-full-prefix-foreground = ${color.foreground-alt}
 format-full-background = ${color.background-alt}
 format-full-foreground = ${color.foreground}
@@ -338,7 +375,7 @@ label-full = Full
 label-full-background = ${color.background-alt}
 label-full-padding = 1
 
-bar-capacity-format = " %{T2}%fill%%indicator%%empty%%{T-} "
+bar-capacity-format = "%{T2} %fill%%indicator%%empty% %{T-}"
 bar-capacity-width = 10
 bar-capacity-gradient = false
 
@@ -354,64 +391,79 @@ bar-capacity-empty = ${bar.empty}
 bar-capacity-empty-foreground = ${color.background}
 
 
+
+
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Индикатор уровня загрузки процессора
 
 [module/cpu]
 type = internal/cpu
+
+full-at = 99
 
 interval = 1
 
 format = <label>
 format-prefix = 
-format-prefix-background = ${color.color4}
+format-prefix-background = ${color.blue}
 format-prefix-foreground = ${color.foreground-alt}
 format-prefix-padding = 1
 format-overline = ${color.background}
 format-underline = ${color.background}
 
-label = "%{A1:xfce4-terminal -e 'btm':}%percentage%%%{A}"
-label-minlen = 37 ;; 2
+label = "%{A1:exo-open --launch TerminalEmulator -e 'htop':}%percentage%%%{A}"
+label-minlen = 58 ;; 3
 
 label-alignment = right
 label-background = ${color.background-alt}
 label-padding = 1
 
 
+
+
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Индикатор уровня загрузки оперативной памяти
 
 [module/memory]
 type = internal/memory
+
+full-at = 99
 
 interval = 1
 
 format = <label>
 format-prefix = 
-format-prefix-background = ${color.color4}
+format-prefix-background = ${color.blue}
 format-prefix-foreground = ${color.foreground-alt}
 format-prefix-padding = 1
 format-overline = ${color.background}
 format-underline = ${color.background}
 
-label = "%{A1:xfce4-terminal -e 'btm':}%percentage_used%%%{A}"
-label-minlen = 37 ;; 2
+label = "%{A1:exo-open --launch TerminalEmulator -e 'htop'':}%percentage_used%%%{A}"
+label-minlen = 58 ;; 3
 label-alignment = right
 label-background = ${color.background-alt}
 label-padding = 1
 
 
+
+
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Вызов меню питания
 
 [module/sysmenu]
 type = custom/text
 
 content = ""
 content-padding = 1
-content-background = ${color.color1}
+content-background = ${color.green}
 content-foreground = ${color.foreground-alt}
 content-overline = ${color.background}
 content-underline = ${color.background}
 
 click-left = ~/.config/i3/scripts/powermenu &
+
+
 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_

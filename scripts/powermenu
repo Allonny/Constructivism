@@ -11,10 +11,10 @@ uptime=$(uptime -p | sed -e 's/up //g')
 
 rofi_command="rofi -theme $dir/rofi/powermenu.rasi"
 
-confirm_hibernate=("Перевести систему в гибернацию?" "Перевести в сон" "Отмена")
-confirm_logout=("Выйти из системы?" "Выйти" "Отмена")
-confirm_reboot=("Перезагрузить компьютер?" "Перезагрузить" "Отмена")
-confirm_shutdown=("Выключить компьютер?" "Выключить" "Отмена")
+confirm_hibernate=("Перевести систему в гибернацию?" " Перевести в сон" " Отмена")
+confirm_logout=("Выйти из системы?" " Выйти" " Отмена")
+confirm_reboot=("Перезагрузить компьютер?" " Перезагрузить" " Отмена")
+confirm_shutdown=("Выключить компьютер?" " Выключить" " Отмена")
 
 
 # Confirmation

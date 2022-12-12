@@ -1,16 +1,11 @@
-/*
- *
- * Author  : Aditya Shakya
- * Mail    : adi1090x@gmail.com
- * Github  : @adi1090x
- * Twitter : @adi1090x
- *
- */
+/* Меню согласия */
+
+@import "colors.rasi"
+@import "font.rasi"
+@import "icons.rasi"
 
 configuration {
-	font:				            "Jet Brains Mono Thin 10";
 	show-icons:                     true;
-	icon-theme: 			        "Zafiro-icons-Dark";
 	display-drun: 			        "";
 	drun-display-format:            "{name}";
 	disable-history:                true;
@@ -19,14 +14,12 @@ configuration {
 	sidebar-mode: 			        false;
 }
 
-@import "colors.rasi"
-
 window {
 	transparency:                   "real";
-	background-color:               @bg;
-	text-color:                     @fg;
+	background-color:               @background;
+	text-color:                     @foreground;
 	border:				            0px 0px 4px 0px;
-	border-color:			        @ac;
+	border-color:			        @yellow;
 	border-radius:                  0px;
 	width:				            400px;
 	location:                       west;
@@ -37,44 +30,33 @@ window {
 prompt {
 	enabled: 			            true;
 	padding: 			            8px 8px 2px 8px;
-	background-color: 		        @bga;
-	text-color: 			        @fg;
+	background-color: 		        @background-alt;
+	text-color: 			        @foreground;
 }
 
 textbox-prompt-colon {
 	padding: 			            8px 8px 2px 8px;
-	background-color: 		        @ac;
-	text-color: 			        @fga;
+	background-color: 		        @green;
+	text-color: 			        @foreground-alt;
 	expand:				            false;
 	str:				            "";
 	font:				            "feather 12";
 }
 
-entry {
-	background-color:               @al;
-	text-color:                     @fg;
-	placeholder-color:              @fg;
-	expand:                         true;
-	horizontal-align:               0;
-	placeholder:                    "Search...";
-	padding: 			            6px;
-	blink:                          true;
-}
-
 inputbar {
 	children: 			            [ textbox-prompt-colon, prompt ];
-	background-color:               @bga;
-	text-color:                     @fg;
+	background-color:               @background-alt;
+	text-color:                     @foreground;
 	expand:                         false;
 	border:				            0px;
 	border-radius:                  0px;
-	border-color:			        @ac;
+	border-color:			        @transparent;
 	margin:                         0px;
 	padding:                        0px;
 }
 
 listview {
-	background-color:               @al;
+	background-color:               @background;
 	padding:                        0px;
 	columns:                        2;
 	lines:                          1;
@@ -85,31 +67,29 @@ listview {
 }
 
 mainbox {
-	background-color:               @al;
+	background-color:               @background;
 	border:				            0px;
 	border-radius:                  0px;
-	border-color:			        @ac;
+	border-color:			        @yellow;
 	children:                       [ inputbar, listview ];
 	spacing:                       	6px;
 	padding:                        6px;
 }
 
 element {
-	background-color:               @al;
+	background-color:               @transparent;
 	orientation:                    horizontal;
 	border-radius:                  0px;
-	padding: 			            3px 3px 3px -23px;
+	padding:                        3px;
 }
 
 element-icon {
-	background-color:               @al;
-	size:                           24px;
-	border:                         0px;
+	size:                           0px;
 }
 
 element-text {
-	background-color:               @al;
-	text-color:			            @fg;
+	background-color:               @transparent;
+	text-color:			            @foreground;
 	expand:                         true;
 	horizontal-align:               0;
 	vertical-align:                 0.5;
@@ -117,8 +97,8 @@ element-text {
 }
 
 element selected {
-	background-color:               @se;
+	background-color:               @background-alt;
 	border:				            0px 0px 2px 0px;
 	border-radius:                  0px;
-	border-color:                  	@sea;
+	border-color:                  	@blue;
 }
