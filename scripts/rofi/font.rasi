@@ -1,5 +1,5 @@
 /* Шрифт, используемы в rofi */
 
 * {
-    font:     "JetBrains Mono Light 11";
+    font:     "JetBrains Mono Thin 12";
 }

@@ -16,111 +16,10 @@ include-file = ~/.config/i3/scripts/polybar/modules
 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-;; Основные настройки
-
-[bar/main]
-monitor =
-monitor-fallback =
-monitor-strict = false
-override-redirect = false
-bottom = false
-
-separator =
-dim-value = 1.0
-wm-name = i3wm
-wm-restack = i3wm
-locale = ru_RU.UTF-8
-
-fixed-center = true
-
-width = 100%
-height = 41
-
-offset-x = 16
-offset-y = 0
-
-background = ${color.background}
-foreground = ${color.foreground}
-
-radius-top = 0.0
-radius-bottom = 0.0
-
-line-size = 5
-line-color = ${color.background}
-
-border-top-size = 16
-border-top-color = ${color.transparent}
-
-border-left-size = 16
-border-left-color = ${color.transparent}
-
-border-right-size = 16
-border-right-color = ${color.transparent}
-
-border-bottom-size = 4
-border-bottom-color = ${color.yellow}
-
-padding = 0
-
-module-margin-left = 0
-module-margin-right = 0
-
-
-
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-;; Шрифты и модули
-
-font-0 = "Iosevka Light:pixelsize=12;3"
-font-1 = "Jet Brains Mono Thin:pixelsize=12;3"
-font-2 = "SourceHanMono:pixelsize=12;3"
-font-3 = "icomoon\-feather:pixelsize=12;3"
-
-modules-left = sep launcher sep workspaces sep player-previous player-playpause player-next player-metadata
-modules-center = date
-modules-right = keyboard-layout sep volume sep battery_bar sep cpu sep memory sep sysmenu sep
-
-
-
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-;; Трей
-
-
-tray-position = center
-tray-detached = false
-tray-maxsize = 16
-tray-background = ${color.transparency}
-tray-offset-x = 13%
-tray-offset-y = 0
-tray-padding = 1
-tray-scale = 1.0
-
-enable-ipc = true
-
-click-left =
-click-middle =
-click-right =
-scroll-up =
-scroll-down =
-double-click-left =
-double-click-middle =
-double-click-right =
-
-cursor-click =
-cursor-scroll =
-
-
-
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-;; Прочие настройки
+;; Настройки
 
 [settings]
-throttle-output = 5
-throttle-output-for = 10
-
-screenchange-reload = false
+screenchange-reload = true
 
 compositing-background = source
 compositing-foreground = over
@@ -129,6 +28,82 @@ compositing-underline = over
 compositing-border = over
 
 pseudo-transparency = false
+
+
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Параметры основного бара
+
+[bar/main]
+locale = ru_RU.UTF-8
+wm-name = polybar-main
+
+monitor-strict = false
+
+override-redirect = true
+wm-restack = i3
+
+bottom = false
+fixed-center = true
+
+width = 1888
+height = 47
+
+offset-x = 16
+offset-y = 16
+
+background = ${color.background}
+foreground = ${color.foreground}
+
+line-size = 8
+
+border-bottom-size = 4
+border-bottom-color = ${color.yellow}
+
+modules-left = sep launcher sep workspaces sep player
+modules-center = date
+modules-right = traybar sep keyboard-layout sep volume sep battery_bar sep cpu sep memory sep sysmenu sep
+
+font-0 = "Iosevka Light:pixelsize=12;3"
+font-1 = "Jet Brains Mono Thin:pixelsize=12;3"
+font-2 = "SourceHanMono:pixelsize=12;3"
+font-3 = "icomoon\\-feather:pixelsize=12;3"
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Трей
+[bar/tray]
+locale = ru_RU.UTF-8
+wm-name = polybar-tray
+
+monitor-fallback =
+monitor-strict = false
+
+override-redirect = true
+
+bottom = false
+fixed-center = false
+
+width = 31
+height = 31
+
+offset-x = 1295
+offset-y = 24
+
+background = ${color.background-alt}
+foreground = ${color.foreground}
+
+modules-left = sep
+
+tray-position = right
+tray-detached = true
+tray-maxsize = 16
+tray-transparent = true
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 8
+tray-scale = 1.0
 
 
 

@@ -8,35 +8,60 @@ if [[ $? -eq 0 ]] && [[ $player_status != "Stopped" ]]; then
     metadata="$artist — $title"
 fi
 
-metadata() {
+field() {
+    icon=($1)
+    i1=$1
+    i2=$2
+    i3=$3
+
+    color=($2)
+    c1=$4
+    c2=$5
+    c3=$6
+
     case $player_status in
-        "Playing") echo "%{F#D0D0D0}$metadata%{F-}" ;;
-        "Paused") echo "%{F#808080}$metadata%{F-}" ;;
+        "Playing")     echo "%{F$c1}$i1%{F-}" ;;
+        "Paused" )     echo "%{F$c2}$i2%{F-}" ;;
+        "Stopped")     echo "%{F$c3}$i3%{F-}" ;;
         *) echo "" ;;
     esac
+}
+
+metadata() {
+    block=$(field "$metadata" "$metadata" "" "$1" "$2" "$2")
+    echo "%{A1:playerctl play-pause:}$block%{A}"
 }
 
 playpause() {
-    case $player_status in
-        "Playing") echo "%{F#D0D0D0}%{F-}" ;;
-        "Paused") echo "%{F#D0D0D0}%{F-}" ;;
-        "Stopped") echo "%{F#808080}%{F-}" ;;
-        *) echo "" ;;
-    esac
+    block=$(field "" "" "" "$1" "$1" "$2")
+    echo "%{A1:playerctl play-pause:}$block%{A}"
 }
 
 prev() {
-    case $player_status in
-        "Playing" | "Paused") echo "%{F#D0D0D0}%{F-}" ;;
-        "Stopped") echo "%{F#808080}%{F-}" ;;
-        *) echo "" ;;
-    esac
+    block=$(field "" "" "" "$1" "$1" "$2")
+    echo "%{A1:playerctl next:}$block%{A}"
 }
 
 next() {
+    block=$(field "" "" "" "$1" "$1" "$2")
+    echo "%{A1:playerctl next:}$block%{A}"
+}
+
+
+
+# Порядок цветов: fg fga
+polybar() {
+    color=($1)
+    fg=${color[0]}
+    fga=${color[1]}
+
+    block="$(prev $fg $fga)"
+    block="$block $(playpause $fg $fga)"
+    block="$block $(next $fg $fga)"
+    block="$block $(metadata $fg $fga)"
+
     case $player_status in
-        "Playing" | "Paused") echo "%{F#D0D0D0}%{F-}" ;;
-        "Stopped") echo "%{F#808080}%{F-}" ;;
+        "Playing" | "Paused" | "Stopped") echo $block ;;
         *) echo "" ;;
     esac
 }
@@ -53,5 +78,8 @@ case $1 in
         ;;
     "next")
         next
+        ;;
+    "polybar")
+        polybar "${@:2}"
         ;;
 esac

@@ -1,0 +1,29 @@
+#!/bin/bash
+
+shortname="tray"
+barname="polybar-$shortname"
+conffile="$HOME/.config/i3/scripts/polybar/config"
+
+expand() {
+    exec -a "$barname " polybar -q -c $conffile $shortname
+}
+
+collapse() {
+    pkill -f "$barname "
+}
+
+toggle() {
+    pgrep -f "$barname " > /dev/null && collapse || expand
+}
+
+case $1 in
+    "expand")
+        pgrep -f "$barname " > /dev/null || expand
+    ;;
+    "collapse")
+        collapse
+    ;;
+    "toggle")
+        toggle
+    ;;
+esac

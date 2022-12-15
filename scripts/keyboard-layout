@@ -82,21 +82,33 @@ i3status() {
 }
 
 # Возвращает блок для встраивания в polybar (завязано на моём текущем конфиге, не обессудьте, как-нибудь, но мои руки и до сюда доберутся)
+# Порядок иконок: iprfx iprfxa
+# Порядок цветов: bga fg fga prfx prfxa
+
 polybar() {
     icon=($1)
+    iprfx=${icon[0]}
+    iprfxa=${icon[1]}
+
     color=($2)
+    bga=${color[0]}
+    fg=${color[1]}
+    fga=${color[2]}
+    prfx=${color[3]}
+    prfxa=${color[4]}
+
 
     current_CapsLock=$(get_CapsLock)
     if [[ $current_CapsLock = "on" ]]; then
-        block="%{B${color[3]} F${color[0]}} ${icon[0]} %{B${color[1]} F${color[2]}}"
+        block="%{B$prfxa F$fga} $iprfxa %{B- F-}"
     else
-        block="%{B${color[4]} F${color[0]}} ${icon[1]} %{B${color[1]} F${color[2]}}"
+        block="%{B$prfx F$fga} $iprfx %{B- F-}"
     fi
 
     current_layout=$(get_layout)
     current_layout=${current_layout:0:2}
     current_layout=${current_layout^^}
-    block="$block $current_layout %{B- F-}"
+    block="$block%{B$bga F$fg} $current_layout %{B- F-}"
 
     echo $block
 }

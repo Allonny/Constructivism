@@ -5,19 +5,21 @@
 # Предварительные танцы с бубном для решения проблемы с падающей яркостью тут:
 # https://forums.linuxmint.com/viewtopic.php?t=138760
 
-# Для работы выполнить от root'а следующую комманду (и добавить соответствующему файлу возможность исполнения)
-# echo -e '#!/bin/bash\necho $1 >  [путь к файлу "brightness_file"]' > /usr/local/bin/brightness
-# После чего прописать в /etc/sudoers строку:
-# [Ваш логин] ALL = NOPASSWD: /usr/local/bin/brightness
+# Перед началом работы следует запустить скрипт с ключом install, предварительно убедившись, что путь до файла установки яркости (brightness_file) в ВАШЕМ случае соответствует действительности
+
+brightness_file="/sys/class/backlight/amdgpu_bl0/brightness"
+brightness_set_script="/usr/local/bin/brightness-set"
 
 current_level_file="/tmp/brightness_levels"
-brightness_file="/sys/class/backlight/amdgpu_bl0/brightness"
 max_brightness=255
 min_brightness=0
 
 notify_title=""
 notify_body=""
 notify_id=$(cat "$(dirname -- "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
+
+# Создание дефолтного файла-конфигурации с 8 шагами
+[[ ! -f $current_level_file ]] && levels 8
 
 # Получить текущую яркость, возвращает число от 0 до 255
 get() {
@@ -26,7 +28,7 @@ get() {
 
 # Установить текущую яркость, аргументы: число от 0 до 255
 set() {
-    sudo brightness $1
+    sudo ${brightness_set_script##*/} $1
 }
 
 # Увеличить яркость на один шаг
@@ -65,8 +67,18 @@ EOF
     set ${steps[${steps[0]}]}
 }
 
-# Создание дефолтного файла-конфигурации с 8 шагами
-[[ ! -f $current_level_file ]] && levels 8
+# Начальная предустановка - создание специального управляющего скрипта-прослойки, способного взаимодействовать с файлом установки яркости
+install() {
+    exec_user=$USER
+    sudoers_file="/etc/sudoers"
+    sudoers_string="$exec_user ALL = NOPASSWD: $brightness_set_script"
+
+    [[ -f $brightness_set_script ]] && echo "Данную опцию не следует запускать больше одного раза!" && exit 1
+
+    sudo sh -c "echo -e '#!/bin/bash\necho \$1 > $brightness_file' > $brightness_set_script"
+    sudo chmod +x $brightness_set_script
+    sudo grep "$sudoers_string" $sudoers_file 1> /dev/null || sudo sh -c "echo '$sudoers_string' >> $sudoers_file"
+}
 
 case $1 in
     "get")
@@ -83,5 +95,8 @@ case $1 in
         ;;
     "levels")
         levels "${@:2}"
+        ;;
+    "install")
+        install
         ;;
 esac

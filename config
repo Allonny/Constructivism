@@ -19,6 +19,12 @@ set $files thunar
 
 workspace_layout default
 
+# Обновление конфигурации окружения
+# $mod+,
+bindcode --release $mod+59 reload
+# $mod+.
+bindcode --release $mod+60 restart
+
 
 
 
@@ -26,29 +32,29 @@ workspace_layout default
 
 # exec --no-startup-id pa-applet
 # exec --no-startup-id pulseaudio
-# bindsym $mod+Ctrl+m exec $term -e 'alsamixer'
+# bindsym --release $mod+Ctrl+m exec --no-startup-id $term -e 'alsamixer'
 # exec --no-startup-id xfce4-volumed-pulse
 # $mod+M
-bindcode $mod+58 --release exec pavucontrol
+bindcode --release $mod+58 exec --no-startup-id pavucontrol
 
 # Для Fedora
-bindsym XF86AudioRaiseVolume --release exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume --release exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute --release exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute --release exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym --release XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --release XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym --release XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym --release XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Для Manjaro
-# bindsym XF86AudioRaiseVolume --release exec amixer -D pulse sset Master 5%+
-# bindsym XF86AudioLowerVolume --release exec amixer -D pulse sset Master 5%-
-# bindsym XF86AudioMute --release exec amixer -D pulse sset Master toggle
+# bindsym --release XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+
+# bindsym --release XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-
+# bindsym --release XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle
 
-bindsym XF86AudioPlay --release exec --no-startup-id playerctl play-pause
-bindsym XF86AudioStop --release exec --no-startup-id playerctl stop
-bindsym XF86AudioNext --release exec --no-startup-id playerctl next
-bindsym XF86AudioPrev --release exec --no-startup-id playerctl previous
+bindsym --release XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym --release XF86AudioStop exec --no-startup-id playerctl stop
+bindsym --release XF86AudioNext exec --no-startup-id playerctl next
+bindsym --release XF86AudioPrev exec --no-startup-id playerctl previous
 
-bindsym XF86MonBrightnessUp --release exec $scriptpath/brightness inc
-bindsym XF86MonBrightnessDown --release exec $scriptpath/brightness dec
+bindsym --release XF86MonBrightnessUp exec --no-startup-id $scriptpath/brightness inc
+bindsym --release XF86MonBrightnessDown exec --no-startup-id $scriptpath/brightness dec
 
 
 
@@ -57,117 +63,108 @@ bindsym XF86MonBrightnessDown --release exec $scriptpath/brightness dec
 
 # Закрытие активное окно
 # $mod+q
-bindcode $mod+24 --release kill
+bindcode --release $mod+24 kill
 # $mod+Shift+q
-bindcode $mod+Shift+24 --release exec --no-startup-id xkill
+bindcode --release $mod+Shift+24 exec --no-startup-id xkill
 
 # Изменение раскладки клавиатуры
-bindsym $mod+space --release exec --no-startup-id $scriptpath/keyboard-layout toggle
-# bindsym Menu exec --no-startup-id $scriptpath/keyboard-layout toggle
+bindsym --release $mod+space exec --no-startup-id $scriptpath/keyboard-layout toggle
+# bindsym --release Menu exec --no-startup-id $scriptpath/keyboard-layout toggle
 
 # Меню питания
 # Заблокировать экран
 # $mod+l
-# bindcode $mod+46 --release exec --no-startup-id $scriptpath/blur-lock
-bindcode $mod+46 --release exec dm-tool lock
-bindsym $mod+Escape --release exec $scriptpath/powermenu
+bindcode --release $mod+46 exec --no-startup-id dm-tool lock
+bindsym --release $mod+Escape exec --no-startup-id $scriptpath/powermenu
 
-# Обновление системы
-# $mod+u
-bindcode $mod+30 --release exec $term -e 'yay -Suy'; exec $term -e 'flatpak update'
-# bindcode $mod+Shift+30 --release exec $term -e 'flatpak update'
-# bindcode $mod+Ctrl+30 --release exec $term -e 'pkexec pacman -Suy && flatpak update'
-
-# Обновление конфигурации окружения
-# $mod+,
-bindcode $mod+59 --release reload
-# $mod+.
-bindcode $mod+60 --release restart
+# Открыть/закрыть трэй
+# $mod+x
+bindcode --release $mod+53 exec --no-startup-id $scriptpath/polybar-tray-launch toggle
 
 # Просмотр открытых приложений
-bindsym $mod+Tab --release exec $scriptpath/apps-active
+bindsym --release $mod+Tab exec --no-startup-id $scriptpath/apps-active
 
 # Меню приложений
-bindsym $mod+F1 --release exec $scriptpath/apps-launcher
+bindsym --release $mod+F1 exec --no-startup-id $scriptpath/apps-launcher
 
 # Запуск файлового менеджера
-bindsym $mod+F2 --release exec $files
-bindsym $mod+Shift+F2 --release exec pkexec $files && :
-bindsym $mod+backslash --release exec $files
-bindsym $mod+Shift+backslash --release exec pkexec $files && :
+bindsym --release $mod+F2 exec --no-startup-id $files
+bindsym --release $mod+Shift+F2 exec --no-startup-id pkexec --no-startup-id $files && :
+bindsym --release $mod+backslash exec --no-startup-id $files
+bindsym --release $mod+Shift+backslash exec --no-startup-id pkexec --no-startup-id $files && :
 
 # Запуск терминала
-bindsym $mod+F3 --release exec $term
-bindsym $mod+Shift+F3 --release exec $term -e 'pkexec su'
-bindsym $mod+Return --release exec $term
-bindsym $mod+Shift+Return --release exec $term -e 'pkexec su'
+bindsym --release $mod+F3 exec --no-startup-id $term
+bindsym --release $mod+Shift+F3 exec --no-startup-id $term -e 'pkexec --no-startup-id su'
+bindsym --release $mod+Return exec --no-startup-id $term
+bindsym --release $mod+Shift+Return exec --no-startup-id $term -e 'pkexec --no-startup-id su'
 
 # Запуск редактора кода
-bindsym $mod+F4 --release exec flatpak run io.howl.Editor
+bindsym --release $mod+F4 exec --no-startup-id flatpak run io.howl.Editor
 
 # Запуск повседневных приложений
-bindsym $mod+F5 --release exec flatpak run org.mozilla.Firefox
-bindsym $mod+F6 --release exec flatpak run org.telegram.desktop
-bindsym $mod+F7 --release exec flatpak run org.signal.Signal
-bindsym $mod+F8 --release exec flatpak run org.gnome.Rhythmbox3
-# bindsym $mod+Shift+F8 --release exec $term -e 'musikcube'
+bindsym --release $mod+F5 exec --no-startup-id flatpak run org.mozilla.Firefox
+bindsym --release $mod+F6 exec --no-startup-id flatpak run org.telegram.desktop
+bindsym --release $mod+F7 exec --no-startup-id flatpak run org.signal.Signal
+bindsym --release $mod+F8 exec --no-startup-id flatpak run org.gnome.Rhythmbox3
+# bindsym --release $mod+Shift+F8 exec --no-startup-id $term -e 'musikcube'
 
 # Запуск системных утилит
-bindsym $mod+F12 --release exec $term -e 'htop'
-bindsym $mod+Shift+F12 --release exec $term -e 'pkexec htop'
+bindsym --release $mod+F12 exec --no-startup-id $term -e 'htop'
+bindsym --release $mod+Shift+F12 exec --no-startup-id $term -e 'pkexec --no-startup-id htop'
 
 # Создание скриншотов
-bindsym Print --release exec --no-startup-id xfce4-screenshooter -f $HOME/Изображения/Скриншоты
-bindsym Ctrl+Print --release exec --no-startup-id xfce4-screenshooter -w $HOME/Изображения/Скриншоты
-bindsym Shift+Print --release exec --no-startup-id xfce4-screenshooter -r $HOME/Изображения/Скриншоты
-bindsym $mod+Print --release exec --no-startup-id xfce4-screenshooter -f -c
-bindsym $mod+Ctrl+Print --release exec --no-startup-id xfce4-screenshooter -w -c
-bindsym $mod+Shift+Print --release exec --no-startup-id xfce4-screenshooter -r -c
+bindsym --release Print exec --no-startup-id xfce4-screenshooter -f $HOME/Изображения/Скриншоты
+bindsym --release Ctrl+Print exec --no-startup-id xfce4-screenshooter -w $HOME/Изображения/Скриншоты
+bindsym --release Shift+Print exec --no-startup-id xfce4-screenshooter -r $HOME/Изображения/Скриншоты
+bindsym --release $mod+Print exec --no-startup-id xfce4-screenshooter -f -c
+bindsym --release $mod+Ctrl+Print exec --no-startup-id xfce4-screenshooter -w -c
+bindsym --release $mod+Shift+Print exec --no-startup-id xfce4-screenshooter -r -c
 
 # Запуск VPN
 # $mod+` ($mod+ё)
-bindcode $mod+49 --release exec $scriptpath/vpn-toggle "Surfshark Japan UDP"
+bindcode --release $mod+49 exec --no-startup-id $scriptpath/vpn-toggle "Surfshark Japan UDP"
 
 # Автозапуск приложений
-exec_always dex-autostart --autostart --environment i3
-exec_always xbacklight -set 100
-exec_always killall -q picom             ; picom -Cb ; nitrogen --restore
-exec_always killall -q polybar           ; $scriptpath/polybar-launch
+exec_always dex-autostart --autostart --environment i3\
+exec_always killall -q picom             ; picom --config $confpath/picom.conf
 exec_always killall -q dunst             ; dunst -conf $confpath/dunst.conf
+exec_always killall -q polybar           ; $scriptpath/polybar-main-launch
 exec_always killall -q low-battery-alert ; $scriptpath/low-battery-alert 25:10m 20:5m 15:1m 12:30s
 exec_always $scriptpath/keyboard-layout set us ru
 exec_always $scriptpath/brightness levels 20
 exec_always libinput-gestures-setup restart
-exec $scriptpath/antiLGBTlaw
-exec $scriptpath/war-begun
-exec xfce4-power-manager
-exec xfce4-clipman
-exec nm-applet
-exec blueberry-tray
-exec /usr/libexec/xfce-polkit
+exec --no-startup-id $scriptpath/antiLGBTlaw
+exec --no-startup-id $scriptpath/war-begun
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id xfce4-clipman
+exec --no-startup-id nm-applet
+exec --no-startup-id blueberry-tray
+exec --no-startup-id /usr/libexec/xfce-polkit
 
 # Специфичные настройки запуска приложений
-for_window [class="AlsaMixer"] floating enable
-for_window [class="Blueberry"] floating enable
-for_window [class="blueman-manager"] floating enable
-for_window [class="Emoji Picker"] floating enable resize set 800 600
-for_window [title="File Transfer*"] floating enable
-for_window [class="Galculator" instance="galculator"] floating enable
-for_window [class="GParted"] floating enable
-for_window [class="Lightdm-settings"] floating enable
-for_window [class="Lxappearance"] floating enable
-for_window [class="Nitrogen"] floating enable
-for_window [title="Oracle VM VirtualBox Менеджер"] floating enable
-for_window [class="Pamac-manager"] floating enable
-for_window [class="Pamac-updater"] floating enable
-for_window [class="Pavucontrol"] floating enable resize set 750 500
-for_window [title="ProtonVPN"] floating enable
-for_window [class="Qtconfig-qt4"] floating enable
-for_window [class="qt5ct"] floating enable
-for_window [class="settings-manager"] floating enable resize set 1240 720
-for_window [class="Simple-scan"] floating enable
-for_window [class="Yad" instance="yad"] floating enable
-for_window [class="Xsane" instance="xsane"] floating enable
+set $sml_size 500 500
+set $mid_size 750 500
+set $lrg_size 1250 750
+
+for_window [all]                                  border pixel 4
+# for_window [tiling]                               border pixel 4
+# for_window [floating]                             border normal 4
+# for_window [urgent=latest]                        focus
+for_window [title="File Transfer*"]               floating enable
+
+for_window [title="Azote~"]                       floating enable resize set $mid_size
+for_window [class="Blueberry"]                    floating enable resize set $sml_size
+for_window [class="GParted"]                      floating enable resize set $lrg_size
+for_window [class="Lightdm-gtk-greeter-settings"] floating enable resize set $mid_size
+for_window [class="Lightdm-settings"]             floating enable resize set $mid_size
+for_window [class="Lxappearance"]                 floating enable resize set $mid_size
+for_window [class="Nitrogen"]                     floating enable resize set $mid_size
+for_window [class="Nm-connection-editor"]         floating enable resize set $mid_size
+for_window [class="org.gnome.Software"]           floating enable resize set $lrg_size
+for_window [class="Pavucontrol"]                  floating enable resize set $mid_size
+for_window [class="settings-manager"]             floating enable resize set $lrg_size
+for_window [class="Xfce4-power-manager-settings"] floating enable resize set $lrg_size
 
 
 
@@ -178,43 +175,43 @@ for_window [class="Xsane" instance="xsane"] floating enable
 focus_follows_mouse yes
 
 # Перемещение фокуса с клавиатуры
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym --release $mod+Left focus left
+bindsym --release $mod+Down focus down
+bindsym --release $mod+Up focus up
+bindsym --release $mod+Right focus right
 
 # Перемещение окон по рабочему столу
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym --release $mod+Shift+Left move left
+bindsym --release $mod+Shift+Down move down
+bindsym --release $mod+Shift+Up move up
+bindsym --release $mod+Shift+Right move right
 
 # Переключение направления разделения контейнеров
 # $mod+d
-bindcode $mod+40 split toggle
+bindcode --release $mod+40 split toggle
 
 # Перемещение на прошлый рабочий стол и обратно (с и без активного окна)
 workspace_auto_back_and_forth yes
-# bindsym $mod+Tab --release workspace back_and_forth
-bindsym $mod+Shift+Tab --release move container to workspace back_and_forth; workspace back_and_forth
+# bindsym --release $mod+Tab workspace back_and_forth
+# bindsym --release $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
 
 # Переключение полноэкранного режима активного окна
 # $mod+f
-bindcode $mod+41 --release fullscreen toggle
+bindcode --release $mod+41 fullscreen toggle
 
 # Переключение плавающего режима активного окна
 # $mod+Shift+f
-bindcode $mod+Shift+41 --release floating toggle
+bindcode --release $mod+Shift+41 floating toggle
 
 # Перемещение плавающих окон
 # Mouse+$mod
 floating_modifier $mod
 
 # Перемещение активного окна в скретчпад
-bindsym $mod+0 --release move scratchpad
+bindsym --release $mod+0 move scratchpad
 
 # Отображение следующего окна из скретчпада или закрытие скретчпада
-bindsym $mod+Shift+0 --release scratchpad show
+bindsym --release $mod+Shift+0 scratchpad show
 
 
 
@@ -245,10 +242,10 @@ bindcode $mod+Ctrl+21 resize grow height $step
 bindcode $mod+Ctrl+86 resize grow height $step
 
 # Управление через $mod+R+<стрелки>
-# bindcode $mod+27+Left resize shrink width $step
-# bindcode $mod+27+Right resize grow width $step
-# bindcode $mod+27+Down resize shrink height $step
-# bindcode $mod+27+Up resize grow height $step
+# bindcode --release $mod+27+Left resize shrink width $step
+# bindcode --release $mod+27+Right resize grow width $step
+# bindcode --release $mod+27+Down resize shrink height $step
+# bindcode --release $mod+27+Up resize grow height $step
 
 
 
@@ -265,69 +262,43 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-#set $ws10 "10"
 
 # Переключение на следующий/предыдущий рабочий стол
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
+bindsym --release $mod+Ctrl+Right workspace next
+bindsym --release $mod+Ctrl+Left workspace prev
 
 # Переключение на рабочий стол
-bindsym $mod+1 --release workspace $ws1
-bindsym $mod+2 --release workspace $ws2
-bindsym $mod+3 --release workspace $ws3
-bindsym $mod+4 --release workspace $ws4
-bindsym $mod+5 --release workspace $ws5
-bindsym $mod+6 --release workspace $ws6
-bindsym $mod+7 --release workspace $ws7
-bindsym $mod+8 --release workspace $ws8
-bindsym $mod+9 --release workspace $ws9
-#bindsym $mod+0 --release workspace $ws10
+bindsym --release $mod+1 workspace $ws1
+bindsym --release $mod+2 workspace $ws2
+bindsym --release $mod+3 workspace $ws3
+bindsym --release $mod+4 workspace $ws4
+bindsym --release $mod+5 workspace $ws5
+bindsym --release $mod+6 workspace $ws6
+bindsym --release $mod+7 workspace $ws7
+bindsym --release $mod+8 workspace $ws8
+bindsym --release $mod+9 workspace $ws9
 
 # Перемещение активного окна на рабочий стол
-bindsym $mod+Ctrl+1 --release move container to workspace $ws1
-bindsym $mod+Ctrl+2 --release move container to workspace $ws2
-bindsym $mod+Ctrl+3 --release move container to workspace $ws3
-bindsym $mod+Ctrl+4 --release move container to workspace $ws4
-bindsym $mod+Ctrl+5 --release move container to workspace $ws5
-bindsym $mod+Ctrl+6 --release move container to workspace $ws6
-bindsym $mod+Ctrl+7 --release move container to workspace $ws7
-bindsym $mod+Ctrl+8 --release move container to workspace $ws8
-bindsym $mod+Ctrl+9 --release move container to workspace $ws9
-#bindsym $mod+Ctrl+0 --release move container to workspace $ws10
+bindsym --release $mod+Ctrl+1 move container to workspace $ws1
+bindsym --release $mod+Ctrl+2 move container to workspace $ws2
+bindsym --release $mod+Ctrl+3 move container to workspace $ws3
+bindsym --release $mod+Ctrl+4 move container to workspace $ws4
+bindsym --release $mod+Ctrl+5 move container to workspace $ws5
+bindsym --release $mod+Ctrl+6 move container to workspace $ws6
+bindsym --release $mod+Ctrl+7 move container to workspace $ws7
+bindsym --release $mod+Ctrl+8 move container to workspace $ws8
+bindsym --release $mod+Ctrl+9 move container to workspace $ws9
 
 # Перемещение активного она на рабочий стол и переключение на этот рабочий стол
-bindsym $mod+Shift+1 --release move container to workspace $ws1; workspace $ws1
-bindsym $mod+Shift+2 --release move container to workspace $ws2; workspace $ws2
-bindsym $mod+Shift+3 --release move container to workspace $ws3; workspace $ws3
-bindsym $mod+Shift+4 --release move container to workspace $ws4; workspace $ws4
-bindsym $mod+Shift+5 --release move container to workspace $ws5; workspace $ws5
-bindsym $mod+Shift+6 --release move container to workspace $ws6; workspace $ws6
-bindsym $mod+Shift+7 --release move container to workspace $ws7; workspace $ws7
-bindsym $mod+Shift+8 --release move container to workspace $ws8; workspace $ws8
-bindsym $mod+Shift+9 --release move container to workspace $ws9; workspace $ws9
-#bindsym $mod+Shift+0 --release move container to workspace $ws10; workspace $ws10
-
-# Переключение на рабочий стол, откуда пришло оповещение от окна
-for_window [urgent=latest] focus
-
-
-
-
-################ Режимы работы ################
-
-# Изменение размеров окон
-# $mod+r
-# bindcode $mod+27 mode "$mode_resize"
-set $mode_resize Уменьшить|Увеличить: | - Вертикальные размеры, | - Горизонтальные размеры
-mode "$mode_resize" {
-        bindsym Left resize shrink width 20 px or 2 ppt
-        bindsym Down resize shrink height 20 px or 2 ppt
-        bindsym Up resize grow height 20 px or 2 ppt
-        bindsym Right resize grow width 20 px or 2 ppt
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
+bindsym --release $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym --release $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym --release $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym --release $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym --release $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym --release $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym --release $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym --release $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym --release $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 
 
 
@@ -345,11 +316,10 @@ client.background       #343230 #343230 #808080 #343230
 
 
 # Шрифт заголовков окон
-# font pango: JetBrains Mono Medium 10
 font pango: Iosevka Medium, SourceHanMono 15px
 
-# Обычные рамки окон <normal|1pixel|pixel xx|none|pixel>
-default_border normal 4
+# Обычные рамки окон
+default_border pixel 4
 default_floating_border normal 4
 
 # Сокрытие рамок
@@ -357,13 +327,11 @@ hide_edge_borders none
 
 # Изменение рамок активного окна
 # $mod+p
-bindcode $mod+33 --release border none
+bindcode --release $mod+33 border none
 # $mod+[
-bindcode $mod+34 --release border pixel 4
+bindcode --release $mod+34 border pixel 4
 # $mod+]
-bindcode $mod+35 --release border normal 4
-
-
+bindcode --release $mod+35 border normal 4
 
 
 ################ Промежутки между окнами ################
@@ -371,6 +339,8 @@ bindcode $mod+35 --release border normal 4
 # Внутренние и внешние промежутки
 gaps inner 16
 gaps outer 0
+
+gaps top 67
 
 
 # Отключение промежутков при наличии единственного окна на рабочем столе
