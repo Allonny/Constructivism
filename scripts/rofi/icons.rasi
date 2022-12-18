@@ -1,5 +1,5 @@
 /* Иконпак, используемый в rofi */
 
 * {
-    icon-theme:    "Papirus-Dark";
+    icon-theme:         "Papirus-Dark";
 }

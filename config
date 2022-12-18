@@ -89,15 +89,15 @@ bindsym --release $mod+F1 exec --no-startup-id $scriptpath/apps-launcher
 
 # Запуск файлового менеджера
 bindsym --release $mod+F2 exec --no-startup-id $files
-bindsym --release $mod+Shift+F2 exec --no-startup-id pkexec --no-startup-id $files && :
+bindsym --release $mod+Shift+F2 exec --no-startup-id pkexec $files && :
 bindsym --release $mod+backslash exec --no-startup-id $files
-bindsym --release $mod+Shift+backslash exec --no-startup-id pkexec --no-startup-id $files && :
+bindsym --release $mod+Shift+backslash exec --no-startup-id pkexec $files && :
 
 # Запуск терминала
 bindsym --release $mod+F3 exec --no-startup-id $term
-bindsym --release $mod+Shift+F3 exec --no-startup-id $term -e 'pkexec --no-startup-id su'
+bindsym --release $mod+Shift+F3 exec --no-startup-id $term -e 'pkexec su'
 bindsym --release $mod+Return exec --no-startup-id $term
-bindsym --release $mod+Shift+Return exec --no-startup-id $term -e 'pkexec --no-startup-id su'
+bindsym --release $mod+Shift+Return exec --no-startup-id $term -e 'pkexec su'
 
 # Запуск редактора кода
 bindsym --release $mod+F4 exec --no-startup-id flatpak run io.howl.Editor
@@ -107,11 +107,11 @@ bindsym --release $mod+F5 exec --no-startup-id flatpak run org.mozilla.Firefox
 bindsym --release $mod+F6 exec --no-startup-id flatpak run org.telegram.desktop
 bindsym --release $mod+F7 exec --no-startup-id flatpak run org.signal.Signal
 bindsym --release $mod+F8 exec --no-startup-id flatpak run org.gnome.Rhythmbox3
-# bindsym --release $mod+Shift+F8 exec --no-startup-id $term -e 'musikcube'
+bindsym --release $mod+Shift+F8 exec --no-startup-id $term -e 'musikcube'
 
 # Запуск системных утилит
 bindsym --release $mod+F12 exec --no-startup-id $term -e 'htop'
-bindsym --release $mod+Shift+F12 exec --no-startup-id $term -e 'pkexec --no-startup-id htop'
+bindsym --release $mod+Shift+F12 exec --no-startup-id $term -e 'pkexec htop'
 
 # Создание скриншотов
 bindsym --release Print exec --no-startup-id xfce4-screenshooter -f $HOME/Изображения/Скриншоты
@@ -126,18 +126,19 @@ bindsym --release $mod+Shift+Print exec --no-startup-id xfce4-screenshooter -r -
 bindcode --release $mod+49 exec --no-startup-id $scriptpath/vpn-toggle "Surfshark Japan UDP"
 
 # Автозапуск приложений
-exec_always dex-autostart --autostart --environment i3\
-exec_always killall -q picom             ; picom --config $confpath/picom.conf
-exec_always killall -q dunst             ; dunst -conf $confpath/dunst.conf
-exec_always killall -q polybar           ; $scriptpath/polybar-main-launch
-exec_always killall -q low-battery-alert ; $scriptpath/low-battery-alert 25:10m 20:5m 15:1m 12:30s
+exec_always --no-startup-id dex-autostart --autostart --environment i3
+exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id killall -q picom             ; picom --config $confpath/picom.conf
+exec_always --no-startup-id killall -q dunst             ; dunst -conf $confpath/dunst.conf
+exec_always --no-startup-id killall -q polybar           ; $scriptpath/polybar-main-launch
+exec_always --no-startup-id killall -q low-battery-alert ; $scriptpath/low-battery-alert 25:10m 20:5m 15:1m 12:30s
 exec_always $scriptpath/keyboard-layout set us ru
 exec_always $scriptpath/brightness levels 20
 exec_always libinput-gestures-setup restart
 exec --no-startup-id $scriptpath/antiLGBTlaw
 exec --no-startup-id $scriptpath/war-begun
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id xfce4-clipman
+# exec --no-startup-id xfce4-power-manager
+exec --no-startup-id while :; do xfce4-clipman ; done
 exec --no-startup-id nm-applet
 exec --no-startup-id blueberry-tray
 exec --no-startup-id /usr/libexec/xfce-polkit
@@ -341,7 +342,6 @@ gaps inner 16
 gaps outer 0
 
 gaps top 67
-
 
 # Отключение промежутков при наличии единственного окна на рабочем столе
 # smart_gaps on

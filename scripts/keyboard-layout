@@ -86,11 +86,11 @@ i3status() {
 # Порядок цветов: bga fg fga prfx prfxa
 
 polybar() {
-    icon=($1)
+    icon=($2)
     iprfx=${icon[0]}
     iprfxa=${icon[1]}
 
-    color=($2)
+    color=($3)
     bga=${color[0]}
     fg=${color[1]}
     fga=${color[2]}
@@ -108,7 +108,7 @@ polybar() {
     current_layout=$(get_layout)
     current_layout=${current_layout:0:2}
     current_layout=${current_layout^^}
-    block="$block%{B$bga F$fg} $current_layout %{B- F-}"
+    block="$block%{A1:$1 toggle:}%{B$bga F$fg} $current_layout %{B- F-}%{A}"
 
     echo $block
 }
@@ -147,7 +147,7 @@ case $1 in
         i3status
         ;;
     "polybar")
-        polybar "${@:2}"
+        polybar "$0" "${@:2}"
         ;;
     "toggle")
         toggle

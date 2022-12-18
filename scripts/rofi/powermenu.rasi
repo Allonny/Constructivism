@@ -23,7 +23,7 @@ window {
     fullscreen:         true;
 
     // Отступ слева 100, ширина 400, высота подобрана эмпирически для 5 выводимых строк
-    padding:            calc(50% - 114) calc(100% - 500) calc(50% - 114) 100;
+    padding:            calc(50% - 112) calc(100% - 500) calc(50% - 111) 100;
 }
 
 textbox-prompt-colon {

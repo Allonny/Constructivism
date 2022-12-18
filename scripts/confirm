@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-dir="~/.config/i3/scripts/rofi"
+dir="$HOME/.config/i3/scripts/rofi"
 
 rofi_command="rofi -theme $dir/confirm.rasi"
 

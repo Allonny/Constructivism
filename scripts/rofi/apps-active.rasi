@@ -4,8 +4,6 @@
 @import "font.rasi"
 @import "icons.rasi"
 
-
-
 configuration {
 	show-icons:			true;
 	display-drun:		"";

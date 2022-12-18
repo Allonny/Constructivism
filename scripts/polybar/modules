@@ -31,7 +31,7 @@ content-foreground = ${color.foreground-alt}
 content-overline = ${color.background}
 content-underline = ${color.background}
 
-click-left = ~/.config/i3/scripts/apps-launcher
+click-left = $HOME/.config/i3/scripts/apps-launcher
 
 
 
@@ -117,7 +117,7 @@ label-padding = 1
 [module/player]
 type = custom/script
 
-exec = ~/.config/i3/scripts/player polybar "#FFD0D0D0 #FF808080"
+exec = $HOME/.config/i3/scripts/player polybar "#FFD0D0D0 #FF808080"
 tail = true
 interval = 1
 
@@ -130,7 +130,7 @@ format-overline = ${color.background}
 format-underline = ${color.background}
 label = "%output%"
 label-padding = 1
-label-maxlen = 250
+label-maxlen = 225
 label-background = ${color.background-alt}
 label-foreground = ${color.foreground}
 
@@ -170,7 +170,7 @@ content-foreground = ${color.foreground-alt}
 content-overline = ${color.background}
 content-underline = ${color.background}
 
-click-left = ~/.config/i3/scripts/polybar-tray-launch toggle
+click-left = $HOME/.config/i3/scripts/polybar-tray-launch toggle
 
 
 
@@ -181,7 +181,7 @@ click-left = ~/.config/i3/scripts/polybar-tray-launch toggle
 [module/keyboard-layout]
 type = custom/script
 
-exec = ~/.config/i3/scripts/keyboard-layout polybar " " "#FF444240 #FFD0D0D0 #FF404040 #FFA0A0C0 #FFF0A080"
+exec = $HOME/.config/i3/scripts/keyboard-layout polybar " " "#FF444240 #FFD0D0D0 #FF404040 #FFA0A0C0 #FFF0A080"
 tail = true
 interval = 1
 
@@ -189,8 +189,6 @@ format = <label>
 label = %output%
 format-overline = ${color.background}
 format-underline = ${color.background}
-
-click-left = ~/.config/i3/scripts/keyboard-layout toggle
 
 
 
@@ -293,7 +291,7 @@ poll-interval = 2
 
 time-format = %H:%M
 
-format-charging = %{A4:~/.config/i3/scripts/brightness inc:}%{A5:~/.config/i3/scripts/brightness dec:}%{A1:xfce4-power-manager-settings:}<bar-capacity>%{A}%{A}%{A}
+format-charging = %{A4:$HOME/.config/i3/scripts/brightness inc:}%{A5:$HOME/.config/i3/scripts/brightness dec:}%{A1:xfce4-power-manager-settings:}<bar-capacity>%{A}%{A}%{A}
 format-charging-prefix = ""
 format-charging-prefix-padding = 1
 format-charging-prefix-background = ${color.blue}
@@ -303,7 +301,7 @@ format-charging-foreground = ${color.foreground}
 format-charging-overline = ${color.background}
 format-charging-underline = ${color.background}
 
-format-discharging = %{A4:~/.config/i3/scripts/brightness inc:}%{A5:~/.config/i3/scripts/brightness dec:}%{A1:xfce4-power-manager-settings:}<bar-capacity>%{A}%{A}%{A}
+format-discharging = %{A4:$HOME/.config/i3/scripts/brightness inc:}%{A5:$HOME/.config/i3/scripts/brightness dec:}%{A1:xfce4-power-manager-settings:}<bar-capacity>%{A}%{A}%{A}
 format-discharging-prefix = ""
 format-discharging-prefix-padding = 1
 format-discharging-prefix-background = ${color.yellow}
@@ -314,7 +312,7 @@ format-discharging-overline = ${color.background}
 format-discharging-underline = ${color.background}
 
 ;; format-full = <label-full>
-format-full = %{A4:~/.config/i3/scripts/brightness inc:}%{A5:~/.config/i3/scripts/brightness dec:}%{A1:xfce4-power-manager-settings:}<bar-capacity>%{A}%{A}%{A}
+format-full = %{A4:$HOME/.config/i3/scripts/brightness inc:}%{A5:$HOME/.config/i3/scripts/brightness dec:}%{A1:xfce4-power-manager-settings:}<bar-capacity>%{A}%{A}%{A}
 format-full-prefix = ""
 format-full-prefix-padding = 1
 format-full-prefix-background = ${color.blue}
@@ -410,7 +408,7 @@ content-foreground = ${color.foreground-alt}
 content-overline = ${color.background}
 content-underline = ${color.background}
 
-click-left = ~/.config/i3/scripts/powermenu
+click-left = $HOME/.config/i3/scripts/powermenu
 
 
 

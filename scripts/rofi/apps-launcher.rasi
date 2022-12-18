@@ -8,7 +8,7 @@ configuration {
 	show-icons:			true;
 	display-drun:		"";
 	drun-display-format:"{name}";
-	disable-history:	false;
+	disable-history:	true;
 	fullscreen:         false;
 	hide-scrollbar: 	true;
 	sidebar-mode:		false;
