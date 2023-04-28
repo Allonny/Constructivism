@@ -1,0 +1,28 @@
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Цвета, используемые в polybar (формат ARGB)
+
+[color]
+
+;; Базовые цвета
+background =            #FF343230
+background-alt =        #FF444240
+foreground =            #FFD0D0D0
+foreground-alt =        #FF404040
+foreground-inactive =   #FF808080
+
+;; Акцентные цвета
+green =                 #FF90D0D0
+yellow =                #FFF8E8A0
+red =                   #FFF0A080
+blue =                  #FFA0A0C0
+
+;; Вспомогательные цвета
+white =                 #FFFFFFFF
+black =                 #FF000000
+transparent =           #00000000
+
+
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_

@@ -2,7 +2,7 @@
 
 shortname="main"
 barname="polybar-$shortname"
-conffile="$HOME/.config/i3/scripts/polybar/config"
+conffile="$HOME/.config/i3/polybar/config"
 
 while pgrep -f "$barname " > /dev/null; do sleep 1; done
 

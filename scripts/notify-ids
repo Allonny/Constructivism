@@ -2,5 +2,6 @@ low-battery-alert 1000
 vpn-toggle 1010
 keyboard-layout 1010
 brightness 1030
-antiLGBTlaw 1040
-war-begun 1050
+volume 1040
+antiLGBTlaw 1110
+war-begun 1120

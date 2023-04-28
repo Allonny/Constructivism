@@ -22,6 +22,8 @@ zle -N down-line-or-beginning-search
 # compinit
 # End of lines added by compinstall
 
+alias cc="clear ; clear"
+
 source ~/.local/share/antigen/antigen.zsh
 
 antigen bundle zsh-users/zsh-autosuggestions
@@ -30,6 +32,7 @@ antigen bundle jirutka/zsh-shift-select
 antigen theme romkatv/powerlevel10k
 
 antigen apply
+
 
 function () {
 	emulate -L zsh -o no_aliases

@@ -1,8 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-dir="$HOME/.config/i3/scripts/rofi"
+conffile="$HOME/.config/i3/rofi/confirm.rasi"
 
-rofi_command="rofi -theme $dir/confirm.rasi"
-
-[[ $2 == $(echo -e "$2\n$3" | $rofi_command -p "$1" -dmenu -selected-row 0) ]]
-
+[[ $2 == $(echo -e "$2\n$3" | rofi -no-config -no-lazy-grab -dmenu -p "$1" -theme $conffile) ]]

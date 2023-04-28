@@ -42,6 +42,13 @@ click-left = $HOME/.config/i3/scripts/apps-launcher
 [module/workspaces]
 type = internal/xworkspaces
 
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+icon-4 = 9;
+icon-default = 
+
 pin-workspaces = true
 enable-click = true
 enable-scroll = true
@@ -52,25 +59,22 @@ format-underline = ${color.background}
 
 label-monitor = %name%
 
-label-active = %name%
+label-active = %icon% %name%
 label-active-foreground = ${color.foreground-alt}
 label-active-background = ${color.yellow}
-label-active-minlen = 3
 label-active-alignment = center
 
 label-occupied = %name%
 label-occupied-foreground = ${color.foreground}
 label-occupied-background = ${color.background-alt}
-label-occupied-minlen = 1
 label-occupied-alignment = center
 
-label-urgent = %name%*
+label-urgent =  %name%
 label-urgent-foreground = ${color.foreground-alt}
 label-urgent-background = ${color.red}
-label-urgent-minlen = 3
 label-urgent-alignment = right
 
-label-empty = %name%
+label-empty = %icon% %name%
 label-empty-foreground = ${color.foreground}
 label-empty-background = ${color.background-alt}
 label-empty-minlen = 1
@@ -209,7 +213,7 @@ empty = |
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;; Индикатор уровня звука
 
-[module/volume]
+[module/volume_icon]
 type = internal/pulseaudio
 
 master-soundcard = default
@@ -220,29 +224,11 @@ master-mixer = Master
 
 interval = 5
 
-format-volume = "%{A1:pavucontrol:}<bar-volume>%{A}"
-format-volume-prefix = ""
-format-volume-prefix-padding = 1
-format-volume-prefix-background = ${color.blue}
-format-volume-prefix-foreground = ${color.foreground-alt}
+format-volume = <ramp-volume>
 format-volume-background = ${color.background-alt}
 format-volume-foreground = ${color.foreground}
 format-volume-overline = ${color.background}
 format-volume-underline = ${color.background}
-
-bar-volume-format = " %fill%%indicator%%empty% "
-bar-volume-background = ${color.background-alt}
-bar-volume-foreground = ${color.foreground}
-bar-volume-width = 10
-
-bar-volume-fill = ${bar.fill}
-bar-volume-fill-foreground = ${color.foreground}
-
-bar-volume-indicator = ${bar.indicator}
-bar-volume-indicator-foreground = ${color.foreground}
-
-bar-volume-empty = ${bar.empty}
-bar-volume-empty-foreground = ${color.background}
 
 ramp-volume-0 = ""
 ramp-volume-0-background = ${color.red}
@@ -258,11 +244,52 @@ ramp-volume-background = ${color.blue}
 ramp-volume-foreground = ${color.foreground-alt}
 ramp-volume-padding = 1
 
+format-muted = <label-muted>
+format-muted-overline = ${color.background}
+format-muted-underline = ${color.background}
+
+label-muted = ""
+label-muted-foreground = ${color.foreground-alt}
+label-muted-background = ${color.red}
+label-muted-padding = 1
+
+
+
+
+[module/volume_bar]
+type = internal/pulseaudio
+
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+master-mixer = Master
+
+interval = 5
+
+format-volume = %{A1:pavucontrol:}<bar-volume>%{A}
+format-volume-padding = 1
+
+format-volume-background = ${color.background-alt}
+format-volume-foreground = ${color.foreground}
+format-volume-overline = ${color.background}
+format-volume-underline = ${color.background}
+
+bar-volume-format = %{T2}%fill%%indicator%%{T-}%empty%
+bar-volume-background = ${color.background-alt}
+bar-volume-foreground = ${color.foreground}
+bar-volume-width = 10
+
+bar-volume-fill = ${bar.fill}
+bar-volume-fill-foreground = ${color.foreground}
+
+bar-volume-indicator = ${bar.indicator}
+bar-volume-indicator-foreground = ${color.foreground}
+
+bar-volume-empty = ${bar.empty}
+bar-volume-empty-foreground = ${color.foreground-inactive}
+
 format-muted = %{A1:pavucontrol:}<label-muted>%{A}
-format-muted-prefix = ""
-format-muted-prefix-padding = 1
-format-muted-prefix-background = ${color.red}
-format-muted-prefix-foreground = ${color.foreground-alt}
 format-muted-overline = ${color.background}
 format-muted-underline = ${color.background}
 
@@ -282,7 +309,7 @@ label-muted-alignment = center
 [module/battery_bar]
 type = internal/battery
 
-full-at = 99
+full-at = 95
 
 battery = BAT1
 adapter = ACAD
@@ -322,7 +349,7 @@ format-full-foreground = ${color.foreground}
 format-full-overline = ${color.background}
 format-full-underline = ${color.background}
 
-bar-capacity-format = " %fill%%indicator%%empty% "
+bar-capacity-format = " %{T2}%fill%%indicator%%{T-}%empty% "
 bar-capacity-width = 10
 bar-capacity-gradient = false
 
@@ -335,7 +362,7 @@ bar-capacity-foreground-1 = ${color.foreground}
 bar-capacity-foreground-2 = ${color.foreground}
 
 bar-capacity-empty = ${bar.empty}
-bar-capacity-empty-foreground = ${color.background}
+bar-capacity-empty-foreground = ${color.foreground-inactive}
 
 
 
@@ -379,7 +406,7 @@ full-at = 99
 interval = 1
 
 format = <label>
-format-prefix = 
+format-prefix = 
 format-prefix-background = ${color.blue}
 format-prefix-foreground = ${color.foreground-alt}
 format-prefix-padding = 1

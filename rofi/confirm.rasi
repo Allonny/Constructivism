@@ -1,4 +1,4 @@
-/* Меню питания */
+/* Меню согласия */
 
 @import "colors.rasi"
 @import "font.rasi"
@@ -6,7 +6,7 @@
 
 configuration {
 	show-icons:         true;
-	display-drun: 		"";
+	display-drun: 		"";
 	drun-display-format:"{name}";
 	disable-history:    true;
 	fullscreen:         false;
@@ -22,8 +22,8 @@ window {
 	location:           center;
     fullscreen:         true;
 
-    // Отступ слева 100, ширина 400, высота подобрана эмпирически для 5 выводимых строк
-    padding:            calc(50% - 112) calc(100% - 500) calc(50% - 111) 100;
+    // Отступ слева 100, ширина 400, высота подобрана эмпирически для 1 выводимой строки
+    padding:            calc(50% - 40) calc(100% - 500) calc(50% - 39) 100;
 }
 
 textbox-prompt-colon {
@@ -36,7 +36,7 @@ textbox-prompt-colon {
     horizontal-align:   0.5;
     vertical-align:     0.5;
 
-	str:				"";
+	str:				"";
 	font:				"feather 12";
 }
 
@@ -65,8 +65,8 @@ listview {
 
 	spacing:            4px;
 
-	columns:            1;
-	lines:              5;
+	columns:            2;
+	lines:              1;
 	cycle:              true;
 	dynamic:            true;
 	layout:             vertical;

@@ -1,3 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-rofi -no-config -no-lazy-grab -show window drun -theme ~/.config/i3/scripts/rofi/apps-active.rasi
+conffile="$HOME/.config/i3/rofi/apps-active.rasi"
+
+rofi -no-config -no-lazy-grab -show window -modi drun -theme $conffile

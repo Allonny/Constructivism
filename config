@@ -37,16 +37,19 @@ bindcode --release $mod+60 restart
 # $mod+M
 bindcode --release $mod+58 exec --no-startup-id pavucontrol
 
-# Для Fedora
-bindsym --release XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym --release XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym --release XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym --release XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
 # Для Manjaro
 # bindsym --release XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+
 # bindsym --release XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-
 # bindsym --release XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle
+
+# Для Fedora
+#bindsym --release XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+#bindsym --release XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+bindsym --release XF86AudioRaiseVolume exec --no-startup-id $scriptpath/volume inc
+bindsym --release XF86AudioLowerVolume exec --no-startup-id $scriptpath/volume dec
+bindsym --release XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym --release XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 bindsym --release XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym --release XF86AudioStop exec --no-startup-id playerctl stop
@@ -81,6 +84,10 @@ bindsym --release $mod+Escape exec --no-startup-id $scriptpath/powermenu
 # $mod+x
 bindcode --release $mod+53 exec --no-startup-id $scriptpath/polybar-tray-launch toggle
 
+# Обновление системы
+# $mod+u
+bindcode --release $mod+30 exec --no-startup-id $scriptpath/update
+
 # Просмотр открытых приложений
 bindsym --release $mod+Tab exec --no-startup-id $scriptpath/apps-active
 
@@ -103,7 +110,7 @@ bindsym --release $mod+Shift+Return exec --no-startup-id $term -e 'pkexec su'
 bindsym --release $mod+F4 exec --no-startup-id flatpak run io.howl.Editor
 
 # Запуск повседневных приложений
-bindsym --release $mod+F5 exec --no-startup-id flatpak run org.mozilla.Firefox
+bindsym --release $mod+F5 exec --no-startup-id flatpak run org.mozilla.firefox
 bindsym --release $mod+F6 exec --no-startup-id flatpak run org.telegram.desktop
 bindsym --release $mod+F7 exec --no-startup-id flatpak run org.signal.Signal
 bindsym --release $mod+F8 exec --no-startup-id flatpak run org.gnome.Rhythmbox3
@@ -125,20 +132,34 @@ bindsym --release $mod+Shift+Print exec --no-startup-id xfce4-screenshooter -r -
 # $mod+` ($mod+ё)
 bindcode --release $mod+49 exec --no-startup-id $scriptpath/vpn-toggle "Surfshark Japan UDP"
 
+# Закрыть уведомление
+# $mod+c
+bindcode --release $mod+54 exec --no-startup-id dunstctl close
+
+# Закрыть все уведомления
+# $mod+Shift+c
+bindcode --release $mod+Shift+54 exec --no-startup-id dunstctl close-all
+
+# Показать историю
+# $mod+v
+bindcode --release $mod+55 exec --no-startup-id dunstctl history-pop
+
 # Автозапуск приложений
 exec_always --no-startup-id dex-autostart --autostart --environment i3
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id killall -q picom             ; picom --config $confpath/picom.conf
 exec_always --no-startup-id killall -q dunst             ; dunst -conf $confpath/dunst.conf
-exec_always --no-startup-id killall -q polybar           ; $scriptpath/polybar-main-launch
+exec_always --no-startup-id killall -q polybar           ; $scriptpath/polybar-main-launch ; $scriptpath/polybar-tray-launch
 exec_always --no-startup-id killall -q low-battery-alert ; $scriptpath/low-battery-alert 25:10m 20:5m 15:1m 12:30s
 exec_always $scriptpath/keyboard-layout set us ru
 exec_always $scriptpath/brightness levels 20
+exec_always $scriptpath/volume levels 20 5
 exec_always libinput-gestures-setup restart
+exec_always --no-startup-id xfce4-clipman
 exec --no-startup-id $scriptpath/antiLGBTlaw
 exec --no-startup-id $scriptpath/war-begun
 # exec --no-startup-id xfce4-power-manager
-exec --no-startup-id while :; do xfce4-clipman ; done
+# exec --no-startup-id while :; do xfce4-clipman ; done
 exec --no-startup-id nm-applet
 exec --no-startup-id blueberry-tray
 exec --no-startup-id /usr/libexec/xfce-polkit
@@ -152,9 +173,8 @@ for_window [all]                                  border pixel 4
 # for_window [tiling]                               border pixel 4
 # for_window [floating]                             border normal 4
 # for_window [urgent=latest]                        focus
-for_window [title="File Transfer*"]               floating enable
 
-for_window [title="Azote~"]                       floating enable resize set $mid_size
+for_window [title="File Transfer*"]               floating enable
 for_window [class="Blueberry"]                    floating enable resize set $sml_size
 for_window [class="GParted"]                      floating enable resize set $lrg_size
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable resize set $mid_size
@@ -166,6 +186,14 @@ for_window [class="org.gnome.Software"]           floating enable resize set $lr
 for_window [class="Pavucontrol"]                  floating enable resize set $mid_size
 for_window [class="settings-manager"]             floating enable resize set $lrg_size
 for_window [class="Xfce4-power-manager-settings"] floating enable resize set $lrg_size
+
+assign [class="firefox"] → $ws1
+assign [class="TelegramDesktop"] → $ws2
+# assign [class="Howl"] → $ws3
+# assign [class="Xfce4-terminal"] → $ws3
+assign [class="Rhythmbox"] → $ws9
+assign [class="Spotify"] → $ws9
+
 
 
 
@@ -335,6 +363,8 @@ bindcode --release $mod+34 border pixel 4
 bindcode --release $mod+35 border normal 4
 
 
+
+
 ################ Промежутки между окнами ################
 
 # Внутренние и внешние промежутки
@@ -350,3 +380,11 @@ gaps top 67
 # on|no_gaps
 # smart_borders on
 
+
+
+
+################ Читы для Sims 4 ################
+# (не, ну а что? мне каждый раз вручную их вбивать? -.-")
+
+# $mod+Num/
+bindcode $mod+106 --release exec --no-startup-id sleep 1 && xdotool type "bb.moveobjects on"

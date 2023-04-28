@@ -9,8 +9,8 @@ margin-top = 0
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;; Файлы цветов и модулей
 
-include-file = $HOME/.config/i3/scripts/polybar/colors
-include-file = $HOME/.config/i3/scripts/polybar/modules
+include-file = $HOME/.config/i3/polybar/colors
+include-file = $HOME/.config/i3/polybar/modules
 
 
 
@@ -63,12 +63,14 @@ border-bottom-color = ${color.yellow}
 
 modules-left = sep launcher sep workspaces sep player
 modules-center = date
-modules-right = traybar sep keyboard-layout sep volume sep battery_bar sep cpu sep memory sep sysmenu sep
+modules-right = traybar sep keyboard-layout sep volume_icon volume_bar sep battery_bar sep cpu sep memory sep sysmenu sep
 
 font-0 = "Iosevka Light:pixelsize=12;3"
-font-1 = "Jet Brains Mono Thin:pixelsize=12;3"
-font-2 = "SourceHanMono:pixelsize=12;3"
-font-3 = "icomoon\\-feather:pixelsize=12;3"
+font-1 = "Iosevka Heavy:pixelsize=12;3"
+font-2 = "Jet Brains Mono Thin:pixelsize=12;3"
+font-3 = "SourceHanMono:pixelsize=12;3"
+font-4 = "icomoon\\-feather:pixelsize=12;3"
+
 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -77,6 +79,7 @@ font-3 = "icomoon\\-feather:pixelsize=12;3"
 locale = ru_RU.UTF-8
 wm-name = polybar-tray
 
+enable-ipc = true
 monitor-fallback =
 monitor-strict = false
 
