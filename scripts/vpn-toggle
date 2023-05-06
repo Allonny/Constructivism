@@ -1,8 +1,8 @@
 #!/bin/bash
 
 notify_title="Подключение VPN"
-notify_body_up="Соединение с VPN установлено."
-notify_body_down="Соединение с VPN отключено."
+notify_body_up="Соединение $1 установлено."
+notify_body_down="Соединение $1  отключено."
 #notify_icon="nm-vpn-standalone-lock"
 notify_icon_up="network-connect"
 notify_icon_down="network-disconnect"
