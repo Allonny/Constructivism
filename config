@@ -149,7 +149,8 @@ exec_always --no-startup-id dex-autostart --autostart --environment i3
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id killall -q picom             ; picom --config $confpath/picom.conf
 exec_always --no-startup-id killall -q dunst             ; dunst -conf $confpath/dunst.conf
-exec_always --no-startup-id killall -q polybar           ; $scriptpath/polybar-main-launch ; $scriptpath/polybar-tray-launch
+exec_always --no-startup-id killall -q polybar           ; $scriptpath/polybar-main-launch
+exec_always --no-startup-id $scriptpath/polybar-tray-launch
 exec_always --no-startup-id killall -q low-battery-alert ; $scriptpath/low-battery-alert 25:10m 20:5m 15:1m 12:30s
 exec_always $scriptpath/keyboard-layout set us ru
 exec_always $scriptpath/brightness levels 20

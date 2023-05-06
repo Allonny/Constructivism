@@ -2,6 +2,7 @@
 
 notify_title="Война ⚔️"
 notify_body="Дней с начала войны: "
+notify_icon="dialog-error"
 notify_id=$(cat "$(dirname -- "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
 
 days_from()
@@ -13,4 +14,4 @@ war_date=20220224
 
 days=$(days_from $war_date)
 
-notify-send -a thunar -u critical -r $notify_id "$notify_title" "$notify_body$days"
+notify-send -u critical -r $notify_id -i "$notify_icon" "$notify_title" "$notify_body$days"

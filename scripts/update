@@ -1,4 +1,4 @@
 #!/bin/bash
 
-exo-open --launch TerminalEmulator -e bash -c "pkexec dnf upgrade --refresh -y ; flatpak update -y ; sudo btrfs balance start -v -dusage=100 / ; read -t 120 -p \"Для выхода нажмите ENTER (в противном случае программа сама завершится через 2 минуты)\" ; $1"
+pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY exo-open --launch TerminalEmulator -e bash -c "dnf upgrade --refresh -y ; flatpak update -y ; btrfs balance start -v -dusage=100 / ; read -t 120 -p \"Для выхода нажмите ENTER (в противном случае программа сама завершится через 2 минуты)\" ; $1"
 wait

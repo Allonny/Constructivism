@@ -6,20 +6,27 @@ current_level_file="/tmp/volume_levels"
 
 notify_title="Громкость"
 notify_body="Текущая громкость системы"
+notify_icon="audio-volume"
+notify_icon_0="audio-volume-muted"
+notify_icon_1="audio-volume-low"
+notify_icon_2="audio-volume-medium"
+notify_icon_3="audio-volume-high"
 notify_id=$(cat "$(dirname -- "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
 
 # Создание дефолтного файла-конфигурации с 10 шагами
 [[ ! -f $current_level_file ]] && levels 10
 
-# Получить текущую яркость, возвращает число от 0 до 255
+# Получить текущую яркость, возвращает целое число - громкость в процентах
 get() {
     levels=( $( pactl get-sink-volume @DEFAULT_SINK@ | grep -oP "[\w\p{P}]+\s+\K([\d]+%\s)" | grep -oP "\d+" ) )
     echo $(( ( ${levels[0]} + ${levels[1]} ) / 2 ))
 }
 
-# Установить текущую яркость, аргументы: число от 0 до 255
+# Установить текущую яркость, аргументы: целое число - громкость в процентах
 set() {
+    pactl set-sink-mute @DEFAULT_SINK@ false
     pactl set-sink-volume @DEFAULT_SINK@ $1%
+    notify $1
 }
 
 # Увеличить яркость на один шаг
@@ -28,7 +35,6 @@ inc() {
     [[ ${steps[0]} -lt $(( ${#steps[@]} - 1 )) ]] && steps[0]=$(( ${steps[0]} + 1 ))
     echo ${steps[@]} > $current_level_file
     set ${steps[${steps[0]}]}
-    notify
 }
 
 # Уменьшить яркость на один шаг
@@ -37,15 +43,18 @@ dec() {
     [[ ${steps[0]} -gt 1 ]] && steps[0]=$(( ${steps[0]} - 1 ))
     echo ${steps[@]} > $current_level_file
     set ${steps[${steps[0]}]}
-    notify
 }
 
+# Послать уведомление об изменении громкости
 notify() {
-    level=$(get)
-    notify-send -u low -r $notify_id "$notify_title" "$notify_body$current_layout" -h int:value:$level
+    [[ $1 -ge 70 ]] && notify_icon="$notify_icon_3"
+    [[ $1 -lt 70 ]] && notify_icon="$notify_icon_2"
+    [[ $1 -lt 40 ]] && notify_icon="$notify_icon_1"
+    [[ $1 -lt 5  ]] && notify_icon="$notify_icon_0"
+    notify-send -u low -r $notify_id -i "$notify_icon" "$notify_title" "$notify_body$current_layout" -h int:value:$1
 }
 
-# Установить количество шагов, аргументы: два целых неотрицательных чисел
+# Установить количество шагов, аргументы: два целых неотрицательных числа - количество шагов от 0 до 100 (как минимум 1) и количество шагов свех 100 (может быть 0)
 levels() {
     steps=($(python - << EOF
 steps = $(( 1 + $1 ))
