@@ -1,0 +1,23 @@
+Исполнить | Исполнить файл в окне терминала
+    exo-open --launch TerminalEmulator "bash -c '%f ; read'"
+    Ctrl + Enter
+
+Создать символьную ссылку | Создать символьную ссылку на выбранный файл или директорию
+    file=%f ; [[ $file != $(pwd) ]] && ln -s "${file}" "${file}_ссылка"
+    -//-
+
+Открыть в терминале | Открыть денную директорию в терминале
+    path="$(pwd)" ; exo-open --working-directory "$path" --launch TerminalEmulator
+    Ctrl + Super + Enter
+
+Открыть в новом окне | Открыть директорию в новом окне
+    path="$(pwd)" ; exo-open --working-directory "$path" --launch FileManager
+    Ctrl + Super + Backslash
+
+Открыть как root в терминале | Открыть данную директорию с правами root в терминале
+    path="$(pwd)" ; pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY exo-open --working-directory "$path" --launch TerminalEmulator
+    Alt + Super + Enter
+
+Открыть как root в новом окне | Открыть данную директорию с правами root в новом окне
+    path="$(pwd)" ; pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY exo-open --working-directory "$path" --launch FileManager
+    Alt + Super + Backslash
