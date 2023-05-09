@@ -1,4 +1,49 @@
 #!/bin/bash
 
-pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY exo-open --launch TerminalEmulator -e bash -c "dnf upgrade --refresh -y ; flatpak update -y ; btrfs balance start -v -dusage=100 / ; read -t 120 -p \"Для выхода нажмите ENTER (в противном случае программа сама завершится через 2 минуты)\" ; $1"
-wait
+notify_title="Обнавление системы"
+notify_body="Обновление системы было завершены"
+notify_body_error="Обнаружено несколько ошибок - "
+notify_icon="update-low"
+notify_icon_error="update-high"
+notify_id=$(cat "$(dirname "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
+
+log_file="/tmp/update-log"
+
+log_sfx=" 2>> $log_file ; echo \$? >> $log_file ; "
+
+command1="dnf upgrade --refresh -y $log_sfx"
+command2="flatpak update -y $log_sfx"
+command3="btrfs balance start -v -dusage=100 / $log_sfx"
+command4="$(dirname "$0")/${0##*/} check $USER ; echo -e '\a' ; "
+command5="read -t 120 -p \"Для выхода нажмите ENTER (в противном случае программа сама завершится через 2 минуты)\" ; "
+command6=$([[ -z $1 ]] && echo "echo ''" || echo "$1")
+
+command_line="$command1 $command2 $command3 $command4 $command5 $command6"
+
+check() {
+    [ ! -f $log_file ] && exit 1
+    errors_count=$(($(grep "^[1-9][0-9]*$" /tmp/update-log | wc -l)))
+    if [[ errors_count -eq 0 ]]; then
+        sudo -H -u $1 notify-send -u normal -r $notify_id -i "$notify_icon" "$notify_title" "$notify_body"
+        exit 0
+    fi
+    errors=$(grep "^[^0-9].*$" $log_file)
+    notify_body_error="$notify_body_error$errors_count:\n$errors"
+    sudo -H -u $1 notify-send -u critical -r $notify_id -i "$notify_icon_error" "$notify_title" "$notify_body_error"
+}
+
+update() {
+    rm $log_file 2> /dev/null ; touch $log_file
+    pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY exo-open --launch TerminalEmulator "bash -c '$command_line'"
+    wait
+}
+
+
+case $1 in
+    "check")
+        check "${@:2}"
+        ;;
+    *)
+        update
+        ;;
+esac

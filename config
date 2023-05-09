@@ -107,7 +107,7 @@ bindsym --release $mod+Return exec --no-startup-id $term
 bindsym --release $mod+Shift+Return exec --no-startup-id $term -e 'pkexec su'
 
 # Запуск редактора кода
-bindsym --release $mod+F4 exec --no-startup-id flatpak run io.howl.Editor
+bindsym --release $mod+F4 exec --no-startup-id howl
 
 # Запуск повседневных приложений
 bindsym --release $mod+F5 exec --no-startup-id flatpak run org.mozilla.firefox

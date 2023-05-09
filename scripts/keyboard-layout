@@ -8,7 +8,12 @@ notify_title="Раскладка клавиатуры"
 notify_body="Текущая раскладка: "
 # notify_icon="input-keyboard"
 notify_icon="indicator-keyboard-"
-notify_id=$(cat "$(dirname -- "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
+notify_id=$(cat "$(dirname "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
+
+# Примение раскладки, аргументы: <раскладки (через зарятую)> <варианты (через запятую)>
+apply_layout() {
+  setxkbmap -layout "$1" -variant "$2" -option
+}
 
 # Установка списка раскладок и их вариантов, аругменты: раскладка1[:вариант1] [раскладка2[:вариант2]] ...
 set() {
@@ -24,10 +29,7 @@ set() {
         variant="$variant,${i[1]}"
     done
 
-    layout=${layout:1}
-    variant=${variant:1}
-
-    setxkbmap -layout "$layout" -variant "$variant" -option
+    apply_layout ${layout:1} ${variant:1}
 }
 
 # Возвращает список всех установленных раскладок в текущем смещении
@@ -59,7 +61,7 @@ get_color() {
     echo $color
 }
 
-# возвращает текущие данные о раскладке и состоянии капслока
+# Возвращает текущие данные о раскладке и состоянии капслока
 get() {
     current_layout=$(get_layout)
     current_layout=${current_layout:0:2}
@@ -99,7 +101,6 @@ polybar() {
     prfx=${color[3]}
     prfxa=${color[4]}
 
-
     current_CapsLock=$(get_CapsLock)
     if [[ $current_CapsLock = "on" ]]; then
         block="%{B$prfxa F$fga} $iprfxa %{B- F-}"
@@ -127,10 +128,7 @@ toggle() {
         variant="$variant,${i[1]}"
     done
 
-    layout=${layout:1}
-    variant=${variant:1}
-
-    setxkbmap -layout "$layout" -variant "$variant" -option
+    apply_layout ${layout:1} ${variant:1}
 
     current_layout=${layouts[0]}
     current_layout=${current_layout^^}

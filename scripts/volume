@@ -11,7 +11,7 @@ notify_icon_0="audio-volume-muted"
 notify_icon_1="audio-volume-low"
 notify_icon_2="audio-volume-medium"
 notify_icon_3="audio-volume-high"
-notify_id=$(cat "$(dirname -- "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
+notify_id=$(cat "$(dirname "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
 
 # Создание дефолтного файла-конфигурации с 10 шагами
 [[ ! -f $current_level_file ]] && levels 10
