@@ -1,38 +1,60 @@
 #!/bin/bash
 
+powermenu_script="$HOME/.config/i3/scripts/powermenu"
 update_script="$HOME/.config/i3/scripts/update"
 confirm_script="$HOME/.config/i3/scripts/confirm"
-conffile="$HOME/.config/i3/rofi/powermenu.rasi"
+themefile="$HOME/.config/i3/rofi/powermenu.rasi"
 
-
-# uptime=$(uptime -p | sed -e 's/up //g')
-uptime=$(uptime -p | sed -e 's/up //g' | sed -e 's/ h[a-z]*\,\ /:/g' | sed -e 's/m[a-z]*//g')
-
-confirm_hibernate=("Перевести систему в гибернацию?" " Перевести в сон" " Отмена")
-confirm_logout=("Выйти из системы?" " Выйти" " Отмена")
-confirm_reboot=("Перезагрузить компьютер?" " Перезагрузить" " Отмена")
-confirm_shutdown=("Выключить компьютер?" " Выключить" " Отмена")
-confirm_update=("Обновить и выключить компьютер?" " Обновить и выключить" " Отмена")
-
-
-# Confirmation
-confirm() {
-    $("$confirm_script" "$1" "$2" "$3") && eval $4 || exit 0
-}
+lock_icon="\0icon\x1fobject-locked"
+hibernate_icon="\0icon\x1fdocument-save"
+logout_icon="\0icon\x1fapplication-exit"
+reboot_icon="\0icon\x1fobject-rotate-left"
+shutdown_icon="\0icon\x1fsystem-devices-panel"
+update_icon="\0icon\x1fcloud-download"
+cancel_icon="\0icon\x1faccount-types-closed"
 
 # Options
-lock=" Заблокировать"
-hibernate=" Сохранить состояние"
-logout=" Выйти"
-reboot=" Перезагрузить"
-shutdown=" Завершить работу"
-update=" Обновить и завершить работу"
+# lock=" Заблокировать"
+# hibernate=" Сохранить состояние"
+# logout=" Выйти"
+# reboot=" Перезагрузить"
+# shutdown=" Завершить работу"
+# update=" Обновить и завершить работу"
 
-# Variable passed to rofi
-options="$lock\n$hibernate\n$logout\n$reboot\n$shutdown\n$update"
+lock="Заблокировать"
+hibernate="Сохранить состояние"
+logout="Выйти"
+reboot="Перезагрузить"
+shutdown="Завершить работу"
+update="Обновить и выключить"
+cancel="Отмена"
 
-chosen="$(echo -e "$options" | rofi -no-config -no-lazy-grab -dmenu -p "Uptime: $uptime" -theme $conffile)"
+hibernate_title="Перевести систему в гибернацию?"
+logout_title="Выйти из системы?"
+reboot_title="Перезагрузить компьютер?"
+shutdown_title="Выключить компьютер?"
+update_title="Обновить и завершить работу?"
 
+uptime=$(uptime -p | sed -e 's/up //g' | sed -e 's/ h[a-z]*\,\ /:/g' | sed -e 's/m[a-z]*//g')
+
+confirm_hibernate=( "$hibernate_title" "$hibernate" "$hibernate_icon" "$cancel" "$cancel_icon" )
+confirm_logout=(    "$logout_title"    "$logout"    "$logout_icon"    "$cancel" "$cancel_icon" )
+confirm_reboot=(    "$reboot_title"    "$reboot"    "$reboot_icon"    "$cancel" "$cancel_icon" )
+confirm_shutdown=(  "$shutdown_title"  "$shutdown"  "$shutdown_icon"  "$cancel" "$cancel_icon" )
+confirm_update=(    "$update_title"    "$update"    "$update_icon"    "$cancel" "$cancel_icon" )
+
+confirm() {
+    $("$confirm_script" "$1" "$2" "$3" "$4" "$5") && eval $6 || exit 0
+}
+
+options="$lock$logout_icon
+$hibernate$hibernate_icon
+$logout$logout_icon
+$reboot$reboot_icon
+$shutdown$shutdown_icon
+$update$update_icon"
+
+chosen=$(echo -e "$options" | rofi -no-config -no-lazy-grab -dmenu -show-icons -p "Uptime: $uptime" -theme $themefile)
 
 case $chosen in
     $lock)

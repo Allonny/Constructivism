@@ -23,7 +23,7 @@ window {
     fullscreen:         true;
 
     // Отступ слева 100, ширина 400, высота подобрана эмпирически для 6 выводимых строк
-    padding:            calc(50% - 112) calc(100% - 500) calc(50% - 147) 100;
+    padding:            calc(50% - 112) calc(100% - 500) calc(50% - 170) 100;
 }
 
 textbox-prompt-colon {
@@ -87,13 +87,15 @@ mainbox {
 element {
 	background-color:   @transparent;
 
-    padding:            6px 5px 5px;
-
 	orientation:        horizontal;
 }
 
 element-icon {
-	size:               0px;
+	background-color:   @transparent;
+
+	size:               24px;
+    padding:            6px 8px 6px 4px;
+    horizontal-align:   west;
 }
 
 element-text {
@@ -109,5 +111,6 @@ element selected {
 	background-color:   @background-alt;
 	border-color:       @blue;
 
-	border:			    0px 0px 2px;
+	border:				0px 0px 2px;
 }
+

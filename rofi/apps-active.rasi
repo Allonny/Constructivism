@@ -23,7 +23,7 @@ window {
     fullscreen:         true;
 
     // Отступ слева 100, ширина 800, высота подобрана эмпирически для 8 выводимых строк
-    padding:            calc(50% - 189) calc(100% - 900) calc(50% - 188) 100;
+    padding:            calc(50% - 189) calc(100% - 900) calc(50% - 177) 100;
 }
 
 textbox-prompt-colon {
@@ -97,7 +97,7 @@ element {
 element-icon {
 	background-color:   @transparent;
 
-	size:               29px;
+	size:               28px;
     padding:            2px;
 }
 

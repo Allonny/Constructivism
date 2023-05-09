@@ -1,5 +1,5 @@
 #!/bin/bash
 
-conffile="$HOME/.config/i3/rofi/apps-launcher.rasi"
+themefile="$HOME/.config/i3/rofi/apps-launcher.rasi"
 
-rofi -no-config -no-lazy-grab -show drun -modi drun -theme $conffile
+rofi -no-config -no-lazy-grab -show drun -modi drun -theme $themefile
