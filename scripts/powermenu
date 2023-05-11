@@ -1,7 +1,7 @@
 #!/bin/bash
 
 powermenu_script="$HOME/.config/i3/scripts/powermenu"
-update_script="$HOME/.config/i3/scripts/update"
+update_script="$HOME/.config/i3/scripts/update -t kitty"
 confirm_script="$HOME/.config/i3/scripts/confirm"
 themefile="$HOME/.config/i3/rofi/powermenu.rasi"
 
@@ -47,7 +47,7 @@ confirm() {
     $("$confirm_script" "$1" "$2" "$3" "$4" "$5") && eval $6 || exit 0
 }
 
-options="$lock$logout_icon
+options="$lock$lock_icon
 $hibernate$hibernate_icon
 $logout$logout_icon
 $reboot$reboot_icon
@@ -73,6 +73,6 @@ case $chosen in
         confirm "${confirm_shutdown[@]}" "systemctl poweroff"
         ;;
     $update)
-        confirm "${confirm_update[@]}" "$update_script \"systemctl poweroff\""
+        confirm "${confirm_update[@]}" "$update_script -c \"systemctl poweroff\""
         ;;
 esac

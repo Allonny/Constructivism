@@ -12,7 +12,7 @@ set $scriptpath $HOME/.config/i3/scripts
 set $mod Mod4
 
 # Стандартный терминалал
-set $term xfce4-terminal
+set $term kitty
 
 # Стандартный файловый менеджер
 set $files thunar
@@ -86,7 +86,7 @@ bindcode --release $mod+53 exec --no-startup-id $scriptpath/polybar-tray-launch 
 
 # Обновление системы
 # $mod+u
-bindcode --release $mod+30 exec --no-startup-id $scriptpath/update
+bindcode --release $mod+30 exec --no-startup-id $scriptpath/update -t kitty
 
 # Просмотр открытых приложений
 bindsym --release $mod+Tab exec --no-startup-id $scriptpath/apps-active
