@@ -25,5 +25,3 @@ fi
 notify_icon="notify_icon_${state}"
 notify_body="notify_body_${state}"
 notify-send -u low -r $notify_id -i "${!notify_icon}" "$notify_title" "${!notify_body}"
-
-

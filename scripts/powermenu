@@ -13,14 +13,6 @@ shutdown_icon="\0icon\x1fsystem-devices-panel"
 update_icon="\0icon\x1fcloud-download"
 cancel_icon="\0icon\x1faccount-types-closed"
 
-# Options
-# lock=" Заблокировать"
-# hibernate=" Сохранить состояние"
-# logout=" Выйти"
-# reboot=" Перезагрузить"
-# shutdown=" Завершить работу"
-# update=" Обновить и завершить работу"
-
 lock="Заблокировать"
 hibernate="Сохранить состояние"
 logout="Выйти"

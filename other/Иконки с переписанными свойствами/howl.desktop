@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Howl
+GenericName=Howl Editor
+Comment=Code with the pack
+Exec=howl --reuse %F
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;
+Icon=howl
+Categories=Development;GTK;Utility;TextEditor;
+Actions=
+Keywords=Text;Plaintext;Write;Code;
