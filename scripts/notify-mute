@@ -1,0 +1,48 @@
+#!/bin/bash
+
+set() {
+    dunstctl set-paused $1
+}
+
+is-muted() {
+    [[ $(dunstctl is-paused) == "true" ]]
+}
+
+polybar() {
+    icon=($2)
+    iprfx=${icon[0]}
+    iprfxa=${icon[1]}
+
+    color=($3)
+    fga=${color[0]}
+    prfx=${color[1]}
+    prfxa=${color[2]}
+
+    if is-muted; then
+        block="%{B$prfxa F$fga} $iprfxa %{B- F-}"
+    else
+        block="%{B$prfx F$fga} $iprfx %{B- F-}"
+    fi
+
+    block="%{A1:$1 toggle:}$block%{A}"
+
+    echo $block
+}
+
+case $1 in
+    "mute")
+        set true
+        ;;
+    "unmute")
+        set false
+        ;;
+    "toggle")
+        set toggle
+        ;;
+    "muted")
+        is-muted
+        ;;
+    "polybar")
+        polybar "$0" "${@:2}"
+        ;;
+esac

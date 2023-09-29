@@ -46,7 +46,7 @@ $reboot$reboot_icon
 $shutdown$shutdown_icon
 $update$update_icon"
 
-chosen=$(echo -e "$options" | rofi -no-config -no-lazy-grab -dmenu -show-icons -p "Uptime: $uptime" -theme $themefile)
+chosen=$(echo -e "$options" | rofi -no-config -no-lazy-grab -dmenu -show-icons -p "В работе: $uptime" -theme $themefile)
 
 case $chosen in
     $lock)

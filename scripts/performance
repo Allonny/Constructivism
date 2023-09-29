@@ -1,0 +1,51 @@
+#!/bin/bash
+
+themefile="$HOME/.config/i3/rofi/performance.rasi"
+
+cpu_mode_file="/sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
+gpu_mode_file="/sys/class/drm/card1/device/power_dpm_state"
+
+cpu_modes=("schedutil" "powersave" "performance")
+gpu_modes=("balanced" "battery" "performance")
+labels=("Сбалансированный" "Энергосбережение" "Производительность")
+
+balance_icon="\0icon\x1faccount-types-reconciled"
+powersave_icon="\0icon\x1fbattery-100-charged"
+performance_icon="\0icon\x1ftools-media-optical-burn"
+
+balance=${labels[0]}
+powersave=${labels[1]}
+performance=${labels[2]}
+
+cpu_mode=($(cat $cpu_mode_file))
+gpu_mode=($(cat $gpu_mode_file))
+echo "CPU: ${cpu_mode[0]}"
+echo "GPU: ${gpu_mode[0]}"
+
+actual=""
+for i in "${!cpu_modes[@]}"; do
+    [ "$cpu_mode" = "${cpu_modes[$i]}" ] && actual=${labels[i]}
+done
+actual=${actual,,}
+
+set() {
+    pkexec sh -c "echo ${cpu_modes[$1]} | tee $cpu_mode_file ; echo ${gpu_modes[$1]} | tee $gpu_mode_file"
+}
+
+options="$balance$balance_icon
+$powersave$powersave_icon
+$performance$performance_icon"
+
+chosen=$(echo -e "$options" | rofi -no-config -no-lazy-grab -dmenu -show-icons -p "Текущий режим: $actual" -theme $themefile)
+
+case $chosen in
+    $balance)
+        set 0
+        ;;
+    $powersave)
+        set 1
+        ;;
+    $performance)
+        set 2
+        ;;
+esac

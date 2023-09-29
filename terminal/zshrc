@@ -83,3 +83,6 @@ function () {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.config/i3-polybar-rofi-configs/terminal/p10k.zsh.
+[[ ! -f ~/.config/i3-polybar-rofi-configs/terminal/p10k.zsh ]] || source ~/.config/i3-polybar-rofi-configs/terminal/p10k.zsh

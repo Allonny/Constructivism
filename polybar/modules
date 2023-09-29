@@ -26,7 +26,7 @@ type = custom/text
 
 content = ""
 content-padding = 1
-content-background = ${color.green}
+content-background = ${color.cyan}
 content-foreground = ${color.foreground-alt}
 content-overline = ${color.background}
 content-underline = ${color.background}
@@ -169,7 +169,7 @@ type = custom/text
 
 content = ""
 content-padding = 1
-content-background = ${color.green}
+content-background = ${color.cyan}
 content-foreground = ${color.foreground-alt}
 content-overline = ${color.background}
 content-underline = ${color.background}
@@ -180,12 +180,30 @@ click-left = $HOME/.config/i3/scripts/polybar-tray-launch toggle
 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Индикатор режима "не беспокоить"
+
+[module/mute-indicator]
+type = custom/script
+
+exec = $HOME/.config/i3/scripts/notify-mute polybar " " "#FF404040 #FFA0A0C0 #FFF0A080"
+tail = true
+interval = 1
+
+format = <label>
+label = %output%
+format-overline = ${color.background}
+format-underline = ${color.background}
+
+
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;; Индикатор раскладки клавиатуры
 
 [module/keyboard-layout]
 type = custom/script
 
-exec = $HOME/.config/i3/scripts/keyboard-layout polybar " " "#FF444240 #FFD0D0D0 #FF404040 #FFA0A0C0 #FFF0A080"
+exec = $HOME/.config/i3/scripts/keyboard-layout polybar " " "#FF444240 #FFD0D0D0 #FF404040 #FFA0A0C0 #FFF0A080"
 tail = true
 interval = 1
 
@@ -204,9 +222,9 @@ format-underline = ${color.background}
 ;;fill = ▪
 ;;indicator = ▪
 ;;empty = ▪
-fill = |
-indicator = |
-empty = |
+fill = ┃
+indicator = ┃
+empty = │
 
 
 
@@ -275,7 +293,7 @@ format-volume-foreground = ${color.foreground}
 format-volume-overline = ${color.background}
 format-volume-underline = ${color.background}
 
-bar-volume-format = %{T2}%fill%%indicator%%{T-}%empty%
+bar-volume-format = %fill%%indicator%%empty%
 bar-volume-background = ${color.background-alt}
 bar-volume-foreground = ${color.foreground}
 bar-volume-width = 10
@@ -349,7 +367,7 @@ format-full-foreground = ${color.foreground}
 format-full-overline = ${color.background}
 format-full-underline = ${color.background}
 
-bar-capacity-format = " %{T2}%fill%%indicator%%{T-}%empty% "
+bar-capacity-format = " %fill%%indicator%%empty% "
 bar-capacity-width = 10
 bar-capacity-gradient = false
 
@@ -423,14 +441,32 @@ label-padding = 1
 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;; Вызов меню производительности
+
+[module/performance]
+type = custom/text
+
+content = ""
+content-padding = 1
+content-background = ${color.cyan}
+content-foreground = ${color.foreground-alt}
+content-overline = ${color.background}
+content-underline = ${color.background}
+
+click-left = $HOME/.config/i3/scripts/performance
+
+
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;; Вызов меню питания
 
-[module/sysmenu]
+[module/powermenu]
 type = custom/text
 
 content = ""
 content-padding = 1
-content-background = ${color.green}
+content-background = ${color.cyan}
 content-foreground = ${color.foreground-alt}
 content-overline = ${color.background}
 content-underline = ${color.background}

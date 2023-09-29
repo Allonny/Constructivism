@@ -62,13 +62,12 @@ border-bottom-color = ${color.yellow}
 
 modules-left = sep launcher sep workspaces sep player
 modules-center = date
-modules-right = traybar sep keyboard-layout sep volume_icon volume_bar sep battery_bar sep cpu sep memory sep sysmenu sep
+modules-right = traybar sep mute-indicator sep keyboard-layout sep volume_icon volume_bar sep battery_bar sep cpu sep memory sep performance sep powermenu sep
 
 font-0 = "Iosevka Light:pixelsize=12;3"
-font-1 = "Iosevka Heavy:pixelsize=12;3"
-font-2 = "Jet Brains Mono Thin:pixelsize=12;3"
-font-3 = "SourceHanMono:pixelsize=12;3"
-font-4 = "icomoon\\-feather:pixelsize=12;3"
+font-1 = "Jet Brains Mono Thin:pixelsize=12;3"
+font-2 = "SourceHanMono:pixelsize=12;3"
+font-3 = "icomoon\\-feather:pixelsize=12;3"
 
 
 
@@ -90,7 +89,7 @@ fixed-center = false
 width = 8
 height = 31
 
-offset-x = 1319
+offset-x = 1241
 offset-y = 24
 
 background = ${color.background-alt}

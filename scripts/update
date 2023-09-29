@@ -13,14 +13,18 @@ log_file="/tmp/update-log"
 
 log_sfx=" 2>> $log_file ; echo \$? >> $log_file ; "
 
+finish_line="Для выхода нажмите ENTER (в противном случае программа сама завершится через 2 минуты)"
+
 commands=()
 commands=("${commands[@]}" "/usr/bin/dnf upgrade --refresh -y $log_sfx")
 commands=("${commands[@]}" "dnf autoremove -y | dnf clean all $log_sfx")
 commands=("${commands[@]}" "/usr/bin/flatpak update -y $log_sfx")
 commands=("${commands[@]}" "flatpak remove --unused --delete-data -y $log_sfx")
-commands=("${commands[@]}" "/sbin/btrfs balance start -v -dusage=100 / $log_sfx")
+commands=("${commands[@]}" "/sbin/btrfs filesystem defragment -r / ; ")
+commands=("${commands[@]}" "/sbin/btrfs filesystem defragment -r /home ; ")
+commands=("${commands[@]}" "/sbin/btrfs balance start --full-balance -v . ; ")
 commands=("${commands[@]}" "$(dirname "$0")/${0##*/} -n $USER ; echo -e '\a' ; ")
-commands=("${commands[@]}" "/usr/bin/read -t 120 -p \"Для выхода нажмите ENTER (в противном случае программа сама завершится через 2 минуты)\" ; ")
+commands=("${commands[@]}" "/usr/bin/read -t 120 -p \"$finish_line\" ; ")
 
 check() {
     [ ! -f $log_file ] && exit 1
@@ -42,7 +46,7 @@ update() {
 }
 
 help() {
-echo -e "Скрипт для упрощения применения обновлений системы.\n"
+    echo -e "Скрипт для упрощения применения обновлений системы.\n"
     echo -e "\t-t\t--terminal <name>\tИспользование конкретного эмулятора терминала\n\t\t\t\t\tвместо оного по-умолчанию.\n"
     echo -e "\t-c\t--command <name>\tДобавление произвольной команды в конец сценария.\n"
     echo -e "\t-n\t--notify <user>\t\tПроверка успешности обновлений и вывод\n\t\t\t\t\tуведомления о завершении стандартного сценария\n\t\t\t\t\t(вызывается автоматически).\n"

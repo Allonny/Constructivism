@@ -1,0 +1,116 @@
+/* Меню режима производительности */
+
+@import "colors.rasi"
+@import "font.rasi"
+@import "icons.rasi"
+
+configuration {
+	show-icons:         true;
+	display-drun: 		"";
+	drun-display-format:"{name}";
+	disable-history:    true;
+	fullscreen:         false;
+	hide-scrollbar: 	true;
+	sidebar-mode: 		false;
+}
+
+window {
+	transparency:       "real";
+	background-color:   @transparent;
+	text-color:         @transparent;
+
+	location:           center;
+    fullscreen:         true;
+
+    // Отступ слева 100, ширина 400, высота подобрана эмпирически для 3 выводимых строк
+    padding:            calc(50% - 112) calc(100% - 500) calc(50% - 50) 100;
+}
+
+textbox-prompt-colon {
+	background-color: 	@green;
+	text-color: 		@foreground-alt;
+
+	expand:				false;
+    width:              31px;
+    height:             31px;
+    horizontal-align:   0.5;
+    vertical-align:     0.5;
+
+	str:				"";
+	font:				"feather 12";
+}
+
+prompt {
+    background-color: 	@background-alt;
+	text-color: 		@foreground;
+
+    expand:             true;
+	height: 			31px;
+    padding:            5px 8px 4px;
+    horizontal-align:   0;
+    vertical-align:     0.5;
+}
+
+inputbar {
+	children: 			[ textbox-prompt-colon, prompt ];
+
+	background-color:   @background-alt;
+	text-color:         @foreground;
+
+	expand:             false;
+}
+
+listview {
+	background-color:   @background;
+
+	spacing:            4px;
+
+	columns:            1;
+	lines:              3;
+	cycle:              true;
+	dynamic:            true;
+	layout:             vertical;
+}
+
+mainbox {
+	children:           [ inputbar, listview ];
+
+	background-color:   @background;
+	border-color:		@yellow;
+
+    spacing:            4px;
+	padding:            4px;
+
+    border:             0px 0px 4px;
+}
+
+element {
+	background-color:   @transparent;
+
+	orientation:        horizontal;
+}
+
+element-icon {
+	background-color:   @transparent;
+
+	size:               24px;
+    padding:            6px 8px 6px 4px;
+    horizontal-align:   west;
+}
+
+element-text {
+	background-color:   @transparent;
+	text-color:			@foreground;
+
+	expand:             true;
+	horizontal-align:   0;
+	vertical-align:     0.5;
+}
+
+element selected {
+	background-color:   @background-alt;
+	border-color:       @blue;
+
+	border:				0px 0px 2px;
+}
+

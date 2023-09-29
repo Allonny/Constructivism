@@ -32,7 +32,7 @@ bindcode --release $mod+60 restart
 
 # exec --no-startup-id pa-applet
 # exec --no-startup-id pulseaudio
-# bindsym --release $mod+Ctrl+m exec --no-startup-id $term -e 'alsamixer'
+# bindsym --release $mod+Ctrl+m exec --no-startup-id $term -e "alsamixer"
 # exec --no-startup-id xfce4-volumed-pulse
 # $mod+M
 bindcode --release $mod+58 exec --no-startup-id pavucontrol
@@ -80,10 +80,6 @@ bindsym --release $mod+space exec --no-startup-id $scriptpath/keyboard-layout to
 bindcode --release $mod+46 exec --no-startup-id dm-tool lock
 bindsym --release $mod+Escape exec --no-startup-id $scriptpath/powermenu
 
-# Открыть/закрыть трэй
-# $mod+x
-bindcode --release $mod+53 exec --no-startup-id $scriptpath/polybar-tray-launch toggle
-
 # Обновление системы
 # $mod+u
 bindcode --release $mod+30 exec --no-startup-id $scriptpath/update -t kitty
@@ -102,9 +98,9 @@ bindsym --release $mod+Shift+backslash exec --no-startup-id pkexec $files && :
 
 # Запуск терминала
 bindsym --release $mod+F3 exec --no-startup-id $term
-bindsym --release $mod+Shift+F3 exec --no-startup-id $term -e 'pkexec su'
+bindsym --release $mod+Shift+F3 exec --no-startup-id $scriptpath/suterm $term
 bindsym --release $mod+Return exec --no-startup-id $term
-bindsym --release $mod+Shift+Return exec --no-startup-id $term -e 'pkexec su'
+bindsym --release $mod+Shift+Return exec --no-startup-id $scriptpath/suterm $term
 
 # Запуск редактора кода
 bindsym --release $mod+F4 exec --no-startup-id howl
@@ -114,11 +110,12 @@ bindsym --release $mod+F5 exec --no-startup-id flatpak run org.mozilla.firefox
 bindsym --release $mod+F6 exec --no-startup-id flatpak run org.telegram.desktop
 bindsym --release $mod+F7 exec --no-startup-id flatpak run org.signal.Signal
 bindsym --release $mod+F8 exec --no-startup-id flatpak run org.gnome.Rhythmbox3
-bindsym --release $mod+Shift+F8 exec --no-startup-id $term -e 'musikcube'
+bindsym --release $mod+Shift+F8 exec --no-startup-id $term "musikcube"
 
 # Запуск системных утилит
-bindsym --release $mod+F12 exec --no-startup-id $term -e 'htop'
-bindsym --release $mod+Shift+F12 exec --no-startup-id $term -e 'pkexec htop'
+bindsym --release $mod+F11 exec --no-startup-id $scriptpath/performance
+bindsym --release $mod+F12 exec --no-startup-id $term "htop"
+bindsym --release $mod+Shift+F12 exec --no-startup-id $scriptpath/suterm $term "htop"
 
 # Создание скриншотов
 bindsym --release Print exec --no-startup-id xfce4-screenshooter -f $HOME/Изображения/Скриншоты
@@ -131,6 +128,14 @@ bindsym --release $mod+Shift+Print exec --no-startup-id xfce4-screenshooter -r -
 # Запуск VPN
 # $mod+` ($mod+ё)
 bindcode --release $mod+49 exec --no-startup-id $scriptpath/vpn-toggle "Surfshark Japan UDP"
+
+# Открыть/закрыть трэй
+# $mod+z
+bindcode --release $mod+52 exec --no-startup-id $scriptpath/polybar-tray-launch toggle
+
+# Переключить режим "не беспокоить"
+# $mod+x
+bindcode --release $mod+53 exec --no-startup-id $scriptpath/notify-mute toggle
 
 # Закрыть уведомление
 # $mod+c
@@ -157,13 +162,12 @@ exec_always $scriptpath/brightness levels 20
 exec_always $scriptpath/volume levels 20 5
 exec_always libinput-gestures-setup restart
 exec_always --no-startup-id xfce4-clipman
-exec --no-startup-id $scriptpath/antiLGBTlaw
-exec --no-startup-id $scriptpath/war-begun
-# exec --no-startup-id xfce4-power-manager
-# exec --no-startup-id while :; do xfce4-clipman ; done
 exec --no-startup-id nm-applet
 exec --no-startup-id blueberry-tray
 exec --no-startup-id /usr/libexec/xfce-polkit
+exec --no-startup-id $scriptpath/antiLGBTlaw
+exec --no-startup-id $scriptpath/antiTRANSlaw
+exec --no-startup-id $scriptpath/war-begun
 
 # Специфичные настройки запуска приложений
 set $sml_size 500 500
@@ -176,6 +180,7 @@ for_window [all]                                  border pixel 4
 # for_window [urgent=latest]                        focus
 
 for_window [title="File Transfer*"]               floating enable
+for_window [class="Anydesk"]                      floating enable resize set $mid_size
 for_window [class="Blueberry"]                    floating enable resize set $sml_size
 for_window [class="GParted"]                      floating enable resize set $lrg_size
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable resize set $mid_size
@@ -187,13 +192,14 @@ for_window [class="org.gnome.Software"]           floating enable resize set $lr
 for_window [class="Pavucontrol"]                  floating enable resize set $mid_size
 for_window [class="settings-manager"]             floating enable resize set $lrg_size
 for_window [class="Xfce4-power-manager-settings"] floating enable resize set $lrg_size
+for_window [title="musikcube"]                    move container to workspace $ws9
+for_window [class="kitty" floating]               resize set $mid_size
 
-assign [class="firefox"] → $ws1
-assign [class="TelegramDesktop"] → $ws2
-# assign [class="Howl"] → $ws3
-# assign [class="Xfce4-terminal"] → $ws3
-assign [class="Rhythmbox"] → $ws9
-assign [class="Spotify"] → $ws9
+assign [class="firefox"] $ws1
+assign [class="TelegramDesktop"] $ws2
+assign [class="Rhythmbox"] $ws9
+assign [class="Spotify"] $ws9
+assign [title="musikcube"] $ws9
 
 
 

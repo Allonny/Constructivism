@@ -12,10 +12,20 @@ foreground-alt =        #FF404040
 foreground-inactive =   #FF808080
 
 ;; Акцентные цвета
-green =                 #FF90D0D0
-yellow =                #FFF8E8A0
 red =                   #FFF0A080
+green =                 #FFCDCC87
+yellow =                #FFF8E8A0
 blue =                  #FFA0A0C0
+magenta =               #FFEC8D8F
+cyan =                  #FF90D0D0
+
+;; Побочные цвета
+red-alt =               #FFEC845B
+green-alt =             #FFC3C16F
+yellow-alt =            #FFF5DE7A
+blue-alt =              #FF9191B6
+magenta-alt =           #FFE77375
+cyan-alt =              #FF7EC9C9
 
 ;; Вспомогательные цвета
 white =                 #FFFFFFFF
