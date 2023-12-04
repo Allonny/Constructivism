@@ -1,5 +1,5 @@
 #!/bin/bash
 
-themefile="$HOME/.config/i3/rofi/apps-active.rasi"
+themefile="$HOME/.config/rofi/apps-active.rasi"
 
-rofi -no-config -no-lazy-grab -show window -modi drun -theme $themefile
+rofi -no-config -no-lazy-grab -show window -window-format "{w} {c}" -modi drun -theme $themefile

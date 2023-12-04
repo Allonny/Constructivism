@@ -23,7 +23,7 @@ window {
     fullscreen:         true;
 
     // Отступ слева 100, ширина 400, высота подобрана эмпирически для 6 выводимых строк
-    padding:            calc(50% - 112) calc(100% - 500) calc(50% - 170) 100;
+    padding:            calc(50% - 136) calc(100% - 500) calc(50% - 135) 100;
 }
 
 textbox-prompt-colon {
@@ -31,13 +31,13 @@ textbox-prompt-colon {
 	text-color: 		@foreground-alt;
 
 	expand:				false;
-    width:              31px;
-    height:             31px;
+    width:              29px;
+    height:             29px;
     horizontal-align:   0.5;
     vertical-align:     0.5;
 
 	str:				"";
-	font:				"feather 12";
+	font:				"feather 11";
 }
 
 prompt {
@@ -45,7 +45,7 @@ prompt {
 	text-color: 		@foreground;
 
     expand:             true;
-	height: 			31px;
+	height: 			29px;
     padding:            5px 8px 4px;
     horizontal-align:   0;
     vertical-align:     0.5;
@@ -63,7 +63,7 @@ inputbar {
 listview {
 	background-color:   @background;
 
-	spacing:            4px;
+	spacing:            8px;
 
 	columns:            1;
 	lines:              6;
@@ -78,33 +78,33 @@ mainbox {
 	background-color:   @background;
 	border-color:		@yellow;
 
-    spacing:            4px;
-	padding:            4px;
+    spacing:            8px;
+	padding:            8px;
 
-    border:             0px 0px 4px;
+	border:				0px 0px 4px;
 }
 
 element {
 	background-color:   @transparent;
 
+	height: 29px;
 	orientation:        horizontal;
 }
 
 element-icon {
 	background-color:   @transparent;
 
-	size:               24px;
-    padding:            6px 8px 6px 4px;
-    horizontal-align:   west;
+	size:               25px;
+    padding:            2px;
 }
 
 element-text {
 	background-color:   @transparent;
 	text-color:			@foreground;
-
 	expand:             true;
 	horizontal-align:   0;
 	vertical-align:     0.5;
+	padding:            5px 8px 4px;
 }
 
 element selected {

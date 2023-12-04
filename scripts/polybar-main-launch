@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-shortname="main"
-barname="polybar-$shortname"
-conffile="$HOME/.config/i3/polybar/config"
-
-while pgrep -f "$barname " > /dev/null; do sleep 1; done
-
-exec -a $barname polybar -c $conffile $shortname

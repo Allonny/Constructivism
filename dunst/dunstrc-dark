@@ -1,0 +1,115 @@
+# Документация
+# https://dunst-project.org/documentation/
+
+[global]
+
+    # Шрифт сообщения
+    font = "Sarasa Fixed J Light 11"
+    line_height = 0
+
+
+    # Формат сообщения
+    format = "<b>%s</b> %p\n%b"
+
+
+    # Выравнивание текста сообщения
+    alignment = left
+
+
+    # Перенос строк
+    word_wrap = yes
+    ignore_newline = no
+
+
+    # Рамка
+    frame_width = 4
+    #frame_color = "#F8E8A0"
+    separator_height = 4
+    separator_color = "#F8E8A0"
+
+
+    # Прозрачность окна уведомления
+    transparency = 0
+
+
+    # Размеры окна уведомления, положение и отступы
+    width = 400
+    height = 200
+
+    origin = "top-center"
+    offset = 0x74
+
+    padding = 5
+    horizontal_padding = 5
+
+
+    # Отображение иконки
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 64
+    icon_path = /usr/share/icons/Papirus-Dark/16x16/actions/:/usr/share/icons/Papirus-Dark/16x16/apps/:/usr/share/icons/Papirus-Dark/16x16/categories/:/usr/share/icons/Papirus-Dark/16x16/devices/:/usr/share/icons/Papirus-Dark/16x16/emblems/:/usr/share/icons/Papirus-Dark/16x16/emotes/:/usr/share/icons/Papirus-Dark/16x16/mimetypes/:/usr/share/icons/Papirus-Dark/16x16/panel/:/usr/share/icons/Papirus-Dark/16x16/places/:/usr/share/icons/Papirus-Dark/16x16/status/
+    show_indicators = no
+
+
+    # Растягивание окна по ширине
+    shrink = yes
+
+
+    # Задержка отображения
+    show_age_threshold = 60
+    idle_threshold = 60
+
+
+    # Показывать количество скрытый уведомлений
+    notification_limit = 6
+    indicate_hidden = yes
+
+
+    # Показывать сообщения из истории
+    sticky_history = yes
+
+
+    # Длина истории
+    history_length = 20
+
+
+    # Счётчик дублирований
+    hide_duplicate_count = true
+
+
+    # Сортировка уведомлений
+    sort = yes
+
+
+    # Браузер
+    browser = firefox
+
+
+    # Отображение на мониторе и слодование за указателем мыши
+    monitor = 0
+    follow = mouse
+
+
+[urgency_low]
+    background = "#343230"
+    foreground = "#D0D0D0"
+    frame_color = "#F8E8A0"
+    highlight = "#F8E8A0"
+
+    timeout = 5
+
+[urgency_normal]
+    background = "#343230"
+    foreground = "#D0D0D0"
+    frame_color = "#F8E8A0"
+    highlight = "#F8E8A0"
+
+    timeout = 30
+
+[urgency_critical]
+    background = "#343230"
+    foreground = "#F0C0C0"
+    frame_color = "#F8E8A0"
+    highlight = "#F8E8A0"
+
+    timeout = 120

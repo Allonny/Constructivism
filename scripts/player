@@ -1,11 +1,14 @@
 #!/bin/bash
 
+pb_colors_file="$HOME/.config/polybar/colors.ini"
+
 player_status=$(playerctl status 2>/dev/null)
 metadata=""
 if [[ $? -eq 0 ]] && [[ $player_status != "Stopped" ]]; then
     artist=$(playerctl metadata artist 2>/dev/null)
     title=$(playerctl metadata title 2>/dev/null)
     metadata="$artist — $title"
+	[[ ${#metadata} -gt 43 ]] && metadata="${metadata::40}..."
 fi
 
 field() {
@@ -47,23 +50,19 @@ next() {
     echo "%{A1:playerctl next:}$block%{A}"
 }
 
-
-
-# Порядок цветов: fg fga
 polybar() {
-    color=($1)
-    fg=${color[0]}
-    fga=${color[1]}
+	fg=$(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file)
+	fga=$(grep -oP "foreground-inactive =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file)
 
-    block="$(prev $fg $fga)"
-    block="$block $(playpause $fg $fga)"
-    block="$block $(next $fg $fga)"
-    block="$block $(metadata $fg $fga)"
+	block="$(prev $fg $fga)"
+	block="$block $(playpause $fg $fga)"
+	block="$block $(next $fg $fga)"
+	block="$block $(metadata $fg $fga)"
 
-    case $player_status in
-        "Playing" | "Paused" | "Stopped") echo $block ;;
-        *) echo "" ;;
-    esac
+	case $player_status in
+	 "Playing" | "Paused" | "Stopped") echo $block ;;
+	 *) echo "" ;;
+	esac
 }
 
 case $1 in

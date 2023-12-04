@@ -1,0 +1,17 @@
+#!/bin/bash
+
+notify_title="Признание ЛГБТ экстремизмом 🏳️‍🌈"
+notify_body="Дней с признания \"Международного движения ЛГБТ\" экстремистской организацией верховным судом РФ: "
+notify_icon="dialog-error"
+notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "${0##*/} \K([\d]+)" || echo 0)
+
+days_from()
+{
+    echo $(( ($(date +%s) - $(date -d $1 +%s)) / (60 * 60 * 24) ))
+}
+
+antiLGBTlaw_date=20231130
+
+days=$(days_from $antiLGBTlaw_date)
+
+notify-send -u critical -r $notify_id -i "$notify_icon" "$notify_title" "$notify_body$days"

@@ -7,7 +7,7 @@ notify_body="Все обновления системы были заверше�
 notify_body_error="Обнаружено несколько ошибок - "
 notify_icon="update-low"
 notify_icon_error="update-high"
-notify_id=$(cat "$(dirname "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
+notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "${0##*/} \K([\d]+)" || echo 0)
 
 log_file="/tmp/update-log"
 
@@ -16,15 +16,12 @@ log_sfx=" 2>> $log_file ; echo \$? >> $log_file ; "
 finish_line="Для выхода нажмите ENTER (в противном случае программа сама завершится через 2 минуты)"
 
 commands=()
-commands=("${commands[@]}" "/usr/bin/dnf upgrade --refresh -y $log_sfx")
-commands=("${commands[@]}" "dnf autoremove -y | dnf clean all $log_sfx")
+commands=("${commands[@]}" "/usr/bin/xbps-install -Suy $log_sfx")
+commands=("${commands[@]}" "/usr/bin/xbps-remove -Roy $log_sfx")
 commands=("${commands[@]}" "/usr/bin/flatpak update -y $log_sfx")
-commands=("${commands[@]}" "flatpak remove --unused --delete-data -y $log_sfx")
-commands=("${commands[@]}" "/sbin/btrfs filesystem defragment -r / ; ")
-commands=("${commands[@]}" "/sbin/btrfs filesystem defragment -r /home ; ")
-commands=("${commands[@]}" "/sbin/btrfs balance start --full-balance -v . ; ")
+commands=("${commands[@]}" "/usr/bin/flatpak remove --unused --delete-data -y $log_sfx")
 commands=("${commands[@]}" "$(dirname "$0")/${0##*/} -n $USER ; echo -e '\a' ; ")
-commands=("${commands[@]}" "/usr/bin/read -t 120 -p \"$finish_line\" ; ")
+commands=("${commands[@]}" "read -t 120 -p \"$finish_line\" ; ")
 
 check() {
     [ ! -f $log_file ] && exit 1

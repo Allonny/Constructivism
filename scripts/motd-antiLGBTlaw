@@ -3,7 +3,7 @@
 notify_title="Закон против ЛГБТ 🏳️‍🌈"
 notify_body="Дней с принятия закона против ЛГБТ: "
 notify_icon="dialog-error"
-notify_id=$(cat "$(dirname -- "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
+notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "${0##*/} \K([\d]+)" || echo 0)
 
 days_from()
 {

@@ -5,7 +5,7 @@
 
     # Шрифт сообщения
     # font = "JetBrains Mono Thin 10"
-    font = "Iosevka Light, SourceHanMono Light 10"
+    font = "Sarasa Fixed J Light 11"
     line_height = 0
 
 
@@ -24,7 +24,6 @@
 
     # Рамка
     frame_width = 4
-    #frame_color = "#F8E8A0"
     separator_height = 4
     separator_color = "#F8E8A0"
 
@@ -92,24 +91,24 @@
 
 
 [urgency_low]
-    background = "#343230"
-    foreground = "#D0D0D0"
+    background = "#F0F0F0"
+    foreground = "#404040"
     frame_color = "#F8E8A0"
     highlight = "#F8E8A0"
 
     timeout = 5
 
 [urgency_normal]
-    background = "#343230"
-    foreground = "#D0D0D0"
+    background = "#F0F0F0"
+    foreground = "#404040"
     frame_color = "#F8E8A0"
     highlight = "#F8E8A0"
 
     timeout = 30
 
 [urgency_critical]
-    background = "#343230"
-    foreground = "#F0C0C0"
+    background = "#F0F0F0"
+    foreground = "#802020"
     frame_color = "#F8E8A0"
     highlight = "#F8E8A0"
 

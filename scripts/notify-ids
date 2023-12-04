@@ -1,11 +1,11 @@
-low-battery-alert 1000
+btry-alert 1000
 vpn-toggle 1010
 keyboard-layout 1010
 brightness 1030
 volume 1040
 update 1050
-system-upgrade 1060
-war-begun 1110
-antiLGBTlaw 1120
-antiTRANSlaw 1130
+motd-war 1110
+motd-antiLGBTlaw 1120
+motd-antiTRANSlaw 1130
+motd-extremeLGBT 1140
 

@@ -3,7 +3,7 @@
 notify_title="Война ⚔️"
 notify_body="Дней с начала войны: "
 notify_icon="dialog-error"
-notify_id=$(cat "$(dirname -- "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
+notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "${0##*/} \K([\d]+)" || echo 0)
 
 days_from()
 {

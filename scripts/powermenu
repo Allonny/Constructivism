@@ -1,17 +1,17 @@
 #!/bin/bash
 
-powermenu_script="$HOME/.config/i3/scripts/powermenu"
-update_script="$HOME/.config/i3/scripts/update -t kitty"
-confirm_script="$HOME/.config/i3/scripts/confirm"
-themefile="$HOME/.config/i3/rofi/powermenu.rasi"
+powermenu_script="$HOME/.local/scripts/powermenu"
+update_script="$HOME/.local/scripts/update -t kitty"
+confirm_script="$HOME/.local/scripts/confirm"
+themefile="$HOME/.config/rofi/powermenu.rasi"
 
-lock_icon="\0icon\x1fobject-locked"
+lock_icon="\0icon\x1fsystem-lock-screen-symbolic"
 hibernate_icon="\0icon\x1fdocument-save"
-logout_icon="\0icon\x1fapplication-exit"
-reboot_icon="\0icon\x1fobject-rotate-left"
-shutdown_icon="\0icon\x1fsystem-devices-panel"
-update_icon="\0icon\x1fcloud-download"
-cancel_icon="\0icon\x1faccount-types-closed"
+logout_icon="\0icon\x1fsystem-log-out-symbolic"
+reboot_icon="\0icon\x1fsystem-reboot-symbolic"
+shutdown_icon="\0icon\x1fsystem-shutdown-symbolic"
+update_icon="\0icon\x1fsoftware-update-available-symbolic"
+cancel_icon="\0icon\x1fedit-undo-symbolic"
 
 lock="Заблокировать"
 hibernate="Сохранить состояние"
@@ -53,18 +53,18 @@ case $chosen in
         dm-tool lock
         ;;
     $hibernate)
-        confirm "${confirm_hibernate[@]}" "systemctl hibernate"
+        confirm "${confirm_hibernate[@]}" "loginctl hibernate"
         ;;
     $logout)
         confirm "${confirm_logout[@]}" "i3-msg exit"
         ;;
     $reboot)
-        confirm "${confirm_reboot[@]}" "systemctl reboot"
+        confirm "${confirm_reboot[@]}" "loginctl reboot"
         ;;
     $shutdown)
-        confirm "${confirm_shutdown[@]}" "systemctl poweroff"
+        confirm "${confirm_shutdown[@]}" "loginctl poweroff"
         ;;
     $update)
-        confirm "${confirm_update[@]}" "$update_script -c \"systemctl poweroff\""
+        confirm "${confirm_update[@]}" "$update_script -c \"loginctl poweroff\""
         ;;
 esac

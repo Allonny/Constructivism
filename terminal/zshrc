@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+HISTFILE=~/.cache/histfile
 HISTSIZE=10000
 SAVEHIST=10000
 bindkey -e
@@ -22,7 +22,9 @@ zle -N down-line-or-beginning-search
 # compinit
 # End of lines added by compinstall
 
-alias cc="clear ; clear"
+alias get="sudo xbps-install -Su"
+alias del="sudo xbps-remove -R"
+alias upd="sudo xbps-install -Suy ; flatpak update -y ; flatpak remove --unused --delete-data -y"
 
 source ~/.local/share/antigen/antigen.zsh
 
@@ -33,6 +35,8 @@ antigen theme romkatv/powerlevel10k
 
 antigen apply
 
+autoload -U select-word-style
+select-word-style bash
 
 function () {
 	emulate -L zsh -o no_aliases
@@ -53,6 +57,7 @@ function () {
 		add-zle-hook-widget zle-line-finish .zshrc::term-normal-mode
 	fi
 
+	# View squences in showkey -a
 	# `seq` is a fallback for the case when terminfo is not available.
 	local kcap seq widget
 	for	kcap   seq        widget (                       # key name
@@ -70,9 +75,11 @@ function () {
 		kcbt   '^[[Z'     reverse-menu-complete          # Shift + Tab
 		x      '^[[2;5~'  copy-region-as-kill            # Ctrl + Insert
 		kDC5   '^[[3;5~'  kill-word                      # Ctrl + Delete
-		kBS5   '\C-H'  backward-kill-word             # Ctrl + Backspace
+		kCBS   '^H'       backward-kill-word             # Ctrl + Backspace
 		kRIT5  '^[[1;5C'  forward-word                   # Ctrl + RightArrow
 		kLFT5  '^[[1;5D'  backward-word                  # Ctrl + LeftArrow
+		kCABS  '^[^H'     clear-screen                   # Ctrl + Alt + Backspace
+
 
 	); do
 		bindkey -M emacs ${terminfo[$kcap]:-$seq} $widget
@@ -82,7 +89,4 @@ function () {
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.config/i3-polybar-rofi-configs/terminal/p10k.zsh.
-[[ ! -f ~/.config/i3-polybar-rofi-configs/terminal/p10k.zsh ]] || source ~/.config/i3-polybar-rofi-configs/terminal/p10k.zsh
+[[ ! -f ~/.local/share/p10k/.p10k.zsh ]] || source ~/.local/share/p10k/.p10k.zsh

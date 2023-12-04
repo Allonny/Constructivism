@@ -1,0 +1,7 @@
+#!/bin/bash
+
+motds=$(find $HOME/.local/scripts/* -type f -executable -print | grep "motd")
+
+for motd in $motds ; do
+	[ $motd != $0 ] && eval "$motd"
+done

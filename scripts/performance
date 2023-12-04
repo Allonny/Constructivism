@@ -1,6 +1,6 @@
 #!/bin/bash
 
-themefile="$HOME/.config/i3/rofi/performance.rasi"
+themefile="$HOME/.config/rofi/performance.rasi"
 
 cpu_mode_file="/sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
 gpu_mode_file="/sys/class/drm/card1/device/power_dpm_state"

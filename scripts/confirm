@@ -1,5 +1,5 @@
 #!/bin/bash
 
-themefile="$HOME/.config/i3/rofi/confirm.rasi"
+themefile="$HOME/.config/rofi/confirm.rasi"
 
 [[ $2 == $(echo -e "$2$3\n$4$5" | rofi -no-config -no-lazy-grab -dmenu -show-icons -p "$1" -theme $themefile) ]]

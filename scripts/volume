@@ -3,87 +3,212 @@
 # Скрипт для изменения громкости, шоб ~*~*~красивое~*~*~ было
 
 current_level_file="/tmp/volume_levels"
+pb_modules_file="$HOME/.config/polybar/modules.ini"
+pb_colors_file="$HOME/.config/polybar/colors.ini"
+pb_icons=("" "" "" "")
+pb_steps=10
 
 notify_title="Громкость"
 notify_body="Текущая громкость системы"
-notify_icon="audio-volume"
-notify_icon_0="audio-volume-muted"
-notify_icon_1="audio-volume-low"
-notify_icon_2="audio-volume-medium"
-notify_icon_3="audio-volume-high"
-notify_id=$(cat "$(dirname "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
+notify_body_muted="Звук отключен"
+notify_icons=("audio-volume-muted" "audio-volume-low" "audio-volume-medium" "audio-volume-high")
+notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "${0##*/} \K([\d]+)" || echo 0)
 
 # Создание дефолтного файла-конфигурации с 10 шагами
 [[ ! -f $current_level_file ]] && levels 10
 
+# Принудительное обновление полибара
+update() {
+	polybar-msg action volume hook 0
+}
+
 # Получить текущую яркость, возвращает целое число - громкость в процентах
-get() {
-    levels=( $( pactl get-sink-volume @DEFAULT_SINK@ | grep -oP "[\w\p{P}]+\s+\K([\d]+%\s)" | grep -oP "\d+" ) )
-    echo $(( ( ${levels[0]} + ${levels[1]} ) / 2 ))
+get_volume() {
+	levels=( $( pactl get-sink-volume @DEFAULT_SINK@ 2>/dev/null | grep -oP "[\w\p{P}]+\s+\K([\d]+%\s)" | grep -oP "\d+" ) ) || exit 1
+
+	echo $(( ( ${levels[0]} + ${levels[1]} ) / 2 ))
+
+	steps=($(cat $current_level_file))
+	if [[ ${steps[${steps[0]}]} -ne $levels ]] ; then
+		level=0
+		for i in ${steps[@]:1} ; do
+			(( level++ ))
+			if [[ $i -ge $levels ]] ; then
+				steps[0]=$level
+				break
+			fi
+		done
+	echo ${steps[@]} > $current_level_file &
+	fi
+}
+
+get_mute() {
+	mute=$(pactl get-sink-mute @DEFAULT_SINK@ 2>/dev/null | grep -oP "\w*: \K(\w+)") || exit 1
+	echo $mute
 }
 
 # Установить текущую яркость, аргументы: целое число - громкость в процентах
-set() {
-    pactl set-sink-mute @DEFAULT_SINK@ false
-    pactl set-sink-volume @DEFAULT_SINK@ $1%
-    notify $1
+set_volume() {
+	pactl set-sink-mute @DEFAULT_SINK@ false 2>/dev/null || exit 1
+	pactl set-sink-volume @DEFAULT_SINK@ $1% 2>/dev/null || exit 1
+	notify $1
+}
+
+set_mute() {
+	pactl set-sink-mute @DEFAULT_SINK@ toggle 2>/dev/null || exit 1
+	notify $(get_volume)
 }
 
 # Увеличить яркость на один шаг
 inc() {
-    steps=($(cat $current_level_file))
-    [[ ${steps[0]} -lt $(( ${#steps[@]} - 1 )) ]] && steps[0]=$(( ${steps[0]} + 1 ))
-    echo ${steps[@]} > $current_level_file
-    set ${steps[${steps[0]}]}
+	steps=($(cat $current_level_file))
+	[[ ${steps[0]} -lt $(( ${#steps[@]} - 1 )) ]] && steps[0]=$(( ${steps[0]} + 1 ))
+	set_volume ${steps[${steps[0]}]}
+	echo ${steps[@]} > $current_level_file &
 }
 
 # Уменьшить яркость на один шаг
 dec() {
-    steps=($(cat $current_level_file))
-    [[ ${steps[0]} -gt 1 ]] && steps[0]=$(( ${steps[0]} - 1 ))
-    echo ${steps[@]} > $current_level_file
-    set ${steps[${steps[0]}]}
+	steps=($(cat $current_level_file))
+	[[ ${steps[0]} -gt 1 ]] && steps[0]=$(( ${steps[0]} - 1 ))
+	set_volume ${steps[${steps[0]}]}
+	echo ${steps[@]} > $current_level_file &
+}
+
+get_pb_color() {
+	color=()
+	color=(${color[@]} $(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "background-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "foreground-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "foreground-inactive =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "blue =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "red =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+
+	echo ${color[@]}
+}
+
+get_pb_bar() {
+	bar=()
+	bar=(${bar[@]} $(grep -oP "^fill\s*=\s*\K([^\n]+)$" $pb_modules_file))
+	bar=(${bar[@]} $(grep -oP "^indicator\s*=\s*\K([^\n]+)$" $pb_modules_file))
+	bar=(${bar[@]} $(grep -oP "^empty\s*=\s*\K([^\n]+)$" $pb_modules_file))
+
+	echo ${bar[@]}
+}
+
+polybar() {
+	color=($(get_pb_color))
+	bg=${color[0]}
+	bga=${color[1]}
+	fg=${color[2]}
+	fga=${color[3]}
+	fgi=${color[4]}
+	fgu=${color[6]}
+	prfx=${color[5]}
+	prfxa=${color[6]}
+
+	bar=($(get_pb_bar))
+	fill=${bar[0]}
+	indicator=${bar[1]}
+	empty=${bar[2]}
+
+	volume=$(get_volume)
+	mute=$(get_mute)
+
+	pb_icon="%{B$prfx F$fga} ${pb_icons[3]} %{B- F-}"
+	[[ $volume -lt 70 ]] && pb_icon="%{B$prfx F$fga} ${pb_icons[2]} %{B- F-}"
+	[[ $volume -lt 40 ]] && pb_icon="%{B$prfx F$fga} ${pb_icons[1]} %{B- F-}"
+	[[ $volume -lt 5  ]] && pb_icon="%{B$prfxa F$fga} ${pb_icons[0]} %{B- F-}"
+	[[ $mute == "yes"  ]] && pb_icon="%{B$prfxa F$fga} ${pb_icons[0]} %{B- F-}"
+
+	bar="%{B$bga} "
+	if [[ $mute == "yes" ]] ; then
+		bar="$bar%{F$fg}Без звука!%{F-}"
+	else
+		pos=$(( (volume + pb_steps / 2) / pb_steps ))
+		opos=$(( pos - pb_steps ))
+		for i in $(seq 1 $pb_steps) ; do
+			el=""
+			[[ $i -gt $pos ]] && el="%{F$fgi}$empty%{F-}"
+			[[ $i -eq $pos ]] && el="%{F$fg}$indicator%{F-}"
+			[[ $i -lt $pos ]] && el="%{F$fg}$fill%{F-}"
+			[[ $i -eq $opos ]] && el="%{F$fgu}$fill%{F-}"
+			[[ $i -lt $opos ]] && el="%{F$fgu}$fill%{F-}"
+
+			bar="$bar$el"
+		done
+	fi
+
+	block="%{u$bg o$bg}%{+u}%{+o}%{A1:$1 mute:}$pb_icon%{A}%{A4:$1 inc:}%{A5:$1 dec:}$bar %{B- F-}%{A}%{A}%{u- o-}"
+	echo $block
 }
 
 # Послать уведомление об изменении громкости
 notify() {
-    [[ $1 -ge 70 ]] && notify_icon="$notify_icon_3"
-    [[ $1 -lt 70 ]] && notify_icon="$notify_icon_2"
-    [[ $1 -lt 40 ]] && notify_icon="$notify_icon_1"
-    [[ $1 -lt 5  ]] && notify_icon="$notify_icon_0"
-    notify-send -u low -r $notify_id -i "$notify_icon" "$notify_title" "$notify_body$current_layout" -h int:value:$1
+	update
+
+	mute=$(get_mute)
+
+	if [[ $mute == "yes" ]] ; then
+		notify_icon="${notify_icons[0]}"
+		notify-send -u low -r $notify_id -i "$notify_icon" "$notify_title" "$notify_body_muted"
+	else
+		notify_icon="${notify_icons[3]}"
+		[[ $1 -lt 70 ]] && notify_icon="${notify_icons[2]}"
+		[[ $1 -lt 40 ]] && notify_icon="${notify_icons[1]}"
+		[[ $1 -lt 5  ]] && notify_icon="${notify_icons[0]}"
+		notify-send -u low -r $notify_id -i "$notify_icon" "$notify_title" "$notify_body" -h int:value:$1
+	fi
 }
 
 # Установить количество шагов, аргументы: два целых неотрицательных числа - количество шагов от 0 до 100 (как минимум 1) и количество шагов свех 100 (может быть 0)
 levels() {
-    steps=($(python - << EOF
-steps = $(( 1 + $1 ))
-upsteps = $(( 0 + $2 ))
+	steps=($(echo $1 | grep -oP "^\d+(\+?\d+)?$" | grep -oP "\d+")) || exit 1
+	steps=($(python - << EOF
+steps = $(( 1 + ${steps[0]} ))
+upsteps = $(( 0 + ${steps[1]} ))
 levels = list(map(lambda x: x * 100 // (steps - 1), range(steps + upsteps)))
 print(' '.join(map(str, levels)))
 EOF
-    ))
+	))
 
-    steps=( $(( ${#steps[@]} / 2 )) ${steps[@]})
-    echo ${steps[@]} > $current_level_file
-    set ${steps[${steps[0]}]}
+	steps=("0" ${steps[@]})
+	echo ${steps[@]} > $current_level_file &
+	for pid in $(pgrep ${0##*/}) ; do
+		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Killed $pid"
+	done
+	sleep 1s
+	while :; do
+		update
+		sleep 5s
+	done &
 }
 
-
 case $1 in
-    "get")
-        get
-        ;;
-    "set")
-        set "${@:2}"
-        ;;
-    "inc")
-        inc
-        ;;
-    "dec")
-        dec
-        ;;
-    "levels")
-        levels "${@:2}"
-        ;;
+	"get")
+		get_volume
+		get_mute
+		;;
+	"set_volume")
+		set_volume "${@:2}"
+		;;
+	"inc")
+		inc
+		;;
+	"dec")
+		dec
+		;;
+	"mute")
+		set_mute
+		;;
+	"levels")
+		levels "${@:2}"
+		;;
+	"polybar")
+		polybar "$0"
+		;;
+	"update")
+		update
+		;;
 esac

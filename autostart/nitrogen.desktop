@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=nitrogen
+Type=Application
+TryExec=nitrogen --restore
+Exec=nitrogen --restore

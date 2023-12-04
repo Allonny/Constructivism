@@ -2,156 +2,173 @@
 
 # Скрипт изменения раскладки клавиатуры
 
+capslock_file="/sys/class/leds/input0::capslock/brightness"
 layouts_file="/tmp/keyboard-layouts"
+pb_colors_file="$HOME/.config/polybar/colors.ini"
+icons=("" "")
 
 notify_title="Раскладка клавиатуры"
 notify_body="Текущая раскладка: "
 # notify_icon="input-keyboard"
 notify_icon="indicator-keyboard-"
-notify_id=$(cat "$(dirname "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
+notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "${0##*/} \K([\d]+)" || echo 0)
+
+# Принудительное обновление полибара
+update() {
+	polybar-msg action keyboard-layout hook 0
+}
 
 # Примение раскладки, аргументы: <раскладки (через зарятую)> <варианты (через запятую)>
 apply_layout() {
-  setxkbmap -layout "$1" -variant "$2" -option
+	setxkbmap -layout "$1" -variant "$2" -option
+	polybar-msg action keyboard-layout hook 0
 }
 
 # Установка списка раскладок и их вариантов, аругменты: раскладка1[:вариант1] [раскладка2[:вариант2]] ...
 set() {
-    layouts=($@)
-    echo ${layouts[@]} > $layouts_file
+	layouts=($@)
+	echo ${layouts[@]} > $layouts_file
 
-    layout=""
-    variant=""
+	layout=""
+	variant=""
 
-    for i in ${layouts[@]}; do
-        i=(${i//:/ })
-        layout="$layout,${i[0]}"
-        variant="$variant,${i[1]}"
-    done
+	for i in ${layouts[@]}; do
+		i=(${i//:/ })
+		layout="$layout,${i[0]}"
+		variant="$variant,${i[1]}"
+	done
 
-    apply_layout ${layout:1} ${variant:1}
+	apply_layout ${layout:1} ${variant:1}
+
+	for pid in $(pgrep ${0##*/}) ; do
+		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Killed $pid"
+	done
+	while :; do
+		update
+		sleep 5s
+	done &
 }
 
-# Возвращает список всех установленных раскладок в текущем смещении
-get_layout_list() {
-    cat $layouts_file
+# Переключение раскладки (смещение влево списка раскладок)
+toggle() {
+	layouts=($(cat $layouts_file))
+	layouts=(${layouts[@]:1} ${layouts[0]})
+	echo "${layouts[@]}" > $layouts_file
+
+	for i in ${layouts[@]}; do
+		i=(${i//:/ })
+		layout="$layout,${i[0]}"
+		variant="$variant,${i[1]}"
+	done
+
+	apply_layout ${layout:1} ${variant:1}
+
+	current_layout=${layouts[0]}
+	current_layout=${current_layout^^}
+	current_layout=${current_layout//:/ в варианте }
+
+	layout=${layouts[0]//us/en}
+
+	notify-send -u low -r $notify_id -i "$notify_icon${layout^}" "$notify_title" "$notify_body$current_layout"
 }
 
 # Получение текущей установленной расскладки в сиситеме, возвращает буквенный индекс раскладки
 get_layout() {
-    layout=$(setxkbmap -query | grep -oP 'layout:\s*\K([\w,]+)')
-    echo $layout
+	layout=$(setxkbmap -query | grep -oP 'layout:\s*\K([\w,]+)')
+	echo $layout
 }
 
 # Получение состояния капслока, возвращает on или off
 get_CapsLock() {
-    CapsLock=$(xset q | grep -oP 'Caps Lock:\s{0,}\K([\w]+)')
-    echo $CapsLock
-}
-
-# Получение "цветов оповещения", установленных для i3status
-get_color() {
-    current_CapsLock=$(get_CapsLock)
-    if [[ $current_CapsLock = "on" ]]; then
-        color=$(grep -oP 'color_bad\s=\s"\K(.{7})' "/etc/i3status.conf")
-    else
-        color=$(grep -oP 'color_good\s=\s"\K(.{7})' "/etc/i3status.conf")
-    fi
-    color="\"color\":\"$color\","
-    echo $color
+	[ $(cat $capslock_file) == "1" ] && echo "on" || echo "off"
 }
 
 # Возвращает текущие данные о раскладке и состоянии капслока
-get() {
-    current_layout=$(get_layout)
-    current_layout=${current_layout:0:2}
-    current_layout=${current_layout^^}
-    current_CapsLock=$(get_CapsLock)
-    current_CapsLock=${current_CapsLock//on/}
-    current_CapsLock=${current_CapsLock//off/}
-    block="$current_CapsLock $current_layout"
-    echo $block
+get_state() {
+	current_layout=$(get_layout)
+	current_layout=${current_layout:0:2}
+	current_layout=${current_layout^^}
+	current_CapsLock=$(get_CapsLock)
+	current_CapsLock=${current_CapsLock//on/}
+	current_CapsLock=${current_CapsLock//off/}
+	block="$current_CapsLock $current_layout"
+	echo $block
+}
+
+# Получение "цветов оповещения", установленных для i3status
+get_i3_color() {
+	current_CapsLock=$(get_CapsLock)
+	if [[ $current_CapsLock = "on" ]]; then
+		color=$(grep -oP 'color_bad\s=\s"\K(.{7})' "/etc/i3status.conf")
+	else
+		color=$(grep -oP 'color_good\s=\s"\K(.{7})' "/etc/i3status.conf")
+	fi
+	color="\"color\":\"$color\","
+	echo $color
+}
+
+get_pb_color() {
+	color=()
+	color=(${color[@]} $(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "background-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "foreground-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+
+	current_CapsLock=$(get_CapsLock)
+	if [[ $current_CapsLock = "on" ]]; then
+		color=(${color[@]} $(grep -oP "red =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	else
+		color=(${color[@]} $(grep -oP "blue =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	fi
+
+	echo ${color[@]}
 }
 
 # Возвращает блок для встраивания в i3status
 i3status() {
 	while :
-    do
-    	read line
-    	layout=$(get)
-    	current_color=$(get_color)
-    	block="{\"name\":\"Keyboard Layout\",$current_color\"markup\":\"none\",\"full_text\":\" $layout \",\"align\":\"center\",\"min_width\":70}"
-    	echo "${line/\[\{/\[$block,\{}" || exit 1
-    done
+	do
+		read line
+		state=$(get_state)
+		current_color=$(get_i3_color)
+		block="{\"name\":\"Keyboard Layout\",$current_color\"markup\":\"none\",\"full_text\":\" $state \",\"align\":\"center\",\"min_width\":70}"
+		echo "${line/\[\{/\[$block,\{}" || exit 1
+	done
 }
 
-# Возвращает блок для встраивания в polybar (завязано на моём текущем конфиге, не обессудьте, как-нибудь, но мои руки и до сюда доберутся)
-# Порядок иконок: iprfx iprfxa
-# Порядок цветов: bga fg fga prfx prfxa
+# Возвращает блок для встраивания в polybar
 
 polybar() {
-    icon=($2)
-    iprfx=${icon[0]}
-    iprfxa=${icon[1]}
+	state=($(get_state))
 
-    color=($3)
-    bga=${color[0]}
-    fg=${color[1]}
-    fga=${color[2]}
-    prfx=${color[3]}
-    prfxa=${color[4]}
+	color=($(get_pb_color))
+	bg=${color[0]}
+	bga=${color[1]}
+	fg=${color[2]}
+	fga=${color[3]}
+	prfx=${color[4]}
 
-    current_CapsLock=$(get_CapsLock)
-    if [[ $current_CapsLock = "on" ]]; then
-        block="%{B$prfxa F$fga} $iprfxa %{B- F-}"
-    else
-        block="%{B$prfx F$fga} $iprfx %{B- F-}"
-    fi
-
-    current_layout=$(get_layout)
-    current_layout=${current_layout:0:2}
-    current_layout=${current_layout^^}
-    block="$block%{A1:$1 toggle:}%{B$bga F$fg} $current_layout %{B- F-}%{A}"
-
-    echo $block
-}
-
-# Переключение раскладки (смещение влево списка раскладок)
-toggle() {
-    layouts=($(get_layout_list))
-    layouts=(${layouts[@]:1} ${layouts[0]})
-    echo "${layouts[@]}" > $layouts_file
-
-    for i in ${layouts[@]}; do
-        i=(${i//:/ })
-        layout="$layout,${i[0]}"
-        variant="$variant,${i[1]}"
-    done
-
-    apply_layout ${layout:1} ${variant:1}
-
-    current_layout=${layouts[0]}
-    current_layout=${current_layout^^}
-    current_layout=${current_layout//:/ в варианте }
-
-    layout=${layouts[0]//us/en}
-    notify-send -u low -r $notify_id -i "$notify_icon${layout^}" "$notify_title" "$notify_body$current_layout"
+	block="%{u$bg o$bg}%{+u}%{+o}%{B$prfx F$fga} ${state[0]} %{A1:$1 toggle:}%{B$bga F$fg} ${state[1]} %{B- F-}%{A}%{u- o-}"
+	echo $block
 }
 
 case $1 in
-    "set")
-        set "${@:2}"
-        ;;
-    "get")
-        get
-        ;;
-    "i3status")
-        i3status
-        ;;
-    "polybar")
-        polybar "$0" "${@:2}"
-        ;;
-    "toggle")
-        toggle
-        ;;
+	"set")
+		set "${@:2}"
+		;;
+	"get")
+		get_state
+		;;
+	"i3status")
+		i3status
+		;;
+	"polybar")
+		polybar "$0"
+		;;
+	"toggle")
+		toggle
+		;;
+	"update")
+		update
+		;;
 esac

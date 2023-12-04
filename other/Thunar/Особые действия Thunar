@@ -1,23 +1,29 @@
 Исполнить | Исполнить файл в окне терминала
+Execute | Execute a file in the terminal window
     exo-open --launch TerminalEmulator "bash -c '%f ; read'"
     Ctrl + Enter
 
 Создать символьную ссылку | Создать символьную ссылку на выбранный файл или директорию
-    file=%f ; [[ $file != $(pwd) ]] && ln -s "${file}" "${file}_ссылка"
+Create a symlink | Create a symbolic link to the selected file or directory
+    file=%f ; [ "${file}" != "$(pwd)" ] && ln -s "${file}" "${file}_link"
     -//-
 
-Открыть в терминале | Открыть денную директорию в терминале
+Открыть в терминале | Открыть директорию в терминале
+Open in terminal | Open directory in terminal
     path="$(pwd)" ; exo-open --working-directory "$path" --launch TerminalEmulator
     Ctrl + Super + Enter
 
 Открыть в новом окне | Открыть директорию в новом окне
+Open in a new window | Open directory in a new window
     path="$(pwd)" ; exo-open --working-directory "$path" --launch FileManager
     Ctrl + Super + Backslash
 
-Открыть как root в терминале | Открыть данную директорию с правами root в терминале
+Открыть как root в терминале | Открыть директорию с правами root в терминале
+Open as root in the terminal | Open the directory as root in the terminal
     path="$(pwd)" ; pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY exo-open --working-directory "$path" --launch TerminalEmulator
     Alt + Super + Enter
 
-Открыть как root в новом окне | Открыть данную директорию с правами root в новом окне
+Открыть как root в новом окне | Открыть директорию с правами root в новом окне
+Open as root in a new window | Open directory as root in a new window
     path="$(pwd)" ; pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY exo-open --working-directory "$path" --launch FileManager
     Alt + Super + Backslash

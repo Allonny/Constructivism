@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>edit-link</icon>
+	<name>Create a symlink</name>
+	<submenu></submenu>
+	<unique-id>1699029977581144-1</unique-id>
+	<command>file=%f ; [ &quot;${file}&quot; != &quot;$(pwd)&quot; ] &amp;&amp; ln -s &quot;${file}&quot; &quot;${file}_link&quot;</command>
+	<description>Create a symbolic link to the selected file or directory</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open in terminal</name>
+	<submenu>Open New</submenu>
+	<unique-id>1699030110134360-2</unique-id>
+	<command>path=&quot;$(pwd)&quot; ; exo-open --working-directory &quot;$path&quot; --launch TerminalEmulator</command>
+	<description>Open directory in terminal</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>folder-paleorange</icon>
+	<name>Open in a new window</name>
+	<submenu>Open New</submenu>
+	<unique-id>1699030502696068-3</unique-id>
+	<command>path=&quot;$(pwd)&quot; ; exo-open --working-directory &quot;$path&quot; --launch FileManager</command>
+	<description>Open directory in a new window</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>utilities-terminal_su</icon>
+	<name>Open as root in the terminal</name>
+	<submenu>Open New</submenu>
+	<unique-id>1699030582141623-4</unique-id>
+	<command>path=&quot;$(pwd)&quot; ; pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY exo-open --working-directory &quot;$path&quot; --launch TerminalEmulator</command>
+	<description>Open the directory as root in the terminal</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>folder-red</icon>
+	<name>Open as root in a new window</name>
+	<submenu>Open New</submenu>
+	<unique-id>1699030657861708-5</unique-id>
+	<command>path=&quot;$(pwd)&quot; ; pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY exo-open --working-directory &quot;$path&quot; --launch FileManager</command>
+	<description>Open directory as root in a new window</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+</actions>

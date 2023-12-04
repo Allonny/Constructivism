@@ -11,7 +11,7 @@ notify_title_error="Ошибка VPN подключения"
 notify_body_error=""
 notify_icon_error="dialog-error"
 
-notify_id=$(cat "$(dirname "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
+notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "${0##*/} \K([\d]+)" || echo 0)
 
 [[ -z $(nmcli -g ACTIVE connection show "$1") ]] && state="up" || state="down"
 notify_body_error=$(nmcli -w 10 connection $state "$1" 2>&1)

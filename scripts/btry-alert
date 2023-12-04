@@ -3,6 +3,11 @@
 # Скрипт для оповещения о низком заряде аккумулятора устройства
 # Аругменты: пороговое_значение1:время_опрашивания_до_порогового_значения_1 [пороговое_значение2:время_опрашивания_до_порогового_значения_2] ...
 
+for pid in $(pgrep ${0##*/})
+do
+	[ $pid != $$ ] && kill -s KILL -- $pid && echo "Killed $pid"
+done
+
 bat_file="/sys/class/power_supply/BAT1/uevent"
 
 plug="---"
@@ -11,7 +16,7 @@ notify_title="Низкий заряд батареи!"
 notify_body="Осталось $plug% заряда, устройство следует подключить к источнику питания"
 # notify_icon="dialog-warning"
 notify_icon="battery-empty"
-notify_id=$(cat "$(dirname "$0")/notify-ids" | grep -oP "${0##*/} \K([\d]+)")
+notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "${0##*/} \K([\d]+)" || echo 0)
 
 alert_time=5s
 sleep_time=0
@@ -34,7 +39,10 @@ do
         [[ $bat_capacity -ge ${setup[0]} ]] && sleep_time=${setup[1]} && break
     done
 
-    [[ $bat_status == "Discharging" ]] && [[ $bat_capacity -lt $notify_level ]] &&  echo "$notify_title" && notify-send -u critical -r $notify_id -i "$notify_icon" "$notify_title" "${notify_body//$plug/$bat_capacity}"
+    [[ $bat_status == "Discharging" ]] && \
+	[[ $bat_capacity -lt $notify_level ]] && \
+	echo "$notify_title" && \
+	notify-send -u critical -r $notify_id -i "$notify_icon" "$notify_title" "${notify_body//$plug/$bat_capacity}"
 
     sleep $sleep_time
-done
+done &

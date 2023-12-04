@@ -1,0 +1,20 @@
+/* Цвета, используемые в rofi (формат RGBA) */
+
+* {
+	/* Базовые цвета */
+	background:       #343230FF;
+	background-alt:   #444240FF;
+	foreground:       #D0D0D0FF;
+	foreground-alt:   #404040FF;
+
+    /* Акцентные цвета */
+    green:            #90D0D0FF;
+    yellow:           #F8E8A0FF;
+    red:              #F0A080FF;
+    blue:             #A0A0C0FF;
+
+    /* Вспомогательные цвета */
+    white:            #FFFFFFFF;
+    black:            #000000FF;
+    transparent:      #00000000;
+}

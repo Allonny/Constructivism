@@ -1,5 +1,5 @@
 /* Шрифт, используемы в rofi */
 
 * {
-    font:               "Iosevka Light 12";
+    font:               "Sarasa Fixed J Light 11";
 }

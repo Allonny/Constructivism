@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+shortname="main"
+barname="polybar-$shortname"
+
+kill -s KILL -- $(pgrep polybar) ; exec -a $barname polybar $shortname &

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=picom
+Type=Application
+TryExec=picom
+Exec=picom

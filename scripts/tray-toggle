@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pid=$(pgrep polybar) && polybar-msg -p "$pid" action "#tray.module_toggle"

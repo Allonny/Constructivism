@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=XFCE PolKit
+Type=Application
+TryExec=/usr/libexec/xfce-polkit
+Exec=/usr/libexec/xfce-polkit
