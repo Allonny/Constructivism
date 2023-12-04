@@ -1,5 +1,8 @@
 Исходные конфиги polybar: https://github.com/adi1090x/polybar-themes
 Исходники скрипта модуля плеера: https://gist.github.com/gjabell/673aaaed9a61cde14236cfc0f00e712d
+Автодополнение zsh: https://github.com/zsh-users/zsh-autosuggestions
+Подсветка синтаксиса zsh: https://github.com/zsh-users/zsh-syntax-highlighting
+Тема zsh: https://github.com/romkatv/powerlevel10k
 Комбинации клавиш для zsh: https://github.com/jirutka/alpine-zsh-config
 Иконки: https://dropways.github.io/feathericons/
 Однострочный интерфейс Firefox: https://github.com/newmanls/OnelineProton
