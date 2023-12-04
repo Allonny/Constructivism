@@ -1,1 +1,2 @@
-scripts/.xkb/layouts_list
+nvim/plugged
+terminal/antigen/bundles
