@@ -91,15 +91,14 @@ bindsym --release $mod+Return exec --no-startup-id $term
 bindsym --release $mod+Shift+Return exec --no-startup-id suterm $term
 
 # Запуск редактора кода
-bindsym --release $mod+F4 exec --no-startup-id 
+bindsym --release $mod+F4 exec --no-startup-id $term nvim 
 
 # Запуск повседневных приложений
 bindsym --release $mod+F5 exec --no-startup-id flatpak run org.mozilla.firefox
 bindsym --release $mod+F6 exec --no-startup-id flatpak run org.telegram.desktop
 bindsym --release $mod+F7 exec --no-startup-id flatpak run org.signal.Signal
-bindsym --release $mod+F8 exec --no-startup-id flatpak run org.gnome.Rhythmbox3
-# bindsym --release $mod+Shift+F8 exec --no-startup-id $term --class=Musikcube musikcube
-bindsym --release $mod+Shift+F8 exec --no-startup-id $term --class=Kew kew
+bindsym --release $mod+F8 exec --no-startup-id $term --class=Kew kew
+bindsym --release $mod+Shift+F8 exec --no-startup-id flatpak run org.gnome.Rhythmbox3
 
 # Запуск системных утилит
 bindsym --release $mod+F12 exec --no-startup-id $term --class=Htop htop
@@ -122,10 +121,6 @@ bindcode --release $mod+49 exec --no-startup-id vpn-toggle "Surfshark Japan UDP"
 # $mod+z
 bindcode --release $mod+52 exec --no-startup-id tray-toggle
 
-# Переключить режим "не беспокоить"
-# $mod+x
-bindcode --release $mod+53 exec --no-startup-id notify-mute toggle
-
 # Закрыть уведомление
 # $mod+c
 bindcode --release $mod+54 exec --no-startup-id dunstctl close
@@ -133,6 +128,10 @@ bindcode --release $mod+54 exec --no-startup-id dunstctl close
 # Закрыть все уведомления
 # $mod+Shift+c
 bindcode --release $mod+Shift+54 exec --no-startup-id dunstctl close-all
+
+# Переключить режим "не беспокоить"
+# $mod+Ctrl+c
+bindcode --release $mod+Ctrl+54 exec --no-startup-id notify-mute toggle
 
 # Показать историю уведомлений
 # $mod+v
@@ -142,10 +141,10 @@ bindcode --release $mod+55 exec --no-startup-id dunstctl history-pop
 exec --no-startup-id dex -as $HOME/.config/autostart
 exec_always --no-startup-id polybar-launch
 exec_always --no-startup-id btry-alert 25:10m 20:5m 15:1m 12:30s
-exec_always keyboard-layout set us ru
-exec_always brightness levels 20
-exec_always volume levels 20+10
-exec_always libinput-gestures-setup restart
+exec_always --no-startup-id keyboard-layout set us ru
+exec_always --no-startup-id brightness levels 20
+exec_always --no-startup-id volume levels 20+10
+exec_always --no-startup-id libinput-gestures-setup restart
 exec --no-startup-id motd
 
 # Специфичные настройки запуска приложений
@@ -317,13 +316,13 @@ bindsym --release $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 ################ Внешний вид ################
 
 # Цвета темы оформления
-# class                  border  backgr. text    indic.   child_border
-client.focused          #F8E8A0 #F8E8A0 #343230 #F0A080
-client.focused_inactive #343230 #343230 #808080 #343230
-client.unfocused        #343230 #343230 #808080 #343230
-client.urgent           #F0A080 #F0A080 #343230 #F0A080
-client.placeholder      #343230 #343230 #808080 #343230
-client.background       #343230 #343230 #808080 #343230
+# class                 border  backgr. text    indic.  child_border
+client.focused          #F8E8A0 #F8E8A0 #404040 #F0A080 #F8E8A0
+client.focused_inactive #343230 #343230 #808080 #343230 #343230
+client.unfocused        #343230 #343230 #808080 #343230 #343230
+client.urgent           #F0A080 #F0A080 #404040 #F0A080 #F0A080
+client.placeholder      #343230 #343230 #808080 #343230 #343230
+client.background       #343230 #343230 #808080 #343230 #343230
 
 
 # Шрифт заголовков окон

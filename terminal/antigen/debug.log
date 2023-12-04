@@ -1,0 +1,2504 @@
+[WRN][1696241991.4719436169] /home/allonny/.local/share/antigen/antigen.zsh:266
+[WRN][1696241991.4719436169] -antigen-interactive-mode: file:file:file:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1696241991.4721693993] /home/allonny/.local/share/antigen/antigen.zsh:1572
+[WRN][1696241991.4721693993] -antigen-lock-init return code was 0
+[LOG][1696241991.4722049236] /home/allonny/.local/share/antigen/antigen.zsh:1574
+[LOG][1696241991.4722049236] LOADED EXTENSION lock EXT
+[WRN][1696241991.4737324715] /home/allonny/.local/share/antigen/antigen.zsh:1684
+[WRN][1696241991.4737324715] Init parallel extension PARALLEL
+[WRN][1696241991.4737813473] /home/allonny/.local/share/antigen/antigen.zsh:266
+[WRN][1696241991.4737813473] -antigen-interactive-mode: file:file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1696241991.4738266468] /home/allonny/.local/share/antigen/antigen.zsh:1572
+[WRN][1696241991.4738266468] -antigen-parallel-init return code was 0
+[LOG][1696241991.4738516808] /home/allonny/.local/share/antigen/antigen.zsh:1574
+[LOG][1696241991.4738516808] LOADED EXTENSION parallel EXT
+[WRN][1696241991.4738774300] /home/allonny/.local/share/antigen/antigen.zsh:1692
+[WRN][1696241991.4738774300] Exec parallel extension PARALLEL
+[WRN][1696241991.4741570950] /home/allonny/.local/share/antigen/antigen.zsh:266
+[WRN][1696241991.4741570950] -antigen-interactive-mode: file:file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1696241991.4742541313] /home/allonny/.local/share/antigen/antigen.zsh:1572
+[WRN][1696241991.4742541313] -antigen-defer-init return code was 0
+[LOG][1696241991.4743092060] /home/allonny/.local/share/antigen/antigen.zsh:1574
+[LOG][1696241991.4743092060] LOADED EXTENSION defer EXT
+[WRN][1696241991.4752950668] /home/allonny/.local/share/antigen/antigen.zsh:266
+[WRN][1696241991.4752950668] -antigen-interactive-mode: file:file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1696241991.4755339622] /home/allonny/.local/share/antigen/antigen.zsh:1572
+[WRN][1696241991.4755339622] -antigen-cache-init return code was 0
+[LOG][1696241991.4755651951] /home/allonny/.local/share/antigen/antigen.zsh:1574
+[LOG][1696241991.4755651951] LOADED EXTENSION cache EXT
+[WRN][1696241991.4770746231] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4770746231] Updated meta: target antigen mode once type pre called 1
+[WRN][1696241991.4771218300] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241991.4771218300] Processing hooks: antigen-lock
+[WRN][1696241991.4771482944] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241991.4771482944] Pre hook: antigen-lock bundle zsh-users/zsh-autosuggestions
+[LOG][1696241991.4771766663] /home/allonny/.local/share/antigen/antigen.zsh:1658
+[LOG][1696241991.4771766663] antigen-lock called
+[WRN][1696241991.4772129059] /home/allonny/.local/share/antigen/antigen.zsh:1669
+[WRN][1696241991.4772129059] Creating antigen-lock file at /home/allonny/.antigen/.lock
+[WRN][1696241991.4781060219] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1696241991.4781060219] -antigen-hook-antigen bundle zsh-users/zsh-autosuggestions
+[WRN][1696241991.4782316685] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4782316685] Updated meta: target antigen-bundle mode repeat type replace called 1
+[WRN][1696241991.4782874584] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4782874584] Updated meta: target antigen-bundle mode repeat type pre called 1
+[WRN][1696241991.4783196449] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241991.4783196449] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1696241991.4783451557] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241991.4783451557] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1696241991.4783921242] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241991.4783921242] Replace hook: antigen-bundle-defer zsh-users/zsh-autosuggestions
+[WRN][1696241991.4784336090] /home/allonny/.local/share/antigen/antigen.zsh:1500
+[WRN][1696241991.4784336090] antigen-bundle-defer shortcircuited
+[LOG][1696241991.4784939289] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241991.4784939289] Return from hook antigen with 0
+[WRN][1696241991.4786114693] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1696241991.4786114693] Ignoring hook due to mode once: antigen-lock
+[WRN][1696241991.4786410332] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241991.4786410332] Processing hooks: antigen-lock
+[WRN][1696241991.4786691666] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1696241991.4786691666] -antigen-hook-antigen bundle zsh-users/zsh-syntax-highlighting
+[WRN][1696241991.4787461758] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4787461758] Updated meta: target antigen-bundle mode repeat type replace called 2
+[WRN][1696241991.4787929058] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4787929058] Updated meta: target antigen-bundle mode repeat type pre called 2
+[WRN][1696241991.4788279533] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241991.4788279533] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1696241991.4788534641] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241991.4788534641] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1696241991.4788959026] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241991.4788959026] Replace hook: antigen-bundle-defer zsh-users/zsh-syntax-highlighting
+[WRN][1696241991.4789326191] /home/allonny/.local/share/antigen/antigen.zsh:1500
+[WRN][1696241991.4789326191] antigen-bundle-defer shortcircuited
+[LOG][1696241991.4789822102] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241991.4789822102] Return from hook antigen with 0
+[WRN][1696241991.4790563583] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1696241991.4790563583] Ignoring hook due to mode once: antigen-lock
+[WRN][1696241991.4790837765] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241991.4790837765] Processing hooks: antigen-lock
+[WRN][1696241991.4791114330] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1696241991.4791114330] -antigen-hook-antigen bundle jirutka/zsh-shift-select
+[WRN][1696241991.4791865349] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4791865349] Updated meta: target antigen-bundle mode repeat type replace called 3
+[WRN][1696241991.4792361259] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4792361259] Updated meta: target antigen-bundle mode repeat type pre called 3
+[WRN][1696241991.4792661667] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241991.4792661667] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1696241991.4792909622] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241991.4792909622] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1696241991.4793334007] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241991.4793334007] Replace hook: antigen-bundle-defer jirutka/zsh-shift-select
+[WRN][1696241991.4793720245] /home/allonny/.local/share/antigen/antigen.zsh:1500
+[WRN][1696241991.4793720245] antigen-bundle-defer shortcircuited
+[LOG][1696241991.4794187546] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241991.4794187546] Return from hook antigen with 0
+[WRN][1696241991.4794940948] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1696241991.4794940948] Ignoring hook due to mode once: antigen-lock
+[WRN][1696241991.4795219898] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241991.4795219898] Processing hooks: antigen-lock
+[WRN][1696241991.4795494080] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1696241991.4795494080] -antigen-hook-antigen theme romkatv/powerlevel10k
+[WRN][1696241991.4809079170] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4809079170] Updated meta: target antigen-bundle mode repeat type replace called 4
+[WRN][1696241991.4809801579] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4809801579] Updated meta: target antigen-bundle mode repeat type pre called 4
+[WRN][1696241991.4810140133] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241991.4810140133] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1696241991.4810409546] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241991.4810409546] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1696241991.4810941219] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241991.4810941219] Replace hook: antigen-bundle-defer romkatv/powerlevel10k --btype=theme
+[WRN][1696241991.4811360836] /home/allonny/.local/share/antigen/antigen.zsh:1500
+[WRN][1696241991.4811360836] antigen-bundle-defer shortcircuited
+[LOG][1696241991.4812035561] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241991.4812035561] Return from hook antigen with 0
+[WRN][1696241991.4812905788] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1696241991.4812905788] Ignoring hook due to mode once: antigen-lock
+[WRN][1696241991.4813189507] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241991.4813189507] Processing hooks: antigen-lock
+[WRN][1696241991.4813461304] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1696241991.4813461304] -antigen-hook-antigen apply
+[WRN][1696241991.4814240932] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4814240932] Updated meta: target antigen-apply mode once type post called 1
+[WRN][1696241991.4814717770] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4814717770] Updated meta: target antigen-apply mode once type pre called 1
+[WRN][1696241991.4815158844] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4815158844] Updated meta: target antigen-apply mode once type replace called 1
+[WRN][1696241991.4815580845] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4815580845] Updated meta: target antigen-apply mode once type pre called 1
+[WRN][1696241991.4815990925] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4815990925] Updated meta: target antigen-apply mode once type post called 1
+[WRN][1696241991.4816286564] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241991.4816286564] Processing hooks: antigen-apply-lock antigen-apply-parallel antigen-apply-parallel-execute antigen-apply-defer antigen-apply-cached
+[WRN][1696241991.4816539288] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241991.4816539288] Pre hook: antigen-apply-parallel
+[WRN][1696241991.4816808701] /home/allonny/.local/share/antigen/antigen.zsh:1744
+[WRN][1696241991.4816808701] Parallel pre-apply PARALLEL PRE-APPLY
+[WRN][1696241991.4817583561] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241991.4817583561] Pre hook: antigen-apply-defer
+[WRN][1696241991.4817903042] /home/allonny/.local/share/antigen/antigen.zsh:1623
+[WRN][1696241991.4817903042] Defer pre-apply DEFER PRE-APPLY
+[LOG][1696241991.4818778038] /home/allonny/.local/share/antigen/antigen.zsh:1629
+[LOG][1696241991.4818778038] Processing deferred bundle: zsh-users/zsh-autosuggestions DEFER
+[WRN][1696241991.4819540977] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4819540977] Updated meta: target antigen-bundle mode repeat type pre called 5
+[WRN][1696241991.4820013046] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4820013046] Updated meta: target antigen-bundle mode repeat type replace called 1
+[WRN][1696241991.4820325375] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241991.4820325375] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1696241991.4820597172] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241991.4820597172] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1696241991.4821045399] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241991.4821045399] Replace hook: antigen-bundle-parallel zsh-users/zsh-autosuggestions
+[TRA][1696241991.4821417332] /home/allonny/.zshrc:1748
+[TRA][1696241991.4821417332] antigen-bundle-parallel: zsh-users/zsh-autosuggestions PARALLEL
+[TRA][1696241991.4821417332] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+/home/allonny/.config/zsh/.zshrc
+[WRN][1696241991.4821822643] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1696241991.4821822643] Replaced hooked function.
+[LOG][1696241991.4822089672] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241991.4822089672] Return from hook antigen-bundle with 0
+[LOG][1696241991.4822487831] /home/allonny/.local/share/antigen/antigen.zsh:1629
+[LOG][1696241991.4822487831] Processing deferred bundle: zsh-users/zsh-syntax-highlighting DEFER
+[WRN][1696241991.4823131561] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4823131561] Updated meta: target antigen-bundle mode repeat type pre called 6
+[WRN][1696241991.4823572636] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4823572636] Updated meta: target antigen-bundle mode repeat type replace called 2
+[WRN][1696241991.4823873043] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241991.4823873043] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1696241991.4824120998] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241991.4824120998] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1696241991.4824557304] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241991.4824557304] Replace hook: antigen-bundle-parallel zsh-users/zsh-syntax-highlighting
+[TRA][1696241991.4824852943] /home/allonny/.zshrc:1748
+[TRA][1696241991.4824852943] antigen-bundle-parallel: zsh-users/zsh-syntax-highlighting PARALLEL
+[TRA][1696241991.4824852943] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+/home/allonny/.config/zsh/.zshrc
+[WRN][1696241991.4825243950] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1696241991.4825243950] Replaced hooked function.
+[LOG][1696241991.4825506210] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241991.4825506210] Return from hook antigen-bundle with 0
+[LOG][1696241991.4825894833] /home/allonny/.local/share/antigen/antigen.zsh:1629
+[LOG][1696241991.4825894833] Processing deferred bundle: jirutka/zsh-shift-select DEFER
+[WRN][1696241991.4826533794] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4826533794] Updated meta: target antigen-bundle mode repeat type pre called 7
+[WRN][1696241991.4826974869] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4826974869] Updated meta: target antigen-bundle mode repeat type replace called 3
+[WRN][1696241991.4827277660] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241991.4827277660] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1696241991.4827535152] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241991.4827535152] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1696241991.4827985764] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241991.4827985764] Replace hook: antigen-bundle-parallel jirutka/zsh-shift-select
+[TRA][1696241991.4828288555] /home/allonny/.zshrc:1748
+[TRA][1696241991.4828288555] antigen-bundle-parallel: jirutka/zsh-shift-select PARALLEL
+[TRA][1696241991.4828288555] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+/home/allonny/.config/zsh/.zshrc
+[WRN][1696241991.4828665257] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1696241991.4828665257] Replaced hooked function.
+[LOG][1696241991.4828958511] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241991.4828958511] Return from hook antigen-bundle with 0
+[LOG][1696241991.4829332829] /home/allonny/.local/share/antigen/antigen.zsh:1629
+[LOG][1696241991.4829332829] Processing deferred bundle: romkatv/powerlevel10k --btype=theme DEFER
+[WRN][1696241991.4829981327] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4829981327] Updated meta: target antigen-bundle mode repeat type pre called 8
+[WRN][1696241991.4830422401] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241991.4830422401] Updated meta: target antigen-bundle mode repeat type replace called 4
+[WRN][1696241991.4830725193] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241991.4830725193] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1696241991.4830975533] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241991.4830975533] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1696241991.4831421375] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241991.4831421375] Replace hook: antigen-bundle-parallel romkatv/powerlevel10k --btype=theme
+[TRA][1696241991.4831709862] /home/allonny/.zshrc:1748
+[TRA][1696241991.4831709862] antigen-bundle-parallel: romkatv/powerlevel10k --btype=theme PARALLEL
+[TRA][1696241991.4831709862] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+/home/allonny/.config/zsh/.zshrc
+[WRN][1696241991.4832086563] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1696241991.4832086563] Replaced hooked function.
+[LOG][1696241991.4832348824] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241991.4832348824] Return from hook antigen-bundle with 0
+[WRN][1696241991.4832913876] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241991.4832913876] Replace hook: antigen-apply-parallel-execute
+[WRN][1696241991.4833199978] /home/allonny/.local/share/antigen/antigen.zsh:1756
+[WRN][1696241991.4833199978] Parallel replace-apply PARALLEL REPLACE-APPLY
+[WRN][1696241991.4833912849] /home/allonny/.local/share/antigen/antigen.zsh:1695
+[WRN][1696241991.4833912849] Parallel antigen-bundle-parallel-execute PARALLEL
+[WRN][1696241991.4834229946] /home/allonny/.local/share/antigen/antigen.zsh:1699
+[WRN][1696241991.4834229946] Gonna install in parallel 4 bundles. PARALLEL
+[WRN][1696241991.4834475517] /home/allonny/.local/share/antigen/antigen.zsh:1701
+[WRN][1696241991.4834475517] zsh-users/zsh-autosuggestions zsh-users/zsh-syntax-highlighting jirutka/zsh-shift-select romkatv/powerlevel10k --btype=theme PARALLEL
+[WRN][1696241991.4836826324] /home/allonny/.local/share/antigen/antigen.zsh:1708
+[WRN][1696241991.4836826324] Install in parallel zsh-users/zsh-autosuggestions. PARALLEL
+[WRN][1696241991.4846436977] /home/allonny/.local/share/antigen/antigen.zsh:1708
+[WRN][1696241991.4846436977] Install in parallel zsh-users/zsh-syntax-highlighting. PARALLEL
+[WRN][1696241991.4859771729] /home/allonny/.local/share/antigen/antigen.zsh:1708
+[WRN][1696241991.4859771729] Install in parallel jirutka/zsh-shift-select. PARALLEL
+[WRN][1696241991.4868249893] /home/allonny/.local/share/antigen/antigen.zsh:1708
+[WRN][1696241991.4868249893] Install in parallel romkatv/powerlevel10k. PARALLEL
+[WRN][1696241994.1477463245] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241994.1477463245] Updated meta: target antigen-bundle mode repeat type pre called 9
+[WRN][1696241994.1480491161] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241994.1480491161] Processing hooks: antigen-bundle-cached
+[WRN][1696241994.1481359005] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241994.1481359005] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1696241994.1482665539] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1696241994.1482665539] -antigen-hook-antigen-bundle zsh-users/zsh-autosuggestions
+[TRA][1696241994.1483812332] /home/allonny/.local/share/antigen/antigen.zsh:1438
+[TRA][1696241994.1483812332] Called antigen-bundle with zsh-users/zsh-autosuggestions BUNDLE
+[TRA][1696241994.1483812332] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+/home/allonny/.config/zsh/.zshrc
+[WRN][1696241994.1495025158] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241994.1495025158] Updated meta: target -antigen-load-env mode repeat type replace called 1
+[WRN][1696241994.1496047974] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241994.1496047974] Processing hooks: -antigen-load-env-cached
+[WRN][1696241994.1497056484] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241994.1497056484] Replace hook: -antigen-load-env-cached dir /home/allonny/.antigen/bundles/zsh-users/zsh-autosuggestions btype plugin url https://github.com/zsh-users/zsh-autosuggestions.git loc / name zsh-users/zsh-autosuggestions make_local_clone true
+[WRN][1696241994.1498558521] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1696241994.1498558521] Replaced hooked function.
+[LOG][1696241994.1499230862] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.1499230862] Return from hook -antigen-load-env with 0
+[WRN][1696241994.1501386166] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241994.1501386166] Updated meta: target -antigen-load-source mode repeat type replace called 1
+[WRN][1696241994.1502418518] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241994.1502418518] Processing hooks: -antigen-load-source-cached
+[WRN][1696241994.1503424644] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241994.1503424644] Replace hook: -antigen-load-source-cached /home/allonny/.antigen/bundles/zsh-users/zsh-autosuggestions///zsh-autosuggestions.plugin.zsh
+[WRN][1696241994.1504759789] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1696241994.1504759789] Replaced hooked function.
+[LOG][1696241994.1505579948] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.1505579948] Return from hook -antigen-load-source with 0
+[LOG][1696241994.1507213116] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.1507213116] Return from hook antigen-bundle with 0
+[WRN][1696241994.1509597301] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241994.1509597301] Updated meta: target antigen-bundle mode repeat type pre called 10
+[WRN][1696241994.1510586739] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241994.1510586739] Processing hooks: antigen-bundle-cached
+[WRN][1696241994.1511347294] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241994.1511347294] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1696241994.1512501240] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1696241994.1512501240] -antigen-hook-antigen-bundle zsh-users/zsh-syntax-highlighting
+[TRA][1696241994.1513323784] /home/allonny/.local/share/antigen/antigen.zsh:1438
+[TRA][1696241994.1513323784] Called antigen-bundle with zsh-users/zsh-syntax-highlighting BUNDLE
+[TRA][1696241994.1513323784] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+/home/allonny/.config/zsh/.zshrc
+[WRN][1696241994.1522839069] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241994.1522839069] Updated meta: target -antigen-load-env mode repeat type replace called 2
+[WRN][1696241994.1524009705] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241994.1524009705] Processing hooks: -antigen-load-env-cached
+[WRN][1696241994.1525175571] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241994.1525175571] Replace hook: -antigen-load-env-cached dir /home/allonny/.antigen/bundles/zsh-users/zsh-syntax-highlighting btype plugin url https://github.com/zsh-users/zsh-syntax-highlighting.git loc / name zsh-users/zsh-syntax-highlighting make_local_clone true
+[WRN][1696241994.1527056694] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1696241994.1527056694] Replaced hooked function.
+[LOG][1696241994.1527900696] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.1527900696] Return from hook -antigen-load-env with 0
+[WRN][1696241994.1530275345] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241994.1530275345] Updated meta: target -antigen-load-source mode repeat type replace called 2
+[WRN][1696241994.1531322002] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241994.1531322002] Processing hooks: -antigen-load-source-cached
+[WRN][1696241994.1532313824] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241994.1532313824] Replace hook: -antigen-load-source-cached /home/allonny/.antigen/bundles/zsh-users/zsh-syntax-highlighting///zsh-syntax-highlighting.plugin.zsh
+[WRN][1696241994.1533458233] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1696241994.1533458233] Replaced hooked function.
+[LOG][1696241994.1534283161] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.1534283161] Return from hook -antigen-load-source with 0
+[LOG][1696241994.1535942554] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.1535942554] Return from hook antigen-bundle with 0
+[WRN][1696241994.1538264751] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241994.1538264751] Updated meta: target antigen-bundle mode repeat type pre called 11
+[WRN][1696241994.1539196968] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241994.1539196968] Processing hooks: antigen-bundle-cached
+[WRN][1696241994.1539947987] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241994.1539947987] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1696241994.1541140079] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1696241994.1541140079] -antigen-hook-antigen-bundle jirutka/zsh-shift-select
+[TRA][1696241994.1541969776] /home/allonny/.local/share/antigen/antigen.zsh:1438
+[TRA][1696241994.1541969776] Called antigen-bundle with jirutka/zsh-shift-select BUNDLE
+[TRA][1696241994.1541969776] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+/home/allonny/.config/zsh/.zshrc
+[WRN][1696241994.1550784111] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241994.1550784111] Updated meta: target -antigen-load-env mode repeat type replace called 3
+[WRN][1696241994.1552054882] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241994.1552054882] Processing hooks: -antigen-load-env-cached
+[WRN][1696241994.1553270817] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241994.1553270817] Replace hook: -antigen-load-env-cached dir /home/allonny/.antigen/bundles/jirutka/zsh-shift-select btype plugin url https://github.com/jirutka/zsh-shift-select.git loc / name jirutka/zsh-shift-select make_local_clone true
+[WRN][1696241994.1554965973] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1696241994.1554965973] Replaced hooked function.
+[LOG][1696241994.1555814743] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.1555814743] Return from hook -antigen-load-env with 0
+[WRN][1696241994.1558153629] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241994.1558153629] Updated meta: target -antigen-load-source mode repeat type replace called 3
+[WRN][1696241994.1559193134] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241994.1559193134] Processing hooks: -antigen-load-source-cached
+[WRN][1696241994.1560299397] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241994.1560299397] Replace hook: -antigen-load-source-cached /home/allonny/.antigen/bundles/jirutka/zsh-shift-select///zsh-shift-select.plugin.zsh
+[WRN][1696241994.1561460495] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1696241994.1561460495] Replaced hooked function.
+[LOG][1696241994.1562294960] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.1562294960] Return from hook -antigen-load-source with 0
+[LOG][1696241994.1563923359] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.1563923359] Return from hook antigen-bundle with 0
+[WRN][1696241994.1566255093] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241994.1566255093] Updated meta: target antigen-bundle mode repeat type pre called 12
+[WRN][1696241994.1567194462] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241994.1567194462] Processing hooks: antigen-bundle-cached
+[WRN][1696241994.1567928791] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1696241994.1567928791] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1696241994.1569128036] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1696241994.1569128036] -antigen-hook-antigen-bundle romkatv/powerlevel10k --btype=theme
+[TRA][1696241994.1569972038] /home/allonny/.local/share/antigen/antigen.zsh:1438
+[TRA][1696241994.1569972038] Called antigen-bundle with romkatv/powerlevel10k --btype=theme BUNDLE
+[TRA][1696241994.1569972038] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+/home/allonny/.config/zsh/.zshrc
+[WRN][1696241994.1578848362] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241994.1578848362] Updated meta: target -antigen-load-env mode repeat type replace called 4
+[WRN][1696241994.1579980850] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241994.1579980850] Processing hooks: -antigen-load-env-cached
+[WRN][1696241994.1581096649] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241994.1581096649] Replace hook: -antigen-load-env-cached dir /home/allonny/.antigen/bundles/romkatv/powerlevel10k btype theme url https://github.com/romkatv/powerlevel10k.git loc / name romkatv/powerlevel10k make_local_clone true
+[WRN][1696241994.1582779884] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1696241994.1582779884] Replaced hooked function.
+[LOG][1696241994.1583642960] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.1583642960] Return from hook -antigen-load-env with 0
+[WRN][1696241994.1586108208] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1696241994.1586108208] Updated meta: target -antigen-load-source mode repeat type replace called 4
+[WRN][1696241994.1587159634] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241994.1587159634] Processing hooks: -antigen-load-source-cached
+[WRN][1696241994.1588187218] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1696241994.1588187218] Replace hook: -antigen-load-source-cached /home/allonny/.antigen/bundles/romkatv/powerlevel10k///powerlevel10k.zsh-theme
+[WRN][1696241994.1589336395] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1696241994.1589336395] Replaced hooked function.
+[LOG][1696241994.1590161324] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.1590161324] Return from hook -antigen-load-source with 0
+[LOG][1696241994.1591815948] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.1591815948] Return from hook antigen-bundle with 0
+[WRN][1696241994.1592948437] /home/allonny/.local/share/antigen/antigen.zsh:1739
+[WRN][1696241994.1592948437] Parallel install done PARALLEL
+[WRN][1696241994.1596376896] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1696241994.1596376896] Ignoring hook due to mode once: antigen-apply-lock
+[WRN][1696241994.1597564220] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1696241994.1597564220] Ignoring hook due to mode once: antigen-apply-parallel
+[WRN][1696241994.1598520279] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1696241994.1598520279] Ignoring hook due to mode once: antigen-apply-defer
+[WRN][1696241994.1599445343] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1696241994.1599445343] Ignoring hook due to mode once: antigen-apply-cached
+[WRN][1696241994.1600184441] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1696241994.1600184441] Processing hooks: antigen-apply-lock antigen-apply-parallel antigen-apply-defer antigen-apply-cached
+[WRN][1696241994.1601014137] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1696241994.1601014137] -antigen-hook-antigen-apply 
+[LOG][1696241994.1601808071] /home/allonny/.local/share/antigen/antigen.zsh:1438
+[LOG][1696241994.1601808071] Called antigen-apply
+[TRA][1696241994.1602489948] /home/allonny/.local/share/antigen/antigen.zsh:1439
+[TRA][1696241994.1602489948] Gonna create compdump file @ apply COMPDUMP
+[TRA][1696241994.1602489948] TRACE
+-antigen-hook-antigen-apply
+-antigen-hook-handler
+antigen-apply
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+/home/allonny/.config/zsh/.zshrc
+[LOG][1696241994.4989278316] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.4989278316] Return from hook antigen-apply with 0
+[WRN][1696241994.4991817474] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1696241994.4991817474] Replaced hooked function.
+[WRN][1696241994.4992744923] /home/allonny/.local/share/antigen/antigen.zsh:1513
+[WRN][1696241994.4992744923] Post hook: antigen-apply-lock
+[WRN][1696241994.4993577003] /home/allonny/.local/share/antigen/antigen.zsh:1676
+[WRN][1696241994.4993577003] Freeing antigen-lock file at /home/allonny/.antigen/.lock
+[WRN][1696241994.5009737015] /home/allonny/.local/share/antigen/antigen.zsh:1513
+[WRN][1696241994.5009737015] Post hook: antigen-apply-cached
+[LOG][1696241994.5011234283] /home/allonny/.local/share/antigen/antigen.zsh:1893
+[LOG][1696241994.5011234283] TRACE: /home/allonny/.local/share/antigen/antigen.zsh:1514 /home/allonny/.local/share/antigen/antigen.zsh:1441 /home/allonny/.local/share/antigen/antigen.zsh:1447 /home/allonny/.local/share/antigen/antigen.zsh:1506 /home/allonny/.local/share/antigen/antigen.zsh:1441 /home/allonny/.zshrc:34 /home/allonny/.config/zsh/.zshrc:10 zsh:0
+[LOG][1696241994.5012795925] /home/allonny/.local/share/antigen/antigen.zsh:1787
+[LOG][1696241994.5012795925] Gonna generate cache for /home/allonny/.antigen/bundles/zsh-users/zsh-autosuggestions// /home/allonny/.antigen/bundles/zsh-users/zsh-autosuggestions///zsh-autosuggestions.plugin.zsh /home/allonny/.antigen/bundles/zsh-users/zsh-syntax-highlighting// /home/allonny/.antigen/bundles/zsh-users/zsh-syntax-highlighting///zsh-syntax-highlighting.plugin.zsh /home/allonny/.antigen/bundles/jirutka/zsh-shift-select// /home/allonny/.antigen/bundles/jirutka/zsh-shift-select///zsh-shift-select.plugin.zsh /home/allonny/.antigen/bundles/romkatv/powerlevel10k// /home/allonny/.antigen/bundles/romkatv/powerlevel10k///powerlevel10k.zsh-theme
+[LOG][1696241994.5083916187] /home/allonny/.local/share/antigen/antigen.zsh:1844
+[LOG][1696241994.5083916187] CHECK_FILES /home/allonny/.zshrc /home/allonny/.zshrc
+[LOG][1696241994.8505432606] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.8505432606] Return from hook antigen-apply with 0
+[LOG][1696241994.8507256508] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1696241994.8507256508] Return from hook antigen with 0
+[WRN][1700413233.3846101761] /root/.local/share/antigen/antigen.zsh:266
+[WRN][1700413233.3846101761] -antigen-interactive-mode: file:file:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1700413233.3866360188] /root/.local/share/antigen/antigen.zsh:1572
+[WRN][1700413233.3866360188] -antigen-lock-init return code was 0
+[LOG][1700413233.3866887093] /root/.local/share/antigen/antigen.zsh:1574
+[LOG][1700413233.3866887093] LOADED EXTENSION lock EXT
+[WRN][1700413233.3887190819] /root/.local/share/antigen/antigen.zsh:1684
+[WRN][1700413233.3887190819] Init parallel extension PARALLEL
+[WRN][1700413233.3887956142] /root/.local/share/antigen/antigen.zsh:266
+[WRN][1700413233.3887956142] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1700413233.3888733387] /root/.local/share/antigen/antigen.zsh:1572
+[WRN][1700413233.3888733387] -antigen-parallel-init return code was 0
+[LOG][1700413233.3889305592] /root/.local/share/antigen/antigen.zsh:1574
+[LOG][1700413233.3889305592] LOADED EXTENSION parallel EXT
+[WRN][1700413233.3889796734] /root/.local/share/antigen/antigen.zsh:1692
+[WRN][1700413233.3889796734] Exec parallel extension PARALLEL
+[WRN][1700413233.3892323971] /root/.local/share/antigen/antigen.zsh:266
+[WRN][1700413233.3892323971] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1700413233.3893201351] /root/.local/share/antigen/antigen.zsh:1572
+[WRN][1700413233.3893201351] -antigen-defer-init return code was 0
+[LOG][1700413233.3893735409] /root/.local/share/antigen/antigen.zsh:1574
+[LOG][1700413233.3893735409] LOADED EXTENSION defer EXT
+[WRN][1700413233.3904218674] /root/.local/share/antigen/antigen.zsh:266
+[WRN][1700413233.3904218674] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1700413233.3906164169] /root/.local/share/antigen/antigen.zsh:1572
+[WRN][1700413233.3906164169] -antigen-cache-init return code was 0
+[LOG][1700413233.3906586170] /root/.local/share/antigen/antigen.zsh:1574
+[LOG][1700413233.3906586170] LOADED EXTENSION cache EXT
+[WRN][1700413233.3927299976] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.3927299976] Updated meta: target antigen mode once type pre called 1
+[WRN][1700413233.3927879333] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.3927879333] Processing hooks: antigen-lock
+[WRN][1700413233.3928310871] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.3928310871] Pre hook: antigen-lock bundle zsh-users/zsh-autosuggestions
+[LOG][1700413233.3928756714] /root/.local/share/antigen/antigen.zsh:1658
+[LOG][1700413233.3928756714] antigen-lock called
+[WRN][1700413233.3929350376] /root/.local/share/antigen/antigen.zsh:1669
+[WRN][1700413233.3929350376] Creating antigen-lock file at /root/.local/share/antigen/.lock
+[WRN][1700413233.3957042694] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413233.3957042694] -antigen-hook-antigen bundle zsh-users/zsh-autosuggestions
+[WRN][1700413233.3961651325] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.3961651325] Updated meta: target antigen-bundle mode repeat type replace called 1
+[WRN][1700413233.3963558674] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.3963558674] Updated meta: target antigen-bundle mode repeat type pre called 1
+[WRN][1700413233.3964538574] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.3964538574] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1700413233.3965377808] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.3965377808] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1700413233.3966882229] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.3966882229] Replace hook: antigen-bundle-defer zsh-users/zsh-autosuggestions
+[WRN][1700413233.3968248367] /root/.local/share/antigen/antigen.zsh:1500
+[WRN][1700413233.3968248367] antigen-bundle-defer shortcircuited
+[LOG][1700413233.3970201015] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.3970201015] Return from hook antigen with 0
+[WRN][1700413233.3972589970] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413233.3972589970] Ignoring hook due to mode once: antigen-lock
+[WRN][1700413233.3972997665] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.3972997665] Processing hooks: antigen-lock
+[WRN][1700413233.3973484039] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413233.3973484039] -antigen-hook-antigen bundle zsh-users/zsh-syntax-highlighting
+[WRN][1700413233.3974547386] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.3974547386] Updated meta: target antigen-bundle mode repeat type replace called 2
+[WRN][1700413233.3975174427] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.3975174427] Updated meta: target antigen-bundle mode repeat type pre called 2
+[WRN][1700413233.3975591660] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.3975591660] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1700413233.3975951672] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.3975951672] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1700413233.3976597786] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.3976597786] Replace hook: antigen-bundle-defer zsh-users/zsh-syntax-highlighting
+[WRN][1700413233.3977172375] /root/.local/share/antigen/antigen.zsh:1500
+[WRN][1700413233.3977172375] antigen-bundle-defer shortcircuited
+[LOG][1700413233.3977928162] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.3977928162] Return from hook antigen with 0
+[WRN][1700413233.3979063034] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413233.3979063034] Ignoring hook due to mode once: antigen-lock
+[WRN][1700413233.3979487419] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.3979487419] Processing hooks: antigen-lock
+[WRN][1700413233.3979885578] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413233.3979885578] -antigen-hook-antigen bundle jirutka/zsh-shift-select
+[WRN][1700413233.3980946541] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.3980946541] Updated meta: target antigen-bundle mode repeat type replace called 3
+[WRN][1700413233.3981595039] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.3981595039] Updated meta: target antigen-bundle mode repeat type pre called 3
+[WRN][1700413233.3982024193] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.3982024193] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1700413233.3982379436] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.3982379436] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1700413233.3983006477] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.3983006477] Replace hook: antigen-bundle-defer jirutka/zsh-shift-select
+[WRN][1700413233.3983545303] /root/.local/share/antigen/antigen.zsh:1500
+[WRN][1700413233.3983545303] antigen-bundle-defer shortcircuited
+[LOG][1700413233.3984277248] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.3984277248] Return from hook antigen with 0
+[WRN][1700413233.3985269070] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413233.3985269070] Ignoring hook due to mode once: antigen-lock
+[WRN][1700413233.3985683918] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.3985683918] Processing hooks: antigen-lock
+[WRN][1700413233.3986093998] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413233.3986093998] -antigen-hook-antigen theme romkatv/powerlevel10k
+[WRN][1700413233.4011685848] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4011685848] Updated meta: target antigen-bundle mode repeat type replace called 4
+[WRN][1700413233.4014167786] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4014167786] Updated meta: target antigen-bundle mode repeat type pre called 4
+[WRN][1700413233.4015488625] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4015488625] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1700413233.4016580582] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.4016580582] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1700413233.4018597603] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.4018597603] Replace hook: antigen-bundle-defer romkatv/powerlevel10k --btype=theme
+[WRN][1700413233.4020817280] /root/.local/share/antigen/antigen.zsh:1500
+[WRN][1700413233.4020817280] antigen-bundle-defer shortcircuited
+[LOG][1700413233.4023334980] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4023334980] Return from hook antigen with 0
+[WRN][1700413233.4024739265] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413233.4024739265] Ignoring hook due to mode once: antigen-lock
+[WRN][1700413233.4025139809] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4025139809] Processing hooks: antigen-lock
+[WRN][1700413233.4025549889] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413233.4025549889] -antigen-hook-antigen apply
+[WRN][1700413233.4026684761] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4026684761] Updated meta: target antigen-apply mode once type post called 1
+[WRN][1700413233.4027342796] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4027342796] Updated meta: target antigen-apply mode once type pre called 1
+[WRN][1700413233.4027957916] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4027957916] Updated meta: target antigen-apply mode once type replace called 1
+[WRN][1700413233.4028568268] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4028568268] Updated meta: target antigen-apply mode once type pre called 1
+[WRN][1700413233.4029252529] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4029252529] Updated meta: target antigen-apply mode once type post called 1
+[WRN][1700413233.4029741287] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4029741287] Processing hooks: antigen-apply-lock antigen-apply-parallel antigen-apply-parallel-execute antigen-apply-defer antigen-apply-cached
+[WRN][1700413233.4030139446] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.4030139446] Pre hook: antigen-apply-parallel
+[WRN][1700413233.4030556679] /root/.local/share/antigen/antigen.zsh:1744
+[WRN][1700413233.4030556679] Parallel pre-apply PARALLEL PRE-APPLY
+[WRN][1700413233.4031689167] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.4031689167] Pre hook: antigen-apply-defer
+[WRN][1700413233.4032132626] /root/.local/share/antigen/antigen.zsh:1623
+[WRN][1700413233.4032132626] Defer pre-apply DEFER PRE-APPLY
+[LOG][1700413233.4033308029] /root/.local/share/antigen/antigen.zsh:1629
+[LOG][1700413233.4033308029] Processing deferred bundle: zsh-users/zsh-autosuggestions DEFER
+[WRN][1700413233.4034290314] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4034290314] Updated meta: target antigen-bundle mode repeat type pre called 5
+[WRN][1700413233.4035022259] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4035022259] Updated meta: target antigen-bundle mode repeat type replace called 1
+[WRN][1700413233.4035477638] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4035477638] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1700413233.4035851955] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.4035851955] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1700413233.4036509991] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.4036509991] Replace hook: antigen-bundle-parallel zsh-users/zsh-autosuggestions
+[TRA][1700413233.4036974907] /root/.zshrc:1748
+[TRA][1700413233.4036974907] antigen-bundle-parallel: zsh-users/zsh-autosuggestions PARALLEL
+[TRA][1700413233.4036974907] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413233.4037613869] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413233.4037613869] Replaced hooked function.
+[LOG][1700413233.4038014412] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4038014412] Return from hook antigen-bundle with 0
+[LOG][1700413233.4038605690] /root/.local/share/antigen/antigen.zsh:1629
+[LOG][1700413233.4038605690] Processing deferred bundle: zsh-users/zsh-syntax-highlighting DEFER
+[WRN][1700413233.4039659500] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4039659500] Updated meta: target antigen-bundle mode repeat type pre called 6
+[WRN][1700413233.4040377140] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4040377140] Updated meta: target antigen-bundle mode repeat type replace called 2
+[WRN][1700413233.4040832520] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4040832520] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1700413233.4041259289] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.4041259289] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1700413233.4041888714] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.4041888714] Replace hook: antigen-bundle-parallel zsh-users/zsh-syntax-highlighting
+[TRA][1700413233.4042310715] /root/.zshrc:1748
+[TRA][1700413233.4042310715] antigen-bundle-parallel: zsh-users/zsh-syntax-highlighting PARALLEL
+[TRA][1700413233.4042310715] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413233.4042856693] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413233.4042856693] Replaced hooked function.
+[LOG][1700413233.4043233395] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4043233395] Return from hook antigen-bundle with 0
+[LOG][1700413233.4043817520] /root/.local/share/antigen/antigen.zsh:1629
+[LOG][1700413233.4043817520] Processing deferred bundle: jirutka/zsh-shift-select DEFER
+[WRN][1700413233.4044733047] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4044733047] Updated meta: target antigen-bundle mode repeat type pre called 7
+[WRN][1700413233.4045360088] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4045360088] Updated meta: target antigen-bundle mode repeat type replace called 3
+[WRN][1700413233.4045791626] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4045791626] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1700413233.4046158791] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.4046158791] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1700413233.4046766758] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.4046766758] Replace hook: antigen-bundle-parallel jirutka/zsh-shift-select
+[TRA][1700413233.4047181606] /root/.zshrc:1748
+[TRA][1700413233.4047181606] antigen-bundle-parallel: jirutka/zsh-shift-select PARALLEL
+[TRA][1700413233.4047181606] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413233.4047732353] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413233.4047732353] Replaced hooked function.
+[LOG][1700413233.4048128128] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4048128128] Return from hook antigen-bundle with 0
+[LOG][1700413233.4048705101] /root/.local/share/antigen/antigen.zsh:1629
+[LOG][1700413233.4048705101] Processing deferred bundle: romkatv/powerlevel10k --btype=theme DEFER
+[WRN][1700413233.4050269127] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4050269127] Updated meta: target antigen-bundle mode repeat type pre called 8
+[WRN][1700413233.4050886631] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4050886631] Updated meta: target antigen-bundle mode repeat type replace called 4
+[WRN][1700413233.4051311016] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4051311016] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1700413233.4051668644] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.4051668644] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1700413233.4052274227] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.4052274227] Replace hook: antigen-bundle-parallel romkatv/powerlevel10k --btype=theme
+[TRA][1700413233.4052784443] /root/.zshrc:1748
+[TRA][1700413233.4052784443] antigen-bundle-parallel: romkatv/powerlevel10k --btype=theme PARALLEL
+[TRA][1700413233.4052784443] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413233.4053390026] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413233.4053390026] Replaced hooked function.
+[LOG][1700413233.4053862095] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4053862095] Return from hook antigen-bundle with 0
+[WRN][1700413233.4054837227] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.4054837227] Replace hook: antigen-apply-parallel-execute
+[WRN][1700413233.4055306911] /root/.local/share/antigen/antigen.zsh:1756
+[WRN][1700413233.4055306911] Parallel replace-apply PARALLEL REPLACE-APPLY
+[WRN][1700413233.4056336880] /root/.local/share/antigen/antigen.zsh:1695
+[WRN][1700413233.4056336880] Parallel antigen-bundle-parallel-execute PARALLEL
+[WRN][1700413233.4056787491] /root/.local/share/antigen/antigen.zsh:1699
+[WRN][1700413233.4056787491] Gonna install in parallel 4 bundles. PARALLEL
+[WRN][1700413233.4057211876] /root/.local/share/antigen/antigen.zsh:1701
+[WRN][1700413233.4057211876] zsh-users/zsh-autosuggestions zsh-users/zsh-syntax-highlighting jirutka/zsh-shift-select romkatv/powerlevel10k --btype=theme PARALLEL
+[WRN][1700413233.4060633183] /root/.local/share/antigen/antigen.zsh:1715
+[WRN][1700413233.4060633183] Bundle zsh-users/zsh-autosuggestions already cloned locally. PARALLEL
+[WRN][1700413233.4062879086] /root/.local/share/antigen/antigen.zsh:1715
+[WRN][1700413233.4062879086] Bundle zsh-users/zsh-syntax-highlighting already cloned locally. PARALLEL
+[WRN][1700413233.4065029621] /root/.local/share/antigen/antigen.zsh:1715
+[WRN][1700413233.4065029621] Bundle jirutka/zsh-shift-select already cloned locally. PARALLEL
+[WRN][1700413233.4067301750] /root/.local/share/antigen/antigen.zsh:1715
+[WRN][1700413233.4067301750] Bundle romkatv/powerlevel10k already cloned locally. PARALLEL
+[WRN][1700413233.4068601131] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4068601131] Updated meta: target antigen-bundle mode repeat type pre called 9
+[WRN][1700413233.4069156647] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4069156647] Processing hooks: antigen-bundle-cached
+[WRN][1700413233.4069597721] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.4069597721] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1700413233.4070243835] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413233.4070243835] -antigen-hook-antigen-bundle zsh-users/zsh-autosuggestions
+[TRA][1700413233.4070701599] /root/.local/share/antigen/antigen.zsh:1438
+[TRA][1700413233.4070701599] Called antigen-bundle with zsh-users/zsh-autosuggestions BUNDLE
+[TRA][1700413233.4070701599] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413233.4075243473] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4075243473] Updated meta: target -antigen-load-env mode repeat type replace called 1
+[WRN][1700413233.4075949192] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4075949192] Processing hooks: -antigen-load-env-cached
+[WRN][1700413233.4076492786] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.4076492786] Replace hook: -antigen-load-env-cached dir /root/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions btype plugin url https://github.com/zsh-users/zsh-autosuggestions.git loc / name zsh-users/zsh-autosuggestions make_local_clone true
+[WRN][1700413233.4077370167] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413233.4077370167] Replaced hooked function.
+[LOG][1700413233.4077782631] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4077782631] Return from hook -antigen-load-env with 0
+[WRN][1700413233.4079136848] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4079136848] Updated meta: target -antigen-load-source mode repeat type replace called 1
+[WRN][1700413233.4079685211] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4079685211] Processing hooks: -antigen-load-source-cached
+[WRN][1700413233.4080185890] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.4080185890] Replace hook: -antigen-load-source-cached /root/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions///zsh-autosuggestions.plugin.zsh
+[WRN][1700413233.4080908298] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413233.4080908298] Replaced hooked function.
+[LOG][1700413233.4081323147] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4081323147] Return from hook -antigen-load-source with 0
+[LOG][1700413233.4082243443] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4082243443] Return from hook antigen-bundle with 0
+[WRN][1700413233.4083402157] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4083402157] Updated meta: target antigen-bundle mode repeat type pre called 10
+[WRN][1700413233.4083876610] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4083876610] Processing hooks: antigen-bundle-cached
+[WRN][1700413233.4084262848] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.4084262848] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1700413233.4084873199] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413233.4084873199] -antigen-hook-antigen-bundle zsh-users/zsh-syntax-highlighting
+[TRA][1700413233.4085297585] /root/.local/share/antigen/antigen.zsh:1438
+[TRA][1700413233.4085297585] Called antigen-bundle with zsh-users/zsh-syntax-highlighting BUNDLE
+[TRA][1700413233.4085297585] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413233.4089324474] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4089324474] Updated meta: target -antigen-load-env mode repeat type replace called 2
+[WRN][1700413233.4089899063] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4089899063] Processing hooks: -antigen-load-env-cached
+[WRN][1700413233.4090425968] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.4090425968] Replace hook: -antigen-load-env-cached dir /root/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting btype plugin url https://github.com/zsh-users/zsh-syntax-highlighting.git loc / name zsh-users/zsh-syntax-highlighting make_local_clone true
+[WRN][1700413233.4091265202] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413233.4091265202] Replaced hooked function.
+[LOG][1700413233.4091675282] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4091675282] Return from hook -antigen-load-env with 0
+[WRN][1700413233.4092905521] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4092905521] Updated meta: target -antigen-load-source mode repeat type replace called 2
+[WRN][1700413233.4093413353] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4093413353] Processing hooks: -antigen-load-source-cached
+[WRN][1700413233.4093904495] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.4093904495] Replace hook: -antigen-load-source-cached /root/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting///zsh-syntax-highlighting.plugin.zsh
+[WRN][1700413233.4094507694] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413233.4094507694] Replaced hooked function.
+[LOG][1700413233.4094913006] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4094913006] Return from hook -antigen-load-source with 0
+[LOG][1700413233.4095766544] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4095766544] Return from hook antigen-bundle with 0
+[WRN][1700413233.4096932411] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4096932411] Updated meta: target antigen-bundle mode repeat type pre called 11
+[WRN][1700413233.4097478390] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4097478390] Processing hooks: antigen-bundle-cached
+[WRN][1700413233.4097881317] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.4097881317] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1700413233.4098501205] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413233.4098501205] -antigen-hook-antigen-bundle jirutka/zsh-shift-select
+[TRA][1700413233.4099018574] /root/.local/share/antigen/antigen.zsh:1438
+[TRA][1700413233.4099018574] Called antigen-bundle with jirutka/zsh-shift-select BUNDLE
+[TRA][1700413233.4099018574] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413233.4102919102] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4102919102] Updated meta: target -antigen-load-env mode repeat type replace called 3
+[WRN][1700413233.4103460312] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4103460312] Processing hooks: -antigen-load-env-cached
+[WRN][1700413233.4103991985] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.4103991985] Replace hook: -antigen-load-env-cached dir /root/.local/share/antigen/bundles/jirutka/zsh-shift-select btype plugin url https://github.com/jirutka/zsh-shift-select.git loc / name jirutka/zsh-shift-select make_local_clone true
+[WRN][1700413233.4104850292] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413233.4104850292] Replaced hooked function.
+[LOG][1700413233.4105286598] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4105286598] Return from hook -antigen-load-env with 0
+[WRN][1700413233.4106512070] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4106512070] Updated meta: target -antigen-load-source mode repeat type replace called 3
+[WRN][1700413233.4107031822] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4107031822] Processing hooks: -antigen-load-source-cached
+[WRN][1700413233.4107520580] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.4107520580] Replace hook: -antigen-load-source-cached /root/.local/share/antigen/bundles/jirutka/zsh-shift-select///zsh-shift-select.plugin.zsh
+[WRN][1700413233.4108157158] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413233.4108157158] Replaced hooked function.
+[LOG][1700413233.4108576775] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4108576775] Return from hook -antigen-load-source with 0
+[LOG][1700413233.4109508991] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4109508991] Return from hook antigen-bundle with 0
+[WRN][1700413233.4110677242] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4110677242] Updated meta: target antigen-bundle mode repeat type pre called 12
+[WRN][1700413233.4111144543] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4111144543] Processing hooks: antigen-bundle-cached
+[WRN][1700413233.4111521244] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413233.4111521244] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1700413233.4112157822] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413233.4112157822] -antigen-hook-antigen-bundle romkatv/powerlevel10k --btype=theme
+[TRA][1700413233.4112606049] /root/.local/share/antigen/antigen.zsh:1438
+[TRA][1700413233.4112606049] Called antigen-bundle with romkatv/powerlevel10k --btype=theme BUNDLE
+[TRA][1700413233.4112606049] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413233.4116504192] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4116504192] Updated meta: target -antigen-load-env mode repeat type replace called 4
+[WRN][1700413233.4117109776] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4117109776] Processing hooks: -antigen-load-env-cached
+[WRN][1700413233.4117639065] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.4117639065] Replace hook: -antigen-load-env-cached dir /root/.local/share/antigen/bundles/romkatv/powerlevel10k btype theme url https://github.com/romkatv/powerlevel10k.git loc / name romkatv/powerlevel10k make_local_clone true
+[WRN][1700413233.4118480682] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413233.4118480682] Replaced hooked function.
+[LOG][1700413233.4119126797] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4119126797] Return from hook -antigen-load-env with 0
+[WRN][1700413233.4120357037] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413233.4120357037] Updated meta: target -antigen-load-source mode repeat type replace called 4
+[WRN][1700413233.4120864868] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4120864868] Processing hooks: -antigen-load-source-cached
+[WRN][1700413233.4121336937] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413233.4121336937] Replace hook: -antigen-load-source-cached /root/.local/share/antigen/bundles/romkatv/powerlevel10k///powerlevel10k.zsh-theme
+[WRN][1700413233.4121947289] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413233.4121947289] Replaced hooked function.
+[LOG][1700413233.4122359753] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4122359753] Return from hook -antigen-load-source with 0
+[LOG][1700413233.4123237133] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.4123237133] Return from hook antigen-bundle with 0
+[WRN][1700413233.4123814106] /root/.local/share/antigen/antigen.zsh:1739
+[WRN][1700413233.4123814106] Parallel install done PARALLEL
+[WRN][1700413233.4125492573] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413233.4125492573] Ignoring hook due to mode once: antigen-apply-lock
+[WRN][1700413233.4126024246] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413233.4126024246] Ignoring hook due to mode once: antigen-apply-parallel
+[WRN][1700413233.4126493931] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413233.4126493931] Ignoring hook due to mode once: antigen-apply-defer
+[WRN][1700413233.4126966000] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413233.4126966000] Ignoring hook due to mode once: antigen-apply-cached
+[WRN][1700413233.4127366543] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413233.4127366543] Processing hooks: antigen-apply-lock antigen-apply-parallel antigen-apply-defer antigen-apply-cached
+[WRN][1700413233.4127795696] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413233.4127795696] -antigen-hook-antigen-apply 
+[LOG][1700413233.4128236771] /root/.local/share/antigen/antigen.zsh:1438
+[LOG][1700413233.4128236771] Called antigen-apply
+[TRA][1700413233.4128599167] /root/.local/share/antigen/antigen.zsh:1439
+[TRA][1700413233.4128599167] Gonna create compdump file @ apply COMPDUMP
+[TRA][1700413233.4128599167] TRACE
+-antigen-hook-antigen-apply
+-antigen-hook-handler
+antigen-apply
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[LOG][1700413233.6007249355] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.6007249355] Return from hook antigen-apply with 0
+[WRN][1700413233.6009724140] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413233.6009724140] Replaced hooked function.
+[WRN][1700413233.6010355949] /root/.local/share/antigen/antigen.zsh:1513
+[WRN][1700413233.6010355949] Post hook: antigen-apply-lock
+[WRN][1700413233.6010961533] /root/.local/share/antigen/antigen.zsh:1676
+[WRN][1700413233.6010961533] Freeing antigen-lock file at /root/.local/share/antigen/.lock
+[WRN][1700413233.6023912430] /root/.local/share/antigen/antigen.zsh:1513
+[WRN][1700413233.6023912430] Post hook: antigen-apply-cached
+[LOG][1700413233.6025633812] /root/.local/share/antigen/antigen.zsh:1893
+[LOG][1700413233.6025633812] TRACE: /root/.local/share/antigen/antigen.zsh:1514 /root/.local/share/antigen/antigen.zsh:1441 /root/.local/share/antigen/antigen.zsh:1447 /root/.local/share/antigen/antigen.zsh:1506 /root/.local/share/antigen/antigen.zsh:1441 /root/.zshrc:37 zsh:0
+[LOG][1700413233.6026604176] /root/.local/share/antigen/antigen.zsh:1787
+[LOG][1700413233.6026604176] Gonna generate cache for /root/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions// /root/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions///zsh-autosuggestions.plugin.zsh /root/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting// /root/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting///zsh-syntax-highlighting.plugin.zsh /root/.local/share/antigen/bundles/jirutka/zsh-shift-select// /root/.local/share/antigen/bundles/jirutka/zsh-shift-select///zsh-shift-select.plugin.zsh /root/.local/share/antigen/bundles/romkatv/powerlevel10k// /root/.local/share/antigen/bundles/romkatv/powerlevel10k///powerlevel10k.zsh-theme
+[LOG][1700413233.6107168198] /root/.local/share/antigen/antigen.zsh:1844
+[LOG][1700413233.6107168198] CHECK_FILES /home/allonny/.zshrc /home/allonny/.zshrc
+[LOG][1700413233.6440370083] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.6440370083] Return from hook antigen-apply with 0
+[LOG][1700413233.6443290710] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413233.6443290710] Return from hook antigen with 0
+[WRN][1700413344.1913802624] /root/.local/share/antigen/antigen.zsh:266
+[WRN][1700413344.1913802624] -antigen-interactive-mode: file:file:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1700413344.1916012764] /root/.local/share/antigen/antigen.zsh:1572
+[WRN][1700413344.1916012764] -antigen-lock-init return code was 0
+[LOG][1700413344.1916422844] /root/.local/share/antigen/antigen.zsh:1574
+[LOG][1700413344.1916422844] LOADED EXTENSION lock EXT
+[WRN][1700413344.1938965321] /root/.local/share/antigen/antigen.zsh:1684
+[WRN][1700413344.1938965321] Init parallel extension PARALLEL
+[WRN][1700413344.1939694881] /root/.local/share/antigen/antigen.zsh:266
+[WRN][1700413344.1939694881] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1700413344.1940376759] /root/.local/share/antigen/antigen.zsh:1572
+[WRN][1700413344.1940376759] -antigen-parallel-init return code was 0
+[LOG][1700413344.1940736771] /root/.local/share/antigen/antigen.zsh:1574
+[LOG][1700413344.1940736771] LOADED EXTENSION parallel EXT
+[WRN][1700413344.1941123009] /root/.local/share/antigen/antigen.zsh:1692
+[WRN][1700413344.1941123009] Exec parallel extension PARALLEL
+[WRN][1700413344.1943109035] /root/.local/share/antigen/antigen.zsh:266
+[WRN][1700413344.1943109035] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1700413344.1943759918] /root/.local/share/antigen/antigen.zsh:1572
+[WRN][1700413344.1943759918] -antigen-defer-init return code was 0
+[LOG][1700413344.1944124699] /root/.local/share/antigen/antigen.zsh:1574
+[LOG][1700413344.1944124699] LOADED EXTENSION defer EXT
+[WRN][1700413344.1957569122] /root/.local/share/antigen/antigen.zsh:266
+[WRN][1700413344.1957569122] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1700413344.1961672306] /root/.local/share/antigen/antigen.zsh:1572
+[WRN][1700413344.1961672306] -antigen-cache-init return code was 0
+[LOG][1700413344.1962594986] /root/.local/share/antigen/antigen.zsh:1574
+[LOG][1700413344.1962594986] LOADED EXTENSION cache EXT
+[WRN][1700413344.1989271641] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.1989271641] Updated meta: target antigen mode once type pre called 1
+[WRN][1700413344.1990153790] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.1990153790] Processing hooks: antigen-lock
+[WRN][1700413344.1990537643] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.1990537643] Pre hook: antigen-lock bundle zsh-users/zsh-autosuggestions
+[LOG][1700413344.1991043091] /root/.local/share/antigen/antigen.zsh:1658
+[LOG][1700413344.1991043091] antigen-lock called
+[WRN][1700413344.1991441250] /root/.local/share/antigen/antigen.zsh:1669
+[WRN][1700413344.1991441250] Creating antigen-lock file at /root/.local/share/antigen/.lock
+[WRN][1700413344.2009351254] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413344.2009351254] -antigen-hook-antigen bundle zsh-users/zsh-autosuggestions
+[WRN][1700413344.2010867596] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2010867596] Updated meta: target antigen-bundle mode repeat type replace called 1
+[WRN][1700413344.2011585236] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2011585236] Updated meta: target antigen-bundle mode repeat type pre called 1
+[WRN][1700413344.2012033463] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2012033463] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1700413344.2012398243] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.2012398243] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1700413344.2013058662] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2013058662] Replace hook: antigen-bundle-defer zsh-users/zsh-autosuggestions
+[WRN][1700413344.2013654709] /root/.local/share/antigen/antigen.zsh:1500
+[WRN][1700413344.2013654709] antigen-bundle-defer shortcircuited
+[LOG][1700413344.2014424801] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2014424801] Return from hook antigen with 0
+[WRN][1700413344.2015626431] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413344.2015626431] Ignoring hook due to mode once: antigen-lock
+[WRN][1700413344.2016019821] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2016019821] Processing hooks: antigen-lock
+[WRN][1700413344.2016413212] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413344.2016413212] -antigen-hook-antigen bundle zsh-users/zsh-syntax-highlighting
+[WRN][1700413344.2017467022] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2017467022] Updated meta: target antigen-bundle mode repeat type replace called 2
+[WRN][1700413344.2018086910] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2018086910] Updated meta: target antigen-bundle mode repeat type pre called 2
+[WRN][1700413344.2018516064] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2018516064] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1700413344.2018926144] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.2018926144] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1700413344.2019588947] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2019588947] Replace hook: antigen-bundle-defer zsh-users/zsh-syntax-highlighting
+[WRN][1700413344.2020132542] /root/.local/share/antigen/antigen.zsh:1500
+[WRN][1700413344.2020132542] antigen-bundle-defer shortcircuited
+[LOG][1700413344.2020883560] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2020883560] Return from hook antigen with 0
+[WRN][1700413344.2021889687] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413344.2021889687] Ignoring hook due to mode once: antigen-lock
+[WRN][1700413344.2022268772] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2022268772] Processing hooks: antigen-lock
+[WRN][1700413344.2022662163] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413344.2022662163] -antigen-hook-antigen bundle jirutka/zsh-shift-select
+[WRN][1700413344.2023732662] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2023732662] Updated meta: target antigen-bundle mode repeat type replace called 3
+[WRN][1700413344.2024352551] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2024352551] Updated meta: target antigen-bundle mode repeat type pre called 3
+[WRN][1700413344.2024772167] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2024772167] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1700413344.2025144100] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.2025144100] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1700413344.2025871277] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2025871277] Replace hook: antigen-bundle-defer jirutka/zsh-shift-select
+[WRN][1700413344.2026433945] /root/.local/share/antigen/antigen.zsh:1500
+[WRN][1700413344.2026433945] antigen-bundle-defer shortcircuited
+[LOG][1700413344.2027149200] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2027149200] Return from hook antigen with 0
+[WRN][1700413344.2028160095] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413344.2028160095] Ignoring hook due to mode once: antigen-lock
+[WRN][1700413344.2028551102] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2028551102] Processing hooks: antigen-lock
+[WRN][1700413344.2029013634] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413344.2029013634] -antigen-hook-antigen theme romkatv/powerlevel10k
+[WRN][1700413344.2046611309] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2046611309] Updated meta: target antigen-bundle mode repeat type replace called 4
+[WRN][1700413344.2047617435] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2047617435] Updated meta: target antigen-bundle mode repeat type pre called 4
+[WRN][1700413344.2048156261] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2048156261] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1700413344.2048594952] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.2048594952] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1700413344.2049491405] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2049491405] Replace hook: antigen-bundle-defer romkatv/powerlevel10k --btype=theme
+[WRN][1700413344.2050194740] /root/.local/share/antigen/antigen.zsh:1500
+[WRN][1700413344.2050194740] antigen-bundle-defer shortcircuited
+[LOG][1700413344.2051348686] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2051348686] Return from hook antigen with 0
+[WRN][1700413344.2052640915] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413344.2052640915] Ignoring hook due to mode once: antigen-lock
+[WRN][1700413344.2053065300] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2053065300] Processing hooks: antigen-lock
+[WRN][1700413344.2053487301] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413344.2053487301] -antigen-hook-antigen apply
+[WRN][1700413344.2054698467] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2054698467] Updated meta: target antigen-apply mode once type post called 1
+[WRN][1700413344.2055404186] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2055404186] Updated meta: target antigen-apply mode once type pre called 1
+[WRN][1700413344.2056097984] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2056097984] Updated meta: target antigen-apply mode once type replace called 1
+[WRN][1700413344.2056808472] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2056808472] Updated meta: target antigen-apply mode once type pre called 1
+[WRN][1700413344.2057487965] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2057487965] Updated meta: target antigen-apply mode once type post called 1
+[WRN][1700413344.2057945728] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2057945728] Processing hooks: antigen-apply-lock antigen-apply-parallel antigen-apply-parallel-execute antigen-apply-defer antigen-apply-cached
+[WRN][1700413344.2058358192] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.2058358192] Pre hook: antigen-apply-parallel
+[WRN][1700413344.2058780193] /root/.local/share/antigen/antigen.zsh:1744
+[WRN][1700413344.2058780193] Parallel pre-apply PARALLEL PRE-APPLY
+[WRN][1700413344.2060334682] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.2060334682] Pre hook: antigen-apply-defer
+[WRN][1700413344.2060799599] /root/.local/share/antigen/antigen.zsh:1623
+[WRN][1700413344.2060799599] Defer pre-apply DEFER PRE-APPLY
+[LOG][1700413344.2062032223] /root/.local/share/antigen/antigen.zsh:1629
+[LOG][1700413344.2062032223] Processing deferred bundle: zsh-users/zsh-autosuggestions DEFER
+[WRN][1700413344.2063136101] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2063136101] Updated meta: target antigen-bundle mode repeat type pre called 5
+[WRN][1700413344.2063927650] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2063927650] Updated meta: target antigen-bundle mode repeat type replace called 1
+[WRN][1700413344.2064445019] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2064445019] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1700413344.2064890862] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.2064890862] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1700413344.2065622807] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2065622807] Replace hook: antigen-bundle-parallel zsh-users/zsh-autosuggestions
+[TRA][1700413344.2066173553] /root/.zshrc:1748
+[TRA][1700413344.2066173553] antigen-bundle-parallel: zsh-users/zsh-autosuggestions PARALLEL
+[TRA][1700413344.2066173553] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413344.2066881657] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413344.2066881657] Replaced hooked function.
+[LOG][1700413344.2067348957] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2067348957] Return from hook antigen-bundle with 0
+[LOG][1700413344.2067978382] /root/.local/share/antigen/antigen.zsh:1629
+[LOG][1700413344.2067978382] Processing deferred bundle: zsh-users/zsh-syntax-highlighting DEFER
+[WRN][1700413344.2069110870] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2069110870] Updated meta: target antigen-bundle mode repeat type pre called 6
+[WRN][1700413344.2069871426] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2069871426] Updated meta: target antigen-bundle mode repeat type replace called 2
+[WRN][1700413344.2070345879] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2070345879] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1700413344.2070713043] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.2070713043] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1700413344.2071440220] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2071440220] Replace hook: antigen-bundle-parallel zsh-users/zsh-syntax-highlighting
+[TRA][1700413344.2071936131] /root/.zshrc:1748
+[TRA][1700413344.2071936131] antigen-bundle-parallel: zsh-users/zsh-syntax-highlighting PARALLEL
+[TRA][1700413344.2071936131] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413344.2072572708] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413344.2072572708] Replaced hooked function.
+[LOG][1700413344.2072997093] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2072997093] Return from hook antigen-bundle with 0
+[LOG][1700413344.2073626518] /root/.local/share/antigen/antigen.zsh:1629
+[LOG][1700413344.2073626518] Processing deferred bundle: jirutka/zsh-shift-select DEFER
+[WRN][1700413344.2074592113] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2074592113] Updated meta: target antigen-bundle mode repeat type pre called 7
+[WRN][1700413344.2075285912] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2075285912] Updated meta: target antigen-bundle mode repeat type replace called 3
+[WRN][1700413344.2075765133] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2075765133] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1700413344.2076141834] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.2076141834] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1700413344.2076849937] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2076849937] Replace hook: antigen-bundle-parallel jirutka/zsh-shift-select
+[TRA][1700413344.2077295780] /root/.zshrc:1748
+[TRA][1700413344.2077295780] antigen-bundle-parallel: jirutka/zsh-shift-select PARALLEL
+[TRA][1700413344.2077295780] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413344.2077889442] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413344.2077889442] Replaced hooked function.
+[LOG][1700413344.2078285217] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2078285217] Return from hook antigen-bundle with 0
+[LOG][1700413344.2078840733] /root/.local/share/antigen/antigen.zsh:1629
+[LOG][1700413344.2078840733] Processing deferred bundle: romkatv/powerlevel10k --btype=theme DEFER
+[WRN][1700413344.2079892159] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2079892159] Updated meta: target antigen-bundle mode repeat type pre called 8
+[WRN][1700413344.2080521584] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2080521584] Updated meta: target antigen-bundle mode repeat type replace called 4
+[WRN][1700413344.2080969810] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2080969810] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1700413344.2081332207] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.2081332207] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1700413344.2081952095] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2081952095] Replace hook: antigen-bundle-parallel romkatv/powerlevel10k --btype=theme
+[TRA][1700413344.2082376480] /root/.zshrc:1748
+[TRA][1700413344.2082376480] antigen-bundle-parallel: romkatv/powerlevel10k --btype=theme PARALLEL
+[TRA][1700413344.2082376480] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413344.2082931995] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413344.2082931995] Replaced hooked function.
+[LOG][1700413344.2083311081] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2083311081] Return from hook antigen-bundle with 0
+[WRN][1700413344.2084093094] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2084093094] Replace hook: antigen-apply-parallel-execute
+[WRN][1700413344.2084505558] /root/.local/share/antigen/antigen.zsh:1756
+[WRN][1700413344.2084505558] Parallel replace-apply PARALLEL REPLACE-APPLY
+[WRN][1700413344.2085511684] /root/.local/share/antigen/antigen.zsh:1695
+[WRN][1700413344.2085511684] Parallel antigen-bundle-parallel-execute PARALLEL
+[WRN][1700413344.2085945606] /root/.local/share/antigen/antigen.zsh:1699
+[WRN][1700413344.2085945606] Gonna install in parallel 4 bundles. PARALLEL
+[WRN][1700413344.2086300850] /root/.local/share/antigen/antigen.zsh:1701
+[WRN][1700413344.2086300850] zsh-users/zsh-autosuggestions zsh-users/zsh-syntax-highlighting jirutka/zsh-shift-select romkatv/powerlevel10k --btype=theme PARALLEL
+[WRN][1700413344.2089745998] /root/.local/share/antigen/antigen.zsh:1715
+[WRN][1700413344.2089745998] Bundle zsh-users/zsh-autosuggestions already cloned locally. PARALLEL
+[WRN][1700413344.2092096806] /root/.local/share/antigen/antigen.zsh:1715
+[WRN][1700413344.2092096806] Bundle zsh-users/zsh-syntax-highlighting already cloned locally. PARALLEL
+[WRN][1700413344.2094259262] /root/.local/share/antigen/antigen.zsh:1715
+[WRN][1700413344.2094259262] Bundle jirutka/zsh-shift-select already cloned locally. PARALLEL
+[WRN][1700413344.2096540928] /root/.local/share/antigen/antigen.zsh:1715
+[WRN][1700413344.2096540928] Bundle romkatv/powerlevel10k already cloned locally. PARALLEL
+[WRN][1700413344.2097818851] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2097818851] Updated meta: target antigen-bundle mode repeat type pre called 9
+[WRN][1700413344.2098360062] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2098360062] Processing hooks: antigen-bundle-cached
+[WRN][1700413344.2098748684] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.2098748684] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1700413344.2099783421] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413344.2099783421] -antigen-hook-antigen-bundle zsh-users/zsh-autosuggestions
+[TRA][1700413344.2100260258] /root/.local/share/antigen/antigen.zsh:1438
+[TRA][1700413344.2100260258] Called antigen-bundle with zsh-users/zsh-autosuggestions BUNDLE
+[TRA][1700413344.2100260258] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413344.2104640007] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2104640007] Updated meta: target -antigen-load-env mode repeat type replace called 1
+[WRN][1700413344.2105312347] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2105312347] Processing hooks: -antigen-load-env-cached
+[WRN][1700413344.2105858326] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2105858326] Replace hook: -antigen-load-env-cached dir /root/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions btype plugin url https://github.com/zsh-users/zsh-autosuggestions.git loc / name zsh-users/zsh-autosuggestions make_local_clone true
+[WRN][1700413344.2106833458] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413344.2106833458] Replaced hooked function.
+[LOG][1700413344.2107243538] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2107243538] Return from hook -antigen-load-env with 0
+[WRN][1700413344.2108407021] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2108407021] Updated meta: target -antigen-load-source mode repeat type replace called 1
+[WRN][1700413344.2108988762] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2108988762] Processing hooks: -antigen-load-source-cached
+[WRN][1700413344.2109515667] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2109515667] Replace hook: -antigen-load-source-cached /root/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions///zsh-autosuggestions.plugin.zsh
+[WRN][1700413344.2110183239] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413344.2110183239] Replaced hooked function.
+[LOG][1700413344.2110683918] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2110683918] Return from hook -antigen-load-source with 0
+[LOG][1700413344.2111549377] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2111549377] Return from hook antigen-bundle with 0
+[WRN][1700413344.2112722397] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2112722397] Updated meta: target antigen-bundle mode repeat type pre called 10
+[WRN][1700413344.2113184929] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2113184929] Processing hooks: antigen-bundle-cached
+[WRN][1700413344.2113559246] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.2113559246] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1700413344.2114169598] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413344.2114169598] -antigen-hook-antigen-bundle zsh-users/zsh-syntax-highlighting
+[TRA][1700413344.2114603519] /root/.local/share/antigen/antigen.zsh:1438
+[TRA][1700413344.2114603519] Called antigen-bundle with zsh-users/zsh-syntax-highlighting BUNDLE
+[TRA][1700413344.2114603519] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413344.2118463516] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2118463516] Updated meta: target -antigen-load-env mode repeat type replace called 2
+[WRN][1700413344.2119126320] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2119126320] Processing hooks: -antigen-load-env-cached
+[WRN][1700413344.2119679451] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2119679451] Replace hook: -antigen-load-env-cached dir /root/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting btype plugin url https://github.com/zsh-users/zsh-syntax-highlighting.git loc / name zsh-users/zsh-syntax-highlighting make_local_clone true
+[WRN][1700413344.2120516300] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413344.2120516300] Replaced hooked function.
+[LOG][1700413344.2120926380] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2120926380] Return from hook -antigen-load-env with 0
+[WRN][1700413344.2122116089] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2122116089] Updated meta: target -antigen-load-source mode repeat type replace called 2
+[WRN][1700413344.2122631073] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2122631073] Processing hooks: -antigen-load-source-cached
+[WRN][1700413344.2123136520] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2123136520] Replace hook: -antigen-load-source-cached /root/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting///zsh-syntax-highlighting.plugin.zsh
+[WRN][1700413344.2123732567] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413344.2123732567] Replaced hooked function.
+[LOG][1700413344.2124123573] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2124123573] Return from hook -antigen-load-source with 0
+[LOG][1700413344.2125000954] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2125000954] Return from hook antigen-bundle with 0
+[WRN][1700413344.2126164436] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2126164436] Updated meta: target antigen-bundle mode repeat type pre called 11
+[WRN][1700413344.2126629353] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2126629353] Processing hooks: antigen-bundle-cached
+[WRN][1700413344.2127015591] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.2127015591] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1700413344.2127606869] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413344.2127606869] -antigen-hook-antigen-bundle jirutka/zsh-shift-select
+[TRA][1700413344.2128019333] /root/.local/share/antigen/antigen.zsh:1438
+[TRA][1700413344.2128019333] Called antigen-bundle with jirutka/zsh-shift-select BUNDLE
+[TRA][1700413344.2128019333] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413344.2131795883] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2131795883] Updated meta: target -antigen-load-env mode repeat type replace called 3
+[WRN][1700413344.2132346630] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2132346630] Processing hooks: -antigen-load-env-cached
+[WRN][1700413344.2132868767] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2132868767] Replace hook: -antigen-load-env-cached dir /root/.local/share/antigen/bundles/jirutka/zsh-shift-select btype plugin url https://github.com/jirutka/zsh-shift-select.git loc / name jirutka/zsh-shift-select make_local_clone true
+[WRN][1700413344.2133703232] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413344.2133703232] Replaced hooked function.
+[LOG][1700413344.2134108543] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2134108543] Return from hook -antigen-load-env with 0
+[WRN][1700413344.2135281563] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2135281563] Updated meta: target -antigen-load-source mode repeat type replace called 3
+[WRN][1700413344.2135784626] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2135784626] Processing hooks: -antigen-load-source-cached
+[WRN][1700413344.2136321068] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2136321068] Replace hook: -antigen-load-source-cached /root/.local/share/antigen/bundles/jirutka/zsh-shift-select///zsh-shift-select.plugin.zsh
+[WRN][1700413344.2136931419] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413344.2136931419] Replaced hooked function.
+[LOG][1700413344.2137329578] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2137329578] Return from hook -antigen-load-source with 0
+[LOG][1700413344.2138161659] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2138161659] Return from hook antigen-bundle with 0
+[WRN][1700413344.2139430046] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2139430046] Updated meta: target antigen-bundle mode repeat type pre called 12
+[WRN][1700413344.2139918804] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2139918804] Processing hooks: antigen-bundle-cached
+[WRN][1700413344.2140307426] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413344.2140307426] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1700413344.2140936852] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413344.2140936852] -antigen-hook-antigen-bundle romkatv/powerlevel10k --btype=theme
+[TRA][1700413344.2141366005] /root/.local/share/antigen/antigen.zsh:1438
+[TRA][1700413344.2141366005] Called antigen-bundle with romkatv/powerlevel10k --btype=theme BUNDLE
+[TRA][1700413344.2141366005] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413344.2145187855] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2145187855] Updated meta: target -antigen-load-env mode repeat type replace called 4
+[WRN][1700413344.2145729065] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2145729065] Processing hooks: -antigen-load-env-cached
+[WRN][1700413344.2146272659] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2146272659] Replace hook: -antigen-load-env-cached dir /root/.local/share/antigen/bundles/romkatv/powerlevel10k btype theme url https://github.com/romkatv/powerlevel10k.git loc / name romkatv/powerlevel10k make_local_clone true
+[WRN][1700413344.2147123814] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413344.2147123814] Replaced hooked function.
+[LOG][1700413344.2147529125] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2147529125] Return from hook -antigen-load-env with 0
+[WRN][1700413344.2148737907] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413344.2148737907] Updated meta: target -antigen-load-source mode repeat type replace called 4
+[WRN][1700413344.2149333954] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2149333954] Processing hooks: -antigen-load-source-cached
+[WRN][1700413344.2149832249] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413344.2149832249] Replace hook: -antigen-load-source-cached /root/.local/share/antigen/bundles/romkatv/powerlevel10k///powerlevel10k.zsh-theme
+[WRN][1700413344.2150416374] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413344.2150416374] Replaced hooked function.
+[LOG][1700413344.2150812149] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2150812149] Return from hook -antigen-load-source with 0
+[LOG][1700413344.2151656151] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2151656151] Return from hook antigen-bundle with 0
+[WRN][1700413344.2152228355] /root/.local/share/antigen/antigen.zsh:1739
+[WRN][1700413344.2152228355] Parallel install done PARALLEL
+[WRN][1700413344.2153789997] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413344.2153789997] Ignoring hook due to mode once: antigen-apply-lock
+[WRN][1700413344.2154302597] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413344.2154302597] Ignoring hook due to mode once: antigen-apply-parallel
+[WRN][1700413344.2154765129] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413344.2154765129] Ignoring hook due to mode once: antigen-apply-defer
+[WRN][1700413344.2155315876] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413344.2155315876] Ignoring hook due to mode once: antigen-apply-cached
+[WRN][1700413344.2155697346] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413344.2155697346] Processing hooks: antigen-apply-lock antigen-apply-parallel antigen-apply-defer antigen-apply-cached
+[WRN][1700413344.2156112194] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413344.2156112194] -antigen-hook-antigen-apply 
+[LOG][1700413344.2156524658] /root/.local/share/antigen/antigen.zsh:1438
+[LOG][1700413344.2156524658] Called antigen-apply
+[TRA][1700413344.2156887054] /root/.local/share/antigen/antigen.zsh:1439
+[TRA][1700413344.2156887054] Gonna create compdump file @ apply COMPDUMP
+[TRA][1700413344.2156887054] TRACE
+-antigen-hook-antigen-apply
+-antigen-hook-handler
+antigen-apply
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[LOG][1700413344.2256081104] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2256081104] Return from hook antigen-apply with 0
+[WRN][1700413344.2257640362] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413344.2257640362] Replaced hooked function.
+[WRN][1700413344.2258081436] /root/.local/share/antigen/antigen.zsh:1513
+[WRN][1700413344.2258081436] Post hook: antigen-apply-lock
+[WRN][1700413344.2258498669] /root/.local/share/antigen/antigen.zsh:1676
+[WRN][1700413344.2258498669] Freeing antigen-lock file at /root/.local/share/antigen/.lock
+[WRN][1700413344.2268252373] /root/.local/share/antigen/antigen.zsh:1513
+[WRN][1700413344.2268252373] Post hook: antigen-apply-cached
+[LOG][1700413344.2269210815] /root/.local/share/antigen/antigen.zsh:1893
+[LOG][1700413344.2269210815] TRACE: /root/.local/share/antigen/antigen.zsh:1514 /root/.local/share/antigen/antigen.zsh:1441 /root/.local/share/antigen/antigen.zsh:1447 /root/.local/share/antigen/antigen.zsh:1506 /root/.local/share/antigen/antigen.zsh:1441 /root/.zshrc:38 zsh:0
+[LOG][1700413344.2269928455] /root/.local/share/antigen/antigen.zsh:1787
+[LOG][1700413344.2269928455] Gonna generate cache for /root/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions// /root/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions///zsh-autosuggestions.plugin.zsh /root/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting// /root/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting///zsh-syntax-highlighting.plugin.zsh /root/.local/share/antigen/bundles/jirutka/zsh-shift-select// /root/.local/share/antigen/bundles/jirutka/zsh-shift-select///zsh-shift-select.plugin.zsh /root/.local/share/antigen/bundles/romkatv/powerlevel10k// /root/.local/share/antigen/bundles/romkatv/powerlevel10k///powerlevel10k.zsh-theme
+[LOG][1700413344.2331576347] /root/.local/share/antigen/antigen.zsh:1844
+[LOG][1700413344.2331576347] CHECK_FILES /home/allonny/.zshrc /home/allonny/.zshrc
+[LOG][1700413344.2632765770] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2632765770] Return from hook antigen-apply with 0
+[LOG][1700413344.2633986473] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413344.2633986473] Return from hook antigen with 0
+[WRN][1700413436.4598665237] /root/.local/share/antigen/antigen.zsh:266
+[WRN][1700413436.4598665237] -antigen-interactive-mode: file:file:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1700413436.4600946903] /root/.local/share/antigen/antigen.zsh:1572
+[WRN][1700413436.4600946903] -antigen-lock-init return code was 0
+[LOG][1700413436.4601368904] /root/.local/share/antigen/antigen.zsh:1574
+[LOG][1700413436.4601368904] LOADED EXTENSION lock EXT
+[WRN][1700413436.4628758430] /root/.local/share/antigen/antigen.zsh:1684
+[WRN][1700413436.4628758430] Init parallel extension PARALLEL
+[WRN][1700413436.4630908966] /root/.local/share/antigen/antigen.zsh:266
+[WRN][1700413436.4630908966] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1700413436.4632673264] /root/.local/share/antigen/antigen.zsh:1572
+[WRN][1700413436.4632673264] -antigen-parallel-init return code was 0
+[LOG][1700413436.4633550644] /root/.local/share/antigen/antigen.zsh:1574
+[LOG][1700413436.4633550644] LOADED EXTENSION parallel EXT
+[WRN][1700413436.4634416103] /root/.local/share/antigen/antigen.zsh:1692
+[WRN][1700413436.4634416103] Exec parallel extension PARALLEL
+[WRN][1700413436.4639065266] /root/.local/share/antigen/antigen.zsh:266
+[WRN][1700413436.4639065266] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1700413436.4640507698] /root/.local/share/antigen/antigen.zsh:1572
+[WRN][1700413436.4640507698] -antigen-defer-init return code was 0
+[LOG][1700413436.4641110897] /root/.local/share/antigen/antigen.zsh:1574
+[LOG][1700413436.4641110897] LOADED EXTENSION defer EXT
+[WRN][1700413436.4656617641] /root/.local/share/antigen/antigen.zsh:266
+[WRN][1700413436.4656617641] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1700413436.4662027359] /root/.local/share/antigen/antigen.zsh:1572
+[WRN][1700413436.4662027359] -antigen-cache-init return code was 0
+[LOG][1700413436.4663004875] /root/.local/share/antigen/antigen.zsh:1574
+[LOG][1700413436.4663004875] LOADED EXTENSION cache EXT
+[WRN][1700413436.4687674046] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4687674046] Updated meta: target antigen mode once type pre called 1
+[WRN][1700413436.4688355923] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4688355923] Processing hooks: antigen-lock
+[WRN][1700413436.4688739777] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4688739777] Pre hook: antigen-lock bundle zsh-users/zsh-autosuggestions
+[LOG][1700413436.4689276218] /root/.local/share/antigen/antigen.zsh:1658
+[LOG][1700413436.4689276218] antigen-lock called
+[WRN][1700413436.4689714909] /root/.local/share/antigen/antigen.zsh:1669
+[WRN][1700413436.4689714909] Creating antigen-lock file at /root/.local/share/antigen/.lock
+[WRN][1700413436.4709727764] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413436.4709727764] -antigen-hook-antigen bundle zsh-users/zsh-autosuggestions
+[WRN][1700413436.4711720943] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4711720943] Updated meta: target antigen-bundle mode repeat type replace called 1
+[WRN][1700413436.4713358879] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4713358879] Updated meta: target antigen-bundle mode repeat type pre called 1
+[WRN][1700413436.4714441299] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4714441299] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1700413436.4715273380] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4715273380] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1700413436.4716789722] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4716789722] Replace hook: antigen-bundle-defer zsh-users/zsh-autosuggestions
+[WRN][1700413436.4718246460] /root/.local/share/antigen/antigen.zsh:1500
+[WRN][1700413436.4718246460] antigen-bundle-defer shortcircuited
+[LOG][1700413436.4720473289] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4720473289] Return from hook antigen with 0
+[WRN][1700413436.4722337723] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413436.4722337723] Ignoring hook due to mode once: antigen-lock
+[WRN][1700413436.4723000526] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4723000526] Processing hooks: antigen-lock
+[WRN][1700413436.4723517895] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413436.4723517895] -antigen-hook-antigen bundle zsh-users/zsh-syntax-highlighting
+[WRN][1700413436.4724609852] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4724609852] Updated meta: target antigen-bundle mode repeat type replace called 2
+[WRN][1700413436.4725303650] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4725303650] Updated meta: target antigen-bundle mode repeat type pre called 2
+[WRN][1700413436.4725837708] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4725837708] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1700413436.4726195335] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4726195335] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1700413436.4726853371] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4726853371] Replace hook: antigen-bundle-defer zsh-users/zsh-syntax-highlighting
+[WRN][1700413436.4727420807] /root/.local/share/antigen/antigen.zsh:1500
+[WRN][1700413436.4727420807] antigen-bundle-defer shortcircuited
+[LOG][1700413436.4728131294] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4728131294] Return from hook antigen with 0
+[WRN][1700413436.4729354382] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413436.4729354382] Ignoring hook due to mode once: antigen-lock
+[WRN][1700413436.4729785919] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4729785919] Processing hooks: antigen-lock
+[WRN][1700413436.4730222225] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413436.4730222225] -antigen-hook-antigen bundle jirutka/zsh-shift-select
+[WRN][1700413436.4731314182] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4731314182] Updated meta: target antigen-bundle mode repeat type replace called 3
+[WRN][1700413436.4732017517] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4732017517] Updated meta: target antigen-bundle mode repeat type pre called 3
+[WRN][1700413436.4732451439] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4732451439] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1700413436.4732804298] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4732804298] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1700413436.4733455181] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4733455181] Replace hook: antigen-bundle-defer jirutka/zsh-shift-select
+[WRN][1700413436.4734060764] /root/.local/share/antigen/antigen.zsh:1500
+[WRN][1700413436.4734060764] antigen-bundle-defer shortcircuited
+[LOG][1700413436.4734866619] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4734866619] Return from hook antigen with 0
+[WRN][1700413436.4735887051] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413436.4735887051] Ignoring hook due to mode once: antigen-lock
+[WRN][1700413436.4736306667] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4736306667] Processing hooks: antigen-lock
+[WRN][1700413436.4736731052] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413436.4736731052] -antigen-hook-antigen theme romkatv/powerlevel10k
+[WRN][1700413436.4762449265] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4762449265] Updated meta: target antigen-bundle mode repeat type replace called 4
+[WRN][1700413436.4764347076] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4764347076] Updated meta: target antigen-bundle mode repeat type pre called 4
+[WRN][1700413436.4765350819] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4765350819] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1700413436.4766199589] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4766199589] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1700413436.4767701626] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4767701626] Replace hook: antigen-bundle-defer romkatv/powerlevel10k --btype=theme
+[WRN][1700413436.4769170284] /root/.local/share/antigen/antigen.zsh:1500
+[WRN][1700413436.4769170284] antigen-bundle-defer shortcircuited
+[LOG][1700413436.4771530628] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4771530628] Return from hook antigen with 0
+[WRN][1700413436.4775035381] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413436.4775035381] Ignoring hook due to mode once: antigen-lock
+[WRN][1700413436.4776172638] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4776172638] Processing hooks: antigen-lock
+[WRN][1700413436.4777526855] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413436.4777526855] -antigen-hook-antigen apply
+[WRN][1700413436.4780952930] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4780952930] Updated meta: target antigen-apply mode once type post called 1
+[WRN][1700413436.4781992435] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4781992435] Updated meta: target antigen-apply mode once type pre called 1
+[WRN][1700413436.4782600403] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4782600403] Updated meta: target antigen-apply mode once type replace called 1
+[WRN][1700413436.4783184528] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4783184528] Updated meta: target antigen-apply mode once type pre called 1
+[WRN][1700413436.4783766270] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4783766270] Updated meta: target antigen-apply mode once type post called 1
+[WRN][1700413436.4784212112] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4784212112] Processing hooks: antigen-apply-lock antigen-apply-parallel antigen-apply-parallel-execute antigen-apply-defer antigen-apply-cached
+[WRN][1700413436.4784584045] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4784584045] Pre hook: antigen-apply-parallel
+[WRN][1700413436.4784982204] /root/.local/share/antigen/antigen.zsh:1744
+[WRN][1700413436.4784982204] Parallel pre-apply PARALLEL PRE-APPLY
+[WRN][1700413436.4786043167] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4786043167] Pre hook: antigen-apply-defer
+[WRN][1700413436.4786458015] /root/.local/share/antigen/antigen.zsh:1623
+[WRN][1700413436.4786458015] Defer pre-apply DEFER PRE-APPLY
+[LOG][1700413436.4787518978] /root/.local/share/antigen/antigen.zsh:1629
+[LOG][1700413436.4787518978] Processing deferred bundle: zsh-users/zsh-autosuggestions DEFER
+[WRN][1700413436.4788482189] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4788482189] Updated meta: target antigen-bundle mode repeat type pre called 5
+[WRN][1700413436.4789278507] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4789278507] Updated meta: target antigen-bundle mode repeat type replace called 1
+[WRN][1700413436.4789731503] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4789731503] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1700413436.4790098667] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4790098667] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1700413436.4790713787] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4790713787] Replace hook: antigen-bundle-parallel zsh-users/zsh-autosuggestions
+[TRA][1700413436.4791204929] /root/.zshrc:1748
+[TRA][1700413436.4791204929] antigen-bundle-parallel: zsh-users/zsh-autosuggestions PARALLEL
+[TRA][1700413436.4791204929] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413436.4791829586] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413436.4791829586] Replaced hooked function.
+[LOG][1700413436.4792208672] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4792208672] Return from hook antigen-bundle with 0
+[LOG][1700413436.4792790413] /root/.local/share/antigen/antigen.zsh:1629
+[LOG][1700413436.4792790413] Processing deferred bundle: zsh-users/zsh-syntax-highlighting DEFER
+[WRN][1700413436.4793713093] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4793713093] Updated meta: target antigen-bundle mode repeat type pre called 6
+[WRN][1700413436.4794318676] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4794318676] Updated meta: target antigen-bundle mode repeat type replace called 2
+[WRN][1700413436.4794745445] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4794745445] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1700413436.4795174599] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4795174599] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1700413436.4795813560] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4795813560] Replace hook: antigen-bundle-parallel zsh-users/zsh-syntax-highlighting
+[TRA][1700413436.4796240330] /root/.zshrc:1748
+[TRA][1700413436.4796240330] antigen-bundle-parallel: zsh-users/zsh-syntax-highlighting PARALLEL
+[TRA][1700413436.4796240330] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413436.4796798229] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413436.4796798229] Replaced hooked function.
+[LOG][1700413436.4797172546] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4797172546] Return from hook antigen-bundle with 0
+[LOG][1700413436.4797751904] /root/.local/share/antigen/antigen.zsh:1629
+[LOG][1700413436.4797751904] Processing deferred bundle: jirutka/zsh-shift-select DEFER
+[WRN][1700413436.4798667431] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4798667431] Updated meta: target antigen-bundle mode repeat type pre called 7
+[WRN][1700413436.4799420834] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4799420834] Updated meta: target antigen-bundle mode repeat type replace called 3
+[WRN][1700413436.4799888134] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4799888134] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1700413436.4800271988] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4800271988] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1700413436.4800901413] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4800901413] Replace hook: antigen-bundle-parallel jirutka/zsh-shift-select
+[TRA][1700413436.4801323414] /root/.zshrc:1748
+[TRA][1700413436.4801323414] antigen-bundle-parallel: jirutka/zsh-shift-select PARALLEL
+[TRA][1700413436.4801323414] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413436.4801876545] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413436.4801876545] Replaced hooked function.
+[LOG][1700413436.4802250862] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4802250862] Return from hook antigen-bundle with 0
+[LOG][1700413436.4802811146] /root/.local/share/antigen/antigen.zsh:1629
+[LOG][1700413436.4802811146] Processing deferred bundle: romkatv/powerlevel10k --btype=theme DEFER
+[WRN][1700413436.4803736210] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4803736210] Updated meta: target antigen-bundle mode repeat type pre called 8
+[WRN][1700413436.4804339409] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4804339409] Updated meta: target antigen-bundle mode repeat type replace called 4
+[WRN][1700413436.4804778099] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4804778099] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1700413436.4805145264] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4805145264] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1700413436.4805767536] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4805767536] Replace hook: antigen-bundle-parallel romkatv/powerlevel10k --btype=theme
+[TRA][1700413436.4806180000] /root/.zshrc:1748
+[TRA][1700413436.4806180000] antigen-bundle-parallel: romkatv/powerlevel10k --btype=theme PARALLEL
+[TRA][1700413436.4806180000] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413436.4806745052] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413436.4806745052] Replaced hooked function.
+[LOG][1700413436.4807183743] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4807183743] Return from hook antigen-bundle with 0
+[WRN][1700413436.4807972908] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4807972908] Replace hook: antigen-apply-parallel-execute
+[WRN][1700413436.4808394909] /root/.local/share/antigen/antigen.zsh:1756
+[WRN][1700413436.4808394909] Parallel replace-apply PARALLEL REPLACE-APPLY
+[WRN][1700413436.4809687138] /root/.local/share/antigen/antigen.zsh:1695
+[WRN][1700413436.4809687138] Parallel antigen-bundle-parallel-execute PARALLEL
+[WRN][1700413436.4810135365] /root/.local/share/antigen/antigen.zsh:1699
+[WRN][1700413436.4810135365] Gonna install in parallel 4 bundles. PARALLEL
+[WRN][1700413436.4810483456] /root/.local/share/antigen/antigen.zsh:1701
+[WRN][1700413436.4810483456] zsh-users/zsh-autosuggestions zsh-users/zsh-syntax-highlighting jirutka/zsh-shift-select romkatv/powerlevel10k --btype=theme PARALLEL
+[WRN][1700413436.4813718796] /root/.local/share/antigen/antigen.zsh:1715
+[WRN][1700413436.4813718796] Bundle zsh-users/zsh-autosuggestions already cloned locally. PARALLEL
+[WRN][1700413436.4815976620] /root/.local/share/antigen/antigen.zsh:1715
+[WRN][1700413436.4815976620] Bundle zsh-users/zsh-syntax-highlighting already cloned locally. PARALLEL
+[WRN][1700413436.4818134308] /root/.local/share/antigen/antigen.zsh:1715
+[WRN][1700413436.4818134308] Bundle jirutka/zsh-shift-select already cloned locally. PARALLEL
+[WRN][1700413436.4820511341] /root/.local/share/antigen/antigen.zsh:1715
+[WRN][1700413436.4820511341] Bundle romkatv/powerlevel10k already cloned locally. PARALLEL
+[WRN][1700413436.4821832180] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4821832180] Updated meta: target antigen-bundle mode repeat type pre called 9
+[WRN][1700413436.4822309017] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4822309017] Processing hooks: antigen-bundle-cached
+[WRN][1700413436.4822688103] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4822688103] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1700413436.4823305607] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413436.4823305607] -antigen-hook-antigen-bundle zsh-users/zsh-autosuggestions
+[TRA][1700413436.4823729992] /root/.local/share/antigen/antigen.zsh:1438
+[TRA][1700413436.4823729992] Called antigen-bundle with zsh-users/zsh-autosuggestions BUNDLE
+[TRA][1700413436.4823729992] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413436.4827988148] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4827988148] Updated meta: target -antigen-load-env mode repeat type replace called 1
+[WRN][1700413436.4828693867] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4828693867] Processing hooks: -antigen-load-env-cached
+[WRN][1700413436.4829356670] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4829356670] Replace hook: -antigen-load-env-cached dir /root/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions btype plugin url https://github.com/zsh-users/zsh-autosuggestions.git loc / name zsh-users/zsh-autosuggestions make_local_clone true
+[WRN][1700413436.4830312729] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413436.4830312729] Replaced hooked function.
+[LOG][1700413436.4830715656] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4830715656] Return from hook -antigen-load-env with 0
+[WRN][1700413436.4831924438] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4831924438] Updated meta: target -antigen-load-source mode repeat type replace called 1
+[WRN][1700413436.4832437038] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4832437038] Processing hooks: -antigen-load-source-cached
+[WRN][1700413436.4832923412] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4832923412] Replace hook: -antigen-load-source-cached /root/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions///zsh-autosuggestions.plugin.zsh
+[WRN][1700413436.4833641052] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413436.4833641052] Replaced hooked function.
+[LOG][1700413436.4834082127] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4834082127] Return from hook -antigen-load-source with 0
+[LOG][1700413436.4834933281] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4834933281] Return from hook antigen-bundle with 0
+[WRN][1700413436.4836089611] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4836089611] Updated meta: target antigen-bundle mode repeat type pre called 10
+[WRN][1700413436.4836549759] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4836549759] Processing hooks: antigen-bundle-cached
+[WRN][1700413436.4836933613] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4836933613] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1700413436.4837539196] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413436.4837539196] -antigen-hook-antigen-bundle zsh-users/zsh-syntax-highlighting
+[TRA][1700413436.4837954044] /root/.local/share/antigen/antigen.zsh:1438
+[TRA][1700413436.4837954044] Called antigen-bundle with zsh-users/zsh-syntax-highlighting BUNDLE
+[TRA][1700413436.4837954044] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413436.4842112064] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4842112064] Updated meta: target -antigen-load-env mode repeat type replace called 2
+[WRN][1700413436.4842665195] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4842665195] Processing hooks: -antigen-load-env-cached
+[WRN][1700413436.4843189716] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4843189716] Replace hook: -antigen-load-env-cached dir /root/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting btype plugin url https://github.com/zsh-users/zsh-syntax-highlighting.git loc / name zsh-users/zsh-syntax-highlighting make_local_clone true
+[WRN][1700413436.4844026566] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413436.4844026566] Replaced hooked function.
+[LOG][1700413436.4844439030] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4844439030] Return from hook -antigen-load-env with 0
+[WRN][1700413436.4845616817] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4845616817] Updated meta: target -antigen-load-source mode repeat type replace called 2
+[WRN][1700413436.4846131802] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4846131802] Processing hooks: -antigen-load-source-cached
+[WRN][1700413436.4846620560] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4846620560] Replace hook: -antigen-load-source-cached /root/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting///zsh-syntax-highlighting.plugin.zsh
+[WRN][1700413436.4847280979] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413436.4847280979] Replaced hooked function.
+[LOG][1700413436.4847681522] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4847681522] Return from hook -antigen-load-source with 0
+[LOG][1700413436.4848515987] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4848515987] Return from hook antigen-bundle with 0
+[WRN][1700413436.4849808216] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4849808216] Updated meta: target antigen-bundle mode repeat type pre called 11
+[WRN][1700413436.4850308895] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4850308895] Processing hooks: antigen-bundle-cached
+[WRN][1700413436.4850704670] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4850704670] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1700413436.4851503372] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413436.4851503372] -antigen-hook-antigen-bundle jirutka/zsh-shift-select
+[TRA][1700413436.4851939678] /root/.local/share/antigen/antigen.zsh:1438
+[TRA][1700413436.4851939678] Called antigen-bundle with jirutka/zsh-shift-select BUNDLE
+[TRA][1700413436.4851939678] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413436.4855813980] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4855813980] Updated meta: target -antigen-load-env mode repeat type replace called 3
+[WRN][1700413436.4856371880] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4856371880] Processing hooks: -antigen-load-env-cached
+[WRN][1700413436.4856913090] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4856913090] Replace hook: -antigen-load-env-cached dir /root/.local/share/antigen/bundles/jirutka/zsh-shift-select btype plugin url https://github.com/jirutka/zsh-shift-select.git loc / name jirutka/zsh-shift-select make_local_clone true
+[WRN][1700413436.4857742786] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413436.4857742786] Replaced hooked function.
+[LOG][1700413436.4858155251] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4858155251] Return from hook -antigen-load-env with 0
+[WRN][1700413436.4859395027] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4859395027] Updated meta: target -antigen-load-source mode repeat type replace called 3
+[WRN][1700413436.4859914780] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4859914780] Processing hooks: -antigen-load-source-cached
+[WRN][1700413436.4860408306] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4860408306] Replace hook: -antigen-load-source-cached /root/.local/share/antigen/bundles/jirutka/zsh-shift-select///zsh-shift-select.plugin.zsh
+[WRN][1700413436.4861032963] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413436.4861032963] Replaced hooked function.
+[LOG][1700413436.4861450195] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4861450195] Return from hook -antigen-load-source with 0
+[LOG][1700413436.4862282276] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4862282276] Return from hook antigen-bundle with 0
+[WRN][1700413436.4863407612] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4863407612] Updated meta: target antigen-bundle mode repeat type pre called 12
+[WRN][1700413436.4863865376] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4863865376] Processing hooks: antigen-bundle-cached
+[WRN][1700413436.4864227772] /root/.local/share/antigen/antigen.zsh:1487
+[WRN][1700413436.4864227772] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1700413436.4864823818] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413436.4864823818] -antigen-hook-antigen-bundle romkatv/powerlevel10k --btype=theme
+[TRA][1700413436.4865255356] /root/.local/share/antigen/antigen.zsh:1438
+[TRA][1700413436.4865255356] Called antigen-bundle with romkatv/powerlevel10k --btype=theme BUNDLE
+[TRA][1700413436.4865255356] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[WRN][1700413436.4869167805] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4869167805] Updated meta: target -antigen-load-env mode repeat type replace called 4
+[WRN][1700413436.4869730473] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4869730473] Processing hooks: -antigen-load-env-cached
+[WRN][1700413436.4870262146] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4870262146] Replace hook: -antigen-load-env-cached dir /root/.local/share/antigen/bundles/romkatv/powerlevel10k btype theme url https://github.com/romkatv/powerlevel10k.git loc / name romkatv/powerlevel10k make_local_clone true
+[WRN][1700413436.4871180058] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413436.4871180058] Replaced hooked function.
+[LOG][1700413436.4871592522] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4871592522] Return from hook -antigen-load-env with 0
+[WRN][1700413436.4872763157] /root/.local/share/antigen/antigen.zsh:1469
+[WRN][1700413436.4872763157] Updated meta: target -antigen-load-source mode repeat type replace called 4
+[WRN][1700413436.4873278141] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4873278141] Processing hooks: -antigen-load-source-cached
+[WRN][1700413436.4873750210] /root/.local/share/antigen/antigen.zsh:1498
+[WRN][1700413436.4873750210] Replace hook: -antigen-load-source-cached /root/.local/share/antigen/bundles/romkatv/powerlevel10k///powerlevel10k.zsh-theme
+[WRN][1700413436.4874329567] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413436.4874329567] Replaced hooked function.
+[LOG][1700413436.4874722958] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4874722958] Return from hook -antigen-load-source with 0
+[LOG][1700413436.4875574112] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4875574112] Return from hook antigen-bundle with 0
+[WRN][1700413436.4876132011] /root/.local/share/antigen/antigen.zsh:1739
+[WRN][1700413436.4876132011] Parallel install done PARALLEL
+[WRN][1700413436.4877712727] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413436.4877712727] Ignoring hook due to mode once: antigen-apply-lock
+[WRN][1700413436.4878227711] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413436.4878227711] Ignoring hook due to mode once: antigen-apply-parallel
+[WRN][1700413436.4878692627] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413436.4878692627] Ignoring hook due to mode once: antigen-apply-defer
+[WRN][1700413436.4879980087] /root/.local/share/antigen/antigen.zsh:1462
+[WRN][1700413436.4879980087] Ignoring hook due to mode once: antigen-apply-cached
+[WRN][1700413436.4880371094] /root/.local/share/antigen/antigen.zsh:1484
+[WRN][1700413436.4880371094] Processing hooks: antigen-apply-lock antigen-apply-parallel antigen-apply-defer antigen-apply-cached
+[WRN][1700413436.4880788326] /root/.local/share/antigen/antigen.zsh:1505
+[WRN][1700413436.4880788326] -antigen-hook-antigen-apply 
+[LOG][1700413436.4881200790] /root/.local/share/antigen/antigen.zsh:1438
+[LOG][1700413436.4881200790] Called antigen-apply
+[TRA][1700413436.4881567955] /root/.local/share/antigen/antigen.zsh:1439
+[TRA][1700413436.4881567955] Gonna create compdump file @ apply COMPDUMP
+[TRA][1700413436.4881567955] TRACE
+-antigen-hook-antigen-apply
+-antigen-hook-handler
+antigen-apply
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/root/.zshrc
+[LOG][1700413436.4984319210] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.4984319210] Return from hook antigen-apply with 0
+[WRN][1700413436.4987392426] /root/.local/share/antigen/antigen.zsh:1509
+[WRN][1700413436.4987392426] Replaced hooked function.
+[WRN][1700413436.4988343716] /root/.local/share/antigen/antigen.zsh:1513
+[WRN][1700413436.4988343716] Post hook: antigen-apply-lock
+[WRN][1700413436.4989371300] /root/.local/share/antigen/antigen.zsh:1676
+[WRN][1700413436.4989371300] Freeing antigen-lock file at /root/.local/share/antigen/.lock
+[WRN][1700413436.5000789165] /root/.local/share/antigen/antigen.zsh:1513
+[WRN][1700413436.5000789165] Post hook: antigen-apply-cached
+[LOG][1700413436.5001540184] /root/.local/share/antigen/antigen.zsh:1893
+[LOG][1700413436.5001540184] TRACE: /root/.local/share/antigen/antigen.zsh:1514 /root/.local/share/antigen/antigen.zsh:1441 /root/.local/share/antigen/antigen.zsh:1447 /root/.local/share/antigen/antigen.zsh:1506 /root/.local/share/antigen/antigen.zsh:1441 /root/.zshrc:36 zsh:0
+[LOG][1700413436.5002210140] /root/.local/share/antigen/antigen.zsh:1787
+[LOG][1700413436.5002210140] Gonna generate cache for /root/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions// /root/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions///zsh-autosuggestions.plugin.zsh /root/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting// /root/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting///zsh-syntax-highlighting.plugin.zsh /root/.local/share/antigen/bundles/jirutka/zsh-shift-select// /root/.local/share/antigen/bundles/jirutka/zsh-shift-select///zsh-shift-select.plugin.zsh /root/.local/share/antigen/bundles/romkatv/powerlevel10k// /root/.local/share/antigen/bundles/romkatv/powerlevel10k///powerlevel10k.zsh-theme
+[LOG][1700413436.5071692467] /root/.local/share/antigen/antigen.zsh:1844
+[LOG][1700413436.5071692467] CHECK_FILES /home/allonny/.zshrc /home/allonny/.zshrc
+[LOG][1700413436.5403139591] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.5403139591] Return from hook antigen-apply with 0
+[LOG][1700413436.5404372215] /root/.local/share/antigen/antigen.zsh:1518
+[LOG][1700413436.5404372215] Return from hook antigen with 0
+[WRN][1701699443.9300584793] /home/allonny/.local/share/antigen/antigen.zsh:266
+[WRN][1701699443.9300584793] -antigen-interactive-mode: file:file:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1701699443.9307668209] /home/allonny/.local/share/antigen/antigen.zsh:1572
+[WRN][1701699443.9307668209] -antigen-lock-init return code was 0
+[LOG][1701699443.9308199883] /home/allonny/.local/share/antigen/antigen.zsh:1574
+[LOG][1701699443.9308199883] LOADED EXTENSION lock EXT
+[WRN][1701699443.9325428009] /home/allonny/.local/share/antigen/antigen.zsh:1684
+[WRN][1701699443.9325428009] Init parallel extension PARALLEL
+[WRN][1701699443.9326264858] /home/allonny/.local/share/antigen/antigen.zsh:266
+[WRN][1701699443.9326264858] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1701699443.9326934814] /home/allonny/.local/share/antigen/antigen.zsh:1572
+[WRN][1701699443.9326934814] -antigen-parallel-init return code was 0
+[LOG][1701699443.9327356815] /home/allonny/.local/share/antigen/antigen.zsh:1574
+[LOG][1701699443.9327356815] LOADED EXTENSION parallel EXT
+[WRN][1701699443.9327743053] /home/allonny/.local/share/antigen/antigen.zsh:1692
+[WRN][1701699443.9327743053] Exec parallel extension PARALLEL
+[WRN][1701699443.9329783916] /home/allonny/.local/share/antigen/antigen.zsh:266
+[WRN][1701699443.9329783916] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1701699443.9330468178] /home/allonny/.local/share/antigen/antigen.zsh:1572
+[WRN][1701699443.9330468178] -antigen-defer-init return code was 0
+[LOG][1701699443.9330868721] /home/allonny/.local/share/antigen/antigen.zsh:1574
+[LOG][1701699443.9330868721] LOADED EXTENSION defer EXT
+[WRN][1701699443.9343521595] /home/allonny/.local/share/antigen/antigen.zsh:266
+[WRN][1701699443.9343521595] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1701699443.9347660542] /home/allonny/.local/share/antigen/antigen.zsh:1572
+[WRN][1701699443.9347660542] -antigen-cache-init return code was 0
+[LOG][1701699443.9348559380] /home/allonny/.local/share/antigen/antigen.zsh:1574
+[LOG][1701699443.9348559380] LOADED EXTENSION cache EXT
+[WRN][1701699443.9367225170] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9367225170] Updated meta: target antigen mode once type pre called 1
+[WRN][1701699443.9367787838] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9367787838] Processing hooks: antigen-lock
+[WRN][1701699443.9368164539] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9368164539] Pre hook: antigen-lock bundle zsh-users/zsh-autosuggestions
+[LOG][1701699443.9368565083] /home/allonny/.local/share/antigen/antigen.zsh:1658
+[LOG][1701699443.9368565083] antigen-lock called
+[WRN][1701699443.9369068146] /home/allonny/.local/share/antigen/antigen.zsh:1669
+[WRN][1701699443.9369068146] Creating antigen-lock file at /home/allonny/.local/share/antigen/.lock
+[WRN][1701699443.9478178024] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1701699443.9478178024] -antigen-hook-antigen bundle zsh-users/zsh-autosuggestions
+[WRN][1701699443.9481518269] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9481518269] Updated meta: target antigen-bundle mode repeat type replace called 1
+[WRN][1701699443.9483277798] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9483277798] Updated meta: target antigen-bundle mode repeat type pre called 1
+[WRN][1701699443.9484264851] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9484264851] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1701699443.9485056400] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9485056400] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1701699443.9486100674] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9486100674] Replace hook: antigen-bundle-defer zsh-users/zsh-autosuggestions
+[WRN][1701699443.9486684799] /home/allonny/.local/share/antigen/antigen.zsh:1500
+[WRN][1701699443.9486684799] antigen-bundle-defer shortcircuited
+[LOG][1701699443.9487457275] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9487457275] Return from hook antigen with 0
+[WRN][1701699443.9488677979] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1701699443.9488677979] Ignoring hook due to mode once: antigen-lock
+[WRN][1701699443.9489080906] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9489080906] Processing hooks: antigen-lock
+[WRN][1701699443.9489505291] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1701699443.9489505291] -antigen-hook-antigen bundle zsh-users/zsh-syntax-highlighting
+[WRN][1701699443.9490542412] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9490542412] Updated meta: target antigen-bundle mode repeat type replace called 2
+[WRN][1701699443.9491152763] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9491152763] Updated meta: target antigen-bundle mode repeat type pre called 2
+[WRN][1701699443.9491569996] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9491569996] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1701699443.9491927624] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9491927624] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1701699443.9492547512] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9492547512] Replace hook: antigen-bundle-defer zsh-users/zsh-syntax-highlighting
+[WRN][1701699443.9493160248] /home/allonny/.local/share/antigen/antigen.zsh:1500
+[WRN][1701699443.9493160248] antigen-bundle-defer shortcircuited
+[LOG][1701699443.9493877888] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9493877888] Return from hook antigen with 0
+[WRN][1701699443.9494929314] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1701699443.9494929314] Ignoring hook due to mode once: antigen-lock
+[WRN][1701699443.9495339394] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9495339394] Processing hooks: antigen-lock
+[WRN][1701699443.9495744705] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1701699443.9495744705] -antigen-hook-antigen bundle jirutka/zsh-shift-select
+[WRN][1701699443.9496815205] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9496815205] Updated meta: target antigen-bundle mode repeat type replace called 3
+[WRN][1701699443.9497437477] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9497437477] Updated meta: target antigen-bundle mode repeat type pre called 3
+[WRN][1701699443.9497852325] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9497852325] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1701699443.9498195648] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9498195648] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1701699443.9498896599] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9498896599] Replace hook: antigen-bundle-defer jirutka/zsh-shift-select
+[WRN][1701699443.9499428272] /home/allonny/.local/share/antigen/antigen.zsh:1500
+[WRN][1701699443.9499428272] antigen-bundle-defer shortcircuited
+[LOG][1701699443.9500155449] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9500155449] Return from hook antigen with 0
+[WRN][1701699443.9501159191] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1701699443.9501159191] Ignoring hook due to mode once: antigen-lock
+[WRN][1701699443.9501552582] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9501552582] Processing hooks: antigen-lock
+[WRN][1701699443.9501967430] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1701699443.9501967430] -antigen-hook-antigen theme romkatv/powerlevel10k
+[WRN][1701699443.9525661469] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9525661469] Updated meta: target antigen-bundle mode repeat type replace called 4
+[WRN][1701699443.9527840614] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9527840614] Updated meta: target antigen-bundle mode repeat type pre called 4
+[WRN][1701699443.9528834820] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9528834820] Processing hooks: antigen-bundle-defer antigen-bundle-cached
+[WRN][1701699443.9529643059] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9529643059] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1701699443.9531106949] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9531106949] Replace hook: antigen-bundle-defer romkatv/powerlevel10k --btype=theme
+[WRN][1701699443.9532389641] /home/allonny/.local/share/antigen/antigen.zsh:1500
+[WRN][1701699443.9532389641] antigen-bundle-defer shortcircuited
+[LOG][1701699443.9535124302] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9535124302] Return from hook antigen with 0
+[WRN][1701699443.9537737370] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1701699443.9537737370] Ignoring hook due to mode once: antigen-lock
+[WRN][1701699443.9538612366] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9538612366] Processing hooks: antigen-lock
+[WRN][1701699443.9539482594] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1701699443.9539482594] -antigen-hook-antigen apply
+[WRN][1701699443.9541878700] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9541878700] Updated meta: target antigen-apply mode once type post called 1
+[WRN][1701699443.9543428421] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9543428421] Updated meta: target antigen-apply mode once type pre called 1
+[WRN][1701699443.9544773102] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9544773102] Updated meta: target antigen-apply mode once type replace called 1
+[WRN][1701699443.9545981884] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9545981884] Updated meta: target antigen-apply mode once type pre called 1
+[WRN][1701699443.9546582699] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9546582699] Updated meta: target antigen-apply mode once type post called 1
+[WRN][1701699443.9547021389] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9547021389] Processing hooks: antigen-apply-lock antigen-apply-parallel antigen-apply-parallel-execute antigen-apply-defer antigen-apply-cached
+[WRN][1701699443.9547386169] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9547386169] Pre hook: antigen-apply-parallel
+[WRN][1701699443.9547805786] /home/allonny/.local/share/antigen/antigen.zsh:1744
+[WRN][1701699443.9547805786] Parallel pre-apply PARALLEL PRE-APPLY
+[WRN][1701699443.9548873901] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9548873901] Pre hook: antigen-apply-defer
+[WRN][1701699443.9549374580] /home/allonny/.local/share/antigen/antigen.zsh:1623
+[WRN][1701699443.9549374580] Defer pre-apply DEFER PRE-APPLY
+[LOG][1701699443.9550490379] /home/allonny/.local/share/antigen/antigen.zsh:1629
+[LOG][1701699443.9550490379] Processing deferred bundle: zsh-users/zsh-autosuggestions DEFER
+[WRN][1701699443.9551458359] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9551458359] Updated meta: target antigen-bundle mode repeat type pre called 5
+[WRN][1701699443.9552135468] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9552135468] Updated meta: target antigen-bundle mode repeat type replace called 1
+[WRN][1701699443.9552569389] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9552569389] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1701699443.9553010464] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9553010464] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1701699443.9553663731] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9553663731] Replace hook: antigen-bundle-parallel zsh-users/zsh-autosuggestions
+[TRA][1701699443.9554111958] /home/allonny/.zshrc:1748
+[TRA][1701699443.9554111958] antigen-bundle-parallel: zsh-users/zsh-autosuggestions PARALLEL
+[TRA][1701699443.9554111958] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+[WRN][1701699443.9554708004] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1701699443.9554708004] Replaced hooked function.
+[LOG][1701699443.9555087090] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9555087090] Return from hook antigen-bundle with 0
+[LOG][1701699443.9555656910] /home/allonny/.local/share/antigen/antigen.zsh:1629
+[LOG][1701699443.9555656910] Processing deferred bundle: zsh-users/zsh-syntax-highlighting DEFER
+[WRN][1701699443.9556577206] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9556577206] Updated meta: target antigen-bundle mode repeat type pre called 6
+[WRN][1701699443.9557187557] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9557187557] Updated meta: target antigen-bundle mode repeat type replace called 2
+[WRN][1701699443.9557611942] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9557611942] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1701699443.9557971954] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9557971954] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1701699443.9558579922] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9558579922] Replace hook: antigen-bundle-parallel zsh-users/zsh-syntax-highlighting
+[TRA][1701699443.9558987617] /home/allonny/.zshrc:1748
+[TRA][1701699443.9558987617] antigen-bundle-parallel: zsh-users/zsh-syntax-highlighting PARALLEL
+[TRA][1701699443.9558987617] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+[WRN][1701699443.9559526443] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1701699443.9559526443] Replaced hooked function.
+[LOG][1701699443.9559900761] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9559900761] Return from hook antigen-bundle with 0
+[LOG][1701699443.9560470581] /home/allonny/.local/share/antigen/antigen.zsh:1629
+[LOG][1701699443.9560470581] Processing deferred bundle: jirutka/zsh-shift-select DEFER
+[WRN][1701699443.9561376572] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9561376572] Updated meta: target antigen-bundle mode repeat type pre called 7
+[WRN][1701699443.9561970234] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9561970234] Updated meta: target antigen-bundle mode repeat type replace called 3
+[WRN][1701699443.9562456608] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9562456608] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1701699443.9562864304] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9562864304] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1701699443.9563519955] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9563519955] Replace hook: antigen-bundle-parallel jirutka/zsh-shift-select
+[TRA][1701699443.9563937187] /home/allonny/.zshrc:1748
+[TRA][1701699443.9563937187] antigen-bundle-parallel: jirutka/zsh-shift-select PARALLEL
+[TRA][1701699443.9563937187] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+[WRN][1701699443.9564483166] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1701699443.9564483166] Replaced hooked function.
+[LOG][1701699443.9564862251] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9564862251] Return from hook antigen-bundle with 0
+[LOG][1701699443.9565420151] /home/allonny/.local/share/antigen/antigen.zsh:1629
+[LOG][1701699443.9565420151] Processing deferred bundle: romkatv/powerlevel10k --btype=theme DEFER
+[WRN][1701699443.9566309452] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9566309452] Updated meta: target antigen-bundle mode repeat type pre called 8
+[WRN][1701699443.9566922188] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9566922188] Updated meta: target antigen-bundle mode repeat type replace called 4
+[WRN][1701699443.9567351341] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9567351341] Processing hooks: antigen-bundle-cached antigen-bundle-parallel
+[WRN][1701699443.9567701817] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9567701817] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1701699443.9568300247] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9568300247] Replace hook: antigen-bundle-parallel romkatv/powerlevel10k --btype=theme
+[TRA][1701699443.9568715096] /home/allonny/.zshrc:1748
+[TRA][1701699443.9568715096] antigen-bundle-parallel: romkatv/powerlevel10k --btype=theme PARALLEL
+[TRA][1701699443.9568715096] TRACE
+antigen-bundle-parallel
+-antigen-hook-handler
+antigen-bundle
+antigen-apply-defer
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+[WRN][1701699443.9569251537] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1701699443.9569251537] Replaced hooked function.
+[LOG][1701699443.9569687843] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9569687843] Return from hook antigen-bundle with 0
+[WRN][1701699443.9570603371] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9570603371] Replace hook: antigen-apply-parallel-execute
+[WRN][1701699443.9571034908] /home/allonny/.local/share/antigen/antigen.zsh:1756
+[WRN][1701699443.9571034908] Parallel replace-apply PARALLEL REPLACE-APPLY
+[WRN][1701699443.9572024345] /home/allonny/.local/share/antigen/antigen.zsh:1695
+[WRN][1701699443.9572024345] Parallel antigen-bundle-parallel-execute PARALLEL
+[WRN][1701699443.9572443962] /home/allonny/.local/share/antigen/antigen.zsh:1699
+[WRN][1701699443.9572443962] Gonna install in parallel 4 bundles. PARALLEL
+[WRN][1701699443.9572846889] /home/allonny/.local/share/antigen/antigen.zsh:1701
+[WRN][1701699443.9572846889] zsh-users/zsh-autosuggestions zsh-users/zsh-syntax-highlighting jirutka/zsh-shift-select romkatv/powerlevel10k --btype=theme PARALLEL
+[WRN][1701699443.9576578140] /home/allonny/.local/share/antigen/antigen.zsh:1715
+[WRN][1701699443.9576578140] Bundle zsh-users/zsh-autosuggestions already cloned locally. PARALLEL
+[WRN][1701699443.9578824043] /home/allonny/.local/share/antigen/antigen.zsh:1715
+[WRN][1701699443.9578824043] Bundle zsh-users/zsh-syntax-highlighting already cloned locally. PARALLEL
+[WRN][1701699443.9581110477] /home/allonny/.local/share/antigen/antigen.zsh:1715
+[WRN][1701699443.9581110477] Bundle jirutka/zsh-shift-select already cloned locally. PARALLEL
+[WRN][1701699443.9583427906] /home/allonny/.local/share/antigen/antigen.zsh:1715
+[WRN][1701699443.9583427906] Bundle romkatv/powerlevel10k already cloned locally. PARALLEL
+[WRN][1701699443.9584801197] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9584801197] Updated meta: target antigen-bundle mode repeat type pre called 9
+[WRN][1701699443.9585282803] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9585282803] Processing hooks: antigen-bundle-cached
+[WRN][1701699443.9585685730] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9585685730] Pre hook: antigen-bundle-cached zsh-users/zsh-autosuggestions
+[WRN][1701699443.9586286545] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1701699443.9586286545] -antigen-hook-antigen-bundle zsh-users/zsh-autosuggestions
+[TRA][1701699443.9586765766] /home/allonny/.local/share/antigen/antigen.zsh:1438
+[TRA][1701699443.9586765766] Called antigen-bundle with zsh-users/zsh-autosuggestions BUNDLE
+[TRA][1701699443.9586765766] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+[WRN][1701699443.9591226578] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9591226578] Updated meta: target -antigen-load-env mode repeat type replace called 1
+[WRN][1701699443.9591856003] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9591856003] Processing hooks: -antigen-load-env-cached
+[WRN][1701699443.9592425823] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9592425823] Replace hook: -antigen-load-env-cached dir /home/allonny/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions btype plugin url https://github.com/zsh-users/zsh-autosuggestions.git loc / name zsh-users/zsh-autosuggestions make_local_clone true
+[WRN][1701699443.9593427181] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1701699443.9593427181] Replaced hooked function.
+[LOG][1701699443.9593849182] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9593849182] Return from hook -antigen-load-env with 0
+[WRN][1701699443.9595057964] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9595057964] Updated meta: target -antigen-load-source mode repeat type replace called 1
+[WRN][1701699443.9595561028] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9595561028] Processing hooks: -antigen-load-source-cached
+[WRN][1701699443.9596054554] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9596054554] Replace hook: -antigen-load-source-cached /home/allonny/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions///zsh-autosuggestions.plugin.zsh
+[WRN][1701699443.9596769810] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1701699443.9596769810] Replaced hooked function.
+[LOG][1701699443.9597182274] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9597182274] Return from hook -antigen-load-source with 0
+[LOG][1701699443.9598095417] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9598095417] Return from hook antigen-bundle with 0
+[WRN][1701699443.9599261284] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9599261284] Updated meta: target antigen-bundle mode repeat type pre called 10
+[WRN][1701699443.9599728584] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9599728584] Processing hooks: antigen-bundle-cached
+[WRN][1701699443.9600093365] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9600093365] Pre hook: antigen-bundle-cached zsh-users/zsh-syntax-highlighting
+[WRN][1701699443.9600684643] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1701699443.9600684643] -antigen-hook-antigen-bundle zsh-users/zsh-syntax-highlighting
+[TRA][1701699443.9601173401] /home/allonny/.local/share/antigen/antigen.zsh:1438
+[TRA][1701699443.9601173401] Called antigen-bundle with zsh-users/zsh-syntax-highlighting BUNDLE
+[TRA][1701699443.9601173401] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+[WRN][1701699443.9605197906] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9605197906] Updated meta: target -antigen-load-env mode repeat type replace called 2
+[WRN][1701699443.9605753422] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9605753422] Processing hooks: -antigen-load-env-cached
+[WRN][1701699443.9606292248] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9606292248] Replace hook: -antigen-load-env-cached dir /home/allonny/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting btype plugin url https://github.com/zsh-users/zsh-syntax-highlighting.git loc / name zsh-users/zsh-syntax-highlighting make_local_clone true
+[WRN][1701699443.9607121944] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1701699443.9607121944] Replaced hooked function.
+[LOG][1701699443.9607532024] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9607532024] Return from hook -antigen-load-env with 0
+[WRN][1701699443.9608743191] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9608743191] Updated meta: target -antigen-load-source mode repeat type replace called 2
+[WRN][1701699443.9609248638] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9609248638] Processing hooks: -antigen-load-source-cached
+[WRN][1701699443.9609737396] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9609737396] Replace hook: -antigen-load-source-cached /home/allonny/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting///zsh-syntax-highlighting.plugin.zsh
+[WRN][1701699443.9610359669] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1701699443.9610359669] Replaced hooked function.
+[LOG][1701699443.9610760212] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9610760212] Return from hook -antigen-load-source with 0
+[LOG][1701699443.9611642361] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9611642361] Return from hook antigen-bundle with 0
+[WRN][1701699443.9612839222] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9612839222] Updated meta: target antigen-bundle mode repeat type pre called 11
+[WRN][1701699443.9613311291] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9613311291] Processing hooks: antigen-bundle-cached
+[WRN][1701699443.9613671303] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9613671303] Pre hook: antigen-bundle-cached jirutka/zsh-shift-select
+[WRN][1701699443.9614248276] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1701699443.9614248276] -antigen-hook-antigen-bundle jirutka/zsh-shift-select
+[TRA][1701699443.9614667892] /home/allonny/.local/share/antigen/antigen.zsh:1438
+[TRA][1701699443.9614667892] Called antigen-bundle with jirutka/zsh-shift-select BUNDLE
+[TRA][1701699443.9614667892] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+[WRN][1701699443.9618473053] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9618473053] Updated meta: target -antigen-load-env mode repeat type replace called 3
+[WRN][1701699443.9619007111] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9619007111] Processing hooks: -antigen-load-env-cached
+[WRN][1701699443.9619548321] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9619548321] Replace hook: -antigen-load-env-cached dir /home/allonny/.local/share/antigen/bundles/jirutka/zsh-shift-select btype plugin url https://github.com/jirutka/zsh-shift-select.git loc / name jirutka/zsh-shift-select make_local_clone true
+[WRN][1701699443.9620463848] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1701699443.9620463848] Replaced hooked function.
+[LOG][1701699443.9620864391] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9620864391] Return from hook -antigen-load-env with 0
+[WRN][1701699443.9622070789] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9622070789] Updated meta: target -antigen-load-source mode repeat type replace called 3
+[WRN][1701699443.9622571468] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9622571468] Processing hooks: -antigen-load-source-cached
+[WRN][1701699443.9623129368] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9623129368] Replace hook: -antigen-load-source-cached /home/allonny/.local/share/antigen/bundles/jirutka/zsh-shift-select///zsh-shift-select.plugin.zsh
+[WRN][1701699443.9623734951] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1701699443.9623734951] Replaced hooked function.
+[LOG][1701699443.9624135494] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9624135494] Return from hook -antigen-load-source with 0
+[LOG][1701699443.9625022411] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9625022411] Return from hook antigen-bundle with 0
+[WRN][1701699443.9626171589] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9626171589] Updated meta: target antigen-bundle mode repeat type pre called 12
+[WRN][1701699443.9626646042] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9626646042] Processing hooks: antigen-bundle-cached
+[WRN][1701699443.9627020359] /home/allonny/.local/share/antigen/antigen.zsh:1487
+[WRN][1701699443.9627020359] Pre hook: antigen-bundle-cached romkatv/powerlevel10k --btype=theme
+[WRN][1701699443.9627602100] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1701699443.9627602100] -antigen-hook-antigen-bundle romkatv/powerlevel10k --btype=theme
+[TRA][1701699443.9628016949] /home/allonny/.local/share/antigen/antigen.zsh:1438
+[TRA][1701699443.9628016949] Called antigen-bundle with romkatv/powerlevel10k --btype=theme BUNDLE
+[TRA][1701699443.9628016949] TRACE
+-antigen-hook-antigen-bundle
+-antigen-hook-handler
+antigen-bundle
+antigen-bundle-parallel-execute
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+[WRN][1701699443.9631860256] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9631860256] Updated meta: target -antigen-load-env mode repeat type replace called 4
+[WRN][1701699443.9632403851] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9632403851] Processing hooks: -antigen-load-env-cached
+[WRN][1701699443.9633042812] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9633042812] Replace hook: -antigen-load-env-cached dir /home/allonny/.local/share/antigen/bundles/romkatv/powerlevel10k btype theme url https://github.com/romkatv/powerlevel10k.git loc / name romkatv/powerlevel10k make_local_clone true
+[WRN][1701699443.9633905888] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1701699443.9633905888] Replaced hooked function.
+[LOG][1701699443.9634311199] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9634311199] Return from hook -antigen-load-env with 0
+[WRN][1701699443.9635503292] /home/allonny/.local/share/antigen/antigen.zsh:1469
+[WRN][1701699443.9635503292] Updated meta: target -antigen-load-source mode repeat type replace called 4
+[WRN][1701699443.9636006355] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9636006355] Processing hooks: -antigen-load-source-cached
+[WRN][1701699443.9636528492] /home/allonny/.local/share/antigen/antigen.zsh:1498
+[WRN][1701699443.9636528492] Replace hook: -antigen-load-source-cached /home/allonny/.local/share/antigen/bundles/romkatv/powerlevel10k///powerlevel10k.zsh-theme
+[WRN][1701699443.9637167454] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1701699443.9637167454] Replaced hooked function.
+[LOG][1701699443.9637567997] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9637567997] Return from hook -antigen-load-source with 0
+[LOG][1701699443.9638459682] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9638459682] Return from hook antigen-bundle with 0
+[WRN][1701699443.9639015198] /home/allonny/.local/share/antigen/antigen.zsh:1739
+[WRN][1701699443.9639015198] Parallel install done PARALLEL
+[WRN][1701699443.9640598297] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1701699443.9640598297] Ignoring hook due to mode once: antigen-apply-lock
+[WRN][1701699443.9641096592] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1701699443.9641096592] Ignoring hook due to mode once: antigen-apply-parallel
+[WRN][1701699443.9641568661] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1701699443.9641568661] Ignoring hook due to mode once: antigen-apply-defer
+[WRN][1701699443.9642024040] /home/allonny/.local/share/antigen/antigen.zsh:1462
+[WRN][1701699443.9642024040] Ignoring hook due to mode once: antigen-apply-cached
+[WRN][1701699443.9642395973] /home/allonny/.local/share/antigen/antigen.zsh:1484
+[WRN][1701699443.9642395973] Processing hooks: antigen-apply-lock antigen-apply-parallel antigen-apply-defer antigen-apply-cached
+[WRN][1701699443.9642865658] /home/allonny/.local/share/antigen/antigen.zsh:1505
+[WRN][1701699443.9642865658] -antigen-hook-antigen-apply 
+[LOG][1701699443.9643299580] /home/allonny/.local/share/antigen/antigen.zsh:1438
+[LOG][1701699443.9643299580] Called antigen-apply
+[TRA][1701699443.9643650055] /home/allonny/.local/share/antigen/antigen.zsh:1439
+[TRA][1701699443.9643650055] Gonna create compdump file @ apply COMPDUMP
+[TRA][1701699443.9643650055] TRACE
+-antigen-hook-antigen-apply
+-antigen-hook-handler
+antigen-apply
+antigen-apply-parallel-execute
+-antigen-hook-handler
+antigen-apply
+-antigen-hook-antigen
+-antigen-hook-handler
+antigen
+/home/allonny/.zshrc
+[LOG][1701699443.9749045372] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699443.9749045372] Return from hook antigen-apply with 0
+[WRN][1701699443.9751305580] /home/allonny/.local/share/antigen/antigen.zsh:1509
+[WRN][1701699443.9751305580] Replaced hooked function.
+[WRN][1701699443.9751789570] /home/allonny/.local/share/antigen/antigen.zsh:1513
+[WRN][1701699443.9751789570] Post hook: antigen-apply-lock
+[WRN][1701699443.9752223492] /home/allonny/.local/share/antigen/antigen.zsh:1676
+[WRN][1701699443.9752223492] Freeing antigen-lock file at /home/allonny/.local/share/antigen/.lock
+[WRN][1701699443.9773094654] /home/allonny/.local/share/antigen/antigen.zsh:1513
+[WRN][1701699443.9773094654] Post hook: antigen-apply-cached
+[LOG][1701699443.9775059223] /home/allonny/.local/share/antigen/antigen.zsh:1893
+[LOG][1701699443.9775059223] TRACE: /home/allonny/.local/share/antigen/antigen.zsh:1514 /home/allonny/.local/share/antigen/antigen.zsh:1441 /home/allonny/.local/share/antigen/antigen.zsh:1447 /home/allonny/.local/share/antigen/antigen.zsh:1506 /home/allonny/.local/share/antigen/antigen.zsh:1441 /home/allonny/.zshrc:36 zsh:0
+[LOG][1701699443.9776530266] /home/allonny/.local/share/antigen/antigen.zsh:1787
+[LOG][1701699443.9776530266] Gonna generate cache for /home/allonny/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions// /home/allonny/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions///zsh-autosuggestions.plugin.zsh /home/allonny/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting// /home/allonny/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting///zsh-syntax-highlighting.plugin.zsh /home/allonny/.local/share/antigen/bundles/jirutka/zsh-shift-select// /home/allonny/.local/share/antigen/bundles/jirutka/zsh-shift-select///zsh-shift-select.plugin.zsh /home/allonny/.local/share/antigen/bundles/romkatv/powerlevel10k// /home/allonny/.local/share/antigen/bundles/romkatv/powerlevel10k///powerlevel10k.zsh-theme
+[LOG][1701699443.9859235287] /home/allonny/.local/share/antigen/antigen.zsh:1844
+[LOG][1701699443.9859235287] CHECK_FILES /home/allonny/.zshrc /home/allonny/.zshrc
+[LOG][1701699444.0175364017] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699444.0175364017] Return from hook antigen-apply with 0
+[LOG][1701699444.0176885128] /home/allonny/.local/share/antigen/antigen.zsh:1518
+[LOG][1701699444.0176885128] Return from hook antigen with 0

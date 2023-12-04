@@ -89,4 +89,4 @@ function () {
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.local/share/p10k/.p10k.zsh ]] || source ~/.local/share/p10k/.p10k.zsh
+[[ ! -f ~/.local/share/p10k/p10k.zsh ]] || source ~/.local/share/p10k/p10k.zsh
