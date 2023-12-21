@@ -87,4 +87,8 @@ case $1 in
     "levels")
         levels "${@:2}"
         ;;
+	"notify")
+		steps=($(cat $current_level_file))
+		notify ${steps[0]} $(( ${#steps[@]} - 1 )) 
+		;;
 esac

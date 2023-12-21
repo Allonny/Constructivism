@@ -24,6 +24,7 @@ zle -N down-line-or-beginning-search
 
 alias get="sudo xbps-install -Su"
 alias del="sudo xbps-remove -R"
+alias fnd="xbps-query -Rs"
 alias upd="sudo xbps-install -Suy ; flatpak update -y ; flatpak remove --unused --delete-data -y"
 
 source ~/.local/share/antigen/antigen.zsh

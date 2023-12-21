@@ -80,6 +80,12 @@
     # Сортировка уведомлений
     sort = yes
 
+	
+	# Действия по нажатию
+	mouse_left_click = "close_current"
+	mouse_middle_click = "open_url"
+	mouse_right_click = "do_action"
+	
 
     # Браузер
     browser = firefox

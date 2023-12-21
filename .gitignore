@@ -4,3 +4,4 @@ terminal/antigen/.resources
 terminal/antigen/.resources
 *.log
 terminal/antigen/init.zsh
+*.log
