@@ -14,19 +14,26 @@ notify_body_muted="Звук отключен"
 notify_icons=("audio-volume-muted" "audio-volume-low" "audio-volume-medium" "audio-volume-high")
 notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "${0##*/} \K([\d]+)" || echo 0)
 
-# Создание дефолтного файла-конфигурации с 10 шагами
-[[ ! -f $current_level_file ]] && levels 10
+daemon="no"
+
+# Создание дефолтного файла-конфигурации, если оный отсутствует
+check_levels_file()
+{
+	[[ ! -f $current_level_file ]] && setup default
+}
 
 # Принудительное обновление полибара
 update() {
-	polybar-msg action volume hook 0
+	polybar-msg action volume hook 0 > /dev/null
 }
 
-# Получить текущую яркость, возвращает целое число - громкость в процентах
+# Получить текущую громкость, возвращает целое число - громкость в процентах
 get_volume() {
 	levels=( $( pactl get-sink-volume @DEFAULT_SINK@ 2>/dev/null | grep -oP "[\w\p{P}]+\s+\K([\d]+%\s)" | grep -oP "\d+" ) ) || exit 1
 
 	echo $(( ( ${levels[0]} + ${levels[1]} ) / 2 ))
+	
+	check_levels_file
 
 	steps=($(cat $current_level_file))
 	if [[ ${steps[${steps[0]}]} -ne $levels ]] ; then
@@ -42,6 +49,7 @@ get_volume() {
 	fi
 }
 
+# ПОучить состояние режима без звука
 get_mute() {
 	mute=$(pactl get-sink-mute @DEFAULT_SINK@ 2>/dev/null | grep -oP "\w*: \K(\w+)") || exit 1
 	echo $mute
@@ -54,13 +62,17 @@ set_volume() {
 	notify $1
 }
 
+# Установить режим без звука (аргументы ангалогичны соответствующему действию в pactl, по умолчанию переключает режим)
 set_mute() {
-	pactl set-sink-mute @DEFAULT_SINK@ toggle 2>/dev/null || exit 1
+	p=$1
+	[[ ${#p} -eq 0 ]] && p="toggle"
+	pactl set-sink-mute @DEFAULT_SINK@ $p 2>/dev/null || exit 1
 	notify $(get_volume)
 }
 
 # Увеличить яркость на один шаг
 inc() {
+	check_levels_file
 	steps=($(cat $current_level_file))
 	[[ ${steps[0]} -lt $(( ${#steps[@]} - 1 )) ]] && steps[0]=$(( ${steps[0]} + 1 ))
 	set_volume ${steps[${steps[0]}]}
@@ -69,6 +81,7 @@ inc() {
 
 # Уменьшить яркость на один шаг
 dec() {
+	check_levels_file
 	steps=($(cat $current_level_file))
 	[[ ${steps[0]} -gt 1 ]] && steps[0]=$(( ${steps[0]} - 1 ))
 	set_volume ${steps[${steps[0]}]}
@@ -140,7 +153,7 @@ polybar() {
 		done
 	fi
 
-	block="%{u$bg o$bg}%{+u}%{+o}%{A1:$1 mute:}$pb_icon%{A}%{A4:$1 inc:}%{A5:$1 dec:}$bar %{B- F-}%{A}%{A}%{u- o-}"
+	block="%{u$bg o$bg}%{+u}%{+o}%{A1:$1 -m toggle:}$pb_icon%{A}%{A4:$1 +:}%{A5:$1 -:}$bar %{B- F-}%{A}%{A}%{u- o-}"
 	echo $block
 }
 
@@ -163,11 +176,10 @@ notify() {
 }
 
 # Установить количество шагов, аргументы: два целых неотрицательных числа - количество шагов от 0 до 100 (как минимум 1) и количество шагов свех 100 (может быть 0)
-levels() {
-	steps=($(echo $1 | grep -oP "^\d+(\+?\d+)?$" | grep -oP "\d+")) || exit 1
+setup() {
 	steps=($(python - << EOF
-steps = $(( 1 + ${steps[0]} ))
-upsteps = $(( 0 + ${steps[1]} ))
+steps = $(( 1 + $(( $1 )) ))
+upsteps = $(( 0 + $(( $2 )) ))
 levels = list(map(lambda x: x * 100 // (steps - 1), range(steps + upsteps)))
 print(' '.join(map(str, levels)))
 EOF
@@ -175,40 +187,103 @@ EOF
 
 	steps=("0" ${steps[@]})
 	echo ${steps[@]} > $current_level_file &
+}
+
+help() {
+	echo -e "Скрипт для управления громкостью звуковой системы и вывода некоторых данных о её состоянии.\n"
+	echo -e "\t-l\t--level\t\t\t[<number>]\n\t\tУстановить указанный уровень громкости (по умолчанию остаётся прежним)\n\t\tи вывести текущее значение.\n"
+	echo -e "\t-m\t--mute\t\t\t[0|1|toggle]\n\t\tУстановить или переключить режим 'без звука' (по умолчанию остаётся прежним)\n\t\tи вывести текущее значение.\n"
+	echo -e "\t-i\t--increment\t+\t[<number>]\n\t\tУвеличить громкость звука на заданное количество шагов (по умолчанию - на 1).\n"
+	echo -e "\t-d\t--decrement\t-\t[<number>]\n\t\tУменьшить громкость звука на заданное количество шагов (по умолчанию - на 1).\n"
+	echo -e "\t-s\t--setup\t\t\t[<number>[+<number>]|default]\n\t\tУстановить конфигурацию шагов изменения громкости в формате,\n\t\tгде сначала указывается количество шагов от 0% до 100%, а после,\n\t\tопционально, через знак '+' указывается количество шагов сверх 100%\n\t\tгромкости, либо же применение стандартной конфигурации\n\t\t(10 шагов от 0% до 100%), по умолчанию - оставить прежнюю\n\t\tконфигурацию; и вывести текущую конфигурацию.\n"
+	echo -e "\t-p\t--polybar\n\t\tПолучить форматированный текст для модуля панели Polybar.\n"
+	echo -e "\t-u\t--update\n\t\tПринудительно обновить соответствующий модуль панели Polybar.\n"
+	echo -e "\t--daemon\n\t\tЗапустить фоновый цикл переодического обновления модуля панели Polybar.\n"
+	echo -e "\t-h\t--help\n\t\tВывести данную справку.\n"
+	echo -e "Автор: allonny89"
+}
+
+while [[ $# -gt 0 ]] ; do
+	case $1 in
+		"-l" | "--level")
+			if echo $2 | grep -oP "^\d+$" > /dev/null ; then
+				set_volume $2
+				shift
+			fi
+			get_volume
+			;;
+		"-m" | "-mute")
+			if echo $2 | grep -oP "^0$|^1$|^toggle$" > /dev/null ; then
+				set_mute $2
+				shift
+			fi
+			get_mute
+			;;
+		"-i" | "--increment" | "+")
+			if echo $2 | grep -oP "^\d+$" > /dev/null ; then
+				n=$(( $2 ))
+				while [[ $n -gt 0 ]] ; do
+					inc
+					n=$(( $n - 1 ))
+				done
+				shift
+			else
+				inc
+			fi
+			;;
+		"-d" | "--decrement" | "-")
+			if echo $2 | grep -oP "^\d+$" > /dev/null ; then
+				n=$(( $2 ))
+				while [[ $n -gt 0 ]] ; do
+					dec
+					n=$(( $n - 1 ))
+				done
+				shift
+			else
+				dec
+			fi	
+			;;
+		"-s" | "--setup")
+			if echo $2 | grep -oP "^\d+(\+?\d+)?$" | grep -oP "\d+" > /dev/null ; then
+				steps=$(echo $2 | grep -oP "^\d+(\+?\d+)?$" | grep -oP "\d+")
+				setup $steps
+				shift
+			fi
+			if echo $2 | grep -oP "^default$" > /dev/null ; then
+				setup 10
+				shift
+			fi
+			cat $current_level_file
+			;;
+		"-p" | "--polybar")
+			polybar "$0"
+			;;
+		"-u" | "--update")
+			update
+			;;
+		"-h" | "--help")
+			help
+			;;
+		"--daemon")
+			daemon="yes"
+			;;
+		*)
+            echo "Ошибка! Неизвестный аругмент $1."
+            exit 1
+            ;;
+	esac
+    
+	shift
+done
+
+if [[ $daemon == "yes" ]] ; then
 	for pid in $(pgrep ${0##*/}) ; do
-		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Killed $pid"
+		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Процесс volume $pid был остановлен"
 	done
 	sleep 1s
 	while :; do
 		update
 		sleep 5s
 	done &
-}
+fi
 
-case $1 in
-	"get")
-		get_volume
-		get_mute
-		;;
-	"set_volume")
-		set_volume "${@:2}"
-		;;
-	"inc")
-		inc
-		;;
-	"dec")
-		dec
-		;;
-	"mute")
-		set_mute
-		;;
-	"levels")
-		levels "${@:2}"
-		;;
-	"polybar")
-		polybar "$0"
-		;;
-	"update")
-		update
-		;;
-esac

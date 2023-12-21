@@ -31,9 +31,9 @@ bindcode --release $mod+60 restart
 # $mod+M
 bindcode --release $mod+58 exec --no-startup-id pavucontrol
 
-bindsym --release XF86AudioRaiseVolume exec --no-startup-id volume inc
-bindsym --release XF86AudioLowerVolume exec --no-startup-id volume dec
-bindsym --release XF86AudioMute exec --no-startup-id volume mute
+bindsym --release XF86AudioRaiseVolume exec --no-startup-id volume +
+bindsym --release XF86AudioLowerVolume exec --no-startup-id volume -
+bindsym --release XF86AudioMute exec --no-startup-id volume -m toggle
 bindsym --release XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 bindsym --release XF86AudioPlay exec --no-startup-id playerctl play-pause
@@ -63,8 +63,7 @@ bindcode --release 66 exec --no-startup-id keyboard-layout update
 
 # Меню питания
 # Заблокировать экран
-# $mod+l
-bindcode --release $mod+46 exec --no-startup-id dm-tool lock
+# bindcode --release $mod+46 exec --no-startup-id dm-tool lock
 bindsym --release $mod+Escape exec --no-startup-id powermenu
 bindsym --release $mod+Shift+Escape exec --no-startup-id performance
 
@@ -143,14 +142,14 @@ exec_always --no-startup-id polybar-launch
 exec_always --no-startup-id btry-alert 25:10m 20:5m 15:1m 12:30s
 exec_always --no-startup-id keyboard-layout set us ru
 exec_always --no-startup-id brightness levels 20
-exec_always --no-startup-id volume levels 20+10
+exec_always --no-startup-id volume -s 20+10 --daemon
 exec_always --no-startup-id libinput-gestures-setup restart
 exec --no-startup-id motd
 
 # Специфичные настройки запуска приложений
 set $sml_size 640 480
 set $mid_size 800 600
-set $lrg_size 1024 720
+set $lrg_size 1024 768
 
 for_window [all]									border pixel 4
 # for_window [tiling]								border pixel 4
