@@ -71,11 +71,11 @@ bindsym --release $mod+Shift+Escape exec --no-startup-id performance
 # $mod+u
 bindcode --release $mod+30 exec --no-startup-id update -t kitty
 
-# Просмотр открытых приложений
-bindsym --release $mod+Tab exec --no-startup-id apps-active
-
 # Меню приложений
 bindsym --release $mod+F1 exec --no-startup-id apps-launcher
+
+# Просмотр открытых приложений
+bindsym --release $mod+Shift+F1 exec --no-startup-id apps-active
 
 # Запуск файлового менеджера
 bindsym --release $mod+F2 exec --no-startup-id $files
@@ -105,9 +105,9 @@ bindsym --release $mod+Shift+F12 exec --no-startup-id suterm $term --class=Htop 
 
 # Создание скриншотов
 set $screenshotpath $HOME/Pictures/Скриншоты
-bindsym --release Print exec --no-startup-id xfce4-screenshooter -f $screenshotpath
-bindsym --release Ctrl+Print exec --no-startup-id xfce4-screenshooter -w $screenshotpath
-bindsym --release Shift+Print exec --no-startup-id xfce4-screenshooter -r $screenshotpath
+bindsym --release Print exec --no-startup-id xfce4-screenshooter -f -s $screenshotpath
+bindsym --release Ctrl+Print exec --no-startup-id xfce4-screenshooter -w -s $screenshotpath
+bindsym --release Shift+Print exec --no-startup-id xfce4-screenshooter -r -s $screenshotpath
 bindsym --release $mod+Print exec --no-startup-id xfce4-screenshooter -f -c
 bindsym --release $mod+Ctrl+Print exec --no-startup-id xfce4-screenshooter -w -c
 bindsym --release $mod+Shift+Print exec --no-startup-id xfce4-screenshooter -r -c
@@ -201,8 +201,8 @@ bindcode --release $mod+40 split toggle
 
 # Перемещение на прошлый рабочий стол и обратно (с и без активного окна)
 workspace_auto_back_and_forth yes
-# bindsym --release $mod+Tab workspace back_and_forth
-# bindsym --release $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
+bindsym --release $mod+Tab workspace back_and_forth
+bindsym --release $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
 
 # Переключение полноэкранного режима активного окна
 # $mod+f
