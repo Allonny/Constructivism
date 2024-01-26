@@ -2,7 +2,7 @@
 
 cpuusage_file="/tmp/cpuusage"
 memusage_file="/tmp/memusage"
-store=10
+store=14
 
 blank_cpu() {
 	[[ -f $cpuusage_file ]] && rm $cpuusage_file
@@ -19,6 +19,8 @@ blank_mem() {
 }
 
 daemons_kill() {
+	blank_cpu
+	blank_mem
 	for pid in $(pgrep ${0##*/}) ; do
 		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Killed $pid"
 	done
@@ -44,7 +46,7 @@ histbars_cpu() {
 		u1 = $1 ; t1 = $2 ;
 		du = u1 - u0 ; dt = t1 - t0 ;
 		if(dt == 0) 
-			printf("100 ")
+			printf("0 ")
 		else
 			printf("%d ", int(du / dt + 0.5))
 	}' $cpuusage_file)
