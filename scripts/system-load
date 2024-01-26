@@ -58,7 +58,7 @@ histbars_mem() {
 update_cpu() {
 	newline=$(grep 'cpu ' /proc/stat | awk '{ u = ($2 + $4) * 100 ; t = $2 + $4 + $5 ; print u,t }')
 	readarray -t hist < $cpuusage_file
-	hist=("${hist[@]:1}" "$newline")
+	hist=("${hist[@]:$((-$store)):$store}" "$newline")
 	[[ -f $cpuusage_file ]] && rm $cpuusage_file
 	for line in "${hist[@]}" ; do
 		echo $line >> $cpuusage_file
@@ -68,7 +68,7 @@ update_cpu() {
 update_mem() {
 	newline=$(free | grep 'Mem' | awk '{ print int($3 * 100 / $2 + 0.5) }')
 	readarray -t hist < $memusage_file
-	hist=("${hist[@]:1}" "$newline")
+	hist=("${hist[@]:$((-$store + 1)):$(($store - 1))}" "$newline")
 	[[ -f $memusage_file ]] && rm $memusage_file
 	for line in "${hist[@]}" ; do
 		echo $line >> $memusage_file

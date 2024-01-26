@@ -9,7 +9,7 @@ code = ((0x00, 0x40, 0x44, 0x46, 0x47),
 def parse():
     seq = [ int(x) if x.isnumeric() else 0 for x in sys.argv[1:]]
     if len(seq) % 2 == 1:
-        seq.append(0)
+        seq.append(seq[-1])
     return seq
 
 def normalize(seq):
