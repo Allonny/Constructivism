@@ -5,7 +5,7 @@
 # Предварительные танцы с бубном для решения проблемы с падающей яркостью тут:
 # https://forums.linuxmint.com/viewtopic.php?t=138760
 
-current_level_file="/tmp/brightness_levels"
+current_level_file="/tmp/brightness-levels"
 max_brightness=100
 min_brightness=0
 
