@@ -1,0 +1,28 @@
+#! /usr/bin/python3
+
+import math
+import sys
+
+code = ((0x00, 0x40, 0x44, 0x46, 0x47),
+        (0x00, 0x80, 0xA0, 0xB0, 0xB8))
+
+def parse():
+    seq = [ int(x) if x.isnumeric() else 0 for x in sys.argv[1:]]
+    if len(seq) % 2 == 1:
+        seq.append(0)
+    return seq
+
+def normalize(seq):
+    return list(map(lambda x : math.floor(sorted((0, x, 100))[1] / 25 + 0.5), seq))
+
+def bars(seq):
+    bar = [ chr(0x2800 + code[0][seq[i]] + code[1][seq[i+1]]) for i in range(0, len(seq), 2) ]
+    return bar
+
+def main():
+    seq = parse()
+    bar = bars(normalize(seq))
+    print(''.join(bar) + '{:02d}'.format(min(seq[-1], 99)) + '%' )
+
+if __name__ == "__main__":
+    main()

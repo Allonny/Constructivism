@@ -143,6 +143,7 @@ exec_always --no-startup-id btry-alert 25:10m 20:5m 15:1m 12:30s
 exec_always --no-startup-id keyboard-layout set us ru
 exec_always --no-startup-id brightness levels 20
 exec_always --no-startup-id volume -s 20+10 --daemon
+exec_always --no-startup-id system-load daemon
 exec_always --no-startup-id libinput-gestures-setup restart
 exec --no-startup-id motd
 

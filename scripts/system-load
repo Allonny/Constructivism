@@ -1,0 +1,94 @@
+#!/bin/bash
+
+cpuusage_file="/tmp/cpuusage"
+memusage_file="/tmp/memusage"
+store=10
+
+blank_cpu() {
+	[[ -f $cpuusage_file ]] && rm $cpuusage_file
+	for (( i=0 ; i<=$store ; i++ )) ; do
+		echo "0 0" >> $cpuusage_file
+	done
+}
+
+blank_mem() {
+	[[ -f $memusage_file ]] && rm $memusage_file
+	for (( i=0 ; i < $store ; i++ )) ; do
+		echo "0" >> $memusage_file
+	done
+}
+
+daemons_kill() {
+	for pid in $(pgrep ${0##*/}) ; do
+		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Killed $pid"
+	done
+
+}
+
+daemon_update() {
+	daemons_kill
+
+	while :; do
+		update_cpu
+		update_mem
+		sleep 1
+	done &
+}
+
+histbars_cpu() {
+	unigraph $(awk 'NR == 1 {
+		u1 = $1 ; t1 = $2 ;
+		next
+	}{
+		u0 = u1 ; t0 = t1 ;
+		u1 = $1 ; t1 = $2 ;
+		du = u1 - u0 ; dt = t1 - t0 ;
+		if(dt == 0) 
+			printf("100 ")
+		else
+			printf("%d ", int(du / dt + 0.5))
+	}' $cpuusage_file)
+}
+
+histbars_mem() {
+	readarray -t hist < $memusage_file
+	unigraph ${hist[@]}
+}
+
+update_cpu() {
+	newline=$(grep 'cpu ' /proc/stat | awk '{ u = ($2 + $4) * 100 ; t = $2 + $4 + $5 ; print u,t }')
+	readarray -t hist < $cpuusage_file
+	hist=("${hist[@]:1}" "$newline")
+	[[ -f $cpuusage_file ]] && rm $cpuusage_file
+	for line in "${hist[@]}" ; do
+		echo $line >> $cpuusage_file
+	done
+}
+
+update_mem() {
+	newline=$(free | grep 'Mem' | awk '{ print int($3 * 100 / $2 + 0.5) }')
+	readarray -t hist < $memusage_file
+	hist=("${hist[@]:1}" "$newline")
+	[[ -f $memusage_file ]] && rm $memusage_file
+	for line in "${hist[@]}" ; do
+		echo $line >> $memusage_file
+	done	
+}
+
+[[ ! -f $cpuusage_file ]] && blank_cpu
+[[ ! -f $memusage_file ]] && blank_mem
+
+case $1 in
+	"daemon")
+	daemon_update
+	;;
+	"cpu")
+	histbars_cpu
+	;;
+	"mem")
+	histbars_mem
+	;;
+	"stop")
+	daemons_kill
+	;;
+esac
