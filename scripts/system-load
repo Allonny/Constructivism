@@ -4,6 +4,52 @@ cpuusage_file="/tmp/cpuusage"
 memusage_file="/tmp/memusage"
 store=14
 
+pb_colors_file="$HOME/.config/polybar/colors.ini"
+pb_cpu_icon=""
+pb_mem_icon=""
+
+threshold_caution=75
+threshold_warning=90
+
+interval=1
+
+get_pb_color() {
+	color=()
+	color=(${color[@]} $(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "background-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "foreground-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "blue =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "yellow =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "red =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+
+	echo ${color[@]}
+}
+
+polybar() {
+	color=($(get_pb_color))
+	bg=${color[0]}
+	bga=${color[1]}
+	fg=${color[2]}
+	fga=${color[3]}
+	prfx=${color[4]}
+	prfxc=${color[5]}
+	prfxw=${color[6]}
+
+	icon=$1
+	graph=$2
+	value=$3
+
+	prefix="%{B$prfx F$fga} $icon %{B- F-}"
+	[[ $value -ge $threshold_caution ]] && prefix="%{B$prfxc F$fga} $icon %{B- F-}"
+	[[ $value -ge $threshold_warning ]] && prefix="%{B$prfxw F$fga} $icon %{B- F-}"
+
+	label="%{B$bga F$fg} $graph$value% %{B- F-}"
+
+	block="%{u$bg o$bg}%{+u +o}%{A1:kitty --class=Htop 'htop':}$prefix$label%{A}%{u-}%{o-}"
+	echo $block
+}
+
 blank_cpu() {
 	[[ -f $cpuusage_file ]] && rm $cpuusage_file
 	for (( i=0 ; i<=$store ; i++ )) ; do
@@ -33,8 +79,25 @@ daemon_update() {
 	while :; do
 		update_cpu
 		update_mem
-		sleep 1
+		polybar-msg action cpu hook 0 > /dev/null
+		polybar-msg action mem hook 0 > /dev/null
+		sleep $interval
 	done &
+}
+
+current_cpu() {
+	cat $cpuusage_file | tail -2 | awk '
+	NR == 1 { u = -$1 ; t = -$2 ; next }
+	{ u += $1 ; t += $2 ;
+		if(t == 0) v = 0
+		else v = int(u / t + 0.5);
+		if(v >= 100) v = 99;
+		printf("%02d", v);
+	}'
+}
+
+current_mem() {
+	cat $memusage_file | tail -1 | awk '{ v = $1 ; if(v >= 100) v = 99 ; printf("%02d", v) }'
 }
 
 histbars_cpu() {
@@ -49,7 +112,7 @@ histbars_cpu() {
 			printf("0 ")
 		else
 			printf("%d ", int(du / dt + 0.5))
-	}' $cpuusage_file)
+		}' $cpuusage_file)
 }
 
 histbars_mem() {
@@ -82,15 +145,15 @@ update_mem() {
 
 case $1 in
 	"daemon")
-	daemon_update
+		daemon_update
 	;;
 	"cpu")
-	histbars_cpu
+		polybar $pb_cpu_icon $(histbars_cpu) $(current_cpu) 
 	;;
 	"mem")
-	histbars_mem
+		polybar $pb_mem_icon $(histbars_mem) $(current_mem)
 	;;
 	"stop")
-	daemons_kill
+		daemons_kill
 	;;
 esac

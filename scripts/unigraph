@@ -22,7 +22,7 @@ def bars(seq):
 def main():
     seq = parse()
     bar = bars(normalize(seq))
-    print(''.join(bar) + '{:02d}'.format(min(seq[-1], 99)) + '%' )
+    print(''.join(bar))
 
 if __name__ == "__main__":
     main()
