@@ -19,7 +19,13 @@ zle -N up-line-or-beginning-search
 
 autoload -U down-line-or-beginning-search
 zle -N down-line-or-beginning-search
-# compinit
+
+autoload -U select-word-style
+select-word-style bash
+
+autoload -Uz compinit
+autoload -Uz compdef
+compinit
 # End of lines added by compinstall
 
 alias get="sudo xbps-install -Su"
@@ -35,9 +41,6 @@ antigen bundle jirutka/zsh-shift-select
 antigen theme romkatv/powerlevel10k
 
 antigen apply
-
-autoload -U select-word-style
-select-word-style bash
 
 function () {
 	emulate -L zsh -o no_aliases
@@ -91,3 +94,4 @@ function () {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.local/share/p10k/p10k.zsh ]] || source ~/.local/share/p10k/p10k.zsh
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet

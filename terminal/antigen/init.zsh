@@ -1,5 +1,5 @@
 #-- START ZCACHE GENERATED FILE
-#-- GENERATED: Thu Dec 14 22:06:41 +05 2023
+#-- GENERATED: Mon Mar 25 21:11:33 +05 2024
 #-- ANTIGEN v2.2.2
 _antigen () {
 	local -a _1st_arguments
@@ -38,7 +38,7 @@ antigen () {
 typeset -gaU fpath path
 fpath+=(/home/allonny/.config/Constructivism/terminal/antigen/bundles/zsh-users/zsh-autosuggestions /home/allonny/.config/Constructivism/terminal/antigen/bundles/zsh-users/zsh-syntax-highlighting /home/allonny/.config/Constructivism/terminal/antigen/bundles/jirutka/zsh-shift-select /home/allonny/.config/Constructivism/terminal/antigen/bundles/romkatv/powerlevel10k) path+=(/home/allonny/.config/Constructivism/terminal/antigen/bundles/zsh-users/zsh-autosuggestions /home/allonny/.config/Constructivism/terminal/antigen/bundles/zsh-users/zsh-syntax-highlighting /home/allonny/.config/Constructivism/terminal/antigen/bundles/jirutka/zsh-shift-select /home/allonny/.config/Constructivism/terminal/antigen/bundles/romkatv/powerlevel10k)
 _antigen_compinit () {
-  autoload -Uz compinit; compinit -d "/home/allonny/.local/share/antigen/.zcompdump"; compdef _antigen antigen
+  autoload -Uz compinit; compinit -d "/root/.local/share/antigen/.zcompdump"; compdef _antigen antigen
   add-zsh-hook -D precmd _antigen_compinit
 }
 autoload -Uz add-zsh-hook; add-zsh-hook precmd _antigen_compinit
@@ -56,7 +56,7 @@ source '/home/allonny/.config/Constructivism/terminal/antigen/bundles/romkatv/po
 #--- BUNDLES END
 typeset -gaU _ANTIGEN_BUNDLE_RECORD; _ANTIGEN_BUNDLE_RECORD=('https://github.com/zsh-users/zsh-autosuggestions.git / plugin true' 'https://github.com/zsh-users/zsh-syntax-highlighting.git / plugin true' 'https://github.com/jirutka/zsh-shift-select.git / plugin true' 'https://github.com/romkatv/powerlevel10k.git / theme true')
 typeset -g _ANTIGEN_CACHE_LOADED; _ANTIGEN_CACHE_LOADED=true
-typeset -ga _ZCACHE_BUNDLE_SOURCE; _ZCACHE_BUNDLE_SOURCE=('/home/allonny/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions//' '/home/allonny/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions///zsh-autosuggestions.plugin.zsh' '/home/allonny/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting//' '/home/allonny/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting///zsh-syntax-highlighting.plugin.zsh' '/home/allonny/.local/share/antigen/bundles/jirutka/zsh-shift-select//' '/home/allonny/.local/share/antigen/bundles/jirutka/zsh-shift-select///zsh-shift-select.plugin.zsh' '/home/allonny/.local/share/antigen/bundles/romkatv/powerlevel10k//' '/home/allonny/.local/share/antigen/bundles/romkatv/powerlevel10k///powerlevel10k.zsh-theme')
+typeset -ga _ZCACHE_BUNDLE_SOURCE; _ZCACHE_BUNDLE_SOURCE=('/root/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions//' '/root/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions///zsh-autosuggestions.plugin.zsh' '/root/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting//' '/root/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting///zsh-syntax-highlighting.plugin.zsh' '/root/.local/share/antigen/bundles/jirutka/zsh-shift-select//' '/root/.local/share/antigen/bundles/jirutka/zsh-shift-select///zsh-shift-select.plugin.zsh' '/root/.local/share/antigen/bundles/romkatv/powerlevel10k//' '/root/.local/share/antigen/bundles/romkatv/powerlevel10k///powerlevel10k.zsh-theme')
 typeset -g _ANTIGEN_CACHE_VERSION; _ANTIGEN_CACHE_VERSION='v2.2.2'
 
 #-- END ZCACHE GENERATED FILE
