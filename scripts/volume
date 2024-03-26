@@ -277,8 +277,9 @@ while [[ $# -gt 0 ]] ; do
 done
 
 if [[ $daemon == "yes" ]] ; then
-	for pid in $(pgrep ${0##*/}) ; do
-		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Процесс volume $pid был остановлен"
+	process_name=${0##*/}
+	for pid in $(pgrep ${process_name}) ; do
+		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Процесс $process_name $pid был остановлен"
 	done
 	sleep 1s
 	while :; do

@@ -2,7 +2,8 @@
 
 cpuusage_file="/tmp/cpuusage"
 memusage_file="/tmp/memusage"
-store=14
+store=12
+interval=2.5
 
 pb_colors_file="$HOME/.config/polybar/colors.ini"
 pb_cpu_icon=""
@@ -10,8 +11,6 @@ pb_mem_icon=""
 
 threshold_caution=75
 threshold_warning=90
-
-interval=1
 
 get_pb_color() {
 	color=()
@@ -44,9 +43,9 @@ polybar() {
 	[[ $value -ge $threshold_caution ]] && prefix="%{B$prfxc F$fga} $icon %{B- F-}"
 	[[ $value -ge $threshold_warning ]] && prefix="%{B$prfxw F$fga} $icon %{B- F-}"
 
-	label="%{B$bga F$fg} $graph$value% %{B- F-}"
+	label="%{B$bga F$fg} $graph $value% %{B- F-}"
 
-	block="%{u$bg o$bg}%{+u +o}%{A1:kitty --class=Htop 'htop':}$prefix$label%{A}%{u-}%{o-}"
+	block="%{u$bg o$bg}%{+u +o}$prefix%{A1:kitty --class=Htop 'htop':}$label%{A}%{u-}%{o-}"
 	echo $block
 }
 
@@ -67,10 +66,10 @@ blank_mem() {
 daemons_kill() {
 	blank_cpu
 	blank_mem
-	for pid in $(pgrep ${0##*/}) ; do
-		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Killed $pid"
+	process_name=${0##*/}	
+	for pid in $(pgrep ${process_name}) ; do
+		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Процесс $process_name $pid был остановлен"
 	done
-
 }
 
 daemon_update() {

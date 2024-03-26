@@ -16,6 +16,7 @@ log_sfx=" 2>> $log_file ; echo \$? >> $log_file ; "
 finish_line="Для выхода нажмите ENTER (в противном случае программа сама завершится через 2 минуты)"
 
 commands=()
+commands=("${commands[@]}" "/usr/bin/xbps-install -uy xbps $log_sfx")
 commands=("${commands[@]}" "/usr/bin/xbps-install -Suy $log_sfx")
 commands=("${commands[@]}" "/usr/bin/xbps-remove -Roy $log_sfx")
 commands=("${commands[@]}" "/usr/bin/flatpak update -y $log_sfx")
