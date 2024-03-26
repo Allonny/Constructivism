@@ -16,6 +16,7 @@ Plug('norcalli/nvim-colorizer.lua')
 Plug('rebelot/kanagawa.nvim')
 Plug('ryanoasis/vim-devicons')
 Plug('liuchengxu/vista.vim')
+Plug('rktjmp/lush.nvim')
 
 Plug.ends()
 

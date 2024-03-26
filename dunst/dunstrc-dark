@@ -114,8 +114,8 @@
 
 [urgency_critical]
     background = "#343230"
-    foreground = "#F0C0C0"
-    frame_color = "#F8E8A0"
+    foreground = "#D0D0D0"
+    frame_color = "#F0C0C0"
     highlight = "#F8E8A0"
 
     timeout = 120
