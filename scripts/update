@@ -17,7 +17,7 @@ log_file="/tmp/update-log"
 
 log_sfx=" 2>> $log_file ; echo \$? >> $log_file ; "
 
-finish_line="Для выхода нажмите ENTER (в противном случае программа сама завершится через 2 минуты)"
+finish_line="Для выхода нажмите любую клавишу на клавиатуре (в противном случае программа сама завершится через 2 минуты)"
 
 commands=()
 commands=("${commands[@]}" "/usr/bin/xbps-install -uy xbps $log_sfx")
@@ -25,28 +25,27 @@ commands=("${commands[@]}" "/usr/bin/xbps-install -Suy $log_sfx")
 commands=("${commands[@]}" "/usr/bin/xbps-remove -Roy $log_sfx")
 commands=("${commands[@]}" "/usr/bin/flatpak update -y $log_sfx")
 commands=("${commands[@]}" "/usr/bin/flatpak remove --unused --delete-data -y $log_sfx")
-commands=("${commands[@]}" "sudo -u $USER $(dirname "$0")/${0##*/}")
-commands=("${commands[@]}" "read -t 120 -p \"$finish_line\" ; ")
+commands=("${commands[@]}" "$HOME/.local/scripts/${0##*/} --notify ; ")
+commands=("${commands[@]}" "read -t 120 -n 1 -p '$finish_line' ; ")
 
 check() {
     [ ! -f $log_file ] && exit 1
     errors_count=$(($(grep "^[1-9][0-9]*$" /tmp/update-log | wc -l)))
-    if [[ errors_count -eq 0 ]]; then
-    	notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent" -i "$notify_icon" "$notify_title" "$notify_body"
-        sudo -H -u $1 notify-send -u normal -r $notify_id -i "$notify_icon" "$notify_title" "$notify_body"
-        exit 0
-    fi
     errors="$(grep "^[^0-9].*$" $log_file)"
-    notify_body_error="$notify_body_error$errors_count:\n$errors"
+	if [[ $errors_count -ne 0 ]] ; then
+		notify_urgent="$notify_urgent_error"
+		notify_icon="$notify_icon_error"
+		notify_body="$notify_body_error$errors_count:\n$errors"
+		tput bel
+	fi
 
-	notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent_error" -i "$notify_icon_error" "$notify_title" "$notify_body_error"
-	echo -e '\a'
+    notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent" -i "$notify_icon" "$notify_title" "$notify_body"
 }
 
 update() {
     command_line="${commands[@]}"
     rm $log_file 2> /dev/null ; touch $log_file
-    pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY PATH=$PATH $terminal /bin/sh -c "$command_line"
+    pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY PATH=$PATH $terminal /bin/bash -c "$command_line"
     wait
 }
 
