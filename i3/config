@@ -80,8 +80,9 @@ bindsym --release $mod+Shift+F1 exec --no-startup-id apps-active
 # Запуск файлового менеджера
 bindsym --release $mod+F2 exec --no-startup-id $files
 bindsym --release $mod+Shift+F2 exec --no-startup-id pkexec $files && :
-bindsym --release $mod+backslash exec --no-startup-id $files
-bindsym --release $mod+Shift+backslash exec --no-startup-id pkexec $files && :
+# $mod+Backslash
+bindcode --release $mod+51 exec --no-startup-id $files
+bindcode --release $mod+Shift+51 exec --no-startup-id pkexec $files && :
 
 # Запуск терминала
 bindsym --release $mod+F3 exec --no-startup-id $term
@@ -128,6 +129,10 @@ bindcode --release $mod+54 exec --no-startup-id dunstctl close
 # $mod+Shift+c
 bindcode --release $mod+Shift+54 exec --no-startup-id dunstctl close-all
 
+# Открыть контекстное меню уведомления
+# $mod+x
+bindcode --release $mod+53 exec --no-startup-id dunstctl context
+
 # Переключить режим "не беспокоить"
 # $mod+Ctrl+c
 bindcode --release $mod+Ctrl+54 exec --no-startup-id notify-mute toggle
@@ -139,7 +144,7 @@ bindcode --release $mod+55 exec --no-startup-id dunstctl history-pop
 # Автозапуск приложений
 exec --no-startup-id dex -as $HOME/.config/autostart
 exec_always --no-startup-id polybar-launch
-exec_always --no-startup-id keyboard-layout set us ru
+exec_always --no-startup-id keyboard-layout set us ru jp:anthy
 exec_always --no-startup-id brightness levels 20
 exec_always --no-startup-id battery --daemon
 exec_always --no-startup-id volume -s 20+10 --daemon
