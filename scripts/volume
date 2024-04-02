@@ -12,7 +12,10 @@ notify_title="Громкость"
 notify_body="Текущая громкость системы"
 notify_body_muted="Звук отключен"
 notify_icons=("audio-volume-muted" "audio-volume-low" "audio-volume-medium" "audio-volume-high")
-notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "${0##*/} \K([\d]+)" || echo 0)
+notify_urgent="low"
+
+notify_name="${0##*/}"
+notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
 
 daemon="no"
 
@@ -165,13 +168,13 @@ notify() {
 
 	if [[ $mute == "yes" ]] ; then
 		notify_icon="${notify_icons[0]}"
-		notify-send -u low -r $notify_id -i "$notify_icon" "$notify_title" "$notify_body_muted"
+		notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent" -i "$notify_icon" "$notify_title" "$notify_body_muted"
 	else
 		notify_icon="${notify_icons[3]}"
 		[[ $1 -lt 70 ]] && notify_icon="${notify_icons[2]}"
 		[[ $1 -lt 40 ]] && notify_icon="${notify_icons[1]}"
 		[[ $1 -lt 5  ]] && notify_icon="${notify_icons[0]}"
-		notify-send -u low -r $notify_id -i "$notify_icon" "$notify_title" "$notify_body" -h int:value:$1
+		notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent" -i "$notify_icon" "$notify_title" "$notify_body" -h int:value:$1
 	fi
 }
 

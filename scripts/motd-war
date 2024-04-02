@@ -3,7 +3,10 @@
 notify_title="Война ⚔️"
 notify_body="Дней с начала войны: "
 notify_icon="dialog-error"
-notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "${0##*/} \K([\d]+)" || echo 0)
+notify_urgent="normal"
+
+notify_name="${0##*/}"
+notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
 
 days_from()
 {
@@ -14,4 +17,4 @@ war_date=20220224
 
 days=$(days_from $war_date)
 
-notify-send -u critical -r $notify_id -i "$notify_icon" "$notify_title" "$notify_body$days"
+notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent" -i "$notify_icon" "$notify_title" "$notify_body$days"

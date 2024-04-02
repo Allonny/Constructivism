@@ -21,7 +21,8 @@ label_plug="---label---"
 status_plug="---status---"
 notify_icon="battery-${label_plug}${status_plug}-symbolic"
 
-notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "${0##*/} \K([\d]+)" || echo 0)
+notify_name="${0##*/}"
+notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
 
 daemon="no"
 
@@ -120,7 +121,7 @@ notify() {
 		urgent="low" || \
 		icon=${icon//$status_plug/${notify_icon_status[1]}}
 	
-	notify-send -u $urgent -r $notify_id -i "$icon" "$title" "$body"	
+	notify-send -a "$notify_name" -r "$notify_id" -u "$urgent" -i "$icon" "$title" "$body"	
 }
 
 help() {

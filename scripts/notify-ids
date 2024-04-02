@@ -1,9 +1,9 @@
 battery 1000
-vpn-toggle 1010
 keyboard-layout 1010
-brightness 1030
-volume 1040
-update 1050
+brightness 1020
+volume 1030
+update 1040
+vpn-toggle 1050
 motd-war 1110
 motd-antiLGBTlaw 1120
 motd-antiTRANSlaw 1130

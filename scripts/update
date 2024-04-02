@@ -7,7 +7,11 @@ notify_body="Все обновления системы были заверше�
 notify_body_error="Обнаружено несколько ошибок - "
 notify_icon="update-low"
 notify_icon_error="update-high"
-notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "${0##*/} \K([\d]+)" || echo 0)
+notify_urgent="normal"
+notify_urgent_error="critical"
+
+notify_name="${0##*/}"
+notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
 
 log_file="/tmp/update-log"
 
@@ -21,25 +25,28 @@ commands=("${commands[@]}" "/usr/bin/xbps-install -Suy $log_sfx")
 commands=("${commands[@]}" "/usr/bin/xbps-remove -Roy $log_sfx")
 commands=("${commands[@]}" "/usr/bin/flatpak update -y $log_sfx")
 commands=("${commands[@]}" "/usr/bin/flatpak remove --unused --delete-data -y $log_sfx")
-commands=("${commands[@]}" "$(dirname "$0")/${0##*/} -n $USER ; echo -e '\a' ; ")
+commands=("${commands[@]}" "sudo -u $USER $(dirname "$0")/${0##*/}")
 commands=("${commands[@]}" "read -t 120 -p \"$finish_line\" ; ")
 
 check() {
     [ ! -f $log_file ] && exit 1
     errors_count=$(($(grep "^[1-9][0-9]*$" /tmp/update-log | wc -l)))
     if [[ errors_count -eq 0 ]]; then
+    	notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent" -i "$notify_icon" "$notify_title" "$notify_body"
         sudo -H -u $1 notify-send -u normal -r $notify_id -i "$notify_icon" "$notify_title" "$notify_body"
         exit 0
     fi
-    errors=$(grep "^[^0-9].*$" $log_file)
+    errors="$(grep "^[^0-9].*$" $log_file)"
     notify_body_error="$notify_body_error$errors_count:\n$errors"
-    sudo -H -u $1 notify-send -u critical -r $notify_id -i "$notify_icon_error" "$notify_title" "$notify_body_error"
+
+	notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent_error" -i "$notify_icon_error" "$notify_title" "$notify_body_error"
+	echo -e '\a'
 }
 
 update() {
     command_line="${commands[@]}"
     rm $log_file 2> /dev/null ; touch $log_file
-    pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY PATH=$PATH $terminal /bin/bash -c "$command_line"
+    pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY PATH=$PATH $terminal /bin/sh -c "$command_line"
     wait
 }
 
