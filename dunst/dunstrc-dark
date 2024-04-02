@@ -29,7 +29,7 @@
 
 
     # Прозрачность окна уведомления
-    transparency = 20
+    transparency = 0
 
 
     # Размеры окна уведомления, положение и отступы
@@ -106,7 +106,7 @@
 
 
 [urgency_low]
-    background = "#444240"
+    background = "#343230"
     foreground = "#D0D0D0"
     frame_color = "#F8E8A0"
 	separator_color = "#F8E8A0"
@@ -115,7 +115,7 @@
     timeout = 2
 
 [urgency_normal]
-    background = "#444240"
+    background = "#343230"
     foreground = "#D0D0D0"
     frame_color = "#F8E8A0"
 	separator_color = "#F8E8A0"
@@ -124,7 +124,7 @@
     timeout = 10
 
 [urgency_critical]
-    background = "#444240"
+    background = "#343230"
     foreground = "#D0D0D0"
     frame_color = "#F0C0C0"
 	separator_color = "#F0C0C0"
