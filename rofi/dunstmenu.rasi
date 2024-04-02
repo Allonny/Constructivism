@@ -1,0 +1,115 @@
+/* Меню переключения между запущенными приложениями */
+
+@import "colors.rasi"
+@import "font.rasi"
+@import "icons.rasi"
+
+configuration {
+	show-icons:			true;
+	display-drun:		"";
+	drun-display-format:"{name}";
+	disable-history:	false;
+	fullscreen:         false;
+	hide-scrollbar: 	true;
+	sidebar-mode:		false;
+}
+
+window {
+	transparency:       "real";
+	background-color:   @transparent;
+	text-color:         @transparent;
+
+	location:           center;
+    fullscreen:         true;
+
+    // Отступ слева 100, ширина 800, высота подобрана эмпирически для 8 выводимых строк
+    padding:            calc(50% - 99) calc(100% - 500) calc(50% - 98) 100;
+}
+
+textbox-prompt-colon {
+	background-color: 	@green;
+	text-color: 		@foreground-alt;
+
+	expand:				false;
+    width:              29px;
+    height:             29px;
+    horizontal-align:   0.5;
+    vertical-align:     0.5;
+
+	str:				"";
+	font:				"feather 11";
+}
+
+prompt {
+    background-color: 	@background-alt;
+	text-color: 		@foreground;
+
+    expand:             true;
+	height: 			29px;
+    padding:            5px 8px 4px;
+    horizontal-align:   0;
+    vertical-align:     0.5;
+}
+
+inputbar {
+	children: 			[ textbox-prompt-colon, prompt ];
+
+	background-color:   @background-alt;
+	text-color:         @foreground;
+
+	expand:             false;
+}
+
+listview {
+	background-color:   @background;
+
+	spacing:            8px;
+
+	columns:            1;
+	lines:              4;
+	cycle:              true;
+	dynamic:            true;
+	layout:             vertical;
+}
+
+mainbox {
+	children:           [ inputbar, listview ];
+
+	background-color:   @background;
+	border-color:		@yellow;
+
+    spacing:            8px;
+	padding:            8px;
+
+	border:				0px 0px 4px;
+}
+
+element {
+	background-color:   @transparent;
+
+	height: 29px;
+	orientation:        horizontal;
+}
+
+element-icon {
+	background-color:   @transparent;
+
+	size:               0px;
+    padding:            0px;
+}
+
+element-text {
+	background-color:   @transparent;
+	text-color:			@foreground;
+	expand:             true;
+	horizontal-align:   0;
+	vertical-align:     0.5;
+	padding:            5px 8px 4px;
+}
+
+element selected {
+	background-color:   @background-alt;
+	border-color:       @blue;
+
+	border:				0px 0px 2px;
+}

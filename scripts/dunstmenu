@@ -1,0 +1,10 @@
+#!/bin/bash
+
+[[ -n "$@" ]] && context="$(echo "$@" | sort)" || context="$(cat | sort)"
+
+themefile="$HOME/.config/rofi/dunstmenu.rasi"
+
+title="$(echo "$context" | grep -oP -m1 '(?<=\()[\w\s]*(?=\) \[)' || echo "Контекстное меню dunst" )"
+menu="$(echo "$context" | grep -oP '(?<=^#).*(?= \([\w\s]*\) \[.*$)' || echo "$context")"
+choose="$(echo "$menu" | rofi -no-config -no-lazy-grab -dmenu -show-icons -p "$title" -theme $themefile)"
+[[ -n "$choose" ]] && echo "$context" | grep "$choose" | xargs
