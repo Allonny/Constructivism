@@ -126,8 +126,8 @@
 [urgency_critical]
     background = "#343230"
     foreground = "#D0D0D0"
-    frame_color = "#F0C0C0"
-	separator_color = "#F0C0C0"
-    highlight = "#F0C0C0"
+    frame_color = "#E88890"
+	separator_color = "#E88890"
+    highlight = "#E88890"
 
     timeout = 60
