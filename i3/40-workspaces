@@ -43,4 +43,3 @@ bindsym --release $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym --release $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym --release $mod+Shift+0 move container to workspace $ws0; workspace $ws0
 
-

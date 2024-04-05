@@ -14,10 +14,8 @@ exec --no-startup-id motd
 
 # Специфичные настройки запуска приложений
 for_window [all]									border normal 4
-# for_window [tiling]								border pixel 4
-# for_window [floating]								border normal 4
 # for_window [urgent=latest]						focus
-for_window [all] title_window_icon off
+
 for_window [title="File Transfer*"]					floating enable
 for_window [class="Blueman"]						floating enable resize set $sml_size
 for_window [class="GParted"]						floating enable resize set $lrg_size
@@ -31,8 +29,8 @@ for_window [class="Pavucontrol"]					floating enable resize set $mid_size
 for_window [class="kitty" floating]					resize set $mid_size
 
 assign [class="firefox"] $ws1
-# assign [class="TelegramDesktop"] $ws2
 assign [class="steam"] $ws4
+assign [class="Celluloid"] $ws5
 assign [class="Rhythmbox"] $ws9
 assign [class="Spotify"] $ws9
 assign [class="Kew"] $ws9
