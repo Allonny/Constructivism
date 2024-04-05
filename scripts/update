@@ -45,7 +45,7 @@ check() {
 update() {
     command_line="${commands[@]}"
     rm $log_file 2> /dev/null ; touch $log_file
-    pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY PATH=$PATH $terminal /bin/bash -c "$command_line"
+    pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY PATH=$PATH $terminal --class=Update /bin/bash -c "$command_line"
     wait
 }
 
