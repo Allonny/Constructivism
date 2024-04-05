@@ -2,7 +2,7 @@
 
 # Скрипт для изменения громкости, шоб ~*~*~красивое~*~*~ было
 
-current_level_file="/tmp/volume_levels"
+current_level_file="/tmp/volume-levels"
 pb_modules_file="$HOME/.config/polybar/modules.ini"
 pb_colors_file="$HOME/.config/polybar/colors.ini"
 pb_icons=("" "" "" "")
