@@ -1,27 +1,29 @@
 #!/bin/bash
 
 notify_title="Подключение VPN"
+notify_title_error="Ошибка VPN подключения"
 notify_body_up="Соединение $1 установлено."
 notify_body_down="Соединение $1  отключено."
+notify_body_error=""
 #notify_icon="nm-vpn-standalone-lock"
 notify_icon_up="network-connect"
 notify_icon_down="network-disconnect"
-
-notify_title_error="Ошибка VPN подключения"
-notify_body_error=""
 notify_icon_error="dialog-error"
+notify_urgent="low"
+notify_urgent_error="critical"
 
-notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "${0##*/} \K([\d]+)" || echo 0)
+notify_name="${0##*/}"
+notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
 
 [[ -z $(nmcli -g ACTIVE connection show "$1") ]] && state="up" || state="down"
 notify_body_error=$(nmcli -w 10 connection $state "$1" 2>&1)
 
 if [[ $? -ne 0 ]] ; then
     echo $notify_body_error
-    notify-send -u critical  -r $notify_id -i "$notify_icon_error" "$notify_title_error" "$notify_body_error"
+	notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent_error" -i "$notify_icon_error" "$notify_title_error" "$notify_body_error"
     exit 1
 fi
 
 notify_icon="notify_icon_${state}"
 notify_body="notify_body_${state}"
-notify-send -u low -r $notify_id -i "${!notify_icon}" "$notify_title" "${!notify_body}"
+notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent" -i "${!notify_icon}" "$notify_title" "${!notify_body}"
