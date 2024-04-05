@@ -1,84 +1,182 @@
 #!/bin/bash
 
+current_md_file="/tmp/player-metadata"
 pb_colors_file="$HOME/.config/polybar/colors.ini"
+pb_icon=""
+pb_line_length=40
 
-player_status=$(playerctl status 2>/dev/null)
-metadata=""
-if [[ $? -eq 0 ]] && [[ $player_status != "Stopped" ]]; then
-    artist=$(playerctl metadata artist 2>/dev/null)
-    title=$(playerctl metadata title 2>/dev/null)
-    metadata="$artist — $title"
-	[[ ${#metadata} -gt 43 ]] && metadata="${metadata::40}..."
-fi
+notify_title=""
+notify_title_default="Сейчас воспроизводится"
+notify_body=""
+notify_icon="applications-multimedia"
+notify_urgent="normal"
+
+notify_name="${0##*/}"
+notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
+
+daemon="no"
+
+update() {
+	# case "$(status)" in
+		# "Playing" | "Paused" | "Stopped")
+			# polybar-msg action player module_show > /dev/null
+			# polybar-msg action title module_hide > /dev/null
+			# ;;
+		# *)
+			# polybar-msg action player module_hide > /dev/null
+			# polybar-msg action title module_show > /dev/null	
+			# ;;
+	# esac
+
+	polybar-msg action player hook 0 > /dev/null
+}
+
+control() {
+	playerctl $1
+	update
+}
+
+status() {
+	playerctl status 2>/dev/null || echo ""
+}
+
+metadata() {
+	playerctl metadata artist 2>/dev/null || echo ""
+	playerctl metadata title 2>/dev/null || echo ""
+}
 
 field() {
-    icon=($1)
-    i1=$1
-    i2=$2
-    i3=$3
-
-    color=($2)
-    c1=$4
-    c2=$5
-    c3=$6
-
-    case $player_status in
-        "Playing")     echo "%{F$c1}$i1%{F-}" ;;
-        "Paused" )     echo "%{F$c2}$i2%{F-}" ;;
-        "Stopped")     echo "%{F$c3}$i3%{F-}" ;;
+	case "$1" in
+        "Playing")     echo "%{F$4}$2%{F-}" ;;
+        "Paused" )     echo "%{F$5}$3%{F-}" ;;
+        "Stopped")     echo "%{F$6}$3%{F-}" ;;
         *) echo "" ;;
     esac
 }
 
-metadata() {
-    block=$(field "$metadata" "$metadata" "" "$1" "$2" "$2")
-    echo "%{A1:playerctl play-pause:}$block%{A}"
-}
+get_pb_color() {
+	color=()
+	color=(${color[@]} $(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "background-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "foreground-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "foreground-inactive =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color=(${color[@]} $(grep -oP "blue =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
 
-playpause() {
-    block=$(field "" "" "" "$1" "$1" "$2")
-    echo "%{A1:playerctl play-pause:}$block%{A}"
-}
-
-prev() {
-    block=$(field "" "" "" "$1" "$1" "$2")
-    echo "%{A1:playerctl next:}$block%{A}"
-}
-
-next() {
-    block=$(field "" "" "" "$1" "$1" "$2")
-    echo "%{A1:playerctl next:}$block%{A}"
+	echo ${color[@]}
 }
 
 polybar() {
-	fg=$(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file)
-	fga=$(grep -oP "foreground-inactive =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file)
+	color=($(get_pb_color))
+	bg=${color[0]}
+	bga=${color[1]}
+	fg=${color[2]}
+	fga=${color[3]}
+	fgi=${color[4]}
+	prfx=${color[5]}
 
-	block="$(prev $fg $fga)"
-	block="$block $(playpause $fg $fga)"
-	block="$block $(next $fg $fga)"
-	block="$block $(metadata $fg $fga)"
+	IFS=$'\n' md_raw=($(metadata))
+	status="$(status)"
 
-	case $player_status in
-	 "Playing" | "Paused" | "Stopped") echo $block ;;
-	 *) echo "" ;;
+	if [[ -z "${md_raw[0]}" ]] && [[ -z "${md_raw[1]}" ]] ; then exit 0
+	elif [[ -n "${md_raw[0]}" ]] && [[ -n "${md_raw[1]}" ]] ; then md="${md_raw[0]} ─ ${md_raw[1]}" 
+	else md="${md_raw[@]}"
+	fi
+	[[ ${#md} -gt $(( $pb_line_length + 3 )) ]] && md="${md::$pb_line_length}..."
+
+	icon="%{B$prfx F$fga} $pb_icon %{B- F-}"
+	
+	line="%{B$bga F$fga}"
+	line="$line %{A1:$1 -c previous:}$(field "$status" "" "" "$fg" "$fg" "$fgi")%{A}"
+    line="$line %{A1:$1 -c play-pause:}$(field "$status" "" "" "$fg" "$fg" "$fgi")%{A}"
+    line="$line %{A1:$1 -c next:}$(field "$status" "" "" "$fg" "$fg" "$fgi")%{A}"
+    line="$line %{A1:$1 -n:}$(field "$status" "$md" "$md" "$fg" "$fgi" "$fgi")%{A}"
+	line="$line %{B- F-}"
+
+	block="%{u$bg o$bg}%{+u}%{+o}$icon$line%{u- o-}"
+
+	case "$(status)" in
+		"Playing" | "Paused" | "Stopped") echo $block ;;
+		*) echo "" ;;
 	esac
 }
 
-case $1 in
-    "metadata")
-        metadata
-        ;;
-    "playpause")
-        playpause
-        ;;
-    "prev")
-        prev
-        ;;
-    "next")
-        next
-        ;;
-    "polybar")
-        polybar "${@:2}"
-        ;;
-esac
+notify() {
+	IFS=$'\n' md_raw=($(metadata))
+
+	if [[ -z "${md_raw[@]}" ]] ; then exit 0
+	elif [[ -z "${md_raw[0]}" ]] ; then
+		notify_title="$notify_title_default"
+		notify_body="${md_raw[1]}"
+	elif [[ -z "${md_raw[1]}" ]] ; then 
+		notify_title="$notify_title_default"
+		notify_body="${md_raw[0]}"
+	else
+		notify_title="${md_raw[0]}"
+		notify_body="${md_raw[1]}"
+	fi
+
+	notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent" -i "$notify_icon" "$notify_title" "$notify_body"
+}
+
+while [[ $# -gt 0 ]] ; do
+	case $1 in
+		"-c" | "--control")
+			if echo $2 | grep -oP "^play$|^pause$|^play-pause$|^stop$|^previous$|^next$" > /dev/null ; then
+				control $2
+				shift
+			fi
+			status
+			;;
+		"-m" | "--metadata")
+			metadata
+			;;
+    	"-p" | "--polybar")
+        	polybar "$0"
+        	;;
+		"-u" | "--update")
+			update
+			;;
+		"-n" | "--notify")
+			notify
+			;;
+		"-h" | "--help")
+			echo "help"
+			;;
+		"--daemon")
+			daemon="yes"
+			;;
+		*)
+			echo "Ошибка! Неизвестный аругмент $1."
+            exit 1
+            ;;
+	esac
+
+	shift
+done
+
+if [[ $daemon == "yes" ]] ; then
+	process_name=${0##*/}
+	for pid in $(pgrep ${process_name}) ; do
+		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Процесс $process_name $pid был остановлен"
+	done
+	sleep 1s
+	
+	md_raw_old=()
+	status_old=""
+	
+	while :; do
+		status="$(status)"
+		IFS=$'\n' md_raw=($(metadata))
+		if [[ "${md_raw[@]}" != ${md_raw_old[@]} ]] ; then
+			md_raw_old=(${md_raw[@]})
+			notify
+			update
+		elif [[ "$status" != "$status_old" ]] ; then
+			status_old="$status"
+			update
+		fi
+		sleep 1s
+	done &
+fi
+

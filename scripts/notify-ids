@@ -4,6 +4,7 @@ brightness 1020
 volume 1030
 update 1040
 vpn-toggle 1050
+player 1060
 motd-war 1110
 motd-antiLGBTlaw 1120
 motd-antiTRANSlaw 1130
