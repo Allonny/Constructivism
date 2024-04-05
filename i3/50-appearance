@@ -1,0 +1,30 @@
+################ Внешний вид ################
+
+# Цвета темы оформления
+# class                 border  backgr.	foregr.	indic.  child_border
+client.focused          #F8E8A0	#F8E8A0	#404040 #F0A080 #F8E8A0
+client.focused_inactive #343230 #343230 #808080 #343230 #343230
+client.unfocused        #343230 #343230 #808080 #343230 #343230
+client.urgent           #F0A080 #F0A080 #404040 #F0A080 #F0A080
+client.placeholder      #343230 #343230 #808080 #343230 #343230
+
+client.background       #343230
+
+# Шрифт заголовков окон
+font pango: Sarasa Fixed J Light 11
+
+# Обычные рамки окон
+default_border normal 4
+default_floating_border normal 4
+
+# Сокрытие рамок
+hide_edge_borders none
+
+# Изменение рамок активного окна
+# $mod+p
+bindcode --release $mod+33 border none
+# $mod+[
+bindcode --release $mod+34 border pixel 4
+# $mod+]
+bindcode --release $mod+35 border normal 4
+

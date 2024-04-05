@@ -1,0 +1,47 @@
+############### Окна ################
+
+# Следование фокуса за указателем мыши
+focus_follows_mouse yes
+
+# Перемещение фокуса с клавиатуры
+bindsym --release $mod+Left focus left
+bindsym --release $mod+Down focus down
+bindsym --release $mod+Up focus up
+bindsym --release $mod+Right focus right
+
+# Перемещение окон по рабочему столу
+bindsym --release $mod+Shift+Left move left
+bindsym --release $mod+Shift+Down move down
+bindsym --release $mod+Shift+Up move up
+bindsym --release $mod+Shift+Right move right
+
+# Переключение направления разделения контейнеров
+# $mod+d
+bindcode --release $mod+40 split toggle
+
+# Перемещение на прошлый рабочий стол и обратно (с и без активного окна)
+workspace_auto_back_and_forth yes
+bindsym --release $mod+Tab workspace back_and_forth
+bindsym --release $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
+
+# Переключение плавающего режима активного окна
+# $mod+f
+bindcode --release $mod+41 floating toggle
+
+# Переключение полноэкранного режима активного окна
+# $mod+Shift+f
+bindcode --release $mod+Shift+41 fullscreen toggle
+
+# Перемещение окон
+# Mouse+$mod
+floating_modifier $mod
+tiling_drag modifier titlebar
+
+# Перемещение активного окна в скретчпад
+# $mod+minus
+bindcode --release $mod+20 move scratchpad
+
+# Отображение следующего окна из скретчпада или закрытие скретчпада
+# $mod+plus
+bindcode --release $mod+21 scratchpad show
+

@@ -1,0 +1,46 @@
+################ Рабочие столы ################
+
+# Раскладка рабочего стола по умолчанию
+workspace_layout default
+
+# Переключение на следующий/предыдущий рабочий стол
+bindsym --release $mod+Ctrl+Right workspace next
+bindsym --release $mod+Ctrl+Left workspace prev
+
+# Переключение на рабочий стол
+bindsym --release $mod+1 workspace $ws1
+bindsym --release $mod+2 workspace $ws2
+bindsym --release $mod+3 workspace $ws3
+bindsym --release $mod+4 workspace $ws4
+bindsym --release $mod+5 workspace $ws5
+bindsym --release $mod+6 workspace $ws6
+bindsym --release $mod+7 workspace $ws7
+bindsym --release $mod+8 workspace $ws8
+bindsym --release $mod+9 workspace $ws9
+bindsym --release $mod+0 workspace $ws0
+
+# Перемещение активного окна на рабочий стол
+bindsym --release $mod+Ctrl+1 move container to workspace $ws1
+bindsym --release $mod+Ctrl+2 move container to workspace $ws2
+bindsym --release $mod+Ctrl+3 move container to workspace $ws3
+bindsym --release $mod+Ctrl+4 move container to workspace $ws4
+bindsym --release $mod+Ctrl+5 move container to workspace $ws5
+bindsym --release $mod+Ctrl+6 move container to workspace $ws6
+bindsym --release $mod+Ctrl+7 move container to workspace $ws7
+bindsym --release $mod+Ctrl+8 move container to workspace $ws8
+bindsym --release $mod+Ctrl+9 move container to workspace $ws9
+bindsym --release $mod+Ctrl+0 move container to workspace $ws0
+
+# Перемещение активного она на рабочий стол и переключение на этот рабочий стол
+bindsym --release $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym --release $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym --release $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym --release $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym --release $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym --release $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym --release $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym --release $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym --release $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym --release $mod+Shift+0 move container to workspace $ws0; workspace $ws0
+
+

@@ -1,8 +1,16 @@
-# Раскладку клавиш смотреть здесь
-# xmodmap -pke
+################ Файл конфигурации i3wm ################
 
 # Конфигурационный файл i3
 # Документация://i3wm.org/docs/userguide.html
+
+# Раскладку клавиш смотреть здесь
+# xmodmap -pke
+
+# Обновление конфигурации окружения
+# $mod+,
+bindcode --release $mod+59 reload
+# $mod+.
+bindcode --release $mod+60 restart
 
 # Клавиша модификатор (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
@@ -13,364 +21,26 @@ set $term kitty
 # Стандартный файловый менеджер
 set $files thunar
 
-workspace_layout default
-
-# Обновление конфигурации окружения
-# $mod+,
-bindcode --release $mod+59 reload
-# $mod+.
-bindcode --release $mod+60 restart
-
-
-
-
-################ Настройки звука и экрана ################
-
-# exec --no-startup-id pulseaudio
-# exec_always --no-startup-id pipewire
-# $mod+M
-bindcode --release $mod+58 exec --no-startup-id pavucontrol
-
-bindsym --release XF86AudioRaiseVolume exec --no-startup-id volume +
-bindsym --release XF86AudioLowerVolume exec --no-startup-id volume -
-bindsym --release XF86AudioMute exec --no-startup-id volume -m toggle
-bindsym --release XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-bindsym --release XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym --release XF86AudioStop exec --no-startup-id playerctl stop
-bindsym --release XF86AudioNext exec --no-startup-id playerctl next
-bindsym --release XF86AudioPrev exec --no-startup-id playerctl previous
-
-bindsym --release XF86MonBrightnessUp exec --no-startup-id brightness inc
-bindsym --release XF86MonBrightnessDown exec --no-startup-id brightness dec
-
-
-
-
-################ Приложения ################
-
-# Закрытие активное окно
-# $mod+q
-bindcode --release $mod+24 kill
-# $mod+Shift+q
-bindcode --release $mod+Shift+24 exec --no-startup-id xkill
-
-# Изменение раскладки клавиатуры
-bindsym --release $mod+space exec --no-startup-id keyboard-layout toggle
-# bindsym --release Menu exec --no-startup-id keyboard-layout toggle
-bindcode 66 exec --no-startup-id keyboard-layout update
-bindcode --release 66 exec --no-startup-id keyboard-layout update
-
-# Меню питания
-# Заблокировать экран
-# bindcode --release $mod+46 exec --no-startup-id dm-tool lock
-bindsym --release $mod+Escape exec --no-startup-id powermenu
-bindsym --release $mod+Shift+Escape exec --no-startup-id performance
-
-# Обновление системы
-# $mod+u
-bindcode --release $mod+30 exec --no-startup-id update -t kitty
-
-# Меню приложений
-bindsym --release $mod+F1 exec --no-startup-id apps-launcher
-
-# Просмотр открытых приложений
-bindsym --release $mod+Shift+F1 exec --no-startup-id apps-active
-
-# Запуск файлового менеджера
-bindsym --release $mod+F2 exec --no-startup-id $files
-bindsym --release $mod+Shift+F2 exec --no-startup-id pkexec $files && :
-# $mod+Backslash
-bindcode --release $mod+51 exec --no-startup-id $files
-bindcode --release $mod+Shift+51 exec --no-startup-id pkexec $files && :
-
-# Запуск терминала
-bindsym --release $mod+F3 exec --no-startup-id $term
-bindsym --release $mod+Shift+F3 exec --no-startup-id suterm $term
-bindsym --release $mod+Return exec --no-startup-id $term
-bindsym --release $mod+Shift+Return exec --no-startup-id suterm $term
-
-# Запуск редактора кода
-bindsym --release $mod+F4 exec --no-startup-id $term nvim 
-
-# Запуск повседневных приложений
-bindsym --release $mod+F5 exec --no-startup-id flatpak run org.mozilla.firefox
-bindsym --release $mod+F6 exec --no-startup-id flatpak run org.telegram.desktop
-bindsym --release $mod+F7 exec --no-startup-id flatpak run org.signal.Signal
-bindsym --release $mod+F8 exec --no-startup-id $term --class=Kew kew
-bindsym --release $mod+Shift+F8 exec --no-startup-id flatpak run org.gnome.Rhythmbox3
-
-# Запуск системных утилит
-bindsym --release $mod+F12 exec --no-startup-id $term --class=Htop htop
-bindsym --release $mod+Shift+F12 exec --no-startup-id suterm $term --class=Htop htop
-
-# Создание скриншотов
-set $screenshotpath $HOME/Pictures/Скриншоты
-bindsym --release Print exec --no-startup-id xfce4-screenshooter -f -s $screenshotpath
-bindsym --release Ctrl+Print exec --no-startup-id xfce4-screenshooter -w -s $screenshotpath
-bindsym --release Shift+Print exec --no-startup-id xfce4-screenshooter -r -s $screenshotpath
-bindsym --release $mod+Print exec --no-startup-id xfce4-screenshooter -f -c
-bindsym --release $mod+Ctrl+Print exec --no-startup-id xfce4-screenshooter -w -c
-bindsym --release $mod+Shift+Print exec --no-startup-id xfce4-screenshooter -r -c
-
-# Запуск VPN
-# $mod+` ($mod+ё)
-bindcode --release $mod+49 exec --no-startup-id vpn-toggle "Surfshark Japan UDP"
-
-# Открыть/закрыть трэй
-# $mod+z
-bindcode --release $mod+52 exec --no-startup-id tray-toggle
-
-# Закрыть уведомление
-# $mod+c
-bindcode --release $mod+54 exec --no-startup-id dunstctl close
-
-# Закрыть все уведомления
-# $mod+Shift+c
-bindcode --release $mod+Shift+54 exec --no-startup-id dunstctl close-all
-
-# Открыть контекстное меню уведомления
-# $mod+x
-bindcode --release $mod+53 exec --no-startup-id dunstctl context
-
-# Переключить режим "не беспокоить"
-# $mod+Ctrl+c
-bindcode --release $mod+Ctrl+54 exec --no-startup-id notify-mute toggle
-
-# Показать историю уведомлений
-# $mod+v
-bindcode --release $mod+55 exec --no-startup-id dunstctl history-pop
-
-# Автозапуск приложений
-exec --no-startup-id dex -as $HOME/.config/autostart
-exec_always --no-startup-id polybar-launch
-exec_always --no-startup-id keyboard-layout set us ru jp:anthy
-exec_always --no-startup-id brightness levels 20
-exec_always --no-startup-id battery --daemon
-exec_always --no-startup-id volume -s 20+10 --daemon
-exec_always --no-startup-id system-load daemon
-exec_always --no-startup-id libinput-gestures-setup restart
-exec --no-startup-id motd
-
-# Специфичные настройки запуска приложений
+# Стандартеые размеры плавающих оконы
 set $sml_size 640 480
 set $mid_size 800 600
 set $lrg_size 1024 768
 
-for_window [all]									border pixel 4
-# for_window [tiling]								border pixel 4
-# for_window [floating]								border normal 4
-# for_window [urgent=latest]						focus
-
-for_window [title="File Transfer*"]					floating enable
-for_window [class="Blueman"]						floating enable resize set $sml_size
-for_window [class="GParted"]						floating enable resize set $lrg_size
-for_window [class="Htop"]							floating enable resize set $lrg_size
-for_window [class="Lightdm-gtk-greeter-settings"]	floating enable resize set $mid_size
-for_window [class="Lightdm-settings"]				floating enable resize set $mid_size
-for_window [class="Lxappearance"]					floating enable resize set $mid_size
-for_window [class="Nitrogen"]						floating enable resize set $mid_size
-for_window [class="Nm-connection-editor"]			floating enable resize set $mid_size
-for_window [class="Pavucontrol"]					floating enable resize set $mid_size
-for_window [class="kitty" floating]					resize set $mid_size
-
-assign [class="firefox"] $ws1
-assign [class="TelegramDesktop"] $ws2
-assign [class="Rhythmbox"] $ws9
-assign [class="Spotify"] $ws9
-assign [class="Kew"] $ws9
-
-
-
-
-
-############### Окна ################
-
-# Следование фокуса за указателем мыши
-focus_follows_mouse yes
-
-# Перемещение фокуса с клавиатуры
-bindsym --release $mod+Left focus left
-bindsym --release $mod+Down focus down
-bindsym --release $mod+Up focus up
-bindsym --release $mod+Right focus right
-
-# Перемещение окон по рабочему столу
-bindsym --release $mod+Shift+Left move left
-bindsym --release $mod+Shift+Down move down
-bindsym --release $mod+Shift+Up move up
-bindsym --release $mod+Shift+Right move right
-
-# Переключение направления разделения контейнеров
-# $mod+d
-bindcode --release $mod+40 split toggle
-
-# Перемещение на прошлый рабочий стол и обратно (с и без активного окна)
-workspace_auto_back_and_forth yes
-bindsym --release $mod+Tab workspace back_and_forth
-bindsym --release $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
-
-# Переключение полноэкранного режима активного окна
-# $mod+f
-bindcode --release $mod+41 fullscreen toggle
-
-# Переключение плавающего режима активного окна
-# $mod+Shift+f
-bindcode --release $mod+Shift+41 floating toggle
-
-# Перемещение плавающих окон
-# Mouse+$mod
-floating_modifier $mod
-
-# Перемещение активного окна в скретчпад
-bindsym --release $mod+0 move scratchpad
-
-# Отображение следующего окна из скретчпада или закрытие скретчпада
-bindsym --release $mod+Shift+0 scratchpad show
-
-
-
-
-################ Быстрое изменение размеров окон ################
-
-# Констатнты
+# Шаг изменения размера окон
 set $step 20 px or 2 ppt
 
-# Изменение по ширине
-
-# Уменьшить $mod+A+minus числовой бар и нумпад
-bindcode $mod+Shift+20 resize shrink width $step
-bindcode $mod+Shift+82 resize shrink width $step
-
-# Увеличить $mod+A+plus числовой бар и нумпад
-bindcode $mod+Shift+21 resize grow width $step
-bindcode $mod+Shift+86 resize grow width $step
-
-# Изменение по высоте
-
-# Уменьшить $mod+S+minus числовой бар и нумпад
-bindcode $mod+Ctrl+20 resize shrink height $step
-bindcode $mod+Ctrl+82 resize shrink height $step
-
-# Увеличить $mod+S+minus числовой бар и нумпад
-bindcode $mod+Ctrl+21 resize grow height $step
-bindcode $mod+Ctrl+86 resize grow height $step
-
-# Управление через $mod+R+<стрелки>
-# bindcode --release $mod+27+Left resize shrink width $step
-# bindcode --release $mod+27+Right resize grow width $step
-# bindcode --release $mod+27+Down resize shrink height $step
-# bindcode --release $mod+27+Up resize grow height $step
-
-
-
-
-################ Рабочие столы ################
-
 # Имена рабочих столов
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
+set $ws1 "1:一"
+set $ws2 "2:二"
+set $ws3 "3:三"
+set $ws4 "4:四"
+set $ws5 "5:伍"
+set $ws6 "6:六"
+set $ws7 "7:七"
+set $ws8 "8:八"
+set $ws9 "9:九"
+set $ws0 "10:十"
 
-# Переключение на следующий/предыдущий рабочий стол
-bindsym --release $mod+Ctrl+Right workspace next
-bindsym --release $mod+Ctrl+Left workspace prev
+# Подключение файлов конфигурации
+include ~/.config/i3/*
 
-# Переключение на рабочий стол
-bindsym --release $mod+1 workspace $ws1
-bindsym --release $mod+2 workspace $ws2
-bindsym --release $mod+3 workspace $ws3
-bindsym --release $mod+4 workspace $ws4
-bindsym --release $mod+5 workspace $ws5
-bindsym --release $mod+6 workspace $ws6
-bindsym --release $mod+7 workspace $ws7
-bindsym --release $mod+8 workspace $ws8
-bindsym --release $mod+9 workspace $ws9
-
-# Перемещение активного окна на рабочий стол
-bindsym --release $mod+Ctrl+1 move container to workspace $ws1
-bindsym --release $mod+Ctrl+2 move container to workspace $ws2
-bindsym --release $mod+Ctrl+3 move container to workspace $ws3
-bindsym --release $mod+Ctrl+4 move container to workspace $ws4
-bindsym --release $mod+Ctrl+5 move container to workspace $ws5
-bindsym --release $mod+Ctrl+6 move container to workspace $ws6
-bindsym --release $mod+Ctrl+7 move container to workspace $ws7
-bindsym --release $mod+Ctrl+8 move container to workspace $ws8
-bindsym --release $mod+Ctrl+9 move container to workspace $ws9
-
-# Перемещение активного она на рабочий стол и переключение на этот рабочий стол
-bindsym --release $mod+Shift+1 move container to workspace $ws1; workspace $ws1
-bindsym --release $mod+Shift+2 move container to workspace $ws2; workspace $ws2
-bindsym --release $mod+Shift+3 move container to workspace $ws3; workspace $ws3
-bindsym --release $mod+Shift+4 move container to workspace $ws4; workspace $ws4
-bindsym --release $mod+Shift+5 move container to workspace $ws5; workspace $ws5
-bindsym --release $mod+Shift+6 move container to workspace $ws6; workspace $ws6
-bindsym --release $mod+Shift+7 move container to workspace $ws7; workspace $ws7
-bindsym --release $mod+Shift+8 move container to workspace $ws8; workspace $ws8
-bindsym --release $mod+Shift+9 move container to workspace $ws9; workspace $ws9
-
-
-
-
-################ Внешний вид ################
-
-# Цвета темы оформления
-# class                 border  backgr. text    indic.  child_border
-client.focused          #F8E8A0 #F8E8A0 #404040 #F0A080 #F8E8A0
-client.focused_inactive #343230 #343230 #808080 #343230 #343230
-client.unfocused        #343230 #343230 #808080 #343230 #343230
-client.urgent           #F0A080 #F0A080 #404040 #F0A080 #F0A080
-client.placeholder      #343230 #343230 #808080 #343230 #343230
-client.background       #343230 #343230 #808080 #343230 #343230
-
-
-# Шрифт заголовков окон
-font pango: Sarasa Fixed J Light 11
-
-# Обычные рамки окон
-default_border pixel 4
-default_floating_border normal 4
-
-# Сокрытие рамок
-hide_edge_borders none
-
-# Изменение рамок активного окна
-# $mod+p
-bindcode --release $mod+33 border none
-# $mod+[
-bindcode --release $mod+34 border pixel 4
-# $mod+]
-bindcode --release $mod+35 border normal 4
-
-
-
-
-################ Промежутки между окнами ################
-
-# Внутренние и внешние промежутки
-gaps inner 16
-gaps outer 0
-
-gaps top 65
-
-# Отключение промежутков при наличии единственного окна на рабочем столе
-# smart_gaps on
-
-# Отключение рамок при наличии единственного окна на рабочем столе
-# on|no_gaps
-# smart_borders on
-
-
-
-
-################ Читы для Sims 4 ################
-# (не, ну а что? мне каждый раз вручную их вбивать? -.-")
-
-# $mod+Num/
-bindcode $mod+106 --release exec --no-startup-id sleep 1 && xdotool type "bb.moveobjects on"

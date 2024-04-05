@@ -1,0 +1,28 @@
+################ Быстрое изменение размеров окон ################
+
+# Изменение по ширине
+
+# Уменьшить $mod+Shift+minus числовой бар и нумпад
+bindcode $mod+Shift+20 resize shrink width $step
+bindcode $mod+Shift+82 resize shrink width $step
+
+# Увеличить $mod+Shift+plus числовой бар и нумпад
+bindcode $mod+Shift+21 resize grow width $step
+bindcode $mod+Shift+86 resize grow width $step
+
+# Изменение по высоте
+
+# Уменьшить $mod+Ctrl+minus числовой бар и нумпад
+bindcode $mod+Ctrl+20 resize shrink height $step
+bindcode $mod+Ctrl+82 resize shrink height $step
+
+# Увеличить $mod+Ctrl+minus числовой бар и нумпад
+bindcode $mod+Ctrl+21 resize grow height $step
+bindcode $mod+Ctrl+86 resize grow height $step
+
+# Управление через $mod+R+<стрелки>
+# bindcode --release $mod+27+Left resize shrink width $step
+# bindcode --release $mod+27+Right resize grow width $step
+# bindcode --release $mod+27+Down resize shrink height $step
+# bindcode --release $mod+27+Up resize grow height $step
+
