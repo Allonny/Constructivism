@@ -24,9 +24,26 @@ notify_icon="battery-${label_plug}${status_plug}-symbolic"
 notify_name="${0##*/}"
 notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
 
-daemon="no"
+stop-daemon() {
+	process_name=${0##*/}
+	for pid in $(pgrep ${process_name}) ; do
+		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Процесс $process_name $pid был остановлен"
+	done
+}
 
-update() {
+daemon() {
+	stop-daemon
+	sleep 1s
+	while :; do
+    	update-polybar
+		[[ $(get_status) != "Charging" ]] && [[ $(get_capacity) -le 15 ]] && \
+			notify
+		sleep 5
+	done &
+
+}
+
+update-polybar() {
 	polybar-msg action battery hook 0 > /dev/null
 }
 
@@ -40,24 +57,24 @@ get_status() {
 
 get_pb_color() {
 	color=()
-	color=(${color[@]} $(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "background-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "foreground-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "foreground-inactive =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "blue =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "red =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "background-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "foreground-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "foreground-inactive =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "blue =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "red =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
 
-	echo ${color[@]}
+	echo "${color[@]}"
 }
 
 get_pb_bar() {
 	bar=()
-	bar=(${bar[@]} $(grep -oP "^fill\s*=\s*\K([^\n]+)$" $pb_modules_file))
-	bar=(${bar[@]} $(grep -oP "^indicator\s*=\s*\K([^\n]+)$" $pb_modules_file))
-	bar=(${bar[@]} $(grep -oP "^empty\s*=\s*\K([^\n]+)$" $pb_modules_file))
+	bar+=($(grep -oP "^fill\s*=\s*\K([^\n]+)$" $pb_modules_file))
+	bar+=($(grep -oP "^indicator\s*=\s*\K([^\n]+)$" $pb_modules_file))
+	bar+=($(grep -oP "^empty\s*=\s*\K([^\n]+)$" $pb_modules_file))
 
-	echo ${bar[@]}
+	echo "${bar[@]}"
 }
 
 polybar() {
@@ -94,7 +111,7 @@ polybar() {
 		bar="$bar$el"
 	done
 
-	block="%{u$bg o$bg}%{+u}%{+o}%{A1:$1 --notify:}$pb_icon%{A4:brightness inc:}%{A5:brightness dec:}$bar %{A}%{A}%{A}%{B- F-}%{u- o-}"
+	block="%{u$bg o$bg}%{+u}%{+o}%{A1:$1 --notify:}$pb_icon%{A4:brightness +:}%{A5:brightness -:}$bar %{A}%{A}%{A}%{B- F-}%{u- o-}"
 	echo $block
 }
 
@@ -132,9 +149,12 @@ help() {
 	echo -e "\t-p\t--polybar\n\t\tПолучить форматированный текст для модуля панели Polybar.\n"
 	echo -e "\t-u\t--update\n\t\tПринудительно обновить соответствующий модуль панели Polybar.\n"
 	echo -e "\t--daemon\n\t\tЗапустить фоновый цикл переодического обновления модуля панели Polybar.\n"
+	echo -e "\t--stop-daemon\n\t\tОстановить фоновый цикл.\n"
 	echo -e "\t-h\t--help\n\t\tВывести данную справку.\n"
 	echo -e "Автор: allonny89"
 }
+
+if [[ $# -eq 0 ]] ; then help ; exit 0 ; fi
 
 while [[ $# -gt 0 ]] ; do
 	case $1 in
@@ -151,13 +171,16 @@ while [[ $# -gt 0 ]] ; do
 			polybar "$0"
 			;;
 		"-u" | "--update")
-			update
+			update-polybar
 			;;
 		"-h" | "--help")
 			help
 			;;
+		"--stop-daemon")
+			stop-daemon
+			;;
 		"--daemon")
-			daemon="yes"
+			daemon
 			;;
 		*)
             echo "Ошибка! Неизвестный аругмент $1."
@@ -168,17 +191,3 @@ while [[ $# -gt 0 ]] ; do
 	shift
 done
 
-
-if [[ $daemon == "yes" ]] ; then
-	process_name=${0##*/}
-	for pid in $(pgrep ${process_name}) ; do
-		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Процесс $process_name $pid был остановлен"
-	done
-	sleep 1s
-	while :; do
-    	update
-		[[ $(get_status) != "Charging" ]] && [[ $(get_capacity) -le 15 ]] && \
-			notify
-		sleep 5
-	done &
-fi
