@@ -16,6 +16,9 @@ exec --no-startup-id motd
 for_window [all]							border normal 4
 # for_window [urgent=latest]				focus
 
+for_window [class="kitty" floating]			resize set $mid_size
+for_window [class="Thunar" floating]		resize set $mid_size
+
 for_window [title="File Transfer*"]			floating enable
 for_window [class="About"]					floating enable resize set $smw_size
 for_window [class="Blueman"]				floating enable resize set $sml_size
@@ -26,7 +29,6 @@ for_window [class="Lxappearance"]			floating enable resize set $mid_size
 for_window [class="Nitrogen"]				floating enable resize set $mid_size
 for_window [class="Nm-connection-editor"]	floating enable resize set $mid_size
 for_window [class="Pavucontrol"]			floating enable resize set $mid_size
-for_window [class="kitty" floating]			resize set $mid_size
 
 assign [class="firefox"]		$ws1
 assign [class="jetbrains"]		$ws2
