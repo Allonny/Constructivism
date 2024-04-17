@@ -19,7 +19,7 @@ for_window [all]							border normal 4
 for_window [title="File Transfer*"]			floating enable
 for_window [class="Blueman"]				floating enable resize set $sml_size
 for_window [class="GParted"]				floating enable resize set $lrg_size
-for_window [class="Htop"]					floating enable resize set $lrg_size
+for_window [class="Htop"]					floating enable resize set $lrw_size
 for_window [class="Lightdm"]				floating enable resize set $mid_size
 for_window [class="Lxappearance"]			floating enable resize set $mid_size
 for_window [class="Nitrogen"]				floating enable resize set $mid_size
