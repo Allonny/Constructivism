@@ -93,8 +93,8 @@ bindcode --release $mod+Ctrl+54 exec --no-startup-id notify-mute toggle
 bindcode --release $mod+55 exec --no-startup-id dunstctl history-pop
 
 # Управление яркостью экрана
-bindsym --release XF86MonBrightnessUp exec --no-startup-id brightness inc
-bindsym --release XF86MonBrightnessDown exec --no-startup-id brightness dec
+bindsym --release XF86MonBrightnessUp exec --no-startup-id brightness +
+bindsym --release XF86MonBrightnessDown exec --no-startup-id brightness -
 
 # Управление громкостью звука
 bindsym --release XF86AudioRaiseVolume exec --no-startup-id volume +
