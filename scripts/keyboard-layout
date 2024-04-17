@@ -16,24 +16,51 @@ notify_urgent="low"
 notify_name="${0##*/}"
 notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
 
+ibus_exeptions=("anthy" "mozc")
+
+daemon_sleep="5s"
+
+smart_toggle=false
+
 # Принудительное обновление полибара
-update() {
-	polybar-msg action keyboard-layout hook 0
+update-polybar() {
+	polybar-msg action keyboard-layout hook 0 &> /dev/null
+}
+
+stop-daemon() {
+	process_name=${0##*/}
+	for pid in $(pgrep ${process_name}) ; do
+		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Процесс $process_name $pid был остановлен"
+	done
+}
+
+daemon() {
+	stop-daemon
+	layouts=($(cat $layouts_file))
+	while :; do
+		$smart_toggle && layouts=($(smart-toggle ${layouts[@]}))
+		update-polybar
+		sleep $daemon_sleep
+	done &
 }
 
 # Примение раскладки, аргументы: <раскладки (через зарятую)> <варианты (через запятую)>
-# Особый случай для jp:anthy - используется IBus
+# Особый случай для jp:anthy и jp:mozc - используется IBus
 # Костыль ли это? Да. Лютый? Абсольютно!
 # Да, нужно будет со временем сделать более универсальную систему, а то и вовсе перевести чисто на IBus, но пока >:-]
-apply_layout() {
-	setxkbmap -layout "$1" -variant "${2//anthy/ }" -option
-	if [[ "${2%%,*}" == "anthy" ]] ; then
-		ibus-daemon -rxRd
-		ibus engine "anthy"
+apply-layout() {
+	layout=$1
+	variant=$(sed "s/\($(IFS=$'|' ; sed 's/|/\\|/g' <<< "${ibus_exeptions[*]}")\)//" <<< "$2")
+	setxkbmap -layout $layout -variant $variant -option
+	if [[ -n "${2%%\,*}" ]] && grep "${2%%\,*}" <<< "$2" > /dev/null ; then
+		ibus-daemon -srxRd
+		sleep 0.1s
+		ibus engine "${2%%\,*}"
 	else
-		ibus exit
+		ibus exit &> /dev/null
 	fi
-	polybar-msg action keyboard-layout hook 0
+
+	update-polybar
 }
 
 # Установка списка раскладок и их вариантов, аругменты: раскладка1[:вариант1] [раскладка2[:вариант2]] ...
@@ -50,59 +77,44 @@ set() {
 		variant="$variant,${i[1]}"
 	done
 
-	apply_layout ${layout:1} ${variant:1}
-
-	for pid in $(pgrep ${0##*/}) ; do
-		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Killed $pid"
-	done
-	while :; do
-		update
-		sleep 5s
-	done &
+	apply-layout ${layout:1} ${variant:1}
 }
 
 # Переключение раскладки (смещение влево списка раскладок)
 toggle() {
 	layouts=($(cat $layouts_file))
-	layouts=(${layouts[@]:1} ${layouts[0]})
-	echo "${layouts[@]}" > $layouts_file
+	set ${layouts[@]:1} ${layouts[0]}
+	notify
+}
 
-	for i in ${layouts[@]}; do
-		i=(${i//:/ })
-		layout="$layout,${i[0]}"
-		variant="$variant,${i[1]}"
-	done
-
-	apply_layout ${layout:1} ${variant:1}
+smart-toggle() {
+	layouts=($@)
+	new_layouts=($(cat $layouts_file))
 	
-	notify_layout=${layouts[0]^^}
-	notify_layout=${notify_layout//:/ в варианте }
+	if [[ "${layouts[@]}" != "${new_layouts[@]}" ]] ; then
+		layouts=(${new_layouts[0]} ${new_layouts[-1]} ${new_layouts[@]:1:${#new_layouts[@]}-2})
+		set ${layouts[@]}
+	fi
 
-	icon_layout=$(echo ${layouts[0]%%:*} | sed "s/us/en/" | sed "s/jp/ja/")
-	icon_layout="$notify_icon${icon_layout^}"
-
-	echo $icon_layout
-
-	notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent" -i "$icon_layout" "$notify_title" "$notify_body$notify_layout"		
+	echo "${layouts[@]}"
 }
 
 # Получение текущей установленной расскладки в сиситеме, возвращает буквенный индекс раскладки
-get_layout() {
-	layout=$(setxkbmap -query | grep -oP 'layout:\s*\K([\w,]+)')
-	echo $layout
+get-layout() {
+	setxkbmap -query | grep -oP 'layout:\s*\K([\w,]+)'
 }
 
 # Получение состояния капслока, возвращает on или off
-get_CapsLock() {
+get-CapsLock() {
 	[ $(cat $capslock_file) == "1" ] && echo "on" || echo "off"
 }
 
 # Возвращает текущие данные о раскладке и состоянии капслока
-get_state() {
-	current_layout=$(get_layout)
+get-state() {
+	current_layout=$(get-layout)
 	current_layout=${current_layout:0:2}
 	current_layout=${current_layout^^}
-	current_CapsLock=$(get_CapsLock)
+	current_CapsLock=$(get-CapsLock)
 	current_CapsLock=${current_CapsLock//on/}
 	current_CapsLock=${current_CapsLock//off/}
 	block="$current_CapsLock $current_layout"
@@ -110,8 +122,8 @@ get_state() {
 }
 
 # Получение "цветов оповещения", установленных для i3status
-get_i3_color() {
-	current_CapsLock=$(get_CapsLock)
+get-i3-color() {
+	current_CapsLock=$(get-CapsLock)
 	if [[ $current_CapsLock = "on" ]]; then
 		color=$(grep -oP 'color_bad\s=\s"\K(.{7})' "/etc/i3status.conf")
 	else
@@ -121,21 +133,21 @@ get_i3_color() {
 	echo $color
 }
 
-get_pb_color() {
+get-pb-color() {
 	color=()
-	color=(${color[@]} $(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "background-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "foreground-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "background-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "foreground-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
 
-	current_CapsLock=$(get_CapsLock)
+	current_CapsLock=$(get-CapsLock)
 	if [[ $current_CapsLock = "on" ]]; then
-		color=(${color[@]} $(grep -oP "red =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+		color+=($(grep -oP "red =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
 	else
-		color=(${color[@]} $(grep -oP "blue =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+		color+=($(grep -oP "blue =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
 	fi
 
-	echo ${color[@]}
+	echo "${color[@]}"
 }
 
 # Возвращает блок для встраивания в i3status
@@ -143,46 +155,103 @@ i3status() {
 	while :
 	do
 		read line
-		state=$(get_state)
-		current_color=$(get_i3_color)
+		state=$(get-state)
+		current_color=$(get-i3-color)
 		block="{\"name\":\"Keyboard Layout\",$current_color\"markup\":\"none\",\"full_text\":\" $state \",\"align\":\"center\",\"min_width\":70}"
 		echo "${line/\[\{/\[$block,\{}" || exit 1
 	done
 }
 
 # Возвращает блок для встраивания в polybar
-
 polybar() {
-	state=($(get_state))
+	state=($(get-state))
 
-	color=($(get_pb_color))
+	color=($(get-pb-color))
 	bg=${color[0]}
 	bga=${color[1]}
 	fg=${color[2]}
 	fga=${color[3]}
 	prfx=${color[4]}
 
-	block="%{u$bg o$bg}%{+u}%{+o}%{B$prfx F$fga} ${state[0]} %{A1:$1 toggle:}%{B$bga F$fg} ${state[1]} %{B- F-}%{A}%{u- o-}"
+	block="%{u$bg o$bg}%{+u}%{+o}%{B$prfx F$fga}%{A1: $1 -n:} ${state[0]} %{A}%{A1:$1 -t:}%{B$bga F$fg} ${state[1]} %{B- F-}%{A}%{u- o-}"
 	echo $block
 }
 
-case $1 in
-	"set")
-		set "${@:2}"
-		;;
-	"get")
-		get_state
-		;;
-	"i3status")
-		i3status
-		;;
-	"polybar")
-		polybar "$0"
-		;;
-	"toggle")
-		toggle
-		;;
-	"update")
-		update
-		;;
-esac
+notify() {
+	layout=$(cat "$layouts_file" | sed 's/ .*//')
+	notify_layout=${layout^^}
+	notify_layout=${notify_layout//:/ в варианте }
+
+	icon_layout=$(echo ${layout%%:*} | sed "s/us/en/" | sed "s/jp/ja/")
+	icon_layout="$notify_icon${icon_layout^}"
+
+	notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent" -i "$icon_layout" "$notify_title" "$notify_body$notify_layout"		
+}
+
+help() {
+	echo "Help is coming soon!"
+}
+
+if [[ $# -eq 0 ]] ; then help ; exit 0 ; fi
+
+while [[ $# -gt 0 ]] ; do
+	case $1 in
+		"-s" | "set")
+			layouts=()
+			while [[ $# -gt 1 ]] ; do
+				grep -oP '^-{1,2}\w+[-\w]*$' <<< "$2" > /dev/null && break
+				layouts+=( $2 )
+				shift
+			done
+			set ${layouts[@]}
+			;;
+		"-t" | "--toggle")
+			toggle
+			;;
+		"-u" | "--update")
+			update-polybar
+			;;
+		"-g" | "--get")
+			case $2 in
+				"layout")	get-layout ; shift ;;
+				"capslock")	get-CapsLock ; shift ;;
+				"state")	get-state ; shift ;;
+				"file")		cat "$layouts_file" ; shift ;;
+				*)			get-layout ; get-CapsLock ;;
+			esac
+			;;
+		"-m" | "--module")
+			case $2 in
+				"i3status")	i3status ;;
+				"polybar")	polybar "$0" ;;
+				*)
+					echo "Ошибка! Неизвестное значение $2 для аргумента $1."
+					exit 2
+					;;
+			esac
+			shift
+			;;
+		"-n" | "--notify")
+			notify
+			;;
+		"-h" | "--help")
+			help
+			;;
+		"--smart-toggle")
+			smart_toggle=true
+			;;
+		"--stop-daemon")
+			stop-daemon
+			;;
+		"--daemon")
+			daemon
+			;;
+		*)
+			echo "Ошибка! Неизвестный аргумент $1."
+			exit 1
+			;;
+	esac
+
+	shift
+done
+
