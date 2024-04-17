@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[[ -z "$1" ]] && term="exo-open --launch TerminalEmulator" || term="$1"
+eval "$term --class=About --title=About /bin/bash -c 'neofetch ; read -n 1'"
