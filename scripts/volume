@@ -17,26 +17,40 @@ notify_urgent="low"
 notify_name="${0##*/}"
 notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
 
-daemon="no"
+stop-daemon() {
+	process_name=${0##*/}
+	for pid in $(pgrep ${process_name}) ; do
+		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Процесс $process_name $pid был остановлен"
+	done
+}
+
+daemon() {
+	stop-daemon
+	sleep 1s
+	while :; do
+		update-polybar
+		sleep 5s
+	done &
+}
 
 # Создание дефолтного файла-конфигурации, если оный отсутствует
-check_levels_file()
+check-levels-file()
 {
 	[[ ! -f $current_level_file ]] && setup default
 }
 
 # Принудительное обновление полибара
-update() {
+update-polybar() {
 	polybar-msg action volume hook 0 > /dev/null
 }
 
 # Получить текущую громкость, возвращает целое число - громкость в процентах
-get_volume() {
+get-volume() {
 	levels=( $( pactl get-sink-volume @DEFAULT_SINK@ 2>/dev/null | grep -oP "[\w\p{P}]+\s+\K([\d]+%\s)" | grep -oP "\d+" ) ) || exit 1
 
 	echo $(( ( ${levels[0]} + ${levels[1]} ) / 2 ))
 	
-	check_levels_file
+	check-levels-file
 
 	steps=($(cat $current_level_file))
 	if [[ ${steps[${steps[0]}]} -ne $levels ]] ; then
@@ -53,68 +67,68 @@ get_volume() {
 }
 
 # ПОучить состояние режима без звука
-get_mute() {
+get-mute() {
 	mute=$(pactl get-sink-mute @DEFAULT_SINK@ 2>/dev/null | grep -oP "\w*: \K(\w+)") || exit 1
 	echo $mute
 }
 
 # Установить текущую яркость, аргументы: целое число - громкость в процентах
-set_volume() {
+set-volume() {
 	pactl set-sink-mute @DEFAULT_SINK@ false 2>/dev/null || exit 1
 	pactl set-sink-volume @DEFAULT_SINK@ $1% 2>/dev/null || exit 1
 	notify $1
 }
 
 # Установить режим без звука (аргументы ангалогичны соответствующему действию в pactl, по умолчанию переключает режим)
-set_mute() {
+set-mute() {
 	p=$1
 	[[ ${#p} -eq 0 ]] && p="toggle"
 	pactl set-sink-mute @DEFAULT_SINK@ $p 2>/dev/null || exit 1
-	notify $(get_volume)
+	notify $(get-volume)
 }
 
 # Увеличить яркость на один шаг
 inc() {
-	check_levels_file
+	check-levels-file
 	steps=($(cat $current_level_file))
 	[[ ${steps[0]} -lt $(( ${#steps[@]} - 1 )) ]] && steps[0]=$(( ${steps[0]} + 1 ))
-	set_volume ${steps[${steps[0]}]}
+	set-volume ${steps[${steps[0]}]}
 	echo ${steps[@]} > $current_level_file &
 }
 
 # Уменьшить яркость на один шаг
 dec() {
-	check_levels_file
+	check-levels-file
 	steps=($(cat $current_level_file))
 	[[ ${steps[0]} -gt 1 ]] && steps[0]=$(( ${steps[0]} - 1 ))
-	set_volume ${steps[${steps[0]}]}
+	set-volume ${steps[${steps[0]}]}
 	echo ${steps[@]} > $current_level_file &
 }
 
-get_pb_color() {
+get-pb-color() {
 	color=()
-	color=(${color[@]} $(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "background-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "foreground-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "foreground-inactive =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "blue =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "red =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "background-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "foreground-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "foreground-inactive =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "blue =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "red =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
 
-	echo ${color[@]}
+	echo "${color[@]}"
 }
 
-get_pb_bar() {
+get-pb-bar() {
 	bar=()
-	bar=(${bar[@]} $(grep -oP "^fill\s*=\s*\K([^\n]+)$" $pb_modules_file))
-	bar=(${bar[@]} $(grep -oP "^indicator\s*=\s*\K([^\n]+)$" $pb_modules_file))
-	bar=(${bar[@]} $(grep -oP "^empty\s*=\s*\K([^\n]+)$" $pb_modules_file))
+	bar+=($(grep -oP "^fill\s*=\s*\K([^\n]+)$" $pb_modules_file))
+	bar+=($(grep -oP "^indicator\s*=\s*\K([^\n]+)$" $pb_modules_file))
+	bar+=($(grep -oP "^empty\s*=\s*\K([^\n]+)$" $pb_modules_file))
 
-	echo ${bar[@]}
+	echo "${bar[@]}"
 }
 
 polybar() {
-	color=($(get_pb_color))
+	color=($(get-pb-color))
 	bg=${color[0]}
 	bga=${color[1]}
 	fg=${color[2]}
@@ -124,13 +138,13 @@ polybar() {
 	prfx=${color[5]}
 	prfxa=${color[6]}
 
-	bar=($(get_pb_bar))
+	bar=($(get-pb-bar))
 	fill=${bar[0]}
 	indicator=${bar[1]}
 	empty=${bar[2]}
 
-	volume=$(get_volume)
-	mute=$(get_mute)
+	volume=$(get-volume)
+	mute=$(get-mute)
 
 	pb_icon="%{B$prfx F$fga} ${pb_icons[3]} %{B- F-}"
 	[[ $volume -lt 70 ]] && pb_icon="%{B$prfx F$fga} ${pb_icons[2]} %{B- F-}"
@@ -156,15 +170,15 @@ polybar() {
 		done
 	fi
 
-	block="%{u$bg o$bg}%{+u}%{+o}%{A1:$1 -m toggle:}$pb_icon%{A}%{A4:$1 +:}%{A5:$1 -:}$bar %{B- F-}%{A}%{A}%{u- o-}"
+	block="%{u$bg o$bg}%{+u}%{+o}%{A1:$1 -n:}$pb_icon%{A}%{A1:$1 -m toggle:}%{A4:$1 +:}%{A5:$1 -:}$bar %{B- F-}%{A}%{A}%{A}%{u- o-}"
 	echo $block
 }
 
 # Послать уведомление об изменении громкости
 notify() {
-	update
+	update-polybar
 
-	mute=$(get_mute)
+	mute=$(get-mute)
 
 	if [[ $mute == "yes" ]] ; then
 		notify_icon="${notify_icons[0]}"
@@ -200,94 +214,65 @@ help() {
 	echo -e "\t-d\t--decrement\t-\t[<number>]\n\t\tУменьшить громкость звука на заданное количество шагов (по умолчанию - на 1).\n"
 	echo -e "\t-s\t--setup\t\t\t[<number>[+<number>]|default]\n\t\tУстановить конфигурацию шагов изменения громкости в формате,\n\t\tгде сначала указывается количество шагов от 0% до 100%, а после,\n\t\tопционально, через знак '+' указывается количество шагов сверх 100%\n\t\tгромкости, либо же применение стандартной конфигурации\n\t\t(10 шагов от 0% до 100%), по умолчанию - оставить прежнюю\n\t\tконфигурацию; и вывести текущую конфигурацию.\n"
 	echo -e "\t-p\t--polybar\n\t\tПолучить форматированный текст для модуля панели Polybar.\n"
+	echo -e "\t-n\t--notify\n\t\tПослать всплывающее уведомление с информацией о текущем уровне громкости.\n"
 	echo -e "\t-u\t--update\n\t\tПринудительно обновить соответствующий модуль панели Polybar.\n"
 	echo -e "\t--daemon\n\t\tЗапустить фоновый цикл переодического обновления модуля панели Polybar.\n"
+	echo -e "\t--stop-daemon\n\t\tОстановить фоновый цикл.\n"
 	echo -e "\t-h\t--help\n\t\tВывести данную справку.\n"
 	echo -e "Автор: allonny89"
 }
 
+if [[ $# -eq 0 ]] ; then help ; exit 0 ; fi
+
 while [[ $# -gt 0 ]] ; do
 	case $1 in
 		"-l" | "--level")
-			if echo $2 | grep -oP "^\d+$" > /dev/null ; then
-				set_volume $2
-				shift
-			fi
-			get_volume
+			grep -oP '^\d+$' <<< "$2" > /dev/null && set-volume $2 && shift
+			get-volume
 			;;
 		"-m" | "-mute")
-			if echo $2 | grep -oP "^0$|^1$|^toggle$" > /dev/null ; then
-				set_mute $2
-				shift
-			fi
-			get_mute
+			grep -oP '^0$|^1$|^toggle$' <<< "$2" > /dev/null && set-mute $2 && shift
+			get-mute
 			;;
 		"-i" | "--increment" | "+")
-			if echo $2 | grep -oP "^\d+$" > /dev/null ; then
-				n=$(( $2 ))
-				while [[ $n -gt 0 ]] ; do
-					inc
-					n=$(( $n - 1 ))
-				done
-				shift
-			else
+			grep -oP '^\d+$' <<< "$2" > /dev/null && \
+				for i in $(seq $2) ; do inc ; done || \
 				inc
-			fi
 			;;
 		"-d" | "--decrement" | "-")
-			if echo $2 | grep -oP "^\d+$" > /dev/null ; then
-				n=$(( $2 ))
-				while [[ $n -gt 0 ]] ; do
-					dec
-					n=$(( $n - 1 ))
-				done
-				shift
-			else
+			grep -oP '^\d+$' <<< "$2" > /dev/null && \
+				for i in $(seq $2) ; do dec ; done || \
 				dec
-			fi	
 			;;
 		"-s" | "--setup")
-			if echo $2 | grep -oP "^\d+(\+?\d+)?$" | grep -oP "\d+" > /dev/null ; then
-				steps=$(echo $2 | grep -oP "^\d+(\+?\d+)?$" | grep -oP "\d+")
-				setup $steps
-				shift
-			fi
-			if echo $2 | grep -oP "^default$" > /dev/null ; then
-				setup 10
-				shift
-			fi
+			steps=$(grep -oP '^\d+(\+?\d+)?$' <<< "$2" | grep -oP '\d+') && setup $steps && shift
+			grep -oP '^default$' <<< "$2" > /dev/null && setup 10 && shift
 			cat $current_level_file
 			;;
 		"-p" | "--polybar")
 			polybar "$0"
 			;;
+		"-n" | "--notify" )
+			notify $(get-volume)
+			;;
 		"-u" | "--update")
-			update
+			update-polybar
 			;;
 		"-h" | "--help")
 			help
 			;;
+		"--stop-daemon")
+			stop-daemon
+			;;
 		"--daemon")
-			daemon="yes"
+			daemon
 			;;
 		*)
-            echo "Ошибка! Неизвестный аругмент $1."
-            exit 1
-            ;;
+			echo "Ошибка! Неизвестный аругмент $1."
+			exit 1
+			;;
 	esac
-    
+	
 	shift
 done
-
-if [[ $daemon == "yes" ]] ; then
-	process_name=${0##*/}
-	for pid in $(pgrep ${process_name}) ; do
-		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Процесс $process_name $pid был остановлен"
-	done
-	sleep 1s
-	while :; do
-		update
-		sleep 5s
-	done &
-fi
 
