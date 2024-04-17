@@ -20,13 +20,13 @@ log_sfx=" 2>> $log_file ; echo \$? >> $log_file ; "
 finish_line="Для выхода нажмите любую клавишу на клавиатуре (в противном случае программа сама завершится через 2 минуты)"
 
 commands=()
-commands=("${commands[@]}" "/usr/bin/xbps-install -uy xbps $log_sfx")
-commands=("${commands[@]}" "/usr/bin/xbps-install -Suy $log_sfx")
-commands=("${commands[@]}" "/usr/bin/xbps-remove -Roy $log_sfx")
-commands=("${commands[@]}" "/usr/bin/flatpak update -y $log_sfx")
-commands=("${commands[@]}" "/usr/bin/flatpak remove --unused --delete-data -y $log_sfx")
-commands=("${commands[@]}" "$HOME/.local/scripts/${0##*/} --notify ; ")
-commands=("${commands[@]}" "read -t 120 -n 1 -p '$finish_line' ; ")
+commands+=("/usr/bin/xbps-install -uy xbps $log_sfx")
+commands+=("/usr/bin/xbps-install -Suy $log_sfx")
+commands+=("/usr/bin/xbps-remove -Roy $log_sfx")
+commands+=("/usr/bin/flatpak update -y $log_sfx")
+commands+=("/usr/bin/flatpak remove --unused --delete-data -y $log_sfx")
+commands+=("$HOME/.local/scripts/${0##*/} --notify ; ")
+commands+=("read -t 120 -n 1 -p '$finish_line' ; ")
 
 check() {
     [ ! -f $log_file ] && exit 1
