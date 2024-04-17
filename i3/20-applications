@@ -27,12 +27,14 @@ for_window [class="Nm-connection-editor"]	floating enable resize set $mid_size
 for_window [class="Pavucontrol"]			floating enable resize set $mid_size
 for_window [class="kitty" floating]			resize set $mid_size
 
-assign [class="firefox"]	$ws1
-assign [class="jetbrains"]	$ws2
-assign [class="steam"]		$ws3
-assign [class="Celluloid"]	$ws4
-assign [class="Rhythmbox"]	$ws9
-assign [class="Spotify"]	$ws9
-assign [class="Kew"]		$ws9
-assign [class="Update"]		$ws0
+assign [class="firefox"]		$ws1
+assign [class="jetbrains"]		$ws2
+assign [class="steam"]			$ws3
+assign [class="Celluloid"]		$ws4
+assign [class="Kew"]			$ws9
+assign [class="Rhythmbox"]		$ws9
+assign [class="Spotify"]		$ws9
+assign [class="Gnome-boxes"]	$ws0
+assign [class="transmission"]	$ws0
+assign [class="Update"]			$ws0
 
