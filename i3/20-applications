@@ -5,11 +5,11 @@ exec --no-startup-id dex -as $HOME/.config/autostart
 exec_always --no-startup-id polybar-launch
 exec_always --no-startup-id keyboard-layout -s us ru jp:anthy --smart-toggle --daemon
 exec_always --no-startup-id volume -s 20+10 --daemon
-exec_always --no-startup-id system-load daemon
 exec_always --no-startup-id brightness -s 20
 exec_always --no-startup-id battery --daemon
 exec_always --no-startup-id player --daemon
 exec_always --no-startup-id libinput-gestures-setup restart
+exec_always --no-startup-id system-load --daemon
 exec --no-startup-id motd
 
 # Специфичные настройки запуска приложений
