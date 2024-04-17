@@ -68,6 +68,10 @@ bindsym --release $mod+Shift+Print exec --no-startup-id xfce4-screenshooter -r -
 # $mod+` ($mod+ё)
 bindcode --release $mod+49 exec --no-startup-id vpn-toggle "Surfshark Japan UDP"
 
+# Окно neofetch
+# $mod+/
+bindcode --release $mod+61 exec --no-startup-id about $term
+
 # Открыть/закрыть трэй
 # $mod+z
 bindcode --release $mod+52 exec --no-startup-id tray-toggle
