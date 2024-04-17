@@ -24,6 +24,9 @@ set $files thunar
 set $sml_size 640 480
 set $mid_size 800 600
 set $lrg_size 1024 768
+set $smw_size 900 450
+set $mdw_size 1200 600
+set $lrw_size 1500 750
 
 # Шаг изменения размера окон
 set $step 20 px or 2 ppt
