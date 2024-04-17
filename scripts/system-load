@@ -12,17 +12,40 @@ pb_mem_icon=""
 threshold_caution=75
 threshold_warning=90
 
+[[ ! -f $cpuusage_file ]] && blank-cpu
+[[ ! -f $memusage_file ]] && blank-mem
+
+stop-daemon() {
+	blank-cpu
+	blank-mem
+	process_name=${0##*/}	
+	for pid in $(pgrep ${process_name}) ; do
+		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Процесс $process_name $pid был остановлен"
+	done
+}
+
+daemon() {
+	stop-daemon
+	while :; do
+		update-cpu
+		update-mem
+		polybar-msg action cpu hook 0 > /dev/null
+		polybar-msg action mem hook 0 > /dev/null
+		sleep $interval
+	done &
+}
+
 get_pb_color() {
 	color=()
-	color=(${color[@]} $(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "background-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "foreground-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "blue =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "yellow =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "red =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "background-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "foreground-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "blue =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "yellow =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "red =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
 
-	echo ${color[@]}
+	echo "${color[@]}"
 }
 
 polybar() {
@@ -49,42 +72,21 @@ polybar() {
 	echo $block
 }
 
-blank_cpu() {
+blank-cpu() {
 	[[ -f $cpuusage_file ]] && rm $cpuusage_file
 	for (( i=0 ; i<=$store ; i++ )) ; do
 		echo "0 0" >> $cpuusage_file
 	done
 }
 
-blank_mem() {
+blank-mem() {
 	[[ -f $memusage_file ]] && rm $memusage_file
 	for (( i=0 ; i < $store ; i++ )) ; do
 		echo "0" >> $memusage_file
 	done
 }
 
-daemons_kill() {
-	blank_cpu
-	blank_mem
-	process_name=${0##*/}	
-	for pid in $(pgrep ${process_name}) ; do
-		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Процесс $process_name $pid был остановлен"
-	done
-}
-
-daemon_update() {
-	daemons_kill
-
-	while :; do
-		update_cpu
-		update_mem
-		polybar-msg action cpu hook 0 > /dev/null
-		polybar-msg action mem hook 0 > /dev/null
-		sleep $interval
-	done &
-}
-
-current_cpu() {
+current-cpu() {
 	cat $cpuusage_file | tail -2 | awk '
 	NR == 1 { u = -$1 ; t = -$2 ; next }
 	{ u += $1 ; t += $2 ;
@@ -95,11 +97,11 @@ current_cpu() {
 	}'
 }
 
-current_mem() {
+current-mem() {
 	cat $memusage_file | tail -1 | awk '{ v = $1 ; if(v >= 100) v = 99 ; printf("%02d", v) }'
 }
 
-histbars_cpu() {
+histbars-cpu() {
 	unigraph $(awk 'NR == 1 {
 		u1 = $1 ; t1 = $2 ;
 		next
@@ -114,12 +116,12 @@ histbars_cpu() {
 		}' $cpuusage_file)
 }
 
-histbars_mem() {
+histbars-mem() {
 	readarray -t hist < $memusage_file
 	unigraph ${hist[@]}
 }
 
-update_cpu() {
+update-cpu() {
 	newline=$(grep 'cpu ' /proc/stat | awk '{ u = ($2 + $4) * 100 ; t = $2 + $4 + $5 ; print u,t }')
 	readarray -t hist < $cpuusage_file
 	hist=("${hist[@]:$((-$store)):$store}" "$newline")
@@ -129,7 +131,7 @@ update_cpu() {
 	done
 }
 
-update_mem() {
+update-mem() {
 	newline=$(free | grep 'Mem' | awk '{ print int($3 * 100 / $2 + 0.5) }')
 	readarray -t hist < $memusage_file
 	hist=("${hist[@]:$((-$store + 1)):$(($store - 1))}" "$newline")
@@ -139,20 +141,49 @@ update_mem() {
 	done	
 }
 
-[[ ! -f $cpuusage_file ]] && blank_cpu
-[[ ! -f $memusage_file ]] && blank_mem
+help() {
+	echo "Help is coming soon!"
+}
 
-case $1 in
-	"daemon")
-		daemon_update
-	;;
-	"cpu")
-		polybar $pb_cpu_icon $(histbars_cpu) $(current_cpu) 
-	;;
-	"mem")
-		polybar $pb_mem_icon $(histbars_mem) $(current_mem)
-	;;
-	"stop")
-		daemons_kill
-	;;
-esac
+if [[ $# -eq 0 ]] ; then help ; exit 0 ; fi
+
+while [[ $# -gt 0 ]] ; do
+	case $1 in
+		"-m" | "--module")
+			case $2 in
+				"cpu")	polybar $pb_cpu_icon $(histbars-cpu) $(current-cpu) ;;
+				"mem")	polybar $pb_mem_icon $(histbars-mem) $(current-mem) ;;
+				*)
+					echo "Ошибка! Неизвестное значение $2 аргумента $1."
+					exit 2
+					;;
+			esac
+			shift
+		;;
+		"-r" | "--reset")
+			case $2 in
+				"cpu")	blank-cpu ;;
+				"mem")	blank-mem ;;
+				*)		blank-cpu ; blank-mem ;;
+			esac
+			shift
+
+		;;
+		"-h" | "--help")
+			help
+		;;
+		"--stop-daemon")
+			stop-daemon
+			;;
+		"--daemon")
+			daemon
+			;;
+		*)
+			echo "Ошибка! Неизвестный аргумент $1."
+			exit 1
+			;;
+	esac
+
+	shift
+done
+
