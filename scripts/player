@@ -9,31 +9,46 @@ notify_title=""
 notify_title_default="Сейчас воспроизводится"
 notify_body=""
 notify_icon="applications-multimedia"
-notify_urgent="normal"
+notify_urgent="low"
 
 notify_name="${0##*/}"
 notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
 
-daemon="no"
+stop-daemon() {
+	process_name=${0##*/}
+	for pid in $(pgrep ${process_name}) ; do
+		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Процесс $process_name $pid был остановлен"
+	done
+}
 
-update() {
-	# case "$(status)" in
-		# "Playing" | "Paused" | "Stopped")
-			# polybar-msg action player module_show > /dev/null
-			# polybar-msg action title module_hide > /dev/null
-			# ;;
-		# *)
-			# polybar-msg action player module_hide > /dev/null
-			# polybar-msg action title module_show > /dev/null	
-			# ;;
-	# esac
+daemon() {
+	stop-daemon
+	
+	md_raw_old=()
+	status_old=""
+	
+	while :; do
+		status="$(status)"
+		IFS=$'\n' md_raw=($(metadata))
+		if [[ "${md_raw[@]}" != ${md_raw_old[@]} ]] ; then
+			md_raw_old=(${md_raw[@]})
+			notify
+			update-polybar
+		elif [[ "$status" != "$status_old" ]] ; then
+			status_old="$status"
+			update-polybar
+		fi
+		sleep 1s
+	done &
+}
 
+update-polybar() {
 	polybar-msg action player hook 0 > /dev/null
 }
 
 control() {
 	playerctl $1
-	update
+	update-polybar
 }
 
 status() {
@@ -56,14 +71,14 @@ field() {
 
 get_pb_color() {
 	color=()
-	color=(${color[@]} $(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "background-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "foreground-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "foreground-inactive =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
-	color=(${color[@]} $(grep -oP "blue =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "background-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "foreground =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "foreground-alt =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "foreground-inactive =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
+	color+=($(grep -oP "blue =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
 
-	echo ${color[@]}
+	echo "${color[@]}"
 }
 
 polybar() {
@@ -78,19 +93,19 @@ polybar() {
 	IFS=$'\n' md_raw=($(metadata))
 	status="$(status)"
 
-	if [[ -z "${md_raw[0]}" ]] && [[ -z "${md_raw[1]}" ]] ; then exit 0
+	if [[ -z "${md_raw[0]}" ]] && [[ -z "${md_raw[1]}" ]] ; then return 0
 	elif [[ -n "${md_raw[0]}" ]] && [[ -n "${md_raw[1]}" ]] ; then md="${md_raw[0]} ─ ${md_raw[1]}" 
 	else md="${md_raw[@]}"
 	fi
 	[[ ${#md} -gt $(( $pb_line_length + 3 )) ]] && md="${md::$pb_line_length}..."
 
-	icon="%{B$prfx F$fga} $pb_icon %{B- F-}"
+	icon="%{B$prfx F$fga}%{A1:$1 -n:} $pb_icon %{A}%{B- F-}"
 	
 	line="%{B$bga F$fga}"
 	line="$line %{A1:$1 -c previous:}$(field "$status" "" "" "$fg" "$fg" "$fgi")%{A}"
     line="$line %{A1:$1 -c play-pause:}$(field "$status" "" "" "$fg" "$fg" "$fgi")%{A}"
     line="$line %{A1:$1 -c next:}$(field "$status" "" "" "$fg" "$fg" "$fgi")%{A}"
-    line="$line %{A1:$1 -n:}$(field "$status" "$md" "$md" "$fg" "$fgi" "$fgi")%{A}"
+    line="$line %{A1:$1 -c play-pause:}$(field "$status" "$md" "$md" "$fg" "$fgi" "$fgi")%{A}"
 	line="$line %{B- F-}"
 
 	block="%{u$bg o$bg}%{+u}%{+o}$icon$line%{u- o-}"
@@ -104,7 +119,7 @@ polybar() {
 notify() {
 	IFS=$'\n' md_raw=($(metadata))
 
-	if [[ -z "${md_raw[@]}" ]] ; then exit 0
+	if [[ -z "${md_raw[@]}" ]] ; then return 0
 	elif [[ -z "${md_raw[0]}" ]] ; then
 		notify_title="$notify_title_default"
 		notify_body="${md_raw[1]}"
@@ -119,13 +134,17 @@ notify() {
 	notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent" -i "$notify_icon" "$notify_title" "$notify_body"
 }
 
+help() {
+	echo "Help is coming coon!"
+}
+
+if [[ $# -eq 0 ]] ; then help ; exit 0 ; fi
+
 while [[ $# -gt 0 ]] ; do
 	case $1 in
 		"-c" | "--control")
-			if echo $2 | grep -oP "^play$|^pause$|^play-pause$|^stop$|^previous$|^next$" > /dev/null ; then
-				control $2
-				shift
-			fi
+			grep -oP '^play$|^pause$|^play-pause$|^stop$|^previous$|^next$' <<< "$2" > /dev/null && \
+				control $2 && shift
 			status
 			;;
 		"-m" | "--metadata")
@@ -135,16 +154,19 @@ while [[ $# -gt 0 ]] ; do
         	polybar "$0"
         	;;
 		"-u" | "--update")
-			update
+			update-polybar
 			;;
 		"-n" | "--notify")
 			notify
 			;;
 		"-h" | "--help")
-			echo "help"
+			help
+			;;
+		"--stop-daemon")
+			stop-daemon
 			;;
 		"--daemon")
-			daemon="yes"
+			daemon
 			;;
 		*)
 			echo "Ошибка! Неизвестный аругмент $1."
@@ -154,29 +176,4 @@ while [[ $# -gt 0 ]] ; do
 
 	shift
 done
-
-if [[ $daemon == "yes" ]] ; then
-	process_name=${0##*/}
-	for pid in $(pgrep ${process_name}) ; do
-		[ $pid != $$ ] && kill -s KILL -- $pid && echo "Процесс $process_name $pid был остановлен"
-	done
-	sleep 1s
-	
-	md_raw_old=()
-	status_old=""
-	
-	while :; do
-		status="$(status)"
-		IFS=$'\n' md_raw=($(metadata))
-		if [[ "${md_raw[@]}" != ${md_raw_old[@]} ]] ; then
-			md_raw_old=(${md_raw[@]})
-			notify
-			update
-		elif [[ "$status" != "$status_old" ]] ; then
-			status_old="$status"
-			update
-		fi
-		sleep 1s
-	done &
-fi
 
