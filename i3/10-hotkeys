@@ -7,12 +7,12 @@ bindcode --release $mod+24 kill
 bindcode --release $mod+Shift+24 exec --no-startup-id xkill
 
 # Изменение раскладки клавиатуры
-bindsym --release $mod+space exec --no-startup-id keyboard-layout toggle
+bindsym --release $mod+space exec --no-startup-id keyboard-layout -t
 # R Alt
-bindcode --release 108 exec --no-startup-id keyboard-layout toggle
+bindcode --release 108 exec --no-startup-id keyboard-layout -t
 # CapsLock
-bindcode 66 exec --no-startup-id keyboard-layout update
-bindcode --release 66 exec --no-startup-id keyboard-layout update
+bindcode 66 exec --no-startup-id keyboard-layout -u
+bindcode --release 66 exec --no-startup-id keyboard-layout -u
 
 # Меню питания
 bindsym --release $mod+Escape exec --no-startup-id powermenu
