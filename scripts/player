@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Скрипт управления воспроизведением музыки или видео
+# и вывода модуля панели polybar
+
 current_md_file="/tmp/player-metadata"
 pb_colors_file="$HOME/.config/polybar/colors.ini"
 pb_icon=""
@@ -14,6 +17,12 @@ notify_urgent="low"
 notify_name="${0##*/}"
 notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
 
+# Обновить модуль polybar
+update-polybar() {
+	polybar-msg action player hook 0 > /dev/null
+}
+
+# Остановить все работающие в фоне экземпляры данной программы
 stop-daemon() {
 	process_name=${0##*/}
 	for pid in $(pgrep ${process_name}) ; do
@@ -21,6 +30,7 @@ stop-daemon() {
 	done
 }
 
+# Цикл фоновой работы
 daemon() {
 	stop-daemon
 	
@@ -42,24 +52,25 @@ daemon() {
 	done &
 }
 
-update-polybar() {
-	polybar-msg action player hook 0 > /dev/null
-}
-
+# Контроль воспроизведения
 control() {
 	playerctl $1
 	update-polybar
 }
 
+# Вывести текущее состояние воспроизведения
 status() {
 	playerctl status 2>/dev/null || echo ""
 }
 
+# Вывсети данные о произведении и артисте
 metadata() {
 	playerctl metadata artist 2>/dev/null || echo ""
 	playerctl metadata title 2>/dev/null || echo ""
 }
 
+# Форматировать строку в зависимости от состояния воспроизведения
+# Аругменты: текущее_состояние строка_воспроизведение строка_пауза_остановка цвет_воспроизведение цвет_пауза цвет_отсановка 
 field() {
 	case "$1" in
         "Playing")     echo "%{F$4}$2%{F-}" ;;
@@ -69,6 +80,7 @@ field() {
     esac
 }
 
+# Получить основные цвета панели polybar
 get_pb_color() {
 	color=()
 	color+=($(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
@@ -81,6 +93,7 @@ get_pb_color() {
 	echo "${color[@]}"
 }
 
+# Вывести форматированнуюю строку модуля polybar
 polybar() {
 	color=($(get_pb_color))
 	bg=${color[0]}
@@ -116,6 +129,7 @@ polybar() {
 	esac
 }
 
+# Вывести уведомление
 notify() {
 	IFS=$'\n' md_raw=($(metadata))
 
@@ -134,12 +148,15 @@ notify() {
 	notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent" -i "$notify_icon" "$notify_title" "$notify_body"
 }
 
+# Вывести справку скрипта
 help() {
 	echo "Help is coming coon!"
 }
 
+# Если нет аргументов, то вызывается справка, а скрипт завершается
 if [[ $# -eq 0 ]] ; then help ; exit 0 ; fi
 
+# Последовательный разбор аргументов командной строки
 while [[ $# -gt 0 ]] ; do
 	case $1 in
 		"-c" | "--control")

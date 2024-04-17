@@ -17,6 +17,12 @@ notify_urgent="low"
 notify_name="${0##*/}"
 notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
 
+# Принудительное обновление полибара
+update-polybar() {
+	polybar-msg action volume hook 0 > /dev/null
+}
+
+# Остановить все работающие в фоне экземпляры данной программы
 stop-daemon() {
 	process_name=${0##*/}
 	for pid in $(pgrep ${process_name}) ; do
@@ -24,6 +30,7 @@ stop-daemon() {
 	done
 }
 
+# Цикл фоновой работы
 daemon() {
 	stop-daemon
 	sleep 1s
@@ -33,15 +40,10 @@ daemon() {
 	done &
 }
 
-# Создание дефолтного файла-конфигурации, если оный отсутствует
+# Создать дефолтный файл-конфигурации, если оный отсутствует
 check-levels-file()
 {
 	[[ ! -f $current_level_file ]] && setup default
-}
-
-# Принудительное обновление полибара
-update-polybar() {
-	polybar-msg action volume hook 0 > /dev/null
 }
 
 # Получить текущую громкость, возвращает целое число - громкость в процентах
@@ -66,7 +68,7 @@ get-volume() {
 	fi
 }
 
-# ПОучить состояние режима без звука
+# Поучить состояние режима без звука
 get-mute() {
 	mute=$(pactl get-sink-mute @DEFAULT_SINK@ 2>/dev/null | grep -oP "\w*: \K(\w+)") || exit 1
 	echo $mute
@@ -87,7 +89,7 @@ set-mute() {
 	notify $(get-volume)
 }
 
-# Увеличить яркость на один шаг
+# Увеличить громкость на один шаг
 inc() {
 	check-levels-file
 	steps=($(cat $current_level_file))
@@ -96,7 +98,7 @@ inc() {
 	echo ${steps[@]} > $current_level_file &
 }
 
-# Уменьшить яркость на один шаг
+# Уменьшить громкость на один шаг
 dec() {
 	check-levels-file
 	steps=($(cat $current_level_file))
@@ -105,6 +107,7 @@ dec() {
 	echo ${steps[@]} > $current_level_file &
 }
 
+# Получить основные цвета панели polybar
 get-pb-color() {
 	color=()
 	color+=($(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
@@ -118,6 +121,7 @@ get-pb-color() {
 	echo "${color[@]}"
 }
 
+# Получить элементы шкалы прогресса панели polybar
 get-pb-bar() {
 	bar=()
 	bar+=($(grep -oP "^fill\s*=\s*\K([^\n]+)$" $pb_modules_file))
@@ -127,6 +131,7 @@ get-pb-bar() {
 	echo "${bar[@]}"
 }
 
+# Вывести форматированнуюю строку модуля polybar
 polybar() {
 	color=($(get-pb-color))
 	bg=${color[0]}
@@ -174,7 +179,7 @@ polybar() {
 	echo $block
 }
 
-# Послать уведомление об изменении громкости
+# Вывести уведомление
 notify() {
 	update-polybar
 
@@ -206,6 +211,7 @@ EOF
 	echo ${steps[@]} > $current_level_file &
 }
 
+# Вывести справку скрипта
 help() {
 	echo -e "Скрипт для управления громкостью звуковой системы и вывода некоторых данных о её состоянии.\n"
 	echo -e "\t-l\t--level\t\t\t[<number>]\n\t\tУстановить указанный уровень громкости (по умолчанию остаётся прежним)\n\t\tи вывести текущее значение.\n"
@@ -222,8 +228,10 @@ help() {
 	echo -e "Автор: allonny89"
 }
 
+# Если нет аргументов, то вызывается справка, а скрипт завершается
 if [[ $# -eq 0 ]] ; then help ; exit 0 ; fi
 
+# Последовательный разбор аргументов командной строки
 while [[ $# -gt 0 ]] ; do
 	case $1 in
 		"-l" | "--level")

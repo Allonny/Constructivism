@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Скрипт сбора статистики о загрузке процессора и оперативной памяти
+# и вывода модуля панели polybar 
+
 cpuusage_file="/tmp/cpuusage"
 memusage_file="/tmp/memusage"
 store=12
@@ -15,6 +18,7 @@ threshold_warning=90
 [[ ! -f $cpuusage_file ]] && blank-cpu
 [[ ! -f $memusage_file ]] && blank-mem
 
+# Остановить все работающие в фоне экземпляры данной программы
 stop-daemon() {
 	blank-cpu
 	blank-mem
@@ -24,6 +28,7 @@ stop-daemon() {
 	done
 }
 
+# Цикл фоновой работы
 daemon() {
 	stop-daemon
 	while :; do
@@ -35,6 +40,7 @@ daemon() {
 	done &
 }
 
+# Получить основные цвета панели polybar
 get_pb_color() {
 	color=()
 	color+=($(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
@@ -48,6 +54,7 @@ get_pb_color() {
 	echo "${color[@]}"
 }
 
+# Вывести форматированнуюю строку модуля polybar
 polybar() {
 	color=($(get_pb_color))
 	bg=${color[0]}
@@ -72,6 +79,7 @@ polybar() {
 	echo $block
 }
 
+# Очистить файл статистики загрузки процессора
 blank-cpu() {
 	[[ -f $cpuusage_file ]] && rm $cpuusage_file
 	for (( i=0 ; i<=$store ; i++ )) ; do
@@ -79,6 +87,7 @@ blank-cpu() {
 	done
 }
 
+# Очистить файл статистики загрузки оперативной памяти
 blank-mem() {
 	[[ -f $memusage_file ]] && rm $memusage_file
 	for (( i=0 ; i < $store ; i++ )) ; do
@@ -86,6 +95,7 @@ blank-mem() {
 	done
 }
 
+# Вывести текущий уровень загрузки процессора
 current-cpu() {
 	cat $cpuusage_file | tail -2 | awk '
 	NR == 1 { u = -$1 ; t = -$2 ; next }
@@ -97,10 +107,12 @@ current-cpu() {
 	}'
 }
 
+# Вывести текущий уровень загрузки оперативной памяти
 current-mem() {
 	cat $memusage_file | tail -1 | awk '{ v = $1 ; if(v >= 100) v = 99 ; printf("%02d", v) }'
 }
 
+# Вывести гистограмму загрузки процессора во времени
 histbars-cpu() {
 	unigraph $(awk 'NR == 1 {
 		u1 = $1 ; t1 = $2 ;
@@ -116,11 +128,13 @@ histbars-cpu() {
 		}' $cpuusage_file)
 }
 
+# Вывести гистограмму загрузки оперативной памяти во времени
 histbars-mem() {
 	readarray -t hist < $memusage_file
 	unigraph ${hist[@]}
 }
 
+# Обновить файл статистики загрузки процессора
 update-cpu() {
 	newline=$(grep 'cpu ' /proc/stat | awk '{ u = ($2 + $4) * 100 ; t = $2 + $4 + $5 ; print u,t }')
 	readarray -t hist < $cpuusage_file
@@ -131,6 +145,7 @@ update-cpu() {
 	done
 }
 
+# Обновить файл статистики загрузки оперативной памяти
 update-mem() {
 	newline=$(free | grep 'Mem' | awk '{ print int($3 * 100 / $2 + 0.5) }')
 	readarray -t hist < $memusage_file
@@ -141,12 +156,15 @@ update-mem() {
 	done	
 }
 
+# Вывести справку скрипта
 help() {
 	echo "Help is coming soon!"
 }
 
+# Если нет аргументов, то вызывается справка, а скрипт завершается
 if [[ $# -eq 0 ]] ; then help ; exit 0 ; fi
 
+# Последовательный разбор аргументов командной строки
 while [[ $# -gt 0 ]] ; do
 	case $1 in
 		"-m" | "--module")

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Скрипт изменения раскладки клавиатуры
+# Скрипт управления раскладкамиы клавиатуры
 
 capslock_file="/sys/class/leds/input0::capslock/brightness"
 layouts_file="/tmp/keyboard-layouts"
@@ -22,11 +22,12 @@ daemon_sleep="5s"
 
 smart_toggle=false
 
-# Принудительное обновление полибара
+# Обновить модуль polybar
 update-polybar() {
 	polybar-msg action keyboard-layout hook 0 &> /dev/null
 }
 
+# Остановить все работающие в фоне экземпляры данной программы
 stop-daemon() {
 	process_name=${0##*/}
 	for pid in $(pgrep ${process_name}) ; do
@@ -34,6 +35,7 @@ stop-daemon() {
 	done
 }
 
+# Цикл фоновой работы
 daemon() {
 	stop-daemon
 	layouts=($(cat $layouts_file))
@@ -44,7 +46,8 @@ daemon() {
 	done &
 }
 
-# Примение раскладки, аргументы: <раскладки (через зарятую)> <варианты (через запятую)>
+# Примить раскладки
+# Аргументы: раскладка1[,раскладка2[,...]] вариант1[,вариант2[,...]]
 # Особый случай для jp:anthy и jp:mozc - используется IBus
 # Костыль ли это? Да. Лютый? Абсольютно!
 # Да, нужно будет со временем сделать более универсальную систему, а то и вовсе перевести чисто на IBus, но пока >:-]
@@ -63,7 +66,8 @@ apply-layout() {
 	update-polybar
 }
 
-# Установка списка раскладок и их вариантов, аругменты: раскладка1[:вариант1] [раскладка2[:вариант2]] ...
+# Установить список раскладок и их вариантов
+# Аругменты: раскладка1[:вариант1] [раскладка2[:вариант2]] ...
 set() {
 	layouts=($@)
 	echo ${layouts[@]} > $layouts_file
@@ -80,13 +84,16 @@ set() {
 	apply-layout ${layout:1} ${variant:1}
 }
 
-# Переключение раскладки (смещение влево списка раскладок)
+# Переключить раскладки (смещение влево списка раскладок)
 toggle() {
 	layouts=($(cat $layouts_file))
 	set ${layouts[@]:1} ${layouts[0]}
 	notify
 }
 
+# Изменить порядок раскладок для "умного" переключения
+# Аргументы: старая_раскладка1[:вариант1] [старая_раскладка2[:вариант2]] ...
+# Вывод: новая_раскладка1[:вариант1] [новая_ыраскладка2[:вариант2]] ...
 smart-toggle() {
 	layouts=($@)
 	new_layouts=($(cat $layouts_file))
@@ -99,17 +106,17 @@ smart-toggle() {
 	echo "${layouts[@]}"
 }
 
-# Получение текущей установленной расскладки в сиситеме, возвращает буквенный индекс раскладки
+# Получить текущую установленную расскладку в сиситеме, возвращает буквенный индекс раскладки
 get-layout() {
 	setxkbmap -query | grep -oP 'layout:\s*\K([\w,]+)'
 }
 
-# Получение состояния капслока, возвращает on или off
+# Получить состояние капслока, возвращает on или off
 get-CapsLock() {
 	[ $(cat $capslock_file) == "1" ] && echo "on" || echo "off"
 }
 
-# Возвращает текущие данные о раскладке и состоянии капслока
+# Получить данные о раскладке и состоянии капслока
 get-state() {
 	current_layout=$(get-layout)
 	current_layout=${current_layout:0:2}
@@ -121,7 +128,7 @@ get-state() {
 	echo $block
 }
 
-# Получение "цветов оповещения", установленных для i3status
+# Получить основные цвета оповещения i3status
 get-i3-color() {
 	current_CapsLock=$(get-CapsLock)
 	if [[ $current_CapsLock = "on" ]]; then
@@ -133,6 +140,7 @@ get-i3-color() {
 	echo $color
 }
 
+# Получить основные цвета панели polybar
 get-pb-color() {
 	color=()
 	color+=($(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
@@ -150,7 +158,7 @@ get-pb-color() {
 	echo "${color[@]}"
 }
 
-# Возвращает блок для встраивания в i3status
+# Вывести форматированную строку мудля i3status
 i3status() {
 	while :
 	do
@@ -162,7 +170,7 @@ i3status() {
 	done
 }
 
-# Возвращает блок для встраивания в polybar
+# Вывести форматированнуюю строку модуля polybar
 polybar() {
 	state=($(get-state))
 
@@ -177,6 +185,7 @@ polybar() {
 	echo $block
 }
 
+# Вывести уведомление
 notify() {
 	layout=$(cat "$layouts_file" | sed 's/ .*//')
 	notify_layout=${layout^^}
@@ -188,12 +197,15 @@ notify() {
 	notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent" -i "$icon_layout" "$notify_title" "$notify_body$notify_layout"		
 }
 
+# Вывести справку скрипта
 help() {
 	echo "Help is coming soon!"
 }
 
+# Если нет аргументов, то вызывается справка, а скрипт завершается
 if [[ $# -eq 0 ]] ; then help ; exit 0 ; fi
 
+# Последовательный разбор аргументов командной строки
 while [[ $# -gt 0 ]] ; do
 	case $1 in
 		"-s" | "set")

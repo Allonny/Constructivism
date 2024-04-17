@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Скрипт для оповещения о низком заряде аккумулятора устройства
-# Аругменты: пороговое_значение1:время_опрашивания_до_порогового_значения_1 [пороговое_значение2:время_опрашивания_до_порогового_значения_2] ...
+# и вывода модуля панели polybar
 
 pb_modules_file="$HOME/.config/polybar/modules.ini"
 pb_colors_file="$HOME/.config/polybar/colors.ini"
@@ -24,6 +24,7 @@ notify_icon="battery-${label_plug}${status_plug}-symbolic"
 notify_name="${0##*/}"
 notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
 
+# Остановить все работающие в фоне экземпляры данной программы
 stop-daemon() {
 	process_name=${0##*/}
 	for pid in $(pgrep ${process_name}) ; do
@@ -31,6 +32,7 @@ stop-daemon() {
 	done
 }
 
+# Цикл фоновой работы
 daemon() {
 	stop-daemon
 	sleep 1s
@@ -43,18 +45,22 @@ daemon() {
 
 }
 
+# Обновить модуль polybar
 update-polybar() {
 	polybar-msg action battery hook 0 > /dev/null
 }
 
+# Получить текущий заряд батареи
 get_capacity() {
 	cat $capacity_file
 }
 
+# Получить состояние питания
 get_status() {
 	cat $status_file
 }
 
+# Получить основные цвета панели polybar
 get_pb_color() {
 	color=()
 	color+=($(grep -oP "background =\s*\K(#[a-fA-F0-9]+)" $pb_colors_file))
@@ -68,6 +74,7 @@ get_pb_color() {
 	echo "${color[@]}"
 }
 
+# Получить элементы шкалы прогресса панели polybar
 get_pb_bar() {
 	bar=()
 	bar+=($(grep -oP "^fill\s*=\s*\K([^\n]+)$" $pb_modules_file))
@@ -77,6 +84,7 @@ get_pb_bar() {
 	echo "${bar[@]}"
 }
 
+# Вывести форматированнуюю строку модуля polybar
 polybar() {
 	color=($(get_pb_color))
 	bg=${color[0]}
@@ -115,6 +123,7 @@ polybar() {
 	echo $block
 }
 
+# Вывести уведомление
 notify() {
 	level=$(get_capacity)
 	status=$(get_status)
@@ -141,21 +150,24 @@ notify() {
 	notify-send -a "$notify_name" -r "$notify_id" -u "$urgent" -i "$icon" "$title" "$body"	
 }
 
+# Вывести справку скрипта
 help() {
 	echo -e "Скрипт для отображения информации о питании компьютера.\n"
 	echo -e "\t-l\t--level\n\t\tВывести текущее уровень заряда батареи.\n"
 	echo -e "\t-s\t--status\n\t\tВывести текущий статус заряда/разряда.\n"
 	echo -e "\t-n\t--notify\n\t\tВывести всплывающее уведомление с информацией о питании.\n"
 	echo -e "\t-p\t--polybar\n\t\tПолучить форматированный текст для модуля панели Polybar.\n"
-	echo -e "\t-u\t--update\n\t\tПринудительно обновить соответствующий модуль панели Polybar.\n"
+	echo -e "\t-uыы\t--update\n\t\tПринудительно обновить соответствующий модуль панели Polybar.\n"
 	echo -e "\t--daemon\n\t\tЗапустить фоновый цикл переодического обновления модуля панели Polybar.\n"
 	echo -e "\t--stop-daemon\n\t\tОстановить фоновый цикл.\n"
 	echo -e "\t-h\t--help\n\t\tВывести данную справку.\n"
 	echo -e "Автор: allonny89"
 }
 
+# Если нет аргументов, то вызывается справка, а скрипт завершается
 if [[ $# -eq 0 ]] ; then help ; exit 0 ; fi
 
+# Последовательный разбор аргументов командной строки
 while [[ $# -gt 0 ]] ; do
 	case $1 in
 		"-l" | "--level")
