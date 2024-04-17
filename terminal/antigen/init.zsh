@@ -32,11 +32,11 @@ _antigen () {
 }
 antigen () {
   local MATCH MBEGIN MEND
-  [[ "$ZSH_EVAL_CONTEXT" =~ "toplevel:*" || "$ZSH_EVAL_CONTEXT" =~ "cmdarg:*" ]] && source "/home/allonny/.config/Constructivism/terminal/antigen/antigen.zsh" && eval antigen $@;
+  [[ "$ZSH_EVAL_CONTEXT" =~ "toplevel:*" || "$ZSH_EVAL_CONTEXT" =~ "cmdarg:*" ]] && source "/home/allonny/.local/share/antigen/antigen.zsh" && eval antigen $@;
   return 0;
 }
 typeset -gaU fpath path
-fpath+=(/home/allonny/.config/Constructivism/terminal/antigen/bundles/zsh-users/zsh-autosuggestions /home/allonny/.config/Constructivism/terminal/antigen/bundles/zsh-users/zsh-syntax-highlighting /home/allonny/.config/Constructivism/terminal/antigen/bundles/jirutka/zsh-shift-select /home/allonny/.config/Constructivism/terminal/antigen/bundles/romkatv/powerlevel10k) path+=(/home/allonny/.config/Constructivism/terminal/antigen/bundles/zsh-users/zsh-autosuggestions /home/allonny/.config/Constructivism/terminal/antigen/bundles/zsh-users/zsh-syntax-highlighting /home/allonny/.config/Constructivism/terminal/antigen/bundles/jirutka/zsh-shift-select /home/allonny/.config/Constructivism/terminal/antigen/bundles/romkatv/powerlevel10k)
+fpath+=(/home/allonny/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions /home/allonny/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting /home/allonny/.local/share/antigen/bundles/jirutka/zsh-shift-select /home/allonny/.local/share/antigen/bundles/romkatv/powerlevel10k) path+=(/home/allonny/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions /home/allonny/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting /home/allonny/.local/share/antigen/bundles/jirutka/zsh-shift-select /home/allonny/.local/share/antigen/bundles/romkatv/powerlevel10k)
 _antigen_compinit () {
   autoload -Uz compinit; compinit -d "/root/.local/share/antigen/.zcompdump"; compdef _antigen antigen
   add-zsh-hook -D precmd _antigen_compinit
@@ -48,10 +48,10 @@ if [[ -n "" ]]; then
   ZSH=""; ZSH_CACHE_DIR=""
 fi
 #--- BUNDLES BEGIN
-source '/home/allonny/.config/Constructivism/terminal/antigen/bundles/zsh-users/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh';
-source '/home/allonny/.config/Constructivism/terminal/antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh';
-source '/home/allonny/.config/Constructivism/terminal/antigen/bundles/jirutka/zsh-shift-select/zsh-shift-select.plugin.zsh';
-source '/home/allonny/.config/Constructivism/terminal/antigen/bundles/romkatv/powerlevel10k/powerlevel10k.zsh-theme.antigen-compat';
+source '/home/allonny/.local/share/antigen/bundles/zsh-users/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh';
+source '/home/allonny/.local/share/antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh';
+source '/home/allonny/.local/share/antigen/bundles/jirutka/zsh-shift-select/zsh-shift-select.plugin.zsh';
+source '/home/allonny/.local/share/antigen/bundles/romkatv/powerlevel10k/powerlevel10k.zsh-theme.antigen-compat';
 
 #--- BUNDLES END
 typeset -gaU _ANTIGEN_BUNDLE_RECORD; _ANTIGEN_BUNDLE_RECORD=('https://github.com/zsh-users/zsh-autosuggestions.git / plugin true' 'https://github.com/zsh-users/zsh-syntax-highlighting.git / plugin true' 'https://github.com/jirutka/zsh-shift-select.git / plugin true' 'https://github.com/romkatv/powerlevel10k.git / theme true')
