@@ -17,10 +17,6 @@ bindcode --release 66 exec --no-startup-id keyboard-layout -u
 # Меню питания
 bindsym --release $mod+Escape exec --no-startup-id powermenu
 
-# Обновление системы
-# $mod+u
-bindcode --release $mod+30 exec --no-startup-id update -t kitty
-
 # Меню приложений
 bindsym --release $mod+F1 exec --no-startup-id apps-launcher
 
@@ -55,6 +51,7 @@ bindsym --release $mod+Shift+F8 exec --no-startup-id flatpak run org.gnome.Rhyth
 # Запуск системных утилит
 bindsym --release $mod+F10 exec --no-startup-id performance
 bindsym --release $mod+F11 exec --no-startup-id pavucontrol
+bindsym --release $mod+F11 exec --no-startup-id update -t kitty
 bindsym --release $mod+F12 exec --no-startup-id $term --class=Htop htop
 bindsym --release $mod+Shift+F12 exec --no-startup-id suterm $term --class=Htop htop
 
