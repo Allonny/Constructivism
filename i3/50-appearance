@@ -3,7 +3,7 @@
 # Цвета темы оформления
 # class                 border  backgr.	foregr.	indic.  child_border
 client.focused          #F8E8A0	#F8E8A0	#404040 #F0A080 #F8E8A0
-client.focused_inactive #343230 #343230 #808080 #343230 #343230
+client.focused_inactive #444240 #444240 #808080 #444240 #444240
 client.unfocused        #343230 #343230 #808080 #343230 #343230
 client.urgent           #F0A080 #F0A080 #404040 #F0A080 #F0A080
 client.placeholder      #343230 #343230 #808080 #343230 #343230
