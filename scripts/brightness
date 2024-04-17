@@ -17,81 +17,93 @@ notify_urgent="low"
 notify_name="${0##*/}"
 notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
 
-# Создание дефолтного файла-конфигурации с 10 шагами
-[[ ! -f $current_level_file ]] && levels 10
-
 # Получить текущую яркость, возвращает число от 0 до 255
 get() {
-    light -G
+	light -G
 }
 
 # Установить текущую яркость, аргументы: число от 0 до 255
 set() {
-    light -S $1
+	light -S $1
 }
 
 # Увеличить яркость на один шаг
 inc() {
-    steps=($(cat $current_level_file))
-    [[ ${steps[0]} -lt $(( ${#steps[@]} - 1 )) ]] && steps[0]=$(( ${steps[0]} + 1 ))
-    echo ${steps[@]} > $current_level_file
-    set ${steps[${steps[0]}]}
-    notify ${steps[0]} $(( ${#steps[@]} - 1 ))
+	steps=($(cat $current_level_file))
+	[[ ${steps[0]} -lt $(( ${#steps[@]} - 1 )) ]] && steps[0]=$(( ${steps[0]} + 1 ))
+	echo ${steps[@]} > $current_level_file
+	set ${steps[${steps[0]}]}
+	notify ${steps[0]} $(( ${#steps[@]} - 1 ))
 }
 
 # Уменьшить яркость на один шаг
 dec() {
-    steps=($(cat $current_level_file))
-    [[ ${steps[0]} -gt 1 ]] && steps[0]=$(( ${steps[0]} - 1 ))
-    echo ${steps[@]} > $current_level_file
-    set ${steps[${steps[0]}]}
-    notify ${steps[0]} $(( ${#steps[@]} - 1 ))
+	steps=($(cat $current_level_file))
+	[[ ${steps[0]} -gt 1 ]] && steps[0]=$(( ${steps[0]} - 1 ))
+	echo ${steps[@]} > $current_level_file
+	set ${steps[${steps[0]}]}
+	notify ${steps[0]} $(( ${#steps[@]} - 1 ))
 }
 
 # Послать уведомление об изменении яркости
 notify() {
-    level=$(( $1 * 100 / $2 ))
+	level=$(( $1 * 100 / $2 ))
 	notify-send -a "$notify_name" -r "$notify_id" -u "$notify_urgent" -i "$notify_icon" "$notify_title" "$notify_body" -h int:value:$level
 }
 
 # Установить количество шагов, аргументы: целое положительное число (в разумных пределах, т.е. до 255)
-levels() {
-    steps=($(python - << EOF
+setup() {
+	steps=($(python - << EOF
 import sys
 steps = $1 - 1
 step = $(($max_brightness + 1)) ** (1 / steps)
 levels = [0]
 for n in range(steps):
-    level = round(step ** (n + 1)) - 1
-    level += max(0, levels[-1] - level + 1)
-    levels.append(min(level, $max_brightness))
+	level = round(step ** (n + 1)) - 1
+	level += max(0, levels[-1] - level + 1)
+	levels.append(min(level, $max_brightness))
 print(' '.join(map(str, levels[:$(($max_brightness + 1))])))
 EOF
-    ))
+	))
 
-    steps=(${#steps[@]} ${steps[@]})
-    echo ${steps[@]} > $current_level_file
-    set ${steps[${steps[0]}]}
+	steps=(${#steps[@]} ${steps[@]})
+	echo ${steps[@]} > $current_level_file
+	set ${steps[${steps[0]}]}
 }
 
-case $1 in
-    "get")
-        get
-        ;;
-    "set")
-        set "${@:2}"
-        ;;
-    "inc")
-        inc
-        ;;
-    "dec")
-        dec
-        ;;
-    "levels")
-        levels "${@:2}"
-        ;;
-	"notify")
-		steps=($(cat $current_level_file))
-		notify ${steps[0]} $(( ${#steps[@]} - 1 )) 
-		;;
-esac
+help() {
+	echo "Help is coming soon!"
+}
+
+while [[ $# -gt 0 ]] ; do
+	case $1 in
+		"-l" | "--level")
+			grep -oP '^\d+$' <<< "$2" > /dev/null && set "$2" && shift
+			get
+			;;
+		"-i" | "--increment" | "+")
+			grep -oP '^\d+$' <<< "$2" > /dev/null && \
+				for i in $(seq $2) ; do inc ; done || \
+				inc
+			;;
+		"-d" | "--decrement" | "-")
+			grep -oP '^\d+$' <<< "$2" > /dev/null && \
+				for i in $(seq $2) ; do dec ; done || \
+				dec
+			;;
+		"-s" | "--setup")
+			grep -oP '^\d+$' <<< "$2" > /dev/null && setup $2 && shift
+			grep -oP '^default$' <<< "$2" > /dev/null && setup 10 && shift
+			cat $current_level_file
+			;;
+		"-n" | "--notify")
+			steps=($(cat $current_level_file))
+			notify ${steps[0]} $(( ${#steps[@]} - 1 )) 
+			;;
+		"-h" | "--help")
+			help
+			;;
+	esac
+
+	shift
+done
