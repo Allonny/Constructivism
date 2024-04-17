@@ -49,8 +49,8 @@ bindsym --release $mod+Shift+F8 exec --no-startup-id flatpak run org.gnome.Rhyth
 
 
 # Запуск системных утилит
+bindsym --release $mod+F9 exec --no-startup-id pavucontrol
 bindsym --release $mod+F10 exec --no-startup-id performance
-bindsym --release $mod+F11 exec --no-startup-id pavucontrol
 bindsym --release $mod+F11 exec --no-startup-id update -t kitty
 bindsym --release $mod+F12 exec --no-startup-id $term --class=Htop htop
 bindsym --release $mod+Shift+F12 exec --no-startup-id suterm $term --class=Htop htop
