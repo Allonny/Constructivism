@@ -3,3 +3,4 @@ Name=Clipman
 Type=Application
 TryExec=xfce4-clipman
 Exec=xfce4-clipman
+Hidden=false
