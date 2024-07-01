@@ -73,7 +73,7 @@ console_title_template = "{{ .Folder }} by {{ .UserName }}"
 		style = "plain"
 		background = "p:black-alt"
 		foreground = "p:blue"
-		template = "{{ .FormattedMs }} <p:white-alt>| "
+		template = "{{ .FormattedMs }} <p:white-alt>|</> "
 
 		[blocks.segments.properties]
 			threshold = 5000
@@ -84,8 +84,7 @@ console_title_template = "{{ .Folder }} by {{ .UserName }}"
 		style = "plain"
 		background = "p:black-alt"
 		foreground = "p:green"
-		foreground_templates = [ "{{ if .Code }}p:red{{ end }}", ]
-		template = "{{if .Code}} {{.Code}} {{else}} {{ end}}"
+		template = "{{if .Code}}<p:red>{{.Code}} </>{{else}} {{ end}}"
 
 [[blocks]]
 	type = "prompt"
