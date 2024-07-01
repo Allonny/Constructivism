@@ -44,9 +44,9 @@ bindsym --release $mod+F5 exec --no-startup-id flatpak run org.mozilla.firefox
 # bindsym --release $mod+F6 exec --no-startup-id flatpak run org.telegram.desktop
 # bindsym --release $mod+F7 exec --no-startup-id flatpak run org.signal.Signal
 bindsym --release $mod+F7 exec --no-startup-id flatpak run com.valvesoftware.Steam
+bindsym --release $mod+Shift+F7 exec --no-startup-id flatpak run net.lutris.Lutris
 bindsym --release $mod+F8 exec --no-startup-id $term --class=Kew kew
 bindsym --release $mod+Shift+F8 exec --no-startup-id flatpak run org.gnome.Rhythmbox3
-
 
 # Запуск системных утилит
 bindsym --release $mod+F9 exec --no-startup-id pavucontrol
@@ -56,7 +56,7 @@ bindsym --release $mod+F12 exec --no-startup-id $term --class=Htop htop
 bindsym --release $mod+Shift+F12 exec --no-startup-id suterm $term --class=Htop htop
 
 # Создание скриншотов
-set $screenshotpath $HOME/Pictures/Скриншоты
+set $screenshotpath $HOME/Pictures/Screenshots
 bindsym --release Print exec --no-startup-id xfce4-screenshooter -f -s $screenshotpath
 bindsym --release Ctrl+Print exec --no-startup-id xfce4-screenshooter -w -s $screenshotpath
 bindsym --release Shift+Print exec --no-startup-id xfce4-screenshooter -r -s $screenshotpath
@@ -66,7 +66,7 @@ bindsym --release $mod+Shift+Print exec --no-startup-id xfce4-screenshooter -r -
 
 # Запуск VPN
 # $mod+` ($mod+ё)
-bindcode --release $mod+49 exec --no-startup-id vpn-toggle "Surfshark Japan UDP"
+bindcode --release $mod+49 exec --no-startup-id vpn-toggle "VPNovaya WG"
 
 # Окно neofetch
 # $mod+/
