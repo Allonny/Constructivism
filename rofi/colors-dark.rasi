@@ -6,6 +6,7 @@
 	background-alt:   #444240FF;
 	foreground:       #D0D0D0FF;
 	foreground-alt:   #404040FF;
+	frame:			  #00000040;
 
     /* Акцентные цвета */
     green:            #90D0D0FF;

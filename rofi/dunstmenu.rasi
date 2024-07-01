@@ -16,8 +16,8 @@ configuration {
 
 window {
 	transparency:       "real";
-	background-color:   @transparent;
-	text-color:         @transparent;
+	background-color:   @frame;
+	text-color:         @frame;
 
 	location:           center;
     fullscreen:         true;
