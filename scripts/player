@@ -3,10 +3,11 @@
 # Скрипт управления воспроизведением музыки или видео
 # и вывода модуля панели polybar
 
-current_md_file="/tmp/player-metadata"
+md_shift_file="/tmp/player-metadata-shift"
 pb_colors_file="$HOME/.config/polybar/colors.ini"
 pb_icon=""
 pb_line_length=40
+pb_line_scroll=false
 
 notify_title=""
 notify_title_default="Сейчас воспроизводится"
@@ -16,6 +17,8 @@ notify_urgent="low"
 
 notify_name="${0##*/}"
 notify_id=$(cat "$HOME/.local/scripts/notify-ids" | grep -oP "$notify_name \K([\d]+)" || echo 0)
+
+daemon_update_time="1s"
 
 # Обновить модуль polybar
 update-polybar() {
@@ -36,19 +39,34 @@ daemon() {
 	
 	md_raw_old=()
 	status_old=""
-	
+	pb_line_shift=0
+	pb_update_flag=false
+
 	while :; do
 		status="$(status)"
 		IFS=$'\n' md_raw=($(metadata))
 		if [[ "${md_raw[@]}" != ${md_raw_old[@]} ]] ; then
 			md_raw_old=(${md_raw[@]})
+			pb_update_flag=true
+			pb_line_shift=0
 			notify
-			update-polybar
 		elif [[ "$status" != "$status_old" ]] ; then
 			status_old="$status"
-			update-polybar
-		fi
-		sleep 1s
+			pb_update_flag=true
+			pb_line_shift=0
+		elif $pb_line_scroll ; then
+			md_len=$(( ${#md_raw[0]} + ${#md_raw[1]} )) 
+			[[ -n "${md_raw[0]}" ]] && [[ -n "${md_raw[1]}" ]] && md_len=$(( md_len + 3 )) 
+			if [[ $md_len -gt $pb_line_length ]] ; then
+				pb_update_flag=true
+				pb_line_shift=$(( pb_line_shift + 1 ))
+				[[ $(( pb_line_shift + pb_line_length + 3 )) -gt $md_len ]] && pb_line_shift=-5
+ 
+			fi
+		fi	
+		echo "$pb_line_shift" > $md_shift_file 
+		$pb_update_flag && pb_update_flag=false && update-polybar
+		sleep "$daemon_update_time"
 	done &
 }
 
@@ -108,8 +126,11 @@ polybar() {
 
 	if [[ -z "${md_raw[0]}" ]] && [[ -z "${md_raw[1]}" ]] ; then return 0
 	elif [[ -n "${md_raw[0]}" ]] && [[ -n "${md_raw[1]}" ]] ; then md="${md_raw[0]} ─ ${md_raw[1]}" 
-	else md="${md_raw[@]}"
+	else md="${md_raw[@]:0:2}"
 	fi
+	shift=$(cat $md_shift_file)
+	shift=$(( shift > 0 ? shift : 0 ))
+	md="${md:$shift}"
 	[[ ${#md} -gt $(( $pb_line_length + 3 )) ]] && md="${md::$pb_line_length}..."
 
 	icon="%{B$prfx F$fga}%{A1:$1 -n:} $pb_icon %{A}%{B- F-}"
@@ -178,6 +199,10 @@ while [[ $# -gt 0 ]] ; do
 			;;
 		"-h" | "--help")
 			help
+			;;
+		"--line-scroll")
+			pb_line_scroll=true
+			daemon_update_time="0.5s"
 			;;
 		"--stop-daemon")
 			stop-daemon
