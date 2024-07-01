@@ -2,7 +2,9 @@
 
 version = 2
 final_space = true
-console_title_template = "{{ .Folder }} by {{ .UserName }}"
+auto_upgrade = true
+shell_integration = true
+console_title_template = "{{ .PWD }} by {{ .UserName }}"
 
 [[blocks]]
 	type = "prompt"
