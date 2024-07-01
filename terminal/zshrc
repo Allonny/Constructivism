@@ -35,12 +35,17 @@ alias upd="sudo xbps-install -Suy ; flatpak update -y ; flatpak remove --unused 
 
 source ~/.local/share/antigen/antigen.zsh
 
+antigen bundle atuinsh/atuin@main
+antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle jirutka/zsh-shift-select
-antigen theme romkatv/powerlevel10k
+# antigen theme romkatv/powerlevel10k
 
 antigen apply
+
+eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/base.toml)"
+eval "$(zoxide init --cmd cd zsh)"
 
 function () {
 	emulate -L zsh -o no_aliases
@@ -93,5 +98,6 @@ function () {
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.local/share/p10k/p10k.zsh ]] || source ~/.local/share/p10k/p10k.zsh
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+# [[ ! -f ~/.local/share/p10k/p10k.zsh ]] || source ~/.local/share/p10k/p10k.zsh
+# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+

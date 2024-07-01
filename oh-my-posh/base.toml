@@ -1,0 +1,126 @@
+#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version = 2
+final_space = true
+console_title_template = "{{ .Folder }} by {{ .UserName }}"
+
+[[blocks]]
+	type = "prompt"
+	alignment = "left"
+	newline = true
+
+	[[blocks.segments]]
+		type = "text"
+		style = "plain"
+		background = "p:black-alt"
+		foreground = "p:yellow"
+		template = "{{ if eq \"~\" .PWD }} {{ else }} {{ end }} "
+
+	[[blocks.segments]]
+		type = "path"
+		style = "plain"
+		background = "p:black-alt"
+		foreground = "p:yellow"
+		template = "{{ .Path }} "
+
+		[blocks.segments.properties]
+			style = "full"
+
+	[[blocks.segments]]
+		type = "git"
+		style = "plain"
+		background = "p:black-alt"
+		foreground = "p:cyan"
+		foreground_templates = [ "{{ if or .Working.Changed .Staging.Changed }}p:magenta{{end}}" ]
+		template = "<p:white-alt>|</>   {{ .HEAD }} {{if or .Working.Added .Staging.Added}}<p:green-alt> {{add .Working.Added .Staging.Added}} </>{{end}}{{if or .Working.Deleted .Staging.Deleted}}<p:red-alt> {{add .Working.Deleted .Staging.Deleted}} </>{{end}}{{if or .Working.Modified .Staging.Modified}}<p:blue-alt> {{add .Working.Modified .Staging.Modified}} </>{{end}}"
+
+
+		[blocks.segments.properties]
+			fetch_status = true
+			branch_icon = " "
+			commit_icon = " "
+			merge_icon = " "
+			tag_icon = " "
+			branch_identical_icon = ""
+			branch_ahead_icon = ""
+			branch_behind_icon = ""
+			branch_gone_icon = ""
+			rebase_icon = ""
+			cherry_pick_icon = ""
+			revert_icon = ""
+			no_commits_icon = ""
+
+	[[blocks.segments]]
+		type = "text"
+		style = "plain"
+		background = "transparent"
+		foreground = "p:black-alt"
+		template = "▒░"
+
+[[blocks]]
+	type = "prompt"
+	alignment = "right"
+
+	[[blocks.segments]]
+		type = "text"
+		style = "plain"
+		background = "transparent"
+		foreground = "p:black-alt"
+		template = "░▒█"
+	
+	[[blocks.segments]]
+		type = "executiontime"
+		style = "plain"
+		background = "p:black-alt"
+		foreground = "p:blue"
+		template = "{{ .FormattedMs }} <p:white-alt>| "
+
+		[blocks.segments.properties]
+			threshold = 5000
+			style = "round"
+
+	[[blocks.segments]]
+		type = "text"
+		style = "plain"
+		background = "p:black-alt"
+		foreground = "p:green"
+		foreground_templates = [ "{{ if .Code }}p:red{{ end }}", ]
+		template = "{{if .Code}} {{.Code}} {{else}} {{ end}}"
+
+[[blocks]]
+	type = "prompt"
+	alignment = "left"
+	newline = true
+	
+	[[blocks.segments]]
+		type = "text"
+		style = "plain"
+		background = "transparent"
+		foreground = "p:white"
+		template = ""
+
+
+	
+[transient_prompt]
+	background = "transparent"
+	foreground = "p:white-alt"
+	template = " "
+
+
+[palette]
+	black		= "#686460"
+	black-alt	= "#444240"
+	red			= "#F0A080"
+	red-alt		= "#E88858"
+	green		= "#B0D068"
+	green-alt	= "#90B850"
+	yellow		= "#F8E8A0"
+	yellow-alt	= "#F0D878"
+	blue		= "#A0A0C0"
+	blue-alt	= "#8080B8"
+	magenta		= "#E88890"
+	magenta-alt	= "#D87078"
+	cyan		= "#90D0D0"
+	cyan-alt	= "#60B8B8"
+	white		= "#F0F0F0"
+	white-alt	= "#D0D0D0"
