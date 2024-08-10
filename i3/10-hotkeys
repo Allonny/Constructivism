@@ -67,6 +67,9 @@ bindsym --release $mod+Shift+Print exec --no-startup-id xfce4-screenshooter -r -
 # Запуск VPN
 # $mod+` ($mod+ё)
 bindcode --release $mod+49 exec --no-startup-id vpn-toggle "VPNovaya WG"
+# $mod+` ($mod+Shift+ё)
+# bindcode --release $mod+Shift+49 exec --no-startup-id $term --class=SpoofDPI spoof-dpi
+bindcode --release $mod+Shift+49 exec --no-startup-id dpitunnel $term
 
 # Окно neofetch
 # $mod+/

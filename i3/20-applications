@@ -29,6 +29,8 @@ for_window [class="Lxappearance"]			floating enable resize set $mid_size
 for_window [class="Nitrogen"]				floating enable resize set $mid_size
 for_window [class="Nm-connection-editor"]	floating enable resize set $mid_size
 for_window [class="Pavucontrol"]			floating enable resize set $mid_size
+for_window [class="DPITunnel"]				floating enable resize set $smw_size
+for_window [class="SpoofDPI"]				floating enable resize set $smw_size
 
 assign [class="firefox"]		$ws1
 assign [class="jetbrains"]		$ws2
@@ -41,4 +43,6 @@ assign [class="Spotify"]		$ws9
 assign [class="Gnome-boxes"]	$ws0
 assign [class="transmission"]	$ws0
 assign [class="Update"]			$ws0
+assign [class="DPITunnel"]		$ws0
+assign [class="SpoofDPI"]		$ws0
 

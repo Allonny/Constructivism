@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[[ -z "$1" ]] && term="exo-open --launch TerminalEmulator" || term="$1"
+eval "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY PATH=$PATH $term --class=DPITunnel --title=DPITunnel /bin/bash -c 'pkexec /usr/local/bin/DPITunnel-cli-exec --ca-bundle-path='/home/allonny/cacert.pem' --desync-attacks=fake,disorder_fake --split-position=2 --auto-ttl=1-4-10 --min-ttl=3 --doh --doh-server=https://dns.google/dns-query --wsize=1 --wsfactor=6'"
