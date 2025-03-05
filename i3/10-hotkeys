@@ -9,7 +9,7 @@ bindcode --release $mod+Shift+24 exec --no-startup-id xkill
 # Изменение раскладки клавиатуры
 bindsym --release $mod+space exec --no-startup-id keyboard-layout -t
 # R Alt
-bindcode --release 108 exec --no-startup-id keyboard-layout -t
+# bindcode --release 108 exec --no-startup-id keyboard-layout -t
 # CapsLock
 bindcode 66 exec --no-startup-id keyboard-layout -u
 bindcode --release 66 exec --no-startup-id keyboard-layout -u
@@ -37,7 +37,7 @@ bindsym --release $mod+Return exec --no-startup-id $term
 bindsym --release $mod+Shift+Return exec --no-startup-id suterm $term
 
 # Запуск редактора кода
-bindsym --release $mod+F4 exec --no-startup-id $term nvim 
+bindsym --release $mod+F4 exec --no-startup-id $term nvim
 
 # Запуск повседневных приложений
 bindsym --release $mod+F5 exec --no-startup-id flatpak run org.mozilla.firefox
@@ -45,7 +45,7 @@ bindsym --release $mod+F5 exec --no-startup-id flatpak run org.mozilla.firefox
 # bindsym --release $mod+F7 exec --no-startup-id flatpak run org.signal.Signal
 bindsym --release $mod+F7 exec --no-startup-id flatpak run com.valvesoftware.Steam
 bindsym --release $mod+Shift+F7 exec --no-startup-id flatpak run net.lutris.Lutris
-bindsym --release $mod+F8 exec --no-startup-id $term --class=Kew kew
+bindsym --release $mod+F8 exec --no-startup-id $term --class=Kew kew all
 bindsym --release $mod+Shift+F8 exec --no-startup-id flatpak run org.gnome.Rhythmbox3
 
 # Запуск системных утилит
@@ -66,10 +66,13 @@ bindsym --release $mod+Shift+Print exec --no-startup-id xfce4-screenshooter -r -
 
 # Запуск VPN
 # $mod+` ($mod+ё)
-bindcode --release $mod+49 exec --no-startup-id vpn-toggle "VPNovaya WG"
+bindcode --release $mod+49 exec --no-startup-id f_ck-rkn $term
+# bindcode --release $mod+49 exec --no-startup-id spoofdpi $term
+# bindcode --release $mod+49 exec --no-startup-id vpn-toggle "VPNovaya WG"
 # $mod+` ($mod+Shift+ё)
-# bindcode --release $mod+Shift+49 exec --no-startup-id $term --class=SpoofDPI spoof-dpi
-bindcode --release $mod+Shift+49 exec --no-startup-id dpitunnel $term
+# bindcode --release $mod+Shift+49 exec --no-startup-id $term --class=Outline --title=Outline ss-local -c $HOME/.config/outline.json
+# bindcode --release $mod+Shift+49 exec --no-startup-id dpitunnel $term
+# bindcode --release $mod+Shift+49 exec --no-startup-id dpitunnel $term & ; exec --no-startup-id spoofdpi $term &
 
 # Окно neofetch
 # $mod+/
