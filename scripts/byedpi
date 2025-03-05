@@ -1,0 +1,6 @@
+#!/bin/bash
+
+[[ -z "$1" ]] && term="exo-open --launch TerminalEmulator" || term="$1"
+eval "$term --class=ByeDPI --title=ByeDPI /usr/local/bin/ciadpi --ip 0.0.0.0 --port 1312 --oob 1"
+# eval "$term --class=ByeDPI --title=ByeDPI /usr/local/bin/ciadpi --ip 0.0.0.0 --port 1312 -s1 -q1 -Y -Ar -s5 -o1+s -At -f-1 -r1+s -As -s1 -o1 +s -s-1 -An -b+500"
+# eval "$term --class=ByeDPI --title=ByeDPI /usr/local/bin/ciadpi --ip 0.0.0.0 --port 1312 -e 1 -q --native-frag --wrong-chksum --fake-from-hex 1603030135010001310303424143facf5c983ac8ff20b819cfd634cbf5143c0005b2b8b142a6cd335012c220008969b6b387683dedb4114d466ca90be3212b2bde0c4f56261a9801 --fake-gen 5 --set-ttl 3"

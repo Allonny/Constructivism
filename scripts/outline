@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[[ -z "$1" ]] && term="exo-open --launch TerminalEmulator" || term="$1"
+eval "$term --class=Outline --title=Outline /usr/bin/ss-local -c $HOME/.config/outline.json"

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[[ -z "$1" ]] && term="exo-open --launch TerminalEmulator" || term="$1"
+eval "$term --class=SpoofDPI --title=SpoofDPI /usr/local/bin/spoof-dpi --addr 0.0.0.0 --port 1312"
