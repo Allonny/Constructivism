@@ -15,9 +15,6 @@ pb_mem_icon=""
 threshold_caution=75
 threshold_warning=90
 
-[[ ! -f $cpuusage_file ]] && blank-cpu
-[[ ! -f $memusage_file ]] && blank-mem
-
 # Остановить все работающие в фоне экземпляры данной программы
 stop-daemon() {
 	blank-cpu
@@ -163,6 +160,9 @@ help() {
 
 # Если нет аргументов, то вызывается справка, а скрипт завершается
 if [[ $# -eq 0 ]] ; then help ; exit 0 ; fi
+
+[[ ! -f $cpuusage_file ]] && blank-cpu
+[[ ! -f $memusage_file ]] && blank-mem
 
 # Последовательный разбор аргументов командной строки
 while [[ $# -gt 0 ]] ; do

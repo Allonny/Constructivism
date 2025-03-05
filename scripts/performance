@@ -3,9 +3,9 @@
 themefile="$HOME/.config/rofi/performance.rasi"
 
 cpu_mode_file="/sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
-gpu_mode_file="/sys/class/drm/card1/device/power_dpm_state"
+gpu_mode_file="/sys/class/drm/card0/device/power_dpm_state"
 
-cpu_modes=("schedutil" "powersave" "performance")
+cpu_modes=("powersave" "powersave" "performance")
 gpu_modes=("balanced" "battery" "performance")
 labels=("Сбалансированный" "Энергосбережение" "Производительность")
 
@@ -23,8 +23,8 @@ echo "CPU: ${cpu_mode[0]}"
 echo "GPU: ${gpu_mode[0]}"
 
 actual=""
-for i in "${!cpu_modes[@]}"; do
-    [ "$cpu_mode" = "${cpu_modes[$i]}" ] && actual=${labels[i]}
+for i in "${!gpu_modes[@]}"; do
+    [ "$gpu_mode" = "${gpu_modes[$i]}" ] && actual=${labels[i]}
 done
 actual=${actual,,}
 

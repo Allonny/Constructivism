@@ -36,7 +36,7 @@ confirm_shutdown=(  "$shutdown_title"  "$shutdown"  "$shutdown_icon"  "$cancel" 
 confirm_update=(    "$update_title"    "$update"    "$update_icon"    "$cancel" "$cancel_icon" )
 
 confirm() {
-    $("$confirm_script" "$1" "$2" "$3" "$4" "$5") && eval $6 || exit 0
+    $("$confirm_script" "$1" "$2" "$3" "$4" "$5") && eval "$6" || exit 0
 }
 
 options="$lock$lock_icon
