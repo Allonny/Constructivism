@@ -1,17 +1,17 @@
-/* Меню запуска приложений */
+/* Меню режима выбора программы для обхода блокировок */
 
 @import "colors.rasi"
 @import "font.rasi"
 @import "icons.rasi"
 
 configuration {
-	show-icons:			true;
-	display-drun:		"";
+	show-icons:         true;
+	display-drun: 		"";
 	drun-display-format:"{name}";
-	disable-history:	true;
+	disable-history:    true;
 	fullscreen:         false;
 	hide-scrollbar: 	true;
-	sidebar-mode:		false;
+	sidebar-mode: 		false;
 }
 
 window {
@@ -22,8 +22,8 @@ window {
 	location:           center;
     fullscreen:         true;
 
-    // Отступ слева 100, ширина 800, высота подобрана эмпирически для 8 выводимых строк
-    padding:            calc(50% - 173) calc(100% - 900) calc(50% - 172) 100;
+    // Отступ слева 100, ширина 400, высота подобрана эмпирически для 3 выводимых строк
+    padding:            calc(50% - 117) calc(100% - 500) calc(50% - 117) 100;
 }
 
 textbox-prompt-colon {
@@ -36,27 +36,23 @@ textbox-prompt-colon {
     horizontal-align:   0.5;
     vertical-align:     0.5;
 
-	str:				"";
+	str:				"";
 	font:				"feather 11";
 }
 
-entry {
-	background-color:   @background-alt;
-	text-color:         @foreground;
-	placeholder-color:  @foreground;
+prompt {
+    background-color: 	@background-alt;
+	text-color: 		@foreground;
 
-	expand:             true;
+    expand:             true;
 	height: 			29px;
     padding:            5px 8px 4px;
     horizontal-align:   0;
     vertical-align:     0.5;
-
-	placeholder:        "Поиск...";
-	blink:              true;
 }
 
 inputbar {
-	children: 			[ textbox-prompt-colon, entry ];
+	children: 			[ textbox-prompt-colon, prompt ];
 
 	background-color:   @background-alt;
 	text-color:         @foreground;
@@ -69,8 +65,8 @@ listview {
 
 	spacing:            8px;
 
-	columns:            4;
-	lines:              8;
+	columns:            1;
+	lines:              5;
 	cycle:              true;
 	dynamic:            true;
 	layout:             vertical;
@@ -117,3 +113,4 @@ element selected {
 
 	border:				0px 0px 2px;
 }
+

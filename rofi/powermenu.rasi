@@ -94,8 +94,8 @@ element {
 element-icon {
 	background-color:   @transparent;
 
-	size:               25px;
-    padding:            2px;
+	size:               24px;
+    padding:            2px 2px 3px;
 }
 
 element-text {
