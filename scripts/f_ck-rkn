@@ -1,0 +1,42 @@
+#!/bin/bash
+
+[[ -z "$1" ]] && term="exo-open --launch TerminalEmulator" || term="$1"
+themefile="$HOME/.config/rofi/f_ck-rkn.rasi"
+
+vpnovaya_icon="\0icon\x1fobject-unlocked"
+outline_icon="\0icon\x1fobject-unlocked"
+spoofdpi_icon="\0icon\x1fobject-unlocked"
+byedpi_icon="\0icon\x1fobject-unlocked"
+dpitunnel_icon="\0icon\x1fobject-unlocked"
+
+vpnovaya="VPNovaya"
+outline="Outline"
+spoofdpi="SpoofDPI"
+byedpi="ByeDPI"
+dpitunnel="DPITunnel"
+
+options="$vpnovaya$vpnovaya_icon
+$outline$outline_icon
+$spoofdpi$spoofdpi_icon
+$byedpi$byedpi_icon
+$dpitunnel$dpitunnel_icon"
+
+chosen=$(echo -e "$options" | rofi -no-config -no-lazy-grab -dmenu -show-icons -p "Как послать Роскомнадзор?" -theme $themefile)
+
+case $chosen in
+	$vpnovaya)
+		vpn-toggle 'VPNovaya WG'
+		;;
+	$outline)
+		outline $term
+		;;
+    $spoofdpi)
+        spoofdpi $term
+        ;;
+    $byedpi)
+        byedpi $term
+        ;;
+    $dpitunnel)
+        dpitunnel $term
+        ;;
+esac
